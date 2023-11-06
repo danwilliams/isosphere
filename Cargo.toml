@@ -18,3 +18,5 @@ opt-level = 3    # Maximum optimisation (this is the cargo default)
 lto = "thin"     # Enable link-time optimisation (fast)
 
 [dependencies]
+serde = { version = "1.0.190", features = ["derive"] }
+utoipa = "4.0.0"
