@@ -53,184 +53,541 @@ use utoipa::ToSchema;
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub enum CurrencyCode {
+	/// United Arab Emirates dirham.
 	AED = 784,
+	
+	/// Afghan afghani.
 	AFN = 971,
+	
+	/// Albanian lek.
 	ALL = 008,
+	
+	/// Armenian dram.
 	AMD = 051,
+	
+	/// Netherlands Antillean guilder.
 	ANG = 532,
+	
+	/// Angolan kwanza.
 	AOA = 973,
+	
+	/// Argentine peso.
 	ARS = 032,
+	
+	/// Australian dollar.
 	AUD = 036,
+	
+	/// Aruban florin.
 	AWG = 533,
+	
+	/// Azerbaijani manat.
 	AZN = 944,
+	
+	/// Bosnia and Herzegovina convertible mark.
 	BAM = 977,
+	
+	/// Barbados dollar.
 	BBD = 052,
+	
+	/// Bangladeshi taka.
 	BDT = 050,
+	
+	/// Bulgarian lev.
 	BGN = 975,
+	
+	/// Bahraini dinar.
 	BHD = 048,
+	
+	/// Burundian franc.
 	BIF = 108,
+	
+	/// Bermudian dollar.
 	BMD = 060,
+	
+	/// Brunei dollar.
 	BND = 096,
+	
+	/// Boliviano.
 	BOB = 068,
+	
+	/// Bolivian Mvdol.
 	BOV = 984,
+	
+	/// Brazilian real.
 	BRL = 986,
+	
+	/// Bahamian dollar.
 	BSD = 044,
+	
+	/// Bhutanese ngultrum.
 	BTN = 064,
+	
+	/// Botswana pula.
 	BWP = 072,
+	
+	/// Belarusian ruble.
 	BYN = 933,
+	
+	/// Belize dollar.
 	BZD = 084,
+	
+	/// Canadian dollar.
 	CAD = 124,
+	
+	/// Congolese franc.
 	CDF = 976,
+	
+	/// WIR euro.
 	CHE = 947,
+	
+	/// Swiss franc.
 	CHF = 756,
+	
+	/// WIR franc.
 	CHW = 948,
+	
+	/// Unidad de Fomento.
 	CLF = 990,
+	
+	/// Chilean peso.
 	CLP = 152,
+	
+	/// Renminbi.
 	CNY = 156,
+	
+	/// Colombian peso.
 	COP = 170,
+	
+	/// Unidad de Valor Real (UVR).
 	COU = 970,
+	
+	/// Costa Rican colon.
 	CRC = 188,
+	
+	/// Cuban peso.
 	CUP = 192,
+	
+	/// Cape Verdean escudo.
 	CVE = 132,
+	
+	/// Czech koruna.
 	CZK = 203,
+	
+	/// Djiboutian franc.
 	DJF = 262,
+	
+	/// Danish krone.
 	DKK = 208,
+	
+	/// Dominican peso.
 	DOP = 214,
+	
+	/// Algerian dinar.
 	DZD = 012,
+	
+	/// Egyptian pound.
 	EGP = 818,
+	
+	/// Eritrean nakfa.
 	ERN = 232,
+	
+	/// Ethiopian birr.
 	ETB = 230,
+	
+	/// Euro.
 	EUR = 978,
+	
+	/// Fiji dollar.
 	FJD = 242,
+	
+	/// Falkland Islands pound.
 	FKP = 238,
+	
+	/// Pound sterling.
 	GBP = 826,
+	
+	/// Georgian lari.
 	GEL = 981,
+	
+	/// Ghanaian cedi.
 	GHS = 936,
+	
+	/// Gibraltar pound.
 	GIP = 292,
+	
+	/// Gambian dalasi.
 	GMD = 270,
+	
+	/// Guinean franc.
 	GNF = 324,
+	
+	/// Guatemalan quetzal.
 	GTQ = 320,
+	
+	/// Guyanese dollar.
 	GYD = 328,
+	
+	/// Hong Kong dollar.
 	HKD = 344,
+	
+	/// Honduran lempira.
 	HNL = 340,
+	
+	/// Haitian gourde.
 	HTG = 332,
+	
+	/// Hungarian forint.
 	HUF = 348,
+	
+	/// Indonesian rupiah.
 	IDR = 360,
+	
+	/// Israeli new shekel.
 	ILS = 376,
+	
+	/// Indian rupee.
 	INR = 356,
+	
+	/// Iraqi dinar.
 	IQD = 368,
+	
+	/// Iranian rial.
 	IRR = 364,
+	
+	/// Icelandic króna.
 	ISK = 352,
+	
+	/// Jamaican dollar.
 	JMD = 388,
+	
+	/// Jordanian dinar.
 	JOD = 400,
+	
+	/// Japanese yen.
 	JPY = 392,
+	
+	/// Kenyan shilling.
 	KES = 404,
+	
+	/// Kyrgyzstani som.
 	KGS = 417,
+	
+	/// Cambodian riel.
 	KHR = 116,
+	
+	/// Comoro franc.
 	KMF = 174,
+	
+	/// North Korean won.
 	KPW = 408,
+	
+	/// South Korean won.
 	KRW = 410,
+	
+	/// Kuwaiti dinar.
 	KWD = 414,
+	
+	/// Cayman Islands dollar.
 	KYD = 136,
+	
+	/// Kazakhstani tenge.
 	KZT = 398,
+	
+	/// Lao kip.
 	LAK = 418,
+	
+	/// Lebanese pound.
 	LBP = 422,
+	
+	/// Sri Lankan rupee.
 	LKR = 144,
+	
+	/// Liberian dollar.
 	LRD = 430,
+	
+	/// Lesotho loti.
 	LSL = 426,
+	
+	/// Libyan dinar.
 	LYD = 434,
+	
+	/// Moroccan dirham.
 	MAD = 504,
+	
+	/// Moldovan leu.
 	MDL = 498,
+	
+	/// Malagasy ariary.
 	MGA = 969,
+	
+	/// Macedonian denar.
 	MKD = 807,
+	
+	/// Myanmar kyat.
 	MMK = 104,
+	
+	/// Mongolian tögrög.
 	MNT = 496,
+	
+	/// Macanese pataca.
 	MOP = 446,
+	
+	/// Mauritanian ouguiya.
 	MRU = 929,
+	
+	/// Mauritian rupee.
 	MUR = 480,
+	
+	/// Maldivian rufiyaa.
 	MVR = 462,
+	
+	/// Malawian kwacha.
 	MWK = 454,
+	
+	/// Mexican peso.
 	MXN = 484,
+	
+	/// Mexican Unidad de Inversion (UDI).
 	MXV = 979,
+	
+	/// Malaysian ringgit.
 	MYR = 458,
+	
+	/// Mozambican metical.
 	MZN = 943,
+	
+	/// Namibian dollar.
 	NAD = 516,
+	
+	/// Nigerian naira.
 	NGN = 566,
+	
+	/// Nicaraguan córdoba.
 	NIO = 558,
+	
+	/// Norwegian krone.
 	NOK = 578,
+	
+	/// Nepalese rupee.
 	NPR = 524,
+	
+	/// New Zealand dollar.
 	NZD = 554,
+	
+	/// Omani rial.
 	OMR = 512,
+	
+	/// Panamanian balboa.
 	PAB = 590,
+	
+	/// Peruvian sol.
 	PEN = 604,
+	
+	/// Papua New Guinean kina.
 	PGK = 598,
+	
+	/// Philippine peso.
 	PHP = 608,
+	
+	/// Pakistani rupee.
 	PKR = 586,
+	
+	/// Polish złoty.
 	PLN = 985,
+	
+	/// Paraguayan guaraní.
 	PYG = 600,
+	
+	/// Qatari riyal.
 	QAR = 634,
+	
+	/// Romanian leu.
 	RON = 946,
+	
+	/// Serbian dinar.
 	RSD = 941,
+	
+	/// Russian ruble.
 	RUB = 643,
+	
+	/// Rwandan franc.
 	RWF = 646,
+	
+	/// Saudi riyal.
 	SAR = 682,
+	
+	/// Solomon Islands dollar.
 	SBD = 090,
+	
+	/// Seychelles rupee.
 	SCR = 690,
+	
+	/// Sudanese pound.
 	SDG = 938,
+	
+	/// Swedish krona.
 	SEK = 752,
+	
+	/// Singapore dollar.
 	SGD = 702,
+	
+	/// Saint Helena pound.
 	SHP = 654,
+	
+	/// Sierra Leonean leone (new leone).
 	SLE = 925,
+	
+	/// Sierra Leonean leone (old leone).
 	SLL = 694,
+	
+	/// Somali shilling.
 	SOS = 706,
+	
+	/// Surinamese dollar.
 	SRD = 968,
+	
+	/// South Sudanese pound.
 	SSP = 728,
+	
+	/// São Tomé and Príncipe dobra.
 	STN = 930,
+	
+	/// Salvadoran colón.
 	SVC = 222,
+	
+	/// Syrian pound.
 	SYP = 760,
+	
+	/// Swazi lilangeni.
 	SZL = 748,
+	
+	/// Thai baht.
 	THB = 764,
+	
+	/// Tajikistani somoni.
 	TJS = 972,
+	
+	/// Turkmenistan manat.
 	TMT = 934,
+	
+	/// Tunisian dinar.
 	TND = 788,
+	
+	/// Tongan paʻanga.
 	TOP = 776,
+	
+	/// Turkish lira.
 	TRY = 949,
+	
+	/// Trinidad and Tobago dollar.
 	TTD = 780,
+	
+	/// New Taiwan dollar.
 	TWD = 901,
+	
+	/// Tanzanian shilling.
 	TZS = 834,
+	
+	/// Ukrainian hryvnia.
 	UAH = 980,
+	
+	/// Ugandan shilling.
 	UGX = 800,
+	
+	/// United States dollar.
 	USD = 840,
+	
+	/// United States dollar (next day).
 	USN = 997,
+	
+	/// Uruguay Peso en Unidades Indexadas (URUIURUI).
 	UYI = 940,
+	
+	/// Uruguayan peso.
 	UYU = 858,
+	
+	/// Unidad previsional.
 	UYW = 927,
+	
+	/// Uzbekistan sum.
 	UZS = 860,
+	
+	/// Venezuelan digital bolívar.
 	VED = 926,
+	
+	/// Venezuelan sovereign bolívar.
 	VES = 928,
+	
+	/// Vietnamese đồng.
 	VND = 704,
+	
+	/// Vanuatu vatu.
 	VUV = 548,
+	
+	/// Samoan tala.
 	WST = 882,
+	
+	/// CFA franc BEAC.
 	XAF = 950,
+	
+	/// Silver (one troy ounce).
 	XAG = 961,
+	
+	/// Gold (one troy ounce).
 	XAU = 959,
+	
+	/// European Composite Unit (EURCO).
 	XBA = 955,
+	
+	/// European Monetary Unit (E.M.U.-6).
 	XBB = 956,
+	
+	/// European Unit of Account 9 (E.U.A.-9).
 	XBC = 957,
+	
+	/// European Unit of Account 17 (E.U.A.-17).
 	XBD = 958,
+	
+	/// East Caribbean dollar.
 	XCD = 951,
+	
+	/// Special drawing rights.
 	XDR = 960,
+	
+	/// CFA franc BCEAO.
 	XOF = 952,
+	
+	/// Palladium (one troy ounce).
 	XPD = 964,
+	
+	/// CFP franc (franc Pacifique).
 	XPF = 953,
+	
+	/// Platinum (one troy ounce).
 	XPT = 962,
+	
+	/// SUCRE.
 	XSU = 994,
+	
+	/// Code reserved for testing.
 	XTS = 963,
+	
+	/// ADB Unit of Account.
 	XUA = 965,
+	
+	/// No currency.
 	XXX = 999,
+	
+	/// Yemeni rial.
 	YER = 886,
+	
+	/// South African rand.
 	ZAR = 710,
+	
+	/// Zambian kwacha.
 	ZMW = 967,
+	
+	/// Zimbabwean dollar (fifth).
 	ZWL = 932,
 }
 
