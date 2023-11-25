@@ -15,6 +15,7 @@ pub use {
 	country::CountryCode,
 	currency::Currency,
 	currency::CurrencyCode,
+	currency::CURRENCIES,
 	language::Language,
 	language::LanguageCode,
 };
