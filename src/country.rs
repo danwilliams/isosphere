@@ -59,255 +59,753 @@ use utoipa::ToSchema;
 #[non_exhaustive]
 pub enum CountryCode {
 	//		Two-letter codes (ISO 3166-1 alpha-2)								
+	/// Andorra
 	AD  = 020,
+	
+	/// United Arab Emirates
 	AE  = 784,
+	
+	/// Afghanistan
 	AF  = 004,
+	
+	/// Antigua and Barbuda
 	AG  = 028,
+	
+	/// Anguilla
 	AI  = 660,
+	
+	/// Albania
 	AL  = 008,
+	
+	/// Armenia
 	AM  = 051,
+	
+	/// Angola
 	AO  = 024,
+	
+	/// Antarctica
 	AQ  = 010,
+	
+	/// Argentina
 	AR  = 032,
+	
+	/// American Samoa
 	AS  = 016,
+	
+	/// Austria
 	AT  = 040,
+	
+	/// Australia
 	AU  = 036,
+	
+	/// Aruba
 	AW  = 533,
+	
+	/// Åland Islands
 	AX  = 248,
+	
+	/// Azerbaijan
 	AZ  = 031,
+	
+	/// Bosnia and Herzegovina
 	BA  = 070,
+	
+	/// Barbados
 	BB  = 052,
+	
+	/// Bangladesh
 	BD  = 050,
+	
+	/// Belgium
 	BE  = 056,
+	
+	/// Burkina Faso
 	BF  = 854,
+	
+	/// Bulgaria
 	BG  = 100,
+	
+	/// Bahrain
 	BH  = 048,
+	
+	/// Burundi
 	BI  = 108,
+	
+	/// Benin
 	BJ  = 204,
+	
+	/// Saint Barthélemy
 	BL  = 652,
+	
+	/// Bermuda
 	BM  = 060,
+	
+	/// Brunei Darussalam
 	BN  = 096,
+	
+	/// Bolivia (Plurinational State of)
 	BO  = 068,
+	
+	/// Bonaire, Sint Eustatius and Saba
 	BQ  = 535,
+	
+	/// Brazil
 	BR  = 076,
+	
+	/// Bahamas
 	BS  = 044,
+	
+	/// Bhutan
 	BT  = 064,
+	
+	/// Bouvet Island
 	BV  = 074,
+	
+	/// Botswana
 	BW  = 072,
+	
+	/// Belarus
 	BY  = 112,
+	
+	/// Belize
 	BZ  = 084,
+	
+	/// Canada
 	CA  = 124,
+	
+	/// Cocos (Keeling) Islands
 	CC  = 166,
+	
+	/// Congo, Democratic Republic of the
 	CD  = 180,
+	
+	/// Central African Republic
 	CF  = 140,
+	
+	/// Congo
 	CG  = 178,
+	
+	/// Switzerland
 	CH  = 756,
+	
+	/// Côte d'Ivoire
 	CI  = 384,
+	
+	/// Cook Islands
 	CK  = 184,
+	
+	/// Chile
 	CL  = 152,
+	
+	/// Cameroon
 	CM  = 120,
+	
+	/// China
 	CN  = 156,
+	
+	/// Colombia
 	CO  = 170,
+	
+	/// Costa Rica
 	CR  = 188,
+	
+	/// Cuba
 	CU  = 192,
+	
+	/// Cabo Verde
 	CV  = 132,
+	
+	/// Curaçao
 	CW  = 531,
+	
+	/// Christmas Island
 	CX  = 162,
+	
+	/// Cyprus
 	CY  = 196,
+	
+	/// Czechia
 	CZ  = 203,
+	
+	/// Germany
 	DE  = 276,
+	
+	/// Djibouti
 	DJ  = 262,
+	
+	/// Denmark
 	DK  = 208,
+	
+	/// Dominica
 	DM  = 212,
+	
+	/// Dominican Republic
 	DO  = 214,
+	
+	/// Algeria
 	DZ  = 012,
+	
+	/// Ecuador
 	EC  = 218,
+	
+	/// Estonia
 	EE  = 233,
+	
+	/// Egypt
 	EG  = 818,
+	
+	/// Western Sahara
 	EH  = 732,
+	
+	/// Eritrea
 	ER  = 232,
+	
+	/// Spain
 	ES  = 724,
+	
+	/// Ethiopia
 	ET  = 231,
+	
+	/// Finland
 	FI  = 246,
+	
+	/// Fiji
 	FJ  = 242,
+	
+	/// Falkland Islands (Malvinas)
 	FK  = 238,
+	
+	/// Micronesia (Federated States of)
 	FM  = 583,
+	
+	/// Faroe Islands
 	FO  = 234,
+	
+	/// France
 	FR  = 250,
+	
+	/// Gabon
 	GA  = 266,
+	
+	/// United Kingdom of Great Britain and Northern Ireland
 	GB  = 826,
+	
+	/// Grenada
 	GD  = 308,
+	
+	/// Georgia
 	GE  = 268,
+	
+	/// French Guiana
 	GF  = 254,
+	
+	/// Guernsey
 	GG  = 831,
+	
+	/// Ghana
 	GH  = 288,
+	
+	/// Gibraltar
 	GI  = 292,
+	
+	/// Greenland
 	GL  = 304,
+	
+	/// Gambia
 	GM  = 270,
+	
+	/// Guinea
 	GN  = 324,
+	
+	/// Guadeloupe
 	GP  = 312,
+	
+	/// Equatorial Guinea
 	GQ  = 226,
+	
+	/// Greece
 	GR  = 300,
+	
+	/// South Georgia and the South Sandwich Islands
 	GS  = 239,
+	
+	/// Guatemala
 	GT  = 320,
+	
+	/// Guam
 	GU  = 316,
+	
+	/// Guinea-Bissau
 	GW  = 624,
+	
+	/// Guyana
 	GY  = 328,
+	
+	/// Hong Kong
 	HK  = 344,
+	
+	/// Heard Island and McDonald Islands
 	HM  = 334,
+	
+	/// Honduras
 	HN  = 340,
+	
+	/// Croatia
 	HR  = 191,
+	
+	/// Haiti
 	HT  = 332,
+	
+	/// Hungary
 	HU  = 348,
+	
+	/// Indonesia
 	ID  = 360,
+	
+	/// Ireland
 	IE  = 372,
+	
+	/// Israel
 	IL  = 376,
+	
+	/// Isle of Man
 	IM  = 833,
+	
+	/// India
 	IN  = 356,
+	
+	/// British Indian Ocean Territory
 	IO  = 086,
+	
+	/// Iraq
 	IQ  = 368,
+	
+	/// Iran (Islamic Republic of)
 	IR  = 364,
+	
+	/// Iceland
 	IS  = 352,
+	
+	/// Italy
 	IT  = 380,
+	
+	/// Jersey
 	JE  = 832,
+	
+	/// Jamaica
 	JM  = 388,
+	
+	/// Jordan
 	JO  = 400,
+	
+	/// Japan
 	JP  = 392,
+	
+	/// Kenya
 	KE  = 404,
+	
+	/// Kyrgyzstan
 	KG  = 417,
+	
+	/// Cambodia
 	KH  = 116,
+	
+	/// Kiribati
 	KI  = 296,
+	
+	/// Comoros
 	KM  = 174,
+	
+	/// Saint Kitts and Nevis
 	KN  = 659,
+	
+	/// Korea (Democratic People's Republic of)
 	KP  = 408,
+	
+	/// Korea, Republic of
 	KR  = 410,
+	
+	/// Kuwait
 	KW  = 414,
+	
+	/// Cayman Islands
 	KY  = 136,
+	
+	/// Kazakhstan
 	KZ  = 398,
+	
+	/// Lao People's Democratic Republic
 	LA  = 418,
+	
+	/// Lebanon
 	LB  = 422,
+	
+	/// Saint Lucia
 	LC  = 662,
+	
+	/// Liechtenstein
 	LI  = 438,
+	
+	/// Sri Lanka
 	LK  = 144,
+	
+	/// Liberia
 	LR  = 430,
+	
+	/// Lesotho
 	LS  = 426,
+	
+	/// Lithuania
 	LT  = 440,
+	
+	/// Luxembourg
 	LU  = 442,
+	
+	/// Latvia
 	LV  = 428,
+	
+	/// Libya
 	LY  = 434,
+	
+	/// Morocco
 	MA  = 504,
+	
+	/// Monaco
 	MC  = 492,
+	
+	/// Moldova, Republic of
 	MD  = 498,
+	
+	/// Montenegro
 	ME  = 499,
+	
+	/// Saint Martin (French part)
 	MF  = 663,
+	
+	/// Madagascar
 	MG  = 450,
+	
+	/// Marshall Islands
 	MH  = 584,
+	
+	/// North Macedonia
 	MK  = 807,
+	
+	/// Mali
 	ML  = 466,
+	
+	/// Myanmar
 	MM  = 104,
+	
+	/// Mongolia
 	MN  = 496,
+	
+	/// Macao
 	MO  = 446,
+	
+	/// Northern Mariana Islands
 	MP  = 580,
+	
+	/// Martinique
 	MQ  = 474,
+	
+	/// Mauritania
 	MR  = 478,
+	
+	/// Montserrat
 	MS  = 500,
+	
+	/// Malta
 	MT  = 470,
+	
+	/// Mauritius
 	MU  = 480,
+	
+	/// Maldives
 	MV  = 462,
+	
+	/// Malawi
 	MW  = 454,
+	
+	/// Mexico
 	MX  = 484,
+	
+	/// Malaysia
 	MY  = 458,
+	
+	/// Mozambique
 	MZ  = 508,
+	
+	/// Namibia
 	NA  = 516,
+	
+	/// New Caledonia
 	NC  = 540,
+	
+	/// Niger
 	NE  = 562,
+	
+	/// Norfolk Island
 	NF  = 574,
+	
+	/// Nigeria
 	NG  = 566,
+	
+	/// Nicaragua
 	NI  = 558,
+	
+	/// Netherlands, Kingdom of the
 	NL  = 528,
+	
+	/// Norway
 	NO  = 578,
+	
+	/// Nepal
 	NP  = 524,
+	
+	/// Nauru
 	NR  = 520,
+	
+	/// Niue
 	NU  = 570,
+	
+	/// New Zealand
 	NZ  = 554,
+	
+	/// Oman
 	OM  = 512,
+	
+	/// Panama
 	PA  = 591,
+	
+	/// Peru
 	PE  = 604,
+	
+	/// French Polynesia
 	PF  = 258,
+	
+	/// Papua New Guinea
 	PG  = 598,
+	
+	/// Philippines
 	PH  = 608,
+	
+	/// Pakistan
 	PK  = 586,
+	
+	/// Poland
 	PL  = 616,
+	
+	/// Saint Pierre and Miquelon
 	PM  = 666,
+	
+	/// Pitcairn
 	PN  = 612,
+	
+	/// Puerto Rico
 	PR  = 630,
+	
+	/// Palestine, State of
 	PS  = 275,
+	
+	/// Portugal
 	PT  = 620,
+	
+	/// Palau
 	PW  = 585,
+	
+	/// Paraguay
 	PY  = 600,
+	
+	/// Qatar
 	QA  = 634,
+	
+	/// Réunion
 	RE  = 638,
+	
+	/// Romania
 	RO  = 642,
+	
+	/// Serbia
 	RS  = 688,
+	
+	/// Russian Federation
 	RU  = 643,
+	
+	/// Rwanda
 	RW  = 646,
+	
+	/// Saudi Arabia
 	SA  = 682,
+	
+	/// Solomon Islands
 	SB  = 090,
+	
+	/// Seychelles
 	SC  = 690,
+	
+	/// Sudan
 	SD  = 729,
+	
+	/// Sweden
 	SE  = 752,
+	
+	/// Singapore
 	SG  = 702,
+	
+	/// Saint Helena, Ascension and Tristan da Cunha
 	SH  = 654,
+	
+	/// Slovenia
 	SI  = 705,
+	
+	/// Svalbard and Jan Mayen
 	SJ  = 744,
+	
+	/// Slovakia
 	SK  = 703,
+	
+	/// Sierra Leone
 	SL  = 694,
+	
+	/// San Marino
 	SM  = 674,
+	
+	/// Senegal
 	SN  = 686,
+	
+	/// Somalia
 	SO  = 706,
+	
+	/// Suriname
 	SR  = 740,
+	
+	/// South Sudan
 	SS  = 728,
+	
+	/// Sao Tome and Principe
 	ST  = 678,
+	
+	/// El Salvador
 	SV  = 222,
+	
+	/// Sint Maarten (Dutch part)
 	SX  = 534,
+	
+	/// Syrian Arab Republic
 	SY  = 760,
+	
+	/// Eswatini
 	SZ  = 748,
+	
+	/// Turks and Caicos Islands
 	TC  = 796,
+	
+	/// Chad
 	TD  = 148,
+	
+	/// French Southern Territories
 	TF  = 260,
+	
+	/// Togo
 	TG  = 768,
+	
+	/// Thailand
 	TH  = 764,
+	
+	/// Tajikistan
 	TJ  = 762,
+	
+	/// Tokelau
 	TK  = 772,
+	
+	/// Timor-Leste
 	TL  = 626,
+	
+	/// Turkmenistan
 	TM  = 795,
+	
+	/// Tunisia
 	TN  = 788,
+	
+	/// Tonga
 	TO  = 776,
+	
+	/// Türkiye
 	TR  = 792,
+	
+	/// Trinidad and Tobago
 	TT  = 780,
+	
+	/// Tuvalu
 	TV  = 798,
+	
+	/// Taiwan, Province of China
 	TW  = 158,
+	
+	/// Tanzania, United Republic of
 	TZ  = 834,
+	
+	/// Ukraine
 	UA  = 804,
+	
+	/// Uganda
 	UG  = 800,
+	
+	/// United States Minor Outlying Islands
 	UM  = 581,
+	
+	/// United States of America
 	US  = 840,
+	
+	/// Uruguay
 	UY  = 858,
+	
+	/// Uzbekistan
 	UZ  = 860,
+	
+	/// Holy See
 	VA  = 336,
+	
+	/// Saint Vincent and the Grenadines
 	VC  = 670,
+	
+	/// Venezuela (Bolivarian Republic of)
 	VE  = 862,
+	
+	/// Virgin Islands (British)
 	VG  = 092,
+	
+	/// Virgin Islands (U.S.)
 	VI  = 850,
+	
+	/// Viet Nam
 	VN  = 704,
+	
+	/// Vanuatu
 	VU  = 548,
+	
+	/// Wallis and Futuna
 	WF  = 876,
+	
+	/// Samoa
 	WS  = 882,
+	
+	/// Yemen
 	YE  = 887,
+	
+	/// Mayotte
 	YT  = 175,
+	
+	/// South Africa
 	ZA  = 710,
+	
+	/// Zambia
 	ZM  = 894,
+	
+	/// Zimbabwe
 	ZW  = 716,
+	
 	//		Three-letter codes (ISO 3166-1 alpha-3)								
 	//	For maximum ease of use, both two-letter and three-letter codes are
 	//	stored in the same enum. However, this causes a collision between the
@@ -315,254 +813,752 @@ pub enum CountryCode {
 	//	1,000 added to them, for the sole purpose of internal storage. This
 	//	gets adjusted when the enum variants are serialized or otherwise
 	//	represented as an integer.
+	
+	/// Aruba
 	ABW = 1_533,
+	
+	/// Afghanistan
 	AFG = 1_004,
+	
+	/// Angola
 	AGO = 1_024,
+	
+	/// Anguilla
 	AIA = 1_660,
+	
+	/// Åland Islands
 	ALA = 1_248,
+	
+	/// Albania
 	ALB = 1_008,
+	
+	/// Andorra
 	AND = 1_020,
+	
+	/// United Arab Emirates
 	ARE = 1_784,
+	
+	/// Argentina
 	ARG = 1_032,
+	
+	/// Armenia
 	ARM = 1_051,
+	
+	/// American Samoa
 	ASM = 1_016,
+	
+	/// Antarctica
 	ATA = 1_010,
+	
+	/// French Southern Territories
 	ATF = 1_260,
+	
+	/// Antigua and Barbuda
 	ATG = 1_028,
+	
+	/// Australia
 	AUS = 1_036,
+	
+	/// Austria
 	AUT = 1_040,
+	
+	/// Azerbaijan
 	AZE = 1_031,
+	
+	/// Burundi
 	BDI = 1_108,
+	
+	/// Belgium
 	BEL = 1_056,
+	
+	/// Benin
 	BEN = 1_204,
+	
+	/// Bonaire, Sint Eustatius and Saba
 	BES = 1_535,
+	
+	/// Burkina Faso
 	BFA = 1_854,
+	
+	/// Bangladesh
 	BGD = 1_050,
+	
+	/// Bulgaria
 	BGR = 1_100,
+	
+	/// Bahrain
 	BHR = 1_048,
+	
+	/// Bahamas
 	BHS = 1_044,
+	
+	/// Bosnia and Herzegovina
 	BIH = 1_070,
+	
+	/// Saint Barthélemy
 	BLM = 1_652,
+	
+	/// Belarus
 	BLR = 1_112,
+	
+	/// Belize
 	BLZ = 1_084,
+	
+	/// Bermuda
 	BMU = 1_060,
+	
+	/// Bolivia (Plurinational State of)
 	BOL = 1_068,
+	
+	/// Brazil
 	BRA = 1_076,
+	
+	/// Barbados
 	BRB = 1_052,
+	
+	/// Brunei Darussalam
 	BRN = 1_096,
+	
+	/// Bhutan
 	BTN = 1_064,
+	
+	/// Bouvet Island
 	BVT = 1_074,
+	
+	/// Botswana
 	BWA = 1_072,
+	
+	/// Central African Republic
 	CAF = 1_140,
+	
+	/// Canada
 	CAN = 1_124,
+	
+	/// Cocos (Keeling) Islands
 	CCK = 1_166,
+	
+	/// Switzerland
 	CHE = 1_756,
+	
+	/// Chile
 	CHL = 1_152,
+	
+	/// China
 	CHN = 1_156,
+	
+	/// Côte d'Ivoire
 	CIV = 1_384,
+	
+	/// Cameroon
 	CMR = 1_120,
+	
+	/// Congo, Democratic Republic of the
 	COD = 1_180,
+	
+	/// Congo
 	COG = 1_178,
+	
+	/// Cook Islands
 	COK = 1_184,
+	
+	/// Colombia
 	COL = 1_170,
+	
+	/// Comoros
 	COM = 1_174,
+	
+	/// Cabo Verde
 	CPV = 1_132,
+	
+	/// Costa Rica
 	CRI = 1_188,
+	
+	/// Cuba
 	CUB = 1_192,
+	
+	/// Curaçao
 	CUW = 1_531,
+	
+	/// Christmas Island
 	CXR = 1_162,
+	
+	/// Cayman Islands
 	CYM = 1_136,
+	
+	/// Cyprus
 	CYP = 1_196,
+	
+	/// Czechia
 	CZE = 1_203,
+	
+	/// Germany
 	DEU = 1_276,
+	
+	/// Djibouti
 	DJI = 1_262,
+	
+	/// Dominica
 	DMA = 1_212,
+	
+	/// Denmark
 	DNK = 1_208,
+	
+	/// Dominican Republic
 	DOM = 1_214,
+	
+	/// Algeria
 	DZA = 1_012,
+	
+	/// Ecuador
 	ECU = 1_218,
+	
+	/// Egypt
 	EGY = 1_818,
+	
+	/// Eritrea
 	ERI = 1_232,
+	
+	/// Western Sahara
 	ESH = 1_732,
+	
+	/// Spain
 	ESP = 1_724,
+	
+	/// Estonia
 	EST = 1_233,
+	
+	/// Ethiopia
 	ETH = 1_231,
+	
+	/// Finland
 	FIN = 1_246,
+	
+	/// Fiji
 	FJI = 1_242,
+	
+	/// Falkland Islands (Malvinas)
 	FLK = 1_238,
+	
+	/// France
 	FRA = 1_250,
+	
+	/// Faroe Islands
 	FRO = 1_234,
+	
+	/// Micronesia (Federated States of)
 	FSM = 1_583,
+	
+	/// Gabon
 	GAB = 1_266,
+	
+	/// United Kingdom of Great Britain and Northern Ireland
 	GBR = 1_826,
+	
+	/// Georgia
 	GEO = 1_268,
+	
+	/// Guernsey
 	GGY = 1_831,
+	
+	/// Ghana
 	GHA = 1_288,
+	
+	/// Gibraltar
 	GIB = 1_292,
+	
+	/// Guinea
 	GIN = 1_324,
+	
+	/// Guadeloupe
 	GLP = 1_312,
+	
+	/// Gambia
 	GMB = 1_270,
+	
+	/// Guinea-Bissau
 	GNB = 1_624,
+	
+	/// Equatorial Guinea
 	GNQ = 1_226,
+	
+	/// Greece
 	GRC = 1_300,
+	
+	/// Grenada
 	GRD = 1_308,
+	
+	/// Greenland
 	GRL = 1_304,
+	
+	/// Guatemala
 	GTM = 1_320,
+	
+	/// French Guiana
 	GUF = 1_254,
+	
+	/// Guam
 	GUM = 1_316,
+	
+	/// Guyana
 	GUY = 1_328,
+	
+	/// Hong Kong
 	HKG = 1_344,
+	
+	/// Heard Island and McDonald Islands
 	HMD = 1_334,
+	
+	/// Honduras
 	HND = 1_340,
+	
+	/// Croatia
 	HRV = 1_191,
+	
+	/// Haiti
 	HTI = 1_332,
+	
+	/// Hungary
 	HUN = 1_348,
+	
+	/// Indonesia
 	IDN = 1_360,
+	
+	/// Isle of Man
 	IMN = 1_833,
+	
+	/// India
 	IND = 1_356,
+	
+	/// British Indian Ocean Territory
 	IOT = 1_086,
+	
+	/// Ireland
 	IRL = 1_372,
+	
+	/// Iran (Islamic Republic of)
 	IRN = 1_364,
+	
+	/// Iraq
 	IRQ = 1_368,
+	
+	/// Iceland
 	ISL = 1_352,
+	
+	/// Israel
 	ISR = 1_376,
+	
+	/// Italy
 	ITA = 1_380,
+	
+	/// Jamaica
 	JAM = 1_388,
+	
+	/// Jersey
 	JEY = 1_832,
+	
+	/// Jordan
 	JOR = 1_400,
+	
+	/// Japan
 	JPN = 1_392,
+	
+	/// Kazakhstan
 	KAZ = 1_398,
+	
+	/// Kenya
 	KEN = 1_404,
+	
+	/// Kyrgyzstan
 	KGZ = 1_417,
+	
+	/// Cambodia
 	KHM = 1_116,
+	
+	/// Kiribati
 	KIR = 1_296,
+	
+	/// Saint Kitts and Nevis
 	KNA = 1_659,
+	
+	/// Korea, Republic of
 	KOR = 1_410,
+	
+	/// Kuwait
 	KWT = 1_414,
+	
+	/// Lao People's Democratic Republic
 	LAO = 1_418,
+	
+	/// Lebanon
 	LBN = 1_422,
+	
+	/// Liberia
 	LBR = 1_430,
+	
+	/// Libya
 	LBY = 1_434,
+	
+	/// Saint Lucia
 	LCA = 1_662,
+	
+	/// Liechtenstein
 	LIE = 1_438,
+	
+	/// Sri Lanka
 	LKA = 1_144,
+	
+	/// Lesotho
 	LSO = 1_426,
+	
+	/// Lithuania
 	LTU = 1_440,
+	
+	/// Luxembourg
 	LUX = 1_442,
+	
+	/// Latvia
 	LVA = 1_428,
+	
+	/// Macao
 	MAC = 1_446,
+	
+	/// Saint Martin (French part)
 	MAF = 1_663,
+	
+	/// Morocco
 	MAR = 1_504,
+	
+	/// Monaco
 	MCO = 1_492,
+	
+	/// Moldova, Republic of
 	MDA = 1_498,
+	
+	/// Madagascar
 	MDG = 1_450,
+	
+	/// Maldives
 	MDV = 1_462,
+	
+	/// Mexico
 	MEX = 1_484,
+	
+	/// Marshall Islands
 	MHL = 1_584,
+	
+	/// North Macedonia
 	MKD = 1_807,
+	
+	/// Mali
 	MLI = 1_466,
+	
+	/// Malta
 	MLT = 1_470,
+	
+	/// Myanmar
 	MMR = 1_104,
+	
+	/// Montenegro
 	MNE = 1_499,
+	
+	/// Mongolia
 	MNG = 1_496,
+	
+	/// Northern Mariana Islands
 	MNP = 1_580,
+	
+	/// Mozambique
 	MOZ = 1_508,
+	
+	/// Mauritania
 	MRT = 1_478,
+	
+	/// Montserrat
 	MSR = 1_500,
+	
+	/// Martinique
 	MTQ = 1_474,
+	
+	/// Mauritius
 	MUS = 1_480,
+	
+	/// Malawi
 	MWI = 1_454,
+	
+	/// Malaysia
 	MYS = 1_458,
+	
+	/// Mayotte
 	MYT = 1_175,
+	
+	/// Namibia
 	NAM = 1_516,
+	
+	/// New Caledonia
 	NCL = 1_540,
+	
+	/// Niger
 	NER = 1_562,
+	
+	/// Norfolk Island
 	NFK = 1_574,
+	
+	/// Nigeria
 	NGA = 1_566,
+	
+	/// Nicaragua
 	NIC = 1_558,
+	
+	/// Niue
 	NIU = 1_570,
+	
+	/// Netherlands, Kingdom of the
 	NLD = 1_528,
+	
+	/// Norway
 	NOR = 1_578,
+	
+	/// Nepal
 	NPL = 1_524,
+	
+	/// Nauru
 	NRU = 1_520,
+	
+	/// New Zealand
 	NZL = 1_554,
+	
+	/// Oman
 	OMN = 1_512,
+	
+	/// Pakistan
 	PAK = 1_586,
+	
+	/// Panama
 	PAN = 1_591,
+	
+	/// Pitcairn
 	PCN = 1_612,
+	
+	/// Peru
 	PER = 1_604,
+	
+	/// Philippines
 	PHL = 1_608,
+	
+	/// Palau
 	PLW = 1_585,
+	
+	/// Papua New Guinea
 	PNG = 1_598,
+	
+	/// Poland
 	POL = 1_616,
+	
+	/// Puerto Rico
 	PRI = 1_630,
+	
+	/// Korea (Democratic People's Republic of)
 	PRK = 1_408,
+	
+	/// Portugal
 	PRT = 1_620,
+	
+	/// Paraguay
 	PRY = 1_600,
+	
+	/// Palestine, State of
 	PSE = 1_275,
+	
+	/// French Polynesia
 	PYF = 1_258,
+	
+	/// Qatar
 	QAT = 1_634,
+	
+	/// Réunion
 	REU = 1_638,
+	
+	/// Romania
 	ROU = 1_642,
+	
+	/// Russian Federation
 	RUS = 1_643,
+	
+	/// Rwanda
 	RWA = 1_646,
+	
+	/// Saudi Arabia
 	SAU = 1_682,
+	
+	/// Sudan
 	SDN = 1_729,
+	
+	/// Senegal
 	SEN = 1_686,
+	
+	/// Singapore
 	SGP = 1_702,
+	
+	/// South Georgia and the South Sandwich Islands
 	SGS = 1_239,
+	
+	/// Saint Helena, Ascension and Tristan da Cunha
 	SHN = 1_654,
+	
+	/// Svalbard and Jan Mayen
 	SJM = 1_744,
+	
+	/// Solomon Islands
 	SLB = 1_090,
+	
+	/// Sierra Leone
 	SLE = 1_694,
+	
+	/// El Salvador
 	SLV = 1_222,
+	
+	/// San Marino
 	SMR = 1_674,
+	
+	/// Somalia
 	SOM = 1_706,
+	
+	/// Saint Pierre and Miquelon
 	SPM = 1_666,
+	
+	/// Serbia
 	SRB = 1_688,
+	
+	/// South Sudan
 	SSD = 1_728,
+	
+	/// Sao Tome and Principe
 	STP = 1_678,
+	
+	/// Suriname
 	SUR = 1_740,
+	
+	/// Slovakia
 	SVK = 1_703,
+	
+	/// Slovenia
 	SVN = 1_705,
+	
+	/// Sweden
 	SWE = 1_752,
+	
+	/// Eswatini
 	SWZ = 1_748,
+	
+	/// Sint Maarten (Dutch part)
 	SXM = 1_534,
+	
+	/// Seychelles
 	SYC = 1_690,
+	
+	/// Syrian Arab Republic
 	SYR = 1_760,
+	
+	/// Turks and Caicos Islands
 	TCA = 1_796,
+	
+	/// Chad
 	TCD = 1_148,
+	
+	/// Togo
 	TGO = 1_768,
+	
+	/// Thailand
 	THA = 1_764,
+	
+	/// Tajikistan
 	TJK = 1_762,
+	
+	/// Tokelau
 	TKL = 1_772,
+	
+	/// Turkmenistan
 	TKM = 1_795,
+	
+	/// Timor-Leste
 	TLS = 1_626,
+	
+	/// Tonga
 	TON = 1_776,
+	
+	/// Trinidad and Tobago
 	TTO = 1_780,
+	
+	/// Tunisia
 	TUN = 1_788,
+	
+	/// Türkiye
 	TUR = 1_792,
+	
+	/// Tuvalu
 	TUV = 1_798,
+	
+	/// Taiwan, Province of China
 	TWN = 1_158,
+	
+	/// Tanzania, United Republic of
 	TZA = 1_834,
+	
+	/// Uganda
 	UGA = 1_800,
+	
+	/// Ukraine
 	UKR = 1_804,
+	
+	/// United States Minor Outlying Islands
 	UMI = 1_581,
+	
+	/// Uruguay
 	URY = 1_858,
+	
+	/// United States of America
 	USA = 1_840,
+	
+	/// Uzbekistan
 	UZB = 1_860,
+	
+	/// Holy See
 	VAT = 1_336,
+	
+	/// Saint Vincent and the Grenadines
 	VCT = 1_670,
+	
+	/// Venezuela (Bolivarian Republic of)
 	VEN = 1_862,
+	
+	/// Virgin Islands (British)
 	VGB = 1_092,
+	
+	/// Virgin Islands (U.S.)
 	VIR = 1_850,
+	
+	/// Viet Nam
 	VNM = 1_704,
+	
+	/// Vanuatu
 	VUT = 1_548,
+	
+	/// Wallis and Futuna
 	WLF = 1_876,
+	
+	/// Samoa
 	WSM = 1_882,
+	
+	/// Yemen
 	YEM = 1_887,
+	
+	/// South Africa
 	ZAF = 1_710,
+	
+	/// Zambia
 	ZMB = 1_894,
+	
+	/// Zimbabwe
 	ZWE = 1_716,
 }
 
