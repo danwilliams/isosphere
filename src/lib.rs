@@ -158,6 +158,7 @@ pub mod language;
 pub use {
 	country::Country,
 	country::CountryCode,
+	country::COUNTRIES,
 	currency::Currency,
 	currency::CurrencyCode,
 	currency::CURRENCIES,
