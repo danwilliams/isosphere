@@ -22,7 +22,8 @@ use utoipa::ToSchema;
 
 //		CountryCode																
 /// The possible countries.
-#[allow(clippy::upper_case_acronyms)]
+#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[non_exhaustive]
 pub enum CountryCode {

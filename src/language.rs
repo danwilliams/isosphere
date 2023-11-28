@@ -19,7 +19,8 @@ use utoipa::ToSchema;
 
 //		LanguageCode															
 /// The possible languages.
-#[allow(clippy::upper_case_acronyms)]
+#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]

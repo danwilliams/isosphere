@@ -250,8 +250,10 @@ pub static CURRENCIES: Lazy<HashMap<CurrencyCode, Currency>> = Lazy::new(|| {
 /// 
 /// * [`Currency`]
 /// 
-#[allow(clippy::upper_case_acronyms)]
-#[allow(clippy::zero_prefixed_literal)]
+#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
+#[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[repr(u16)]
 #[serde(into = "String", try_from = "String")]
@@ -809,6 +811,8 @@ impl CurrencyCode {
 	/// the [`Debug`] implementation, which returns a string representation of
 	/// the enum variant that is suitable for debugging purposes.
 	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
 	#[must_use]
 	pub const fn as_str(&self) -> &'static str {
 		match *self {
@@ -1020,6 +1024,8 @@ impl FromStr for CurrencyCode {
 	type Err = String;
 	
 	//		from_str															
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		match s.to_uppercase().as_str() {
 			"AED" => Ok(Self::AED),
@@ -1206,11 +1212,14 @@ impl FromStr for CurrencyCode {
 	}
 }
 
-#[allow(clippy::zero_prefixed_literal)]
+#[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
 impl TryFrom<u16> for CurrencyCode {
 	type Error = String;
 	
 	//		try_from															
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
 	fn try_from(value: u16) -> Result<Self, Self::Error> {
 		match value {
 			008 => Ok(Self::ALL),
