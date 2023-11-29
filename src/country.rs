@@ -3225,7 +3225,7 @@ pub struct Country {
 	/// The currencies used in the country.
 	pub currencies: HashSet<CurrencyCode>,
 	
-	/// The languages spoken in the country.
+	/// The languages used in the country.
 	pub languages:  HashSet<LanguageCode>,
 }
 
