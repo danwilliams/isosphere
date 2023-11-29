@@ -2357,6 +2357,22 @@ impl CountryCode {
 			Self::ZWE => "ZWE",
 		}
 	}
+	
+	//		country																
+	/// Returns the `Country` instance corresponding to the `CountryCode`.
+	/// 
+	/// This method provides an easy way to get to the associated `Country`
+	/// instance from a `CountryCode` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	pub fn country(&self) -> &Country {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the countries is missing from the list, which is a bug.
+		COUNTRIES.get(self).unwrap()
+	}
 }
 
 impl Display for CountryCode {

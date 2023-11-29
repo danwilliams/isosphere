@@ -1009,6 +1009,22 @@ impl LanguageCode {
 			Self::ZU => "zu",
 		}
 	}
+	
+	//		language															
+	/// Returns the `Language` instance corresponding to the `LanguageCode`.
+	/// 
+	/// This method provides an easy way to get to the associated `Language`
+	/// instance from a `LanguageCode` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	pub fn language(&self) -> &Language {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the languages is missing from the list, which is a bug.
+		LANGUAGES.get(self).unwrap()
+	}
 }
 
 impl Display for LanguageCode {

@@ -997,6 +997,22 @@ impl CurrencyCode {
 			Self::ZWL => "ZWL",
 		}
 	}
+	
+	//		currency															
+	/// Returns the `Currency` instance corresponding to the `CurrencyCode`.
+	/// 
+	/// This method provides an easy way to get to the associated `Currency`
+	/// instance from a `CurrencyCode` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	pub fn currency(&self) -> &Currency {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the currencies is missing from the list, which is a bug.
+		CURRENCIES.get(self).unwrap()
+	}
 }
 
 impl Display for CurrencyCode {
