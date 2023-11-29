@@ -47,188 +47,553 @@ use utoipa::ToSchema;
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub enum LanguageCode {
+	/// Afar
 	AA,
+	
+	/// Abkhazian
 	AB,
+	
+	/// Avestan
 	AE,
+	
+	/// Afrikaans
 	AF,
+	
+	/// Akan
 	AK,
+	
+	/// Amharic
 	AM,
+	
+	/// Aragonese
 	AN,
+	
+	/// Arabic
 	AR,
+	
+	/// Assamese
 	AS,
+	
+	/// Avaric
 	AV,
+	
+	/// Aymara
 	AY,
+	
+	/// Azerbaijani
 	AZ,
+	
+	/// Bashkir
 	BA,
+	
+	/// Belarusian
 	BE,
+	
+	/// Bulgarian
 	BG,
+	
+	/// Bislama
 	BI,
+	
+	/// Bambara
 	BM,
+	
+	/// Bengali
 	BN,
+	
+	/// Tibetan
 	BO,
+	
+	/// Breton
 	BR,
+	
+	/// Bosnian
 	BS,
+	
+	/// Catalan, Valencian
 	CA,
+	
+	/// Chechen
 	CE,
+	
+	/// Chamorro
 	CH,
+	
+	/// Corsican
 	CO,
+	
+	/// Cree
 	CR,
+	
+	/// Czech
 	CS,
+	
+	/// Church Slavonic, Old Slavonic, Old Church Slavonic
 	CU,
+	
+	/// Chuvash
 	CV,
+	
+	/// Welsh
 	CY,
+	
+	/// Danish
 	DA,
+	
+	/// German
 	DE,
+	
+	/// Divehi, Dhivehi, Maldivian
 	DV,
+	
+	/// Dzongkha
 	DZ,
+	
+	/// Ewe
 	EE,
+	
+	/// Greek, Modern (1453–)
 	EL,
+	
+	/// English
 	EN,
+	
+	/// Esperanto
 	EO,
+	
+	/// Spanish, Castilian
 	ES,
+	
+	/// Estonian
 	ET,
+	
+	/// Basque
 	EU,
+	
+	/// Persian
 	FA,
+	
+	/// Fulah
 	FF,
+	
+	/// Finnish
 	FI,
+	
+	/// Fijian
 	FJ,
+	
+	/// Faroese
 	FO,
+	
+	/// French
 	FR,
+	
+	/// Western Frisian
 	FY,
+	
+	/// Irish
 	GA,
+	
+	/// Gaelic, Scottish Gaelic
 	GD,
+	
+	/// Galician
 	GL,
+	
+	/// Guarani
 	GN,
+	
+	/// Gujarati
 	GU,
+	
+	/// Manx
 	GV,
+	
+	/// Hausa
 	HA,
+	
+	/// Hebrew
 	HE,
+	
+	/// Hindi
 	HI,
+	
+	/// Hiri Motu
 	HO,
+	
+	/// Croatian
 	HR,
+	
+	/// Haitian, Haitian Creole
 	HT,
+	
+	/// Hungarian
 	HU,
+	
+	/// Armenian
 	HY,
+	
+	/// Herero
 	HZ,
+	
+	/// Interlingua (International Auxiliary Language Association)
 	IA,
+	
+	/// Indonesian
 	ID,
+	
+	/// Interlingue, Occidental
 	IE,
+	
+	/// Igbo
 	IG,
+	
+	/// Sichuan Yi, Nuosu
 	II,
+	
+	/// Inupiaq
 	IK,
+	
+	/// Ido
 	IO,
+	
+	/// Icelandic
 	IS,
+	
+	/// Italian
 	IT,
+	
+	/// Inuktitut
 	IU,
+	
+	/// Japanese
 	JA,
+	
+	/// Javanese
 	JV,
+	
+	/// Georgian
 	KA,
+	
+	/// Kongo
 	KG,
+	
+	/// Kikuyu, Gikuyu
 	KI,
+	
+	/// Kuanyama, Kwanyama
 	KJ,
+	
+	/// Kazakh
 	KK,
+	
+	/// Kalaallisut, Greenlandic
 	KL,
+	
+	/// Central Khmer
 	KM,
+	
+	/// Kannada
 	KN,
+	
+	/// Korean
 	KO,
+	
+	/// Kanuri
 	KR,
+	
+	/// Kashmiri
 	KS,
+	
+	/// Kurdish
 	KU,
+	
+	/// Komi
 	KV,
+	
+	/// Cornish
 	KW,
+	
+	/// Kirghiz, Kyrgyz
 	KY,
+	
+	/// Latin
 	LA,
+	
+	/// Luxembourgish, Letzeburgesch
 	LB,
+	
+	/// Ganda
 	LG,
+	
+	/// Limburgan, Limburger, Limburgish
 	LI,
+	
+	/// Lingala
 	LN,
+	
+	/// Lao
 	LO,
+	
+	/// Lithuanian
 	LT,
+	
+	/// Luba-Katanga
 	LU,
+	
+	/// Latvian
 	LV,
+	
+	/// Malagasy
 	MG,
+	
+	/// Marshallese
 	MH,
+	
+	/// Maori
 	MI,
+	
+	/// Macedonian
 	MK,
+	
+	/// Malayalam
 	ML,
+	
+	/// Mongolian
 	MN,
+	
+	/// Marathi
 	MR,
+	
+	/// Malay
 	MS,
+	
+	/// Maltese
 	MT,
+	
+	/// Burmese
 	MY,
+	
+	/// Nauru
 	NA,
+	
+	/// Norwegian Bokmål
 	NB,
+	
+	/// North Ndebele
 	ND,
+	
+	/// Nepali
 	NE,
+	
+	/// Ndonga
 	NG,
+	
+	/// Dutch, Flemish
 	NL,
+	
+	/// Norwegian Nynorsk
 	NN,
+	
+	/// Norwegian
 	NO,
+	
+	/// South Ndebele
 	NR,
+	
+	/// Navajo, Navaho
 	NV,
+	
+	/// Chichewa, Chewa, Nyanja
 	NY,
+	
+	/// Occitan
 	OC,
+	
+	/// Ojibwa
 	OJ,
+	
+	/// Oromo
 	OM,
+	
+	/// Oriya
 	OR,
+	
+	/// Ossetian, Ossetic
 	OS,
+	
+	/// Punjabi, Panjabi
 	PA,
+	
+	/// Pali
 	PI,
+	
+	/// Polish
 	PL,
+	
+	/// Pashto, Pushto
 	PS,
+	
+	/// Portuguese
 	PT,
+	
+	/// Quechua
 	QU,
+	
+	/// Romansh
 	RM,
+	
+	/// Rundi
 	RN,
+	
+	/// Romanian, Moldavian, Moldovan
 	RO,
+	
+	/// Russian
 	RU,
+	
+	/// Kinyarwanda
 	RW,
+	
+	/// Sanskrit
 	SA,
+	
+	/// Sardinian
 	SC,
+	
+	/// Sindhi
 	SD,
+	
+	/// Northern Sami
 	SE,
+	
+	/// Sango
 	SG,
+	
+	/// Sinhala, Sinhalese
 	SI,
+	
+	/// Slovak
 	SK,
+	
+	/// Slovenian
 	SL,
+	
+	/// Samoan
 	SM,
+	
+	/// Shona
 	SN,
+	
+	/// Somali
 	SO,
+	
+	/// Albanian
 	SQ,
+	
+	/// Serbian
 	SR,
+	
+	/// Swati
 	SS,
+	
+	/// Southern Sotho
 	ST,
+	
+	/// Sundanese
 	SU,
+	
+	/// Swedish
 	SV,
+	
+	/// Swahili
 	SW,
+	
+	/// Tamil
 	TA,
+	
+	/// Telugu
 	TE,
+	
+	/// Tajik
 	TG,
+	
+	/// Thai
 	TH,
+	
+	/// Tigrinya
 	TI,
+	
+	/// Turkmen
 	TK,
+	
+	/// Tagalog
 	TL,
+	
+	/// Tswana
 	TN,
+	
+	/// Tonga (Tonga Islands)
 	TO,
+	
+	/// Turkish
 	TR,
+	
+	/// Tsonga
 	TS,
+	
+	/// Tatar
 	TT,
+	
+	/// Twi
 	TW,
+	
+	/// Tahitian
 	TY,
+	
+	/// Uighur, Uyghur
 	UG,
+	
+	/// Ukrainian
 	UK,
+	
+	/// Urdu
 	UR,
+	
+	/// Uzbek
 	UZ,
+	
+	/// Venda
 	VE,
+	
+	/// Vietnamese
 	VI,
+	
+	/// Volapük
 	VO,
+	
+	/// Walloon
 	WA,
+	
+	/// Wolof
 	WO,
+	
+	/// Xhosa
 	XH,
+	
+	/// Yiddish
 	YI,
+	
+	/// Yoruba
 	YO,
+	
+	/// Zhuang, Chuang
 	ZA,
+	
+	/// Chinese
 	ZH,
+	
+	/// Zulu
 	ZU,
 }
 
