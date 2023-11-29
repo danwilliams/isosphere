@@ -164,4 +164,5 @@ pub use {
 	currency::CURRENCIES,
 	language::Language,
 	language::LanguageCode,
+	language::LANGUAGES,
 };
