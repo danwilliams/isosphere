@@ -8,12 +8,12 @@
 #[cfg_attr(not(feature = "reasons"), allow(clippy::enum_glob_use))]
 use crate::country::{CountryCode, CountryCode::*};
 use core::{
-	fmt::{Display, self},
+	fmt::{Debug, Display, self},
 	str::FromStr,
 };
 use once_cell::sync::Lazy;
 use rubedo::sugar::s;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
 use velcro::{hash_map, hash_set};
@@ -1271,7 +1271,7 @@ impl TryFrom<String> for LanguageCode {
 /// 
 /// * [`LanguageCode`]
 /// 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
+#[derive(Clone, Eq, PartialEq, ToSchema)]
 #[non_exhaustive]
 pub struct Language {
 	//		Public properties													
@@ -1283,6 +1283,89 @@ pub struct Language {
 	
 	/// The countries where the language is used.
 	pub countries: HashSet<CountryCode>,
+}
+
+impl Language {
+	//		as_str																
+	/// Returns a string representation of the [`Language`] struct.
+	/// 
+	/// This method provides a way to obtain a static string slice corresponding
+	/// to an instance of the [`Language`] struct. The returned string slice is
+	/// suitable for use in scenarios where a string representation of the
+	/// struct is needed, such as serialization or logging.
+	/// 
+	/// It is potentially different from the [`Display`] implementation, which
+	/// returns a human-readable string representation of the struct, and the
+	/// [`Debug`] implementation, which returns a string representation of the
+	/// struct that is suitable for debugging purposes.
+	/// 
+	#[must_use]
+	pub fn as_str(&self) -> &str {
+		&self.name
+	}
+}
+
+impl Debug for Language {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}: {}", self.code.as_str(), self.as_str())
+	}
+}
+
+impl<'de> Deserialize<'de> for Language {
+	//		deserialize															
+	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+	where
+		D: Deserializer<'de>,
+	{
+		String::deserialize(deserializer)?.parse().map_err(DeError::custom)
+	}
+}
+
+impl Display for Language {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}", self.as_str())
+	}
+}
+
+impl From<Language> for String {
+	//		from																
+	fn from(language: Language) -> Self {
+		language.to_string()
+	}
+}
+
+impl FromStr for Language {
+	type Err = String;
+	
+	//		from_str															
+	fn from_str(s: &str) -> Result<Self, Self::Err> {
+		LANGUAGES
+			.values()
+			.find(|language| language.name == s)
+			.cloned()
+			.ok_or_else(|| format!("Invalid Language: {s}"))
+	}
+}
+
+impl Serialize for Language {
+	//		serialize															
+	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+	where
+		S: Serializer,
+	{
+		serializer.serialize_str(self.as_str())
+	}
+}
+
+impl TryFrom<String> for Language {
+	type Error = String;
+	
+	//		try_from															
+	fn try_from(value: String) -> Result<Self, Self::Error> {
+		value.as_str().parse()
+	}
 }
 
 

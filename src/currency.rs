@@ -8,12 +8,12 @@
 #[cfg_attr(not(feature = "reasons"), allow(clippy::enum_glob_use))]
 use crate::country::{CountryCode, CountryCode::*};
 use core::{
-	fmt::{Display, self},
+	fmt::{Debug, Display, self},
 	str::FromStr,
 };
 use once_cell::sync::Lazy;
 use rubedo::sugar::s;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
 use velcro::{hash_map, hash_set};
@@ -1457,7 +1457,7 @@ impl TryFrom<String> for CurrencyCode {
 /// 
 /// * [`CurrencyCode`]
 /// 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
+#[derive(Clone, Eq, PartialEq, ToSchema)]
 #[non_exhaustive]
 pub struct Currency {
 	//		Public properties													
@@ -1472,6 +1472,89 @@ pub struct Currency {
 	
 	/// The countries where the currency is used.
 	pub countries: HashSet<CountryCode>,
+}
+
+impl Currency {
+	//		as_str																
+	/// Returns a string representation of the [`Currency`] struct.
+	/// 
+	/// This method provides a way to obtain a static string slice corresponding
+	/// to an instance of the [`Currency`] struct. The returned string slice is
+	/// suitable for use in scenarios where a string representation of the
+	/// struct is needed, such as serialization or logging.
+	/// 
+	/// It is potentially different from the [`Display`] implementation, which
+	/// returns a human-readable string representation of the struct, and the
+	/// [`Debug`] implementation, which returns a string representation of the
+	/// struct that is suitable for debugging purposes.
+	/// 
+	#[must_use]
+	pub fn as_str(&self) -> &str {
+		&self.name
+	}
+}
+
+impl Debug for Currency {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}: {}", self.code.as_str(), self.as_str())
+	}
+}
+
+impl<'de> Deserialize<'de> for Currency {
+	//		deserialize															
+	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+	where
+		D: Deserializer<'de>,
+	{
+		String::deserialize(deserializer)?.parse().map_err(DeError::custom)
+	}
+}
+
+impl Display for Currency {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}", self.as_str())
+	}
+}
+
+impl From<Currency> for String {
+	//		from																
+	fn from(currency: Currency) -> Self {
+		currency.to_string()
+	}
+}
+
+impl FromStr for Currency {
+	type Err = String;
+	
+	//		from_str															
+	fn from_str(s: &str) -> Result<Self, Self::Err> {
+		CURRENCIES
+			.values()
+			.find(|currency| currency.name == s)
+			.cloned()
+			.ok_or_else(|| format!("Invalid Currency: {s}"))
+	}
+}
+
+impl Serialize for Currency {
+	//		serialize															
+	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+	where
+		S: Serializer,
+	{
+		serializer.serialize_str(self.as_str())
+	}
+}
+
+impl TryFrom<String> for Currency {
+	type Error = String;
+	
+	//		try_from															
+	fn try_from(value: String) -> Result<Self, Self::Error> {
+		value.as_str().parse()
+	}
 }
 
 
