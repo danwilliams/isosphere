@@ -20,17 +20,6 @@ mod country_code__enum {
 			assert_eq!(country.code().country(), *country);
 		}
 	}
-	#[test]
-	fn country__relationships() {
-		for country in COUNTRIES.keys() {
-			for currency_code in country.currencies().iter() {
-				assert!(currency_code.currency().countries().contains(&country.code()));
-			}
-			for language_code in country.languages().iter() {
-				assert!(language_code.language().countries().contains(&country.code()));
-			}
-		}
-	}
 }
 
 #[cfg(test)]
@@ -155,11 +144,27 @@ mod country__enum {
 	fn currencies() {
 		assert_eq!(Country::CH.currencies(), &vh![ CurrencyCode: CHE, CHF, CHW ]);
 	}
+	#[test]
+	fn currencies__relationships() {
+		for country in COUNTRIES.keys() {
+			for currency_code in country.currencies().iter() {
+				assert!(currency_code.currency().countries().contains(&country.code()));
+			}
+		}
+	}
 	
 	//		languages															
 	#[test]
 	fn languages() {
 		assert_eq!(Country::CH.languages(), &vh![ LanguageCode: DE, FR, IT, RM ]);
+	}
+	#[test]
+	fn languages__relationships() {
+		for country in COUNTRIES.keys() {
+			for language_code in country.languages().iter() {
+				assert!(language_code.language().countries().contains(&country.code()));
+			}
+		}
 	}
 }
 

@@ -830,6 +830,79 @@ impl Language {
 		//	of the languages is missing from the list, which is a bug.
 		LANGUAGES.get(&self).unwrap()
 	}
+	
+	//		name																
+	/// Returns the name of the language.
+	#[must_use]
+	pub fn name(&self) -> &str {
+		&self.info().name
+	}
+	
+	//		code																
+	/// Returns the language code.
+	#[must_use]
+	pub fn code(&self) -> LanguageCode {
+		self.info().code
+	}
+	
+	//		countries															
+	/// Returns the countries where the language is used.
+	#[must_use]
+	pub fn countries(&self) -> &HashSet<CountryCode> {
+		&self.info().countries
+	}
+}
+
+impl AsStr for Language {
+	//		as_str																
+	fn as_str(&self) -> &str {
+		&self.info().name
+	}
+}
+
+impl Debug for Language {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
+	}
+}
+
+impl Display for Language {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}", self.as_str())
+	}
+}
+
+impl From<Language> for String {
+	//		from																
+	fn from(language: Language) -> Self {
+		language.to_string()
+	}
+}
+
+impl FromStr for Language {
+	type Err = String;
+	
+	//		from_str															
+	fn from_str(s: &str) -> Result<Self, Self::Err> {
+		LANGUAGES
+			.values()
+			.find(|info| info.name == s)
+			.map_or_else(
+				||     Err(format!("Invalid Language: {s}")),
+				|info| Ok(info.code.language())
+			)
+	}
+}
+
+impl TryFrom<String> for Language {
+	type Error = String;
+	
+	//		try_from															
+	fn try_from(value: String) -> Result<Self, Self::Error> {
+		value.as_str().parse()
+	}
 }
 
 //		LanguageCode															
@@ -2058,81 +2131,6 @@ struct LanguageInfo {
 	
 	/// The countries where the language is used.
 	countries: HashSet<CountryCode>,
-}
-
-impl Language {
-	//		name																
-	/// Returns the name of the language.
-	#[must_use]
-	pub fn name(&self) -> &str {
-		&self.info().name
-	}
-	
-	//		code																
-	/// Returns the language code.
-	#[must_use]
-	pub fn code(&self) -> LanguageCode {
-		self.info().code
-	}
-	
-	//		countries															
-	/// Returns the countries where the language is used.
-	#[must_use]
-	pub fn countries(&self) -> &HashSet<CountryCode> {
-		&self.info().countries
-	}
-}
-
-impl AsStr for Language {
-	//		as_str																
-	fn as_str(&self) -> &str {
-		&self.info().name
-	}
-}
-
-impl Debug for Language {
-	//		fmt																	
-	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
-	}
-}
-
-impl Display for Language {
-	//		fmt																	
-	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}", self.as_str())
-	}
-}
-
-impl From<Language> for String {
-	//		from																
-	fn from(language: Language) -> Self {
-		language.to_string()
-	}
-}
-
-impl FromStr for Language {
-	type Err = String;
-	
-	//		from_str															
-	fn from_str(s: &str) -> Result<Self, Self::Err> {
-		LANGUAGES
-			.values()
-			.find(|info| info.name == s)
-			.map_or_else(
-				||     Err(format!("Invalid Language: {s}")),
-				|info| Ok(info.code.language())
-			)
-	}
-}
-
-impl TryFrom<String> for Language {
-	type Error = String;
-	
-	//		try_from															
-	fn try_from(value: String) -> Result<Self, Self::Error> {
-		value.as_str().parse()
-	}
 }
 
 

@@ -20,14 +20,6 @@ mod currency_code__enum {
 			assert_eq!(currency.code().currency(), *currency);
 		}
 	}
-	#[test]
-	fn currency__relationships() {
-		for currency in CURRENCIES.keys() {
-			for country_code in currency.countries().iter() {
-				assert!(country_code.country().currencies().contains(&currency.code()));
-			}
-		}
-	}
 }
 
 #[cfg(test)]
@@ -157,6 +149,14 @@ mod currency__enum {
 	#[test]
 	fn countries() {
 		assert_eq!(Currency::GBP.countries(), &vh![ CountryCode: GB, GG, IM, JE, SH ]);
+	}
+	#[test]
+	fn countries__relationships() {
+		for currency in CURRENCIES.keys() {
+			for country_code in currency.countries().iter() {
+				assert!(country_code.country().currencies().contains(&currency.code()));
+			}
+		}
 	}
 }
 

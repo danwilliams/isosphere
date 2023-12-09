@@ -815,6 +815,86 @@ impl Currency {
 		//	of the currencies is missing from the list, which is a bug.
 		CURRENCIES.get(&self).unwrap()
 	}
+	
+	//		name																
+	/// Returns the name of the currency.
+	#[must_use]
+	pub fn name(&self) -> &str {
+		&self.info().name
+	}
+	
+	//		code																
+	/// Returns the currency code.
+	#[must_use]
+	pub fn code(&self) -> CurrencyCode {
+		self.info().code
+	}
+	
+	//		digits																
+	/// Returns the number of digits after the decimal point.
+	#[must_use]
+	pub fn digits(&self) -> u8 {
+		self.info().digits
+	}
+	
+	//		countries															
+	/// Returns the countries where the currency is used.
+	#[must_use]
+	pub fn countries(&self) -> &HashSet<CountryCode> {
+		&self.info().countries
+	}
+}
+
+impl AsStr for Currency {
+	//		as_str																
+	fn as_str(&self) -> &str {
+		&self.info().name
+	}
+}
+
+impl Debug for Currency {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
+	}
+}
+
+impl Display for Currency {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}", self.as_str())
+	}
+}
+
+impl From<Currency> for String {
+	//		from																
+	fn from(currency: Currency) -> Self {
+		currency.to_string()
+	}
+}
+
+impl FromStr for Currency {
+	type Err = String;
+	
+	//		from_str															
+	fn from_str(s: &str) -> Result<Self, Self::Err> {
+		CURRENCIES
+			.values()
+			.find(|info| info.name == s)
+			.map_or_else(
+				||     Err(format!("Invalid Currency: {s}")),
+				|info| Ok(info.code.currency())
+			)
+	}
+}
+
+impl TryFrom<String> for Currency {
+	type Error = String;
+	
+	//		try_from															
+	fn try_from(value: String) -> Result<Self, Self::Error> {
+		value.as_str().parse()
+	}
 }
 
 //		CurrencyCode															
@@ -2232,88 +2312,6 @@ struct CurrencyInfo {
 	
 	/// The countries where the currency is used.
 	countries: HashSet<CountryCode>,
-}
-
-impl Currency {
-	//		name																
-	/// Returns the name of the currency.
-	#[must_use]
-	pub fn name(&self) -> &str {
-		&self.info().name
-	}
-	
-	//		code																
-	/// Returns the currency code.
-	#[must_use]
-	pub fn code(&self) -> CurrencyCode {
-		self.info().code
-	}
-	
-	//		digits																
-	/// Returns the number of digits after the decimal point.
-	#[must_use]
-	pub fn digits(&self) -> u8 {
-		self.info().digits
-	}
-	
-	//		countries															
-	/// Returns the countries where the currency is used.
-	#[must_use]
-	pub fn countries(&self) -> &HashSet<CountryCode> {
-		&self.info().countries
-	}
-}
-
-impl AsStr for Currency {
-	//		as_str																
-	fn as_str(&self) -> &str {
-		&self.info().name
-	}
-}
-
-impl Debug for Currency {
-	//		fmt																	
-	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
-	}
-}
-
-impl Display for Currency {
-	//		fmt																	
-	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}", self.as_str())
-	}
-}
-
-impl From<Currency> for String {
-	//		from																
-	fn from(currency: Currency) -> Self {
-		currency.to_string()
-	}
-}
-
-impl FromStr for Currency {
-	type Err = String;
-	
-	//		from_str															
-	fn from_str(s: &str) -> Result<Self, Self::Err> {
-		CURRENCIES
-			.values()
-			.find(|info| info.name == s)
-			.map_or_else(
-				||     Err(format!("Invalid Currency: {s}")),
-				|info| Ok(info.code.currency())
-			)
-	}
-}
-
-impl TryFrom<String> for Currency {
-	type Error = String;
-	
-	//		try_from															
-	fn try_from(value: String) -> Result<Self, Self::Error> {
-		value.as_str().parse()
-	}
 }
 
 

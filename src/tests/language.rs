@@ -20,14 +20,6 @@ mod language_code__enum {
 			assert_eq!(language.code().language(), *language);
 		}
 	}
-	#[test]
-	fn language__relationships() {
-		for language in LANGUAGES.keys() {
-			for country_code in language.countries().iter() {
-				assert!(country_code.country().languages().contains(&language.code()));
-			}
-		}
-	}
 }
 
 #[cfg(test)]
@@ -136,6 +128,14 @@ mod language__enum {
 	#[test]
 	fn countries() {
 		assert_eq!(Language::NO.countries(), &vh![ CountryCode: BV, NO, SJ ]);
+	}
+	#[test]
+	fn countries__relationships() {
+		for language in LANGUAGES.keys() {
+			for country_code in language.countries().iter() {
+				assert!(country_code.country().languages().contains(&language.code()));
+			}
+		}
 	}
 }
 

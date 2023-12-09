@@ -1098,6 +1098,86 @@ impl Country {
 		//	of the countries is missing from the list, which is a bug.
 		COUNTRIES.get(&self).unwrap()
 	}
+	
+	//		name																
+	/// Returns the name of the country.
+	#[must_use]
+	pub fn name(&self) -> &str {
+		&self.info().name
+	}
+	
+	//		code																
+	/// Returns the country code.
+	#[must_use]
+	pub fn code(&self) -> CountryCode {
+		self.info().code
+	}
+	
+	//		currencies															
+	/// Returns the currencies used in the country.
+	#[must_use]
+	pub fn currencies(&self) -> &HashSet<CurrencyCode> {
+		&self.info().currencies
+	}
+	
+	//		languages															
+	/// Returns the languages used in the country.
+	#[must_use]
+	pub fn languages(&self) -> &HashSet<LanguageCode> {
+		&self.info().languages
+	}
+}
+
+impl AsStr for Country {
+	//		as_str																
+	fn as_str(&self) -> &str {
+		&self.info().name
+	}
+}
+
+impl Debug for Country {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
+	}
+}
+
+impl Display for Country {
+	//		fmt																	
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}", self.as_str())
+	}
+}
+
+impl From<Country> for String {
+	//		from																
+	fn from(country: Country) -> Self {
+		country.to_string()
+	}
+}
+
+impl FromStr for Country {
+	type Err = String;
+	
+	//		from_str															
+	fn from_str(s: &str) -> Result<Self, Self::Err> {
+		COUNTRIES
+			.values()
+			.find(|info| info.name == s)
+			.map_or_else(
+				||     Err(format!("Invalid Country: {s}")),
+				|info| Ok(info.code.country())
+			)
+	}
+}
+
+impl TryFrom<String> for Country {
+	type Error = String;
+	
+	//		try_from															
+	fn try_from(value: String) -> Result<Self, Self::Error> {
+		value.as_str().parse()
+	}
 }
 
 //		CountryCode																
@@ -4537,88 +4617,6 @@ struct CountryInfo {
 	
 	/// The languages used in the country.
 	languages:  HashSet<LanguageCode>,
-}
-
-impl Country {
-	//		name																
-	/// Returns the name of the country.
-	#[must_use]
-	pub fn name(&self) -> &str {
-		&self.info().name
-	}
-	
-	//		code																
-	/// Returns the country code.
-	#[must_use]
-	pub fn code(&self) -> CountryCode {
-		self.info().code
-	}
-	
-	//		currencies															
-	/// Returns the currencies used in the country.
-	#[must_use]
-	pub fn currencies(&self) -> &HashSet<CurrencyCode> {
-		&self.info().currencies
-	}
-	
-	//		languages															
-	/// Returns the languages used in the country.
-	#[must_use]
-	pub fn languages(&self) -> &HashSet<LanguageCode> {
-		&self.info().languages
-	}
-}
-
-impl AsStr for Country {
-	//		as_str																
-	fn as_str(&self) -> &str {
-		&self.info().name
-	}
-}
-
-impl Debug for Country {
-	//		fmt																	
-	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
-	}
-}
-
-impl Display for Country {
-	//		fmt																	
-	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}", self.as_str())
-	}
-}
-
-impl From<Country> for String {
-	//		from																
-	fn from(country: Country) -> Self {
-		country.to_string()
-	}
-}
-
-impl FromStr for Country {
-	type Err = String;
-	
-	//		from_str															
-	fn from_str(s: &str) -> Result<Self, Self::Err> {
-		COUNTRIES
-			.values()
-			.find(|info| info.name == s)
-			.map_or_else(
-				||     Err(format!("Invalid Country: {s}")),
-				|info| Ok(info.code.country())
-			)
-	}
-}
-
-impl TryFrom<String> for Country {
-	type Error = String;
-	
-	//		try_from															
-	fn try_from(value: String) -> Result<Self, Self::Error> {
-		value.as_str().parse()
-	}
 }
 
 
