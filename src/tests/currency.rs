@@ -7,12 +7,6 @@
 mod currency_code__enum {
 	use super::super::*;
 	
-	//		as_str																
-	#[test]
-	fn as_str() {
-		assert_eq!(CurrencyCode::USD.as_str(), "USD");
-	}
-	
 	//		currency															
 	#[test]
 	fn currency() {
@@ -42,6 +36,12 @@ mod currency_code__traits {
 	use super::super::*;
 	use claims::assert_err;
 	use serde_json;
+	
+	//		as_str																
+	#[test]
+	fn as_str() {
+		assert_eq!(CurrencyCode::USD.as_str(), "USD");
+	}
 	
 	//		debug																
 	#[test]
@@ -126,13 +126,6 @@ mod currency_code__traits {
 //		Currency																
 #[cfg(test)]
 mod currency__struct {
-	use super::super::*;
-	
-	//		as_str																
-	#[test]
-	fn as_str() {
-		assert_eq!(CurrencyCode::USD.currency().as_str(), "United States dollar");
-	}
 }
 
 #[cfg(test)]
@@ -140,6 +133,12 @@ mod currency__traits {
 	use super::super::*;
 	use claims::assert_err;
 	use serde_json;
+	
+	//		as_str																
+	#[test]
+	fn as_str() {
+		assert_eq!(CurrencyCode::USD.currency().as_str(), "United States dollar");
+	}
 	
 	//		debug																
 	#[test]

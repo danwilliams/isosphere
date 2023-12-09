@@ -20,7 +20,10 @@ use core::{
 	str::FromStr,
 };
 use once_cell::sync::Lazy;
-use rubedo::sugar::s;
+use rubedo::{
+	std::AsStr,
+	sugar::s,
+};
 use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
@@ -816,23 +819,28 @@ pub enum LanguageCode {
 }
 
 impl LanguageCode {
+	//		language															
+	/// Returns the `Language` instance corresponding to the `LanguageCode`.
+	/// 
+	/// This method provides an easy way to get to the associated `Language`
+	/// instance from a `LanguageCode` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	pub fn language(&self) -> &Language {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the languages is missing from the list, which is a bug.
+		LANGUAGES.get(self).unwrap()
+	}
+}
+
+impl AsStr for LanguageCode {
 	//		as_str																
-	/// Returns a string representation of the `LanguageCode` variant.
-	/// 
-	/// This method provides a way to obtain a static string slice corresponding
-	/// to a variant of the `LanguageCode` enum. The returned string slice is
-	/// suitable for use in scenarios where a string representation of the enum
-	/// variant is needed, such as serialization or logging.
-	/// 
-	/// It is potentially different from the [`Display`] implementation, which
-	/// returns a human-readable string representation of the enum variant, and
-	/// the [`Debug`] implementation, which returns a string representation of
-	/// the enum variant that is suitable for debugging purposes.
-	/// 
 	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
 	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
-	#[must_use]
-	pub const fn as_str(&self) -> &'static str {
+	fn as_str(&self) -> &'static str {
 		match *self {
 			Self::AA => "aa",
 			Self::AB => "ab",
@@ -1018,22 +1026,6 @@ impl LanguageCode {
 			Self::ZH => "zh",
 			Self::ZU => "zu",
 		}
-	}
-	
-	//		language															
-	/// Returns the `Language` instance corresponding to the `LanguageCode`.
-	/// 
-	/// This method provides an easy way to get to the associated `Language`
-	/// instance from a `LanguageCode` enum variant.
-	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
-	pub fn language(&self) -> &Language {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
-		//	This should be infallible. If it isn't, then the data is wrong, and one
-		//	of the languages is missing from the list, which is a bug.
-		LANGUAGES.get(self).unwrap()
 	}
 }
 
@@ -1293,22 +1285,9 @@ pub struct Language {
 	pub countries: HashSet<CountryCode>,
 }
 
-impl Language {
+impl AsStr for Language {
 	//		as_str																
-	/// Returns a string representation of the [`Language`] struct.
-	/// 
-	/// This method provides a way to obtain a static string slice corresponding
-	/// to an instance of the [`Language`] struct. The returned string slice is
-	/// suitable for use in scenarios where a string representation of the
-	/// struct is needed, such as serialization or logging.
-	/// 
-	/// It is potentially different from the [`Display`] implementation, which
-	/// returns a human-readable string representation of the struct, and the
-	/// [`Debug`] implementation, which returns a string representation of the
-	/// struct that is suitable for debugging purposes.
-	/// 
-	#[must_use]
-	pub fn as_str(&self) -> &str {
+	fn as_str(&self) -> &str {
 		&self.name
 	}
 }

@@ -23,7 +23,10 @@ use core::{
 	str::FromStr,
 };
 use once_cell::sync::Lazy;
-use rubedo::sugar::s;
+use rubedo::{
+	std::AsStr,
+	sugar::s,
+};
 use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
@@ -1847,23 +1850,28 @@ pub enum CountryCode {
 }
 
 impl CountryCode {
+	//		country																
+	/// Returns the `Country` instance corresponding to the `CountryCode`.
+	/// 
+	/// This method provides an easy way to get to the associated `Country`
+	/// instance from a `CountryCode` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	pub fn country(&self) -> &Country {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the countries is missing from the list, which is a bug.
+		COUNTRIES.get(self).unwrap()
+	}
+}
+
+impl AsStr for CountryCode {
 	//		as_str																
-	/// Returns a string representation of the `CountryCode` variant.
-	/// 
-	/// This method provides a way to obtain a static string slice corresponding
-	/// to a variant of the `CountryCode` enum. The returned string slice is
-	/// suitable for use in scenarios where a string representation of the enum
-	/// variant is needed, such as serialization or logging.
-	/// 
-	/// It is potentially different from the [`Display`] implementation, which
-	/// returns a human-readable string representation of the enum variant, and
-	/// the [`Debug`] implementation, which returns a string representation of
-	/// the enum variant that is suitable for debugging purposes.
-	/// 
 	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
 	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
-	#[must_use]
-	pub const fn as_str(&self) -> &'static str {
+	fn as_str(&self) -> &'static str {
 		match *self {
 			//		Two-letter codes (ISO 3166-1 alpha-2)						
 			Self::AD  => "AD",
@@ -2366,22 +2374,6 @@ impl CountryCode {
 			Self::ZMB => "ZMB",
 			Self::ZWE => "ZWE",
 		}
-	}
-	
-	//		country																
-	/// Returns the `Country` instance corresponding to the `CountryCode`.
-	/// 
-	/// This method provides an easy way to get to the associated `Country`
-	/// instance from a `CountryCode` enum variant.
-	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
-	pub fn country(&self) -> &Country {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
-		//	This should be infallible. If it isn't, then the data is wrong, and one
-		//	of the countries is missing from the list, which is a bug.
-		COUNTRIES.get(self).unwrap()
 	}
 }
 
@@ -3255,22 +3247,9 @@ pub struct Country {
 	pub languages:  HashSet<LanguageCode>,
 }
 
-impl Country {
+impl AsStr for Country {
 	//		as_str																
-	/// Returns a string representation of the [`Country`] struct.
-	/// 
-	/// This method provides a way to obtain a static string slice corresponding
-	/// to an instance of the [`Country`] struct. The returned string slice is
-	/// suitable for use in scenarios where a string representation of the
-	/// struct is needed, such as serialization or logging.
-	/// 
-	/// It is potentially different from the [`Display`] implementation, which
-	/// returns a human-readable string representation of the struct, and the
-	/// [`Debug`] implementation, which returns a string representation of the
-	/// struct that is suitable for debugging purposes.
-	/// 
-	#[must_use]
-	pub fn as_str(&self) -> &str {
+	fn as_str(&self) -> &str {
 		&self.name
 	}
 }

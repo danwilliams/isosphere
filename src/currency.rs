@@ -20,7 +20,10 @@ use core::{
 	str::FromStr,
 };
 use once_cell::sync::Lazy;
-use rubedo::sugar::s;
+use rubedo::{
+	std::AsStr,
+	sugar::s,
+};
 use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
@@ -808,23 +811,28 @@ pub enum CurrencyCode {
 }
 
 impl CurrencyCode {
+	//		currency															
+	/// Returns the `Currency` instance corresponding to the `CurrencyCode`.
+	/// 
+	/// This method provides an easy way to get to the associated `Currency`
+	/// instance from a `CurrencyCode` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	pub fn currency(&self) -> &Currency {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the currencies is missing from the list, which is a bug.
+		CURRENCIES.get(self).unwrap()
+	}
+}
+
+impl AsStr for CurrencyCode {
 	//		as_str																
-	/// Returns a string representation of the `CurrencyCode` variant.
-	/// 
-	/// This method provides a way to obtain a static string slice corresponding
-	/// to a variant of the `CurrencyCode` enum. The returned string slice is
-	/// suitable for use in scenarios where a string representation of the enum
-	/// variant is needed, such as serialization or logging.
-	/// 
-	/// It is potentially different from the [`Display`] implementation, which
-	/// returns a human-readable string representation of the enum variant, and
-	/// the [`Debug`] implementation, which returns a string representation of
-	/// the enum variant that is suitable for debugging purposes.
-	/// 
 	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
 	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
-	#[must_use]
-	pub const fn as_str(&self) -> &'static str {
+	fn as_str(&self) -> &'static str {
 		match *self {
 			Self::AED => "AED",
 			Self::AFN => "AFN",
@@ -1006,22 +1014,6 @@ impl CurrencyCode {
 			Self::ZMW => "ZMW",
 			Self::ZWL => "ZWL",
 		}
-	}
-	
-	//		currency															
-	/// Returns the `Currency` instance corresponding to the `CurrencyCode`.
-	/// 
-	/// This method provides an easy way to get to the associated `Currency`
-	/// instance from a `CurrencyCode` enum variant.
-	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
-	pub fn currency(&self) -> &Currency {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
-		//	This should be infallible. If it isn't, then the data is wrong, and one
-		//	of the currencies is missing from the list, which is a bug.
-		CURRENCIES.get(self).unwrap()
 	}
 }
 
@@ -1482,22 +1474,9 @@ pub struct Currency {
 	pub countries: HashSet<CountryCode>,
 }
 
-impl Currency {
+impl AsStr for Currency {
 	//		as_str																
-	/// Returns a string representation of the [`Currency`] struct.
-	/// 
-	/// This method provides a way to obtain a static string slice corresponding
-	/// to an instance of the [`Currency`] struct. The returned string slice is
-	/// suitable for use in scenarios where a string representation of the
-	/// struct is needed, such as serialization or logging.
-	/// 
-	/// It is potentially different from the [`Display`] implementation, which
-	/// returns a human-readable string representation of the struct, and the
-	/// [`Debug`] implementation, which returns a string representation of the
-	/// struct that is suitable for debugging purposes.
-	/// 
-	#[must_use]
-	pub fn as_str(&self) -> &str {
+	fn as_str(&self) -> &str {
 		&self.name
 	}
 }

@@ -7,12 +7,6 @@
 mod language_code__enum {
 	use super::super::*;
 	
-	//		as_str																
-	#[test]
-	fn as_str() {
-		assert_eq!(LanguageCode::EN.as_str(), "en");
-	}
-	
 	//		language															
 	#[test]
 	fn language() {
@@ -42,6 +36,12 @@ mod language_code__traits {
 	use super::super::*;
 	use claims::assert_err;
 	use serde_json;
+	
+	//		as_str																
+	#[test]
+	fn as_str() {
+		assert_eq!(LanguageCode::EN.as_str(), "en");
+	}
 	
 	//		debug																
 	#[test]
@@ -111,13 +111,6 @@ mod language_code__traits {
 //		Language																
 #[cfg(test)]
 mod language__struct {
-	use super::super::*;
-	
-	//		as_str																
-	#[test]
-	fn as_str() {
-		assert_eq!(LanguageCode::EN.language().as_str(), "English");
-	}
 }
 
 #[cfg(test)]
@@ -125,6 +118,12 @@ mod language__traits {
 	use super::super::*;
 	use claims::assert_err;
 	use serde_json;
+	
+	//		as_str																
+	#[test]
+	fn as_str() {
+		assert_eq!(LanguageCode::EN.language().as_str(), "English");
+	}
 	
 	//		debug																
 	#[test]

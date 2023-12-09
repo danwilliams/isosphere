@@ -7,12 +7,6 @@
 mod country_code__enum {
 	use super::super::*;
 	
-	//		as_str																
-	#[test]
-	fn as_str() {
-		assert_eq!(CountryCode::US.as_str(), "US");
-	}
-	
 	//		country																
 	#[test]
 	fn country() {
@@ -45,6 +39,12 @@ mod country_code__traits {
 	use super::super::*;
 	use claims::assert_err;
 	use serde_json;
+	
+	//		as_str																
+	#[test]
+	fn as_str() {
+		assert_eq!(CountryCode::US.as_str(), "US");
+	}
 	
 	//		debug																
 	#[test]
@@ -129,13 +129,6 @@ mod country_code__traits {
 //		Country																	
 #[cfg(test)]
 mod country__struct {
-	use super::super::*;
-	
-	//		as_str																
-	#[test]
-	fn as_str() {
-		assert_eq!(CountryCode::US.country().as_str(), "United States of America");
-	}
 }
 
 #[cfg(test)]
@@ -143,6 +136,12 @@ mod country__traits {
 	use super::super::*;
 	use claims::assert_err;
 	use serde_json;
+	
+	//		as_str																
+	#[test]
+	fn as_str() {
+		assert_eq!(CountryCode::US.country().as_str(), "United States of America");
+	}
 	
 	//		debug																
 	#[test]
