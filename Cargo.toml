@@ -26,3 +26,7 @@ rubedo = "0.3.6"
 serde = { version = "1.0.190", features = ["derive"] }
 utoipa = "4.0.0"
 velcro = "0.5.4"
+
+[dev-dependencies]
+claims = "0.7.1"
+serde_json = { version = "1.0.108", features = ["preserve_order"] }

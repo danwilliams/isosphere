@@ -2,6 +2,14 @@
 
 
 
+//		Modules
+
+#[cfg(test)]
+#[path = "tests/currency.rs"]
+mod tests;
+
+
+
 //		Packages
 
 #[cfg_attr(    feature = "reasons",  allow(clippy::enum_glob_use, reason = "Brevity wins here"))]
