@@ -24,7 +24,7 @@ use rubedo::{
 	std::AsStr,
 	sugar::{s, vh},
 };
-use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
 use velcro::hash_map;
@@ -1457,7 +1457,8 @@ impl TryFrom<String> for CurrencyCode {
 /// 
 /// * [`CurrencyCode`]
 /// 
-#[derive(Clone, Eq, PartialEq, ToSchema)]
+#[derive(Clone, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
+#[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub struct Currency {
 	//		Public properties													
@@ -1488,16 +1489,6 @@ impl Debug for Currency {
 	}
 }
 
-impl<'de> Deserialize<'de> for Currency {
-	//		deserialize															
-	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-	where
-		D: Deserializer<'de>,
-	{
-		String::deserialize(deserializer)?.parse().map_err(DeError::custom)
-	}
-}
-
 impl Display for Currency {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -1522,16 +1513,6 @@ impl FromStr for Currency {
 			.find(|currency| currency.name == s)
 			.cloned()
 			.ok_or_else(|| format!("Invalid Currency: {s}"))
-	}
-}
-
-impl Serialize for Currency {
-	//		serialize															
-	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-	where
-		S: Serializer,
-	{
-		serializer.serialize_str(self.as_str())
 	}
 }
 

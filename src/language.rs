@@ -24,7 +24,7 @@ use rubedo::{
 	std::AsStr,
 	sugar::{s, vh},
 };
-use serde::{Deserialize, Deserializer, Serialize, Serializer, de::Error as DeError};
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
 use utoipa::ToSchema;
 use velcro::hash_map;
@@ -1271,7 +1271,8 @@ impl TryFrom<String> for LanguageCode {
 /// 
 /// * [`LanguageCode`]
 /// 
-#[derive(Clone, Eq, PartialEq, ToSchema)]
+#[derive(Clone, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
+#[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub struct Language {
 	//		Public properties													
@@ -1299,16 +1300,6 @@ impl Debug for Language {
 	}
 }
 
-impl<'de> Deserialize<'de> for Language {
-	//		deserialize															
-	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-	where
-		D: Deserializer<'de>,
-	{
-		String::deserialize(deserializer)?.parse().map_err(DeError::custom)
-	}
-}
-
 impl Display for Language {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -1333,16 +1324,6 @@ impl FromStr for Language {
 			.find(|language| language.name == s)
 			.cloned()
 			.ok_or_else(|| format!("Invalid Language: {s}"))
-	}
-}
-
-impl Serialize for Language {
-	//		serialize															
-	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-	where
-		S: Serializer,
-	{
-		serializer.serialize_str(self.as_str())
 	}
 }
 
