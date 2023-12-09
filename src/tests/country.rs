@@ -25,10 +25,10 @@ mod country_code__enum {
 		for country_code in COUNTRIES.keys() {
 			let country = country_code.country();
 			for currency_code in country.currencies.iter() {
-				assert!(currency_code.currency().countries.contains(country_code));
+				assert!(currency_code.currency().countries().contains(country_code));
 			}
 			for language_code in country.languages.iter() {
-				assert!(language_code.language().countries.contains(country_code));
+				assert!(language_code.language().countries().contains(country_code));
 			}
 		}
 	}
@@ -129,6 +129,31 @@ mod country_code__traits {
 //		Country																	
 #[cfg(test)]
 mod country__struct {
+	use super::super::*;
+	
+	//		name																
+	#[test]
+	fn name() {
+		assert_eq!(CountryCode::CH.country().name(), "Switzerland");
+	}
+	
+	//		code																
+	#[test]
+	fn code() {
+		assert_eq!(CountryCode::CH.country().code(), CountryCode::CH);
+	}
+	
+	//		currencies															
+	#[test]
+	fn currencies() {
+		assert_eq!(CountryCode::CH.country().currencies(), &vh![ CurrencyCode: CHE, CHF, CHW ]);
+	}
+	
+	//		languages															
+	#[test]
+	fn languages() {
+		assert_eq!(CountryCode::CH.country().languages(), &vh![ LanguageCode: DE, FR, IT, RM ]);
+	}
 }
 
 #[cfg(test)]

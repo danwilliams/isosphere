@@ -1275,15 +1275,38 @@ impl TryFrom<String> for LanguageCode {
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub struct Language {
-	//		Public properties													
+	//		Private properties													
 	/// The name of the language.
-	pub name:      String,
+	name:      String,
 	
 	/// The language code. For more information, see [`LanguageCode`].
-	pub code:      LanguageCode,
+	code:      LanguageCode,
 	
 	/// The countries where the language is used.
-	pub countries: HashSet<CountryCode>,
+	countries: HashSet<CountryCode>,
+}
+
+impl Language {
+	//		name																
+	/// Returns the name of the language.
+	#[must_use]
+	pub fn name(&self) -> &str {
+		&self.name
+	}
+	
+	//		code																
+	/// Returns the language code.
+	#[must_use]
+	pub const fn code(&self) -> LanguageCode {
+		self.code
+	}
+	
+	//		countries															
+	/// Returns the countries where the language is used.
+	#[must_use]
+	pub const fn countries(&self) -> &HashSet<CountryCode> {
+		&self.countries
+	}
 }
 
 impl AsStr for Language {

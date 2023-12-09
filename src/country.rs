@@ -3236,16 +3236,46 @@ impl TryFrom<String> for CountryCode {
 pub struct Country {
 	//		Public properties													
 	/// The name of the country.
-	pub name:       String,
+	name:       String,
 	
 	/// The country code. For more information, see [`CountryCode`].
-	pub code:       CountryCode,
+	code:       CountryCode,
 	
 	/// The currencies used in the country.
-	pub currencies: HashSet<CurrencyCode>,
+	currencies: HashSet<CurrencyCode>,
 	
 	/// The languages used in the country.
-	pub languages:  HashSet<LanguageCode>,
+	languages:  HashSet<LanguageCode>,
+}
+
+impl Country {
+	//		name																
+	/// Returns the name of the country.
+	#[must_use]
+	pub fn name(&self) -> &str {
+		&self.name
+	}
+	
+	//		code																
+	/// Returns the country code.
+	#[must_use]
+	pub const fn code(&self) -> CountryCode {
+		self.code
+	}
+	
+	//		currencies															
+	/// Returns the currencies used in the country.
+	#[must_use]
+	pub const fn currencies(&self) -> &HashSet<CurrencyCode> {
+		&self.currencies
+	}
+	
+	//		languages															
+	/// Returns the languages used in the country.
+	#[must_use]
+	pub const fn languages(&self) -> &HashSet<LanguageCode> {
+		&self.languages
+	}
 }
 
 impl AsStr for Country {

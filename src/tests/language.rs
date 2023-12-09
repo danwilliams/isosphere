@@ -25,7 +25,7 @@ mod language_code__enum {
 		for language_code in LANGUAGES.keys() {
 			let language = language_code.language();
 			for country_code in language.countries.iter() {
-				assert!(country_code.country().languages.contains(language_code));
+				assert!(country_code.country().languages().contains(language_code));
 			}
 		}
 	}
@@ -111,6 +111,25 @@ mod language_code__traits {
 //		Language																
 #[cfg(test)]
 mod language__struct {
+	use super::super::*;
+	
+	//		name																
+	#[test]
+	fn name() {
+		assert_eq!(LanguageCode::NO.language().name(), "Norwegian");
+	}
+	
+	//		code																
+	#[test]
+	fn code() {
+		assert_eq!(LanguageCode::NO.language().code(), LanguageCode::NO);
+	}
+	
+	//		countries															
+	#[test]
+	fn countries() {
+		assert_eq!(LanguageCode::NO.language().countries(), &vh![ CountryCode: BV, NO, SJ ]);
+	}
 }
 
 #[cfg(test)]

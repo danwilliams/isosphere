@@ -1461,18 +1461,48 @@ impl TryFrom<String> for CurrencyCode {
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub struct Currency {
-	//		Public properties													
+	//		Private properties													
 	/// The name of the currency.
-	pub name:      String,
+	name:      String,
 	
 	/// The currency code. For more information, see [`CurrencyCode`].
-	pub code:      CurrencyCode,
+	code:      CurrencyCode,
 	
 	/// The number of digits after the decimal point.
-	pub digits:    u8,
+	digits:    u8,
 	
 	/// The countries where the currency is used.
-	pub countries: HashSet<CountryCode>,
+	countries: HashSet<CountryCode>,
+}
+
+impl Currency {
+	//		name																
+	/// Returns the name of the currency.
+	#[must_use]
+	pub fn name(&self) -> &str {
+		&self.name
+	}
+	
+	//		code																
+	/// Returns the currency code.
+	#[must_use]
+	pub const fn code(&self) -> CurrencyCode {
+		self.code
+	}
+	
+	//		digits																
+	/// Returns the number of digits after the decimal point.
+	#[must_use]
+	pub const fn digits(&self) -> u8 {
+		self.digits
+	}
+	
+	//		countries															
+	/// Returns the countries where the currency is used.
+	#[must_use]
+	pub const fn countries(&self) -> &HashSet<CountryCode> {
+		&self.countries
+	}
 }
 
 impl AsStr for Currency {

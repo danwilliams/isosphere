@@ -25,7 +25,7 @@ mod currency_code__enum {
 		for currency_code in CURRENCIES.keys() {
 			let currency = currency_code.currency();
 			for country_code in currency.countries.iter() {
-				assert!(country_code.country().currencies.contains(currency_code));
+				assert!(country_code.country().currencies().contains(currency_code));
 			}
 		}
 	}
@@ -126,6 +126,31 @@ mod currency_code__traits {
 //		Currency																
 #[cfg(test)]
 mod currency__struct {
+	use super::super::*;
+	
+	//		name																
+	#[test]
+	fn name() {
+		assert_eq!(CurrencyCode::GBP.currency().name(), "Pound sterling");
+	}
+	
+	//		code																
+	#[test]
+	fn code() {
+		assert_eq!(CurrencyCode::GBP.currency().code(), CurrencyCode::GBP);
+	}
+	
+	//		digits																
+	#[test]
+	fn digits() {
+		assert_eq!(CurrencyCode::GBP.currency().digits(), 2);
+	}
+	
+	//		countries															
+	#[test]
+	fn countries() {
+		assert_eq!(CurrencyCode::GBP.currency().countries(), &vh![ CountryCode: GB, GG, IM, JE, SH ]);
+	}
 }
 
 #[cfg(test)]
