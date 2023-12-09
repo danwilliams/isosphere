@@ -46,197 +46,791 @@ use velcro::hash_map;
 /// * [`LanguageCode`]
 /// * [`Language`]
 /// 
-pub static LANGUAGES: Lazy<HashMap<LanguageCode, Language>> = Lazy::new(|| {
+static LANGUAGES: Lazy<HashMap<Language, LanguageInfo>> = Lazy::new(|| {
 	hash_map!{
-		LanguageCode::AA: Language { code: LanguageCode::AA, name: s!("Afar"),              countries: vh![ CountryCode: ET ] },
-		LanguageCode::AB: Language { code: LanguageCode::AB, name: s!("Abkhazian"),         countries: vh![] },
-		LanguageCode::AE: Language { code: LanguageCode::AE, name: s!("Avestan"),           countries: vh![] },
-		LanguageCode::AF: Language { code: LanguageCode::AF, name: s!("Afrikaans"),         countries: vh![ CountryCode: ZA ] },
-		LanguageCode::AK: Language { code: LanguageCode::AK, name: s!("Akan"),              countries: vh![] },
-		LanguageCode::AM: Language { code: LanguageCode::AM, name: s!("Amharic"),           countries: vh![ CountryCode: ET ] },
-		LanguageCode::AN: Language { code: LanguageCode::AN, name: s!("Aragonese"),         countries: vh![] },
-		LanguageCode::AR: Language { code: LanguageCode::AR, name: s!("Arabic"),            countries: vh![ CountryCode: AE, BH, DJ, DZ, EG, EH, IQ, JO, KM, KW, LB, LY, MA, MR, OM, PS, QA, SA, SD, SO, SY, TD, TN, YE ] },
-		LanguageCode::AS: Language { code: LanguageCode::AS, name: s!("Assamese"),          countries: vh![] },
-		LanguageCode::AV: Language { code: LanguageCode::AV, name: s!("Avaric"),            countries: vh![] },
-		LanguageCode::AY: Language { code: LanguageCode::AY, name: s!("Aymara"),            countries: vh![ CountryCode: BO, PE ] },
-		LanguageCode::AZ: Language { code: LanguageCode::AZ, name: s!("Azerbaijani"),       countries: vh![ CountryCode: AZ ] },
-		LanguageCode::BA: Language { code: LanguageCode::BA, name: s!("Bashkir"),           countries: vh![] },
-		LanguageCode::BE: Language { code: LanguageCode::BE, name: s!("Belarusian"),        countries: vh![ CountryCode: BY ] },
-		LanguageCode::BG: Language { code: LanguageCode::BG, name: s!("Bulgarian"),         countries: vh![ CountryCode: BG ] },
-		LanguageCode::BI: Language { code: LanguageCode::BI, name: s!("Bislama"),           countries: vh![ CountryCode: VU ] },
-		LanguageCode::BM: Language { code: LanguageCode::BM, name: s!("Bambara"),           countries: vh![ CountryCode: ML ] },
-		LanguageCode::BN: Language { code: LanguageCode::BN, name: s!("Bengali"),           countries: vh![ CountryCode: BD ] },
-		LanguageCode::BO: Language { code: LanguageCode::BO, name: s!("Tibetan"),           countries: vh![] },
-		LanguageCode::BR: Language { code: LanguageCode::BR, name: s!("Breton"),            countries: vh![] },
-		LanguageCode::BS: Language { code: LanguageCode::BS, name: s!("Bosnian"),           countries: vh![ CountryCode: BA ] },
-		LanguageCode::CA: Language { code: LanguageCode::CA, name: s!("Catalan"),           countries: vh![ CountryCode: AD ] },
-		LanguageCode::CE: Language { code: LanguageCode::CE, name: s!("Chechen"),           countries: vh![] },
-		LanguageCode::CH: Language { code: LanguageCode::CH, name: s!("Chamorro"),          countries: vh![ CountryCode: GU, MP ] },
-		LanguageCode::CO: Language { code: LanguageCode::CO, name: s!("Corsican"),          countries: vh![] },
-		LanguageCode::CR: Language { code: LanguageCode::CR, name: s!("Cree"),              countries: vh![] },
-		LanguageCode::CS: Language { code: LanguageCode::CS, name: s!("Czech"),             countries: vh![ CountryCode: CZ ] },
-		LanguageCode::CU: Language { code: LanguageCode::CU, name: s!("Church Slavonic"),   countries: vh![] },
-		LanguageCode::CV: Language { code: LanguageCode::CV, name: s!("Chuvash"),           countries: vh![] },
-		LanguageCode::CY: Language { code: LanguageCode::CY, name: s!("Welsh"),             countries: vh![] },
-		LanguageCode::DA: Language { code: LanguageCode::DA, name: s!("Danish"),            countries: vh![ CountryCode: DK, FO, GL ] },
-		LanguageCode::DE: Language { code: LanguageCode::DE, name: s!("German"),            countries: vh![ CountryCode: AT, BE, CH, DE, LI, LU ] },
-		LanguageCode::DV: Language { code: LanguageCode::DV, name: s!("Divehi"),            countries: vh![ CountryCode: MV ] },
-		LanguageCode::DZ: Language { code: LanguageCode::DZ, name: s!("Dzongkha"),          countries: vh![ CountryCode: BT ] },
-		LanguageCode::EE: Language { code: LanguageCode::EE, name: s!("Ewe"),               countries: vh![] },
-		LanguageCode::EL: Language { code: LanguageCode::EL, name: s!("Greek"),             countries: vh![ CountryCode: CY, GR ] },
-		LanguageCode::EN: Language { code: LanguageCode::EN, name: s!("English"),           countries: vh![ CountryCode: AG, AI, AS, AU, BB, BI, BM, BS, BW, BZ, CA, CC, CK, CM, CW, CX, DM, FJ, FK, FM, GB, GD, GG, GH, GI, GL, GM, GS, GU, GY, HK, HM, IE, IM, IN, IO, JE, JM, KE, KI, KN, KY, LC, LR, LS, MH, MP, MS, MT, MU, MW, NA, NF, NG, NR, NU, NZ, PG, PH, PK, PN, PR, PW, RW, SB, SC, SD, SG, SH, SL, SS, SX, SZ, TC, TK, TO, TT, TV, TZ, UG, UM, US, VC, VG, VI, VU, WS, ZA, ZM, ZW ] },
-		LanguageCode::EO: Language { code: LanguageCode::EO, name: s!("Esperanto"),         countries: vh![] },
-		LanguageCode::ES: Language { code: LanguageCode::ES, name: s!("Spanish"),           countries: vh![ CountryCode: AR, BO, CL, CO, CR, CU, DO, EC, EH, ES, GQ, GT, HN, MX, NI, PA, PE, PR, PY, SV, UY, VE ] },
-		LanguageCode::ET: Language { code: LanguageCode::ET, name: s!("Estonian"),          countries: vh![ CountryCode: EE ] },
-		LanguageCode::EU: Language { code: LanguageCode::EU, name: s!("Basque"),            countries: vh![] },
-		LanguageCode::FA: Language { code: LanguageCode::FA, name: s!("Persian"),           countries: vh![ CountryCode: AF, IR ] },
-		LanguageCode::FF: Language { code: LanguageCode::FF, name: s!("Fulah"),             countries: vh![ CountryCode: ML ] },
-		LanguageCode::FI: Language { code: LanguageCode::FI, name: s!("Finnish"),           countries: vh![ CountryCode: FI ] },
-		LanguageCode::FJ: Language { code: LanguageCode::FJ, name: s!("Fijian"),            countries: vh![ CountryCode: FJ ] },
-		LanguageCode::FO: Language { code: LanguageCode::FO, name: s!("Faroese"),           countries: vh![ CountryCode: FO ] },
-		LanguageCode::FR: Language { code: LanguageCode::FR, name: s!("French"),            countries: vh![ CountryCode: BE, BF, BI, BJ, BL, CA, CD, CF, CG, CH, CI, CM, DJ, FR, GA, GF, GN, GP, GQ, HT, JE, KM, LU, MC, MF, MG, MQ, NC, NE, PF, PM, RE, RW, SC, SN, TD, TF, TG, VU, WF, YT ] },
-		LanguageCode::FY: Language { code: LanguageCode::FY, name: s!("Western Frisian"),   countries: vh![] },
-		LanguageCode::GA: Language { code: LanguageCode::GA, name: s!("Irish"),             countries: vh![ CountryCode: IE ] },
-		LanguageCode::GD: Language { code: LanguageCode::GD, name: s!("Gaelic"),            countries: vh![] },
-		LanguageCode::GL: Language { code: LanguageCode::GL, name: s!("Galician"),          countries: vh![] },
-		LanguageCode::GN: Language { code: LanguageCode::GN, name: s!("Guarani"),           countries: vh![ CountryCode: BO, PY ] },
-		LanguageCode::GU: Language { code: LanguageCode::GU, name: s!("Gujarati"),          countries: vh![] },
-		LanguageCode::GV: Language { code: LanguageCode::GV, name: s!("Manx"),              countries: vh![ CountryCode: IM ] },
-		LanguageCode::HA: Language { code: LanguageCode::HA, name: s!("Hausa"),             countries: vh![] },
-		LanguageCode::HE: Language { code: LanguageCode::HE, name: s!("Hebrew"),            countries: vh![ CountryCode: IL ] },
-		LanguageCode::HI: Language { code: LanguageCode::HI, name: s!("Hindi"),             countries: vh![ CountryCode: IN ] },
-		LanguageCode::HO: Language { code: LanguageCode::HO, name: s!("Hiri Motu"),         countries: vh![ CountryCode: PG ] },
-		LanguageCode::HR: Language { code: LanguageCode::HR, name: s!("Croatian"),          countries: vh![ CountryCode: BA, HR, ME ] },
-		LanguageCode::HT: Language { code: LanguageCode::HT, name: s!("Haitian"),           countries: vh![ CountryCode: HT ] },
-		LanguageCode::HU: Language { code: LanguageCode::HU, name: s!("Hungarian"),         countries: vh![ CountryCode: HU ] },
-		LanguageCode::HY: Language { code: LanguageCode::HY, name: s!("Armenian"),          countries: vh![ CountryCode: AM ] },
-		LanguageCode::HZ: Language { code: LanguageCode::HZ, name: s!("Herero"),            countries: vh![] },
-		LanguageCode::IA: Language { code: LanguageCode::IA, name: s!("Interlingua"),       countries: vh![] },
-		LanguageCode::ID: Language { code: LanguageCode::ID, name: s!("Indonesian"),        countries: vh![ CountryCode: ID ] },
-		LanguageCode::IE: Language { code: LanguageCode::IE, name: s!("Interlingue"),       countries: vh![] },
-		LanguageCode::IG: Language { code: LanguageCode::IG, name: s!("Igbo"),              countries: vh![] },
-		LanguageCode::II: Language { code: LanguageCode::II, name: s!("Sichuan Yi"),        countries: vh![] },
-		LanguageCode::IK: Language { code: LanguageCode::IK, name: s!("Inupiaq"),           countries: vh![] },
-		LanguageCode::IO: Language { code: LanguageCode::IO, name: s!("Ido"),               countries: vh![] },
-		LanguageCode::IS: Language { code: LanguageCode::IS, name: s!("Icelandic"),         countries: vh![ CountryCode: IS ] },
-		LanguageCode::IT: Language { code: LanguageCode::IT, name: s!("Italian"),           countries: vh![ CountryCode: CH, IT, SM, VA ] },
-		LanguageCode::IU: Language { code: LanguageCode::IU, name: s!("Inuktitut"),         countries: vh![] },
-		LanguageCode::JA: Language { code: LanguageCode::JA, name: s!("Japanese"),          countries: vh![ CountryCode: JP ] },
-		LanguageCode::JV: Language { code: LanguageCode::JV, name: s!("Javanese"),          countries: vh![] },
-		LanguageCode::KA: Language { code: LanguageCode::KA, name: s!("Georgian"),          countries: vh![ CountryCode: GE ] },
-		LanguageCode::KG: Language { code: LanguageCode::KG, name: s!("Kongo"),             countries: vh![] },
-		LanguageCode::KI: Language { code: LanguageCode::KI, name: s!("Kikuyu"),            countries: vh![] },
-		LanguageCode::KJ: Language { code: LanguageCode::KJ, name: s!("Kuanyama"),          countries: vh![] },
-		LanguageCode::KK: Language { code: LanguageCode::KK, name: s!("Kazakh"),            countries: vh![ CountryCode: KZ ] },
-		LanguageCode::KL: Language { code: LanguageCode::KL, name: s!("Kalaallisut"),       countries: vh![] },
-		LanguageCode::KM: Language { code: LanguageCode::KM, name: s!("Central Khmer"),     countries: vh![ CountryCode: KH ] },
-		LanguageCode::KN: Language { code: LanguageCode::KN, name: s!("Kannada"),           countries: vh![] },
-		LanguageCode::KO: Language { code: LanguageCode::KO, name: s!("Korean"),            countries: vh![ CountryCode: KP, KR ] },
-		LanguageCode::KR: Language { code: LanguageCode::KR, name: s!("Kanuri"),            countries: vh![] },
-		LanguageCode::KS: Language { code: LanguageCode::KS, name: s!("Kashmiri"),          countries: vh![] },
-		LanguageCode::KU: Language { code: LanguageCode::KU, name: s!("Kurdish"),           countries: vh![ CountryCode: IQ ] },
-		LanguageCode::KV: Language { code: LanguageCode::KV, name: s!("Komi"),              countries: vh![] },
-		LanguageCode::KW: Language { code: LanguageCode::KW, name: s!("Cornish"),           countries: vh![] },
-		LanguageCode::KY: Language { code: LanguageCode::KY, name: s!("Kirghiz"),           countries: vh![ CountryCode: KG ] },
-		LanguageCode::LA: Language { code: LanguageCode::LA, name: s!("Latin"),             countries: vh![ CountryCode: VA ] },
-		LanguageCode::LB: Language { code: LanguageCode::LB, name: s!("Luxembourgish"),     countries: vh![ CountryCode: LU ] },
-		LanguageCode::LG: Language { code: LanguageCode::LG, name: s!("Ganda"),             countries: vh![] },
-		LanguageCode::LI: Language { code: LanguageCode::LI, name: s!("Limburgan"),         countries: vh![] },
-		LanguageCode::LN: Language { code: LanguageCode::LN, name: s!("Lingala"),           countries: vh![] },
-		LanguageCode::LO: Language { code: LanguageCode::LO, name: s!("Lao"),               countries: vh![ CountryCode: LA ] },
-		LanguageCode::LT: Language { code: LanguageCode::LT, name: s!("Lithuanian"),        countries: vh![ CountryCode: LT ] },
-		LanguageCode::LU: Language { code: LanguageCode::LU, name: s!("Luba-Katanga"),      countries: vh![] },
-		LanguageCode::LV: Language { code: LanguageCode::LV, name: s!("Latvian"),           countries: vh![ CountryCode: LV ] },
-		LanguageCode::MG: Language { code: LanguageCode::MG, name: s!("Malagasy"),          countries: vh![ CountryCode: MG ] },
-		LanguageCode::MH: Language { code: LanguageCode::MH, name: s!("Marshallese"),       countries: vh![ CountryCode: MH ] },
-		LanguageCode::MI: Language { code: LanguageCode::MI, name: s!("Maori"),             countries: vh![ CountryCode: NZ ] },
-		LanguageCode::MK: Language { code: LanguageCode::MK, name: s!("Macedonian"),        countries: vh![ CountryCode: MK ] },
-		LanguageCode::ML: Language { code: LanguageCode::ML, name: s!("Malayalam"),         countries: vh![] },
-		LanguageCode::MN: Language { code: LanguageCode::MN, name: s!("Mongolian"),         countries: vh![ CountryCode: MN ] },
-		LanguageCode::MR: Language { code: LanguageCode::MR, name: s!("Marathi"),           countries: vh![] },
-		LanguageCode::MS: Language { code: LanguageCode::MS, name: s!("Malay"),             countries: vh![ CountryCode: BN, CC, CX, MY, SG ] },
-		LanguageCode::MT: Language { code: LanguageCode::MT, name: s!("Maltese"),           countries: vh![ CountryCode: MT ] },
-		LanguageCode::MY: Language { code: LanguageCode::MY, name: s!("Burmese"),           countries: vh![ CountryCode: MM ] },
-		LanguageCode::NA: Language { code: LanguageCode::NA, name: s!("Nauru"),             countries: vh![ CountryCode: NR ] },
-		LanguageCode::NB: Language { code: LanguageCode::NB, name: s!("Norwegian Bokmål"),  countries: vh![] },
-		LanguageCode::ND: Language { code: LanguageCode::ND, name: s!("North Ndebele"),     countries: vh![] },
-		LanguageCode::NE: Language { code: LanguageCode::NE, name: s!("Nepali"),            countries: vh![ CountryCode: NP ] },
-		LanguageCode::NG: Language { code: LanguageCode::NG, name: s!("Ndonga"),            countries: vh![] },
-		LanguageCode::NL: Language { code: LanguageCode::NL, name: s!("Dutch"),             countries: vh![ CountryCode: AW, BE, BQ, CW, NL, SR, SX ] },
-		LanguageCode::NN: Language { code: LanguageCode::NN, name: s!("Norwegian Nynorsk"), countries: vh![] },
-		LanguageCode::NO: Language { code: LanguageCode::NO, name: s!("Norwegian"),         countries: vh![ CountryCode: BV, NO, SJ ] },
-		LanguageCode::NR: Language { code: LanguageCode::NR, name: s!("South Ndebele"),     countries: vh![ CountryCode: ZA, ZW ] },
-		LanguageCode::NV: Language { code: LanguageCode::NV, name: s!("Navajo"),            countries: vh![] },
-		LanguageCode::NY: Language { code: LanguageCode::NY, name: s!("Chichewa"),          countries: vh![ CountryCode: MW, ZW ] },
-		LanguageCode::OC: Language { code: LanguageCode::OC, name: s!("Occitan"),           countries: vh![] },
-		LanguageCode::OJ: Language { code: LanguageCode::OJ, name: s!("Ojibwa"),            countries: vh![] },
-		LanguageCode::OM: Language { code: LanguageCode::OM, name: s!("Oromo"),             countries: vh![ CountryCode: ET ] },
-		LanguageCode::OR: Language { code: LanguageCode::OR, name: s!("Oriya"),             countries: vh![] },
-		LanguageCode::OS: Language { code: LanguageCode::OS, name: s!("Ossetian"),          countries: vh![] },
-		LanguageCode::PA: Language { code: LanguageCode::PA, name: s!("Punjabi"),           countries: vh![] },
-		LanguageCode::PI: Language { code: LanguageCode::PI, name: s!("Pali"),              countries: vh![] },
-		LanguageCode::PL: Language { code: LanguageCode::PL, name: s!("Polish"),            countries: vh![ CountryCode: PL ] },
-		LanguageCode::PS: Language { code: LanguageCode::PS, name: s!("Pashto"),            countries: vh![ CountryCode: AF ] },
-		LanguageCode::PT: Language { code: LanguageCode::PT, name: s!("Portuguese"),        countries: vh![ CountryCode: AO, BR, CV, GW, MO, MZ, PT, ST, TL, GQ ] },
-		LanguageCode::QU: Language { code: LanguageCode::QU, name: s!("Quechua"),           countries: vh![ CountryCode: BO, EC, PE ] },
-		LanguageCode::RM: Language { code: LanguageCode::RM, name: s!("Romansh"),           countries: vh![ CountryCode: CH ] },
-		LanguageCode::RN: Language { code: LanguageCode::RN, name: s!("Rundi"),             countries: vh![ CountryCode: BI ] },
-		LanguageCode::RO: Language { code: LanguageCode::RO, name: s!("Romanian"),          countries: vh![ CountryCode: MD, RO ] },
-		LanguageCode::RU: Language { code: LanguageCode::RU, name: s!("Russian"),           countries: vh![ CountryCode: BY, KG, KZ, RU ] },
-		LanguageCode::RW: Language { code: LanguageCode::RW, name: s!("Kinyarwanda"),       countries: vh![ CountryCode: RW ] },
-		LanguageCode::SA: Language { code: LanguageCode::SA, name: s!("Sanskrit"),          countries: vh![] },
-		LanguageCode::SC: Language { code: LanguageCode::SC, name: s!("Sardinian"),         countries: vh![] },
-		LanguageCode::SD: Language { code: LanguageCode::SD, name: s!("Sindhi"),            countries: vh![] },
-		LanguageCode::SE: Language { code: LanguageCode::SE, name: s!("Northern Sami"),     countries: vh![] },
-		LanguageCode::SG: Language { code: LanguageCode::SG, name: s!("Sango"),             countries: vh![ CountryCode: CF ] },
-		LanguageCode::SI: Language { code: LanguageCode::SI, name: s!("Sinhala"),           countries: vh![ CountryCode: LK ] },
-		LanguageCode::SK: Language { code: LanguageCode::SK, name: s!("Slovak"),            countries: vh![ CountryCode: CZ, SK ] },
-		LanguageCode::SL: Language { code: LanguageCode::SL, name: s!("Slovenian"),         countries: vh![ CountryCode: SI ] },
-		LanguageCode::SM: Language { code: LanguageCode::SM, name: s!("Samoan"),            countries: vh![ CountryCode: AS, WS ] },
-		LanguageCode::SN: Language { code: LanguageCode::SN, name: s!("Shona"),             countries: vh![ CountryCode: ZW ] },
-		LanguageCode::SO: Language { code: LanguageCode::SO, name: s!("Somali"),            countries: vh![ CountryCode: ET, SO ] },
-		LanguageCode::SQ: Language { code: LanguageCode::SQ, name: s!("Albanian"),          countries: vh![ CountryCode: AL, MK ] },
-		LanguageCode::SR: Language { code: LanguageCode::SR, name: s!("Serbian"),           countries: vh![ CountryCode: BA, ME, RS ] },
-		LanguageCode::SS: Language { code: LanguageCode::SS, name: s!("Swati"),             countries: vh![ CountryCode: SZ, ZA ] },
-		LanguageCode::ST: Language { code: LanguageCode::ST, name: s!("Southern Sotho"),    countries: vh![ CountryCode: LS, ZA, ZW ] },
-		LanguageCode::SU: Language { code: LanguageCode::SU, name: s!("Sundanese"),         countries: vh![] },
-		LanguageCode::SV: Language { code: LanguageCode::SV, name: s!("Swedish"),           countries: vh![ CountryCode: AX, FI, SE ] },
-		LanguageCode::SW: Language { code: LanguageCode::SW, name: s!("Swahili"),           countries: vh![ CountryCode: KE, RW, TZ, UG ] },
-		LanguageCode::TA: Language { code: LanguageCode::TA, name: s!("Tamil"),             countries: vh![ CountryCode: LK, SG ] },
-		LanguageCode::TE: Language { code: LanguageCode::TE, name: s!("Telugu"),            countries: vh![] },
-		LanguageCode::TG: Language { code: LanguageCode::TG, name: s!("Tajik"),             countries: vh![ CountryCode: TJ ] },
-		LanguageCode::TH: Language { code: LanguageCode::TH, name: s!("Thai"),              countries: vh![ CountryCode: TH ] },
-		LanguageCode::TI: Language { code: LanguageCode::TI, name: s!("Tigrinya"),          countries: vh![ CountryCode: ER, ET ] },
-		LanguageCode::TK: Language { code: LanguageCode::TK, name: s!("Turkmen"),           countries: vh![ CountryCode: TM ] },
-		LanguageCode::TL: Language { code: LanguageCode::TL, name: s!("Tagalog"),           countries: vh![ CountryCode: PH ] },
-		LanguageCode::TN: Language { code: LanguageCode::TN, name: s!("Tswana"),            countries: vh![ CountryCode: ZA, ZW ] },
-		LanguageCode::TO: Language { code: LanguageCode::TO, name: s!("Tonga"),             countries: vh![ CountryCode: TO ] },
-		LanguageCode::TR: Language { code: LanguageCode::TR, name: s!("Turkish"),           countries: vh![ CountryCode: CY, TR ] },
-		LanguageCode::TS: Language { code: LanguageCode::TS, name: s!("Tsonga"),            countries: vh![ CountryCode: ZA ] },
-		LanguageCode::TT: Language { code: LanguageCode::TT, name: s!("Tatar"),             countries: vh![] },
-		LanguageCode::TW: Language { code: LanguageCode::TW, name: s!("Twi"),               countries: vh![] },
-		LanguageCode::TY: Language { code: LanguageCode::TY, name: s!("Tahitian"),          countries: vh![] },
-		LanguageCode::UG: Language { code: LanguageCode::UG, name: s!("Uighur"),            countries: vh![] },
-		LanguageCode::UK: Language { code: LanguageCode::UK, name: s!("Ukrainian"),         countries: vh![ CountryCode: UA ] },
-		LanguageCode::UR: Language { code: LanguageCode::UR, name: s!("Urdu"),              countries: vh![ CountryCode: PK ] },
-		LanguageCode::UZ: Language { code: LanguageCode::UZ, name: s!("Uzbek"),             countries: vh![ CountryCode: UZ ] },
-		LanguageCode::VE: Language { code: LanguageCode::VE, name: s!("Venda"),             countries: vh![ CountryCode: ZA, ZW ] },
-		LanguageCode::VI: Language { code: LanguageCode::VI, name: s!("Vietnamese"),        countries: vh![ CountryCode: VN ] },
-		LanguageCode::VO: Language { code: LanguageCode::VO, name: s!("Volapük"),           countries: vh![] },
-		LanguageCode::WA: Language { code: LanguageCode::WA, name: s!("Walloon"),           countries: vh![] },
-		LanguageCode::WO: Language { code: LanguageCode::WO, name: s!("Wolof"),             countries: vh![] },
-		LanguageCode::XH: Language { code: LanguageCode::XH, name: s!("Xhosa"),             countries: vh![ CountryCode: ZA, ZW ] },
-		LanguageCode::YI: Language { code: LanguageCode::YI, name: s!("Yiddish"),           countries: vh![] },
-		LanguageCode::YO: Language { code: LanguageCode::YO, name: s!("Yoruba"),            countries: vh![] },
-		LanguageCode::ZA: Language { code: LanguageCode::ZA, name: s!("Zhuang"),            countries: vh![] },
-		LanguageCode::ZH: Language { code: LanguageCode::ZH, name: s!("Chinese"),           countries: vh![ CountryCode: CN, CX, HK, MO, SG, TW ] },
-		LanguageCode::ZU: Language { code: LanguageCode::ZU, name: s!("Zulu"),              countries: vh![ CountryCode: ZA ] },
+		Language::AA: LanguageInfo { code: LanguageCode::AA, name: s!("Afar"),              countries: vh![ CountryCode: ET ] },
+		Language::AB: LanguageInfo { code: LanguageCode::AB, name: s!("Abkhazian"),         countries: vh![] },
+		Language::AE: LanguageInfo { code: LanguageCode::AE, name: s!("Avestan"),           countries: vh![] },
+		Language::AF: LanguageInfo { code: LanguageCode::AF, name: s!("Afrikaans"),         countries: vh![ CountryCode: ZA ] },
+		Language::AK: LanguageInfo { code: LanguageCode::AK, name: s!("Akan"),              countries: vh![] },
+		Language::AM: LanguageInfo { code: LanguageCode::AM, name: s!("Amharic"),           countries: vh![ CountryCode: ET ] },
+		Language::AN: LanguageInfo { code: LanguageCode::AN, name: s!("Aragonese"),         countries: vh![] },
+		Language::AR: LanguageInfo { code: LanguageCode::AR, name: s!("Arabic"),            countries: vh![ CountryCode: AE, BH, DJ, DZ, EG, EH, IQ, JO, KM, KW, LB, LY, MA, MR, OM, PS, QA, SA, SD, SO, SY, TD, TN, YE ] },
+		Language::AS: LanguageInfo { code: LanguageCode::AS, name: s!("Assamese"),          countries: vh![] },
+		Language::AV: LanguageInfo { code: LanguageCode::AV, name: s!("Avaric"),            countries: vh![] },
+		Language::AY: LanguageInfo { code: LanguageCode::AY, name: s!("Aymara"),            countries: vh![ CountryCode: BO, PE ] },
+		Language::AZ: LanguageInfo { code: LanguageCode::AZ, name: s!("Azerbaijani"),       countries: vh![ CountryCode: AZ ] },
+		Language::BA: LanguageInfo { code: LanguageCode::BA, name: s!("Bashkir"),           countries: vh![] },
+		Language::BE: LanguageInfo { code: LanguageCode::BE, name: s!("Belarusian"),        countries: vh![ CountryCode: BY ] },
+		Language::BG: LanguageInfo { code: LanguageCode::BG, name: s!("Bulgarian"),         countries: vh![ CountryCode: BG ] },
+		Language::BI: LanguageInfo { code: LanguageCode::BI, name: s!("Bislama"),           countries: vh![ CountryCode: VU ] },
+		Language::BM: LanguageInfo { code: LanguageCode::BM, name: s!("Bambara"),           countries: vh![ CountryCode: ML ] },
+		Language::BN: LanguageInfo { code: LanguageCode::BN, name: s!("Bengali"),           countries: vh![ CountryCode: BD ] },
+		Language::BO: LanguageInfo { code: LanguageCode::BO, name: s!("Tibetan"),           countries: vh![] },
+		Language::BR: LanguageInfo { code: LanguageCode::BR, name: s!("Breton"),            countries: vh![] },
+		Language::BS: LanguageInfo { code: LanguageCode::BS, name: s!("Bosnian"),           countries: vh![ CountryCode: BA ] },
+		Language::CA: LanguageInfo { code: LanguageCode::CA, name: s!("Catalan"),           countries: vh![ CountryCode: AD ] },
+		Language::CE: LanguageInfo { code: LanguageCode::CE, name: s!("Chechen"),           countries: vh![] },
+		Language::CH: LanguageInfo { code: LanguageCode::CH, name: s!("Chamorro"),          countries: vh![ CountryCode: GU, MP ] },
+		Language::CO: LanguageInfo { code: LanguageCode::CO, name: s!("Corsican"),          countries: vh![] },
+		Language::CR: LanguageInfo { code: LanguageCode::CR, name: s!("Cree"),              countries: vh![] },
+		Language::CS: LanguageInfo { code: LanguageCode::CS, name: s!("Czech"),             countries: vh![ CountryCode: CZ ] },
+		Language::CU: LanguageInfo { code: LanguageCode::CU, name: s!("Church Slavonic"),   countries: vh![] },
+		Language::CV: LanguageInfo { code: LanguageCode::CV, name: s!("Chuvash"),           countries: vh![] },
+		Language::CY: LanguageInfo { code: LanguageCode::CY, name: s!("Welsh"),             countries: vh![] },
+		Language::DA: LanguageInfo { code: LanguageCode::DA, name: s!("Danish"),            countries: vh![ CountryCode: DK, FO, GL ] },
+		Language::DE: LanguageInfo { code: LanguageCode::DE, name: s!("German"),            countries: vh![ CountryCode: AT, BE, CH, DE, LI, LU ] },
+		Language::DV: LanguageInfo { code: LanguageCode::DV, name: s!("Divehi"),            countries: vh![ CountryCode: MV ] },
+		Language::DZ: LanguageInfo { code: LanguageCode::DZ, name: s!("Dzongkha"),          countries: vh![ CountryCode: BT ] },
+		Language::EE: LanguageInfo { code: LanguageCode::EE, name: s!("Ewe"),               countries: vh![] },
+		Language::EL: LanguageInfo { code: LanguageCode::EL, name: s!("Greek"),             countries: vh![ CountryCode: CY, GR ] },
+		Language::EN: LanguageInfo { code: LanguageCode::EN, name: s!("English"),           countries: vh![ CountryCode: AG, AI, AS, AU, BB, BI, BM, BS, BW, BZ, CA, CC, CK, CM, CW, CX, DM, FJ, FK, FM, GB, GD, GG, GH, GI, GL, GM, GS, GU, GY, HK, HM, IE, IM, IN, IO, JE, JM, KE, KI, KN, KY, LC, LR, LS, MH, MP, MS, MT, MU, MW, NA, NF, NG, NR, NU, NZ, PG, PH, PK, PN, PR, PW, RW, SB, SC, SD, SG, SH, SL, SS, SX, SZ, TC, TK, TO, TT, TV, TZ, UG, UM, US, VC, VG, VI, VU, WS, ZA, ZM, ZW ] },
+		Language::EO: LanguageInfo { code: LanguageCode::EO, name: s!("Esperanto"),         countries: vh![] },
+		Language::ES: LanguageInfo { code: LanguageCode::ES, name: s!("Spanish"),           countries: vh![ CountryCode: AR, BO, CL, CO, CR, CU, DO, EC, EH, ES, GQ, GT, HN, MX, NI, PA, PE, PR, PY, SV, UY, VE ] },
+		Language::ET: LanguageInfo { code: LanguageCode::ET, name: s!("Estonian"),          countries: vh![ CountryCode: EE ] },
+		Language::EU: LanguageInfo { code: LanguageCode::EU, name: s!("Basque"),            countries: vh![] },
+		Language::FA: LanguageInfo { code: LanguageCode::FA, name: s!("Persian"),           countries: vh![ CountryCode: AF, IR ] },
+		Language::FF: LanguageInfo { code: LanguageCode::FF, name: s!("Fulah"),             countries: vh![ CountryCode: ML ] },
+		Language::FI: LanguageInfo { code: LanguageCode::FI, name: s!("Finnish"),           countries: vh![ CountryCode: FI ] },
+		Language::FJ: LanguageInfo { code: LanguageCode::FJ, name: s!("Fijian"),            countries: vh![ CountryCode: FJ ] },
+		Language::FO: LanguageInfo { code: LanguageCode::FO, name: s!("Faroese"),           countries: vh![ CountryCode: FO ] },
+		Language::FR: LanguageInfo { code: LanguageCode::FR, name: s!("French"),            countries: vh![ CountryCode: BE, BF, BI, BJ, BL, CA, CD, CF, CG, CH, CI, CM, DJ, FR, GA, GF, GN, GP, GQ, HT, JE, KM, LU, MC, MF, MG, MQ, NC, NE, PF, PM, RE, RW, SC, SN, TD, TF, TG, VU, WF, YT ] },
+		Language::FY: LanguageInfo { code: LanguageCode::FY, name: s!("Western Frisian"),   countries: vh![] },
+		Language::GA: LanguageInfo { code: LanguageCode::GA, name: s!("Irish"),             countries: vh![ CountryCode: IE ] },
+		Language::GD: LanguageInfo { code: LanguageCode::GD, name: s!("Gaelic"),            countries: vh![] },
+		Language::GL: LanguageInfo { code: LanguageCode::GL, name: s!("Galician"),          countries: vh![] },
+		Language::GN: LanguageInfo { code: LanguageCode::GN, name: s!("Guarani"),           countries: vh![ CountryCode: BO, PY ] },
+		Language::GU: LanguageInfo { code: LanguageCode::GU, name: s!("Gujarati"),          countries: vh![] },
+		Language::GV: LanguageInfo { code: LanguageCode::GV, name: s!("Manx"),              countries: vh![ CountryCode: IM ] },
+		Language::HA: LanguageInfo { code: LanguageCode::HA, name: s!("Hausa"),             countries: vh![] },
+		Language::HE: LanguageInfo { code: LanguageCode::HE, name: s!("Hebrew"),            countries: vh![ CountryCode: IL ] },
+		Language::HI: LanguageInfo { code: LanguageCode::HI, name: s!("Hindi"),             countries: vh![ CountryCode: IN ] },
+		Language::HO: LanguageInfo { code: LanguageCode::HO, name: s!("Hiri Motu"),         countries: vh![ CountryCode: PG ] },
+		Language::HR: LanguageInfo { code: LanguageCode::HR, name: s!("Croatian"),          countries: vh![ CountryCode: BA, HR, ME ] },
+		Language::HT: LanguageInfo { code: LanguageCode::HT, name: s!("Haitian"),           countries: vh![ CountryCode: HT ] },
+		Language::HU: LanguageInfo { code: LanguageCode::HU, name: s!("Hungarian"),         countries: vh![ CountryCode: HU ] },
+		Language::HY: LanguageInfo { code: LanguageCode::HY, name: s!("Armenian"),          countries: vh![ CountryCode: AM ] },
+		Language::HZ: LanguageInfo { code: LanguageCode::HZ, name: s!("Herero"),            countries: vh![] },
+		Language::IA: LanguageInfo { code: LanguageCode::IA, name: s!("Interlingua"),       countries: vh![] },
+		Language::ID: LanguageInfo { code: LanguageCode::ID, name: s!("Indonesian"),        countries: vh![ CountryCode: ID ] },
+		Language::IE: LanguageInfo { code: LanguageCode::IE, name: s!("Interlingue"),       countries: vh![] },
+		Language::IG: LanguageInfo { code: LanguageCode::IG, name: s!("Igbo"),              countries: vh![] },
+		Language::II: LanguageInfo { code: LanguageCode::II, name: s!("Sichuan Yi"),        countries: vh![] },
+		Language::IK: LanguageInfo { code: LanguageCode::IK, name: s!("Inupiaq"),           countries: vh![] },
+		Language::IO: LanguageInfo { code: LanguageCode::IO, name: s!("Ido"),               countries: vh![] },
+		Language::IS: LanguageInfo { code: LanguageCode::IS, name: s!("Icelandic"),         countries: vh![ CountryCode: IS ] },
+		Language::IT: LanguageInfo { code: LanguageCode::IT, name: s!("Italian"),           countries: vh![ CountryCode: CH, IT, SM, VA ] },
+		Language::IU: LanguageInfo { code: LanguageCode::IU, name: s!("Inuktitut"),         countries: vh![] },
+		Language::JA: LanguageInfo { code: LanguageCode::JA, name: s!("Japanese"),          countries: vh![ CountryCode: JP ] },
+		Language::JV: LanguageInfo { code: LanguageCode::JV, name: s!("Javanese"),          countries: vh![] },
+		Language::KA: LanguageInfo { code: LanguageCode::KA, name: s!("Georgian"),          countries: vh![ CountryCode: GE ] },
+		Language::KG: LanguageInfo { code: LanguageCode::KG, name: s!("Kongo"),             countries: vh![] },
+		Language::KI: LanguageInfo { code: LanguageCode::KI, name: s!("Kikuyu"),            countries: vh![] },
+		Language::KJ: LanguageInfo { code: LanguageCode::KJ, name: s!("Kuanyama"),          countries: vh![] },
+		Language::KK: LanguageInfo { code: LanguageCode::KK, name: s!("Kazakh"),            countries: vh![ CountryCode: KZ ] },
+		Language::KL: LanguageInfo { code: LanguageCode::KL, name: s!("Kalaallisut"),       countries: vh![] },
+		Language::KM: LanguageInfo { code: LanguageCode::KM, name: s!("Central Khmer"),     countries: vh![ CountryCode: KH ] },
+		Language::KN: LanguageInfo { code: LanguageCode::KN, name: s!("Kannada"),           countries: vh![] },
+		Language::KO: LanguageInfo { code: LanguageCode::KO, name: s!("Korean"),            countries: vh![ CountryCode: KP, KR ] },
+		Language::KR: LanguageInfo { code: LanguageCode::KR, name: s!("Kanuri"),            countries: vh![] },
+		Language::KS: LanguageInfo { code: LanguageCode::KS, name: s!("Kashmiri"),          countries: vh![] },
+		Language::KU: LanguageInfo { code: LanguageCode::KU, name: s!("Kurdish"),           countries: vh![ CountryCode: IQ ] },
+		Language::KV: LanguageInfo { code: LanguageCode::KV, name: s!("Komi"),              countries: vh![] },
+		Language::KW: LanguageInfo { code: LanguageCode::KW, name: s!("Cornish"),           countries: vh![] },
+		Language::KY: LanguageInfo { code: LanguageCode::KY, name: s!("Kirghiz"),           countries: vh![ CountryCode: KG ] },
+		Language::LA: LanguageInfo { code: LanguageCode::LA, name: s!("Latin"),             countries: vh![ CountryCode: VA ] },
+		Language::LB: LanguageInfo { code: LanguageCode::LB, name: s!("Luxembourgish"),     countries: vh![ CountryCode: LU ] },
+		Language::LG: LanguageInfo { code: LanguageCode::LG, name: s!("Ganda"),             countries: vh![] },
+		Language::LI: LanguageInfo { code: LanguageCode::LI, name: s!("Limburgan"),         countries: vh![] },
+		Language::LN: LanguageInfo { code: LanguageCode::LN, name: s!("Lingala"),           countries: vh![] },
+		Language::LO: LanguageInfo { code: LanguageCode::LO, name: s!("Lao"),               countries: vh![ CountryCode: LA ] },
+		Language::LT: LanguageInfo { code: LanguageCode::LT, name: s!("Lithuanian"),        countries: vh![ CountryCode: LT ] },
+		Language::LU: LanguageInfo { code: LanguageCode::LU, name: s!("Luba-Katanga"),      countries: vh![] },
+		Language::LV: LanguageInfo { code: LanguageCode::LV, name: s!("Latvian"),           countries: vh![ CountryCode: LV ] },
+		Language::MG: LanguageInfo { code: LanguageCode::MG, name: s!("Malagasy"),          countries: vh![ CountryCode: MG ] },
+		Language::MH: LanguageInfo { code: LanguageCode::MH, name: s!("Marshallese"),       countries: vh![ CountryCode: MH ] },
+		Language::MI: LanguageInfo { code: LanguageCode::MI, name: s!("Maori"),             countries: vh![ CountryCode: NZ ] },
+		Language::MK: LanguageInfo { code: LanguageCode::MK, name: s!("Macedonian"),        countries: vh![ CountryCode: MK ] },
+		Language::ML: LanguageInfo { code: LanguageCode::ML, name: s!("Malayalam"),         countries: vh![] },
+		Language::MN: LanguageInfo { code: LanguageCode::MN, name: s!("Mongolian"),         countries: vh![ CountryCode: MN ] },
+		Language::MR: LanguageInfo { code: LanguageCode::MR, name: s!("Marathi"),           countries: vh![] },
+		Language::MS: LanguageInfo { code: LanguageCode::MS, name: s!("Malay"),             countries: vh![ CountryCode: BN, CC, CX, MY, SG ] },
+		Language::MT: LanguageInfo { code: LanguageCode::MT, name: s!("Maltese"),           countries: vh![ CountryCode: MT ] },
+		Language::MY: LanguageInfo { code: LanguageCode::MY, name: s!("Burmese"),           countries: vh![ CountryCode: MM ] },
+		Language::NA: LanguageInfo { code: LanguageCode::NA, name: s!("Nauru"),             countries: vh![ CountryCode: NR ] },
+		Language::NB: LanguageInfo { code: LanguageCode::NB, name: s!("Norwegian Bokmål"),  countries: vh![] },
+		Language::ND: LanguageInfo { code: LanguageCode::ND, name: s!("North Ndebele"),     countries: vh![] },
+		Language::NE: LanguageInfo { code: LanguageCode::NE, name: s!("Nepali"),            countries: vh![ CountryCode: NP ] },
+		Language::NG: LanguageInfo { code: LanguageCode::NG, name: s!("Ndonga"),            countries: vh![] },
+		Language::NL: LanguageInfo { code: LanguageCode::NL, name: s!("Dutch"),             countries: vh![ CountryCode: AW, BE, BQ, CW, NL, SR, SX ] },
+		Language::NN: LanguageInfo { code: LanguageCode::NN, name: s!("Norwegian Nynorsk"), countries: vh![] },
+		Language::NO: LanguageInfo { code: LanguageCode::NO, name: s!("Norwegian"),         countries: vh![ CountryCode: BV, NO, SJ ] },
+		Language::NR: LanguageInfo { code: LanguageCode::NR, name: s!("South Ndebele"),     countries: vh![ CountryCode: ZA, ZW ] },
+		Language::NV: LanguageInfo { code: LanguageCode::NV, name: s!("Navajo"),            countries: vh![] },
+		Language::NY: LanguageInfo { code: LanguageCode::NY, name: s!("Chichewa"),          countries: vh![ CountryCode: MW, ZW ] },
+		Language::OC: LanguageInfo { code: LanguageCode::OC, name: s!("Occitan"),           countries: vh![] },
+		Language::OJ: LanguageInfo { code: LanguageCode::OJ, name: s!("Ojibwa"),            countries: vh![] },
+		Language::OM: LanguageInfo { code: LanguageCode::OM, name: s!("Oromo"),             countries: vh![ CountryCode: ET ] },
+		Language::OR: LanguageInfo { code: LanguageCode::OR, name: s!("Oriya"),             countries: vh![] },
+		Language::OS: LanguageInfo { code: LanguageCode::OS, name: s!("Ossetian"),          countries: vh![] },
+		Language::PA: LanguageInfo { code: LanguageCode::PA, name: s!("Punjabi"),           countries: vh![] },
+		Language::PI: LanguageInfo { code: LanguageCode::PI, name: s!("Pali"),              countries: vh![] },
+		Language::PL: LanguageInfo { code: LanguageCode::PL, name: s!("Polish"),            countries: vh![ CountryCode: PL ] },
+		Language::PS: LanguageInfo { code: LanguageCode::PS, name: s!("Pashto"),            countries: vh![ CountryCode: AF ] },
+		Language::PT: LanguageInfo { code: LanguageCode::PT, name: s!("Portuguese"),        countries: vh![ CountryCode: AO, BR, CV, GW, MO, MZ, PT, ST, TL, GQ ] },
+		Language::QU: LanguageInfo { code: LanguageCode::QU, name: s!("Quechua"),           countries: vh![ CountryCode: BO, EC, PE ] },
+		Language::RM: LanguageInfo { code: LanguageCode::RM, name: s!("Romansh"),           countries: vh![ CountryCode: CH ] },
+		Language::RN: LanguageInfo { code: LanguageCode::RN, name: s!("Rundi"),             countries: vh![ CountryCode: BI ] },
+		Language::RO: LanguageInfo { code: LanguageCode::RO, name: s!("Romanian"),          countries: vh![ CountryCode: MD, RO ] },
+		Language::RU: LanguageInfo { code: LanguageCode::RU, name: s!("Russian"),           countries: vh![ CountryCode: BY, KG, KZ, RU ] },
+		Language::RW: LanguageInfo { code: LanguageCode::RW, name: s!("Kinyarwanda"),       countries: vh![ CountryCode: RW ] },
+		Language::SA: LanguageInfo { code: LanguageCode::SA, name: s!("Sanskrit"),          countries: vh![] },
+		Language::SC: LanguageInfo { code: LanguageCode::SC, name: s!("Sardinian"),         countries: vh![] },
+		Language::SD: LanguageInfo { code: LanguageCode::SD, name: s!("Sindhi"),            countries: vh![] },
+		Language::SE: LanguageInfo { code: LanguageCode::SE, name: s!("Northern Sami"),     countries: vh![] },
+		Language::SG: LanguageInfo { code: LanguageCode::SG, name: s!("Sango"),             countries: vh![ CountryCode: CF ] },
+		Language::SI: LanguageInfo { code: LanguageCode::SI, name: s!("Sinhala"),           countries: vh![ CountryCode: LK ] },
+		Language::SK: LanguageInfo { code: LanguageCode::SK, name: s!("Slovak"),            countries: vh![ CountryCode: CZ, SK ] },
+		Language::SL: LanguageInfo { code: LanguageCode::SL, name: s!("Slovenian"),         countries: vh![ CountryCode: SI ] },
+		Language::SM: LanguageInfo { code: LanguageCode::SM, name: s!("Samoan"),            countries: vh![ CountryCode: AS, WS ] },
+		Language::SN: LanguageInfo { code: LanguageCode::SN, name: s!("Shona"),             countries: vh![ CountryCode: ZW ] },
+		Language::SO: LanguageInfo { code: LanguageCode::SO, name: s!("Somali"),            countries: vh![ CountryCode: ET, SO ] },
+		Language::SQ: LanguageInfo { code: LanguageCode::SQ, name: s!("Albanian"),          countries: vh![ CountryCode: AL, MK ] },
+		Language::SR: LanguageInfo { code: LanguageCode::SR, name: s!("Serbian"),           countries: vh![ CountryCode: BA, ME, RS ] },
+		Language::SS: LanguageInfo { code: LanguageCode::SS, name: s!("Swati"),             countries: vh![ CountryCode: SZ, ZA ] },
+		Language::ST: LanguageInfo { code: LanguageCode::ST, name: s!("Southern Sotho"),    countries: vh![ CountryCode: LS, ZA, ZW ] },
+		Language::SU: LanguageInfo { code: LanguageCode::SU, name: s!("Sundanese"),         countries: vh![] },
+		Language::SV: LanguageInfo { code: LanguageCode::SV, name: s!("Swedish"),           countries: vh![ CountryCode: AX, FI, SE ] },
+		Language::SW: LanguageInfo { code: LanguageCode::SW, name: s!("Swahili"),           countries: vh![ CountryCode: KE, RW, TZ, UG ] },
+		Language::TA: LanguageInfo { code: LanguageCode::TA, name: s!("Tamil"),             countries: vh![ CountryCode: LK, SG ] },
+		Language::TE: LanguageInfo { code: LanguageCode::TE, name: s!("Telugu"),            countries: vh![] },
+		Language::TG: LanguageInfo { code: LanguageCode::TG, name: s!("Tajik"),             countries: vh![ CountryCode: TJ ] },
+		Language::TH: LanguageInfo { code: LanguageCode::TH, name: s!("Thai"),              countries: vh![ CountryCode: TH ] },
+		Language::TI: LanguageInfo { code: LanguageCode::TI, name: s!("Tigrinya"),          countries: vh![ CountryCode: ER, ET ] },
+		Language::TK: LanguageInfo { code: LanguageCode::TK, name: s!("Turkmen"),           countries: vh![ CountryCode: TM ] },
+		Language::TL: LanguageInfo { code: LanguageCode::TL, name: s!("Tagalog"),           countries: vh![ CountryCode: PH ] },
+		Language::TN: LanguageInfo { code: LanguageCode::TN, name: s!("Tswana"),            countries: vh![ CountryCode: ZA, ZW ] },
+		Language::TO: LanguageInfo { code: LanguageCode::TO, name: s!("Tonga"),             countries: vh![ CountryCode: TO ] },
+		Language::TR: LanguageInfo { code: LanguageCode::TR, name: s!("Turkish"),           countries: vh![ CountryCode: CY, TR ] },
+		Language::TS: LanguageInfo { code: LanguageCode::TS, name: s!("Tsonga"),            countries: vh![ CountryCode: ZA ] },
+		Language::TT: LanguageInfo { code: LanguageCode::TT, name: s!("Tatar"),             countries: vh![] },
+		Language::TW: LanguageInfo { code: LanguageCode::TW, name: s!("Twi"),               countries: vh![] },
+		Language::TY: LanguageInfo { code: LanguageCode::TY, name: s!("Tahitian"),          countries: vh![] },
+		Language::UG: LanguageInfo { code: LanguageCode::UG, name: s!("Uighur"),            countries: vh![] },
+		Language::UK: LanguageInfo { code: LanguageCode::UK, name: s!("Ukrainian"),         countries: vh![ CountryCode: UA ] },
+		Language::UR: LanguageInfo { code: LanguageCode::UR, name: s!("Urdu"),              countries: vh![ CountryCode: PK ] },
+		Language::UZ: LanguageInfo { code: LanguageCode::UZ, name: s!("Uzbek"),             countries: vh![ CountryCode: UZ ] },
+		Language::VE: LanguageInfo { code: LanguageCode::VE, name: s!("Venda"),             countries: vh![ CountryCode: ZA, ZW ] },
+		Language::VI: LanguageInfo { code: LanguageCode::VI, name: s!("Vietnamese"),        countries: vh![ CountryCode: VN ] },
+		Language::VO: LanguageInfo { code: LanguageCode::VO, name: s!("Volapük"),           countries: vh![] },
+		Language::WA: LanguageInfo { code: LanguageCode::WA, name: s!("Walloon"),           countries: vh![] },
+		Language::WO: LanguageInfo { code: LanguageCode::WO, name: s!("Wolof"),             countries: vh![] },
+		Language::XH: LanguageInfo { code: LanguageCode::XH, name: s!("Xhosa"),             countries: vh![ CountryCode: ZA, ZW ] },
+		Language::YI: LanguageInfo { code: LanguageCode::YI, name: s!("Yiddish"),           countries: vh![] },
+		Language::YO: LanguageInfo { code: LanguageCode::YO, name: s!("Yoruba"),            countries: vh![] },
+		Language::ZA: LanguageInfo { code: LanguageCode::ZA, name: s!("Zhuang"),            countries: vh![] },
+		Language::ZH: LanguageInfo { code: LanguageCode::ZH, name: s!("Chinese"),           countries: vh![ CountryCode: CN, CX, HK, MO, SG, TW ] },
+		Language::ZU: LanguageInfo { code: LanguageCode::ZU, name: s!("Zulu"),              countries: vh![ CountryCode: ZA ] },
 	}
 });
 
 
 
 //		Enums
+
+//		Language																
+/// A language.
+/// 
+/// A language has a number of properties, including a name, a language code,
+/// and the countries where the language is used.
+/// 
+/// Each language is identified by a country code, which can be expressed as two
+/// letters, as defined by the ISO 639-1 standard.
+/// 
+/// # Data sources
+/// 
+/// The list of codes and other country information is available from
+/// [the ISO site](https://www.iso.org/iso-639-language-code), and from
+/// [Wikipedia](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+/// 
+/// # See also
+/// 
+/// * [`LanguageCode`]
+/// 
+#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
+#[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
+#[serde(into = "String", try_from = "String")]
+#[non_exhaustive]
+pub enum Language {
+	/// Afar
+	AA,
+	
+	/// Abkhazian
+	AB,
+	
+	/// Avestan
+	AE,
+	
+	/// Afrikaans
+	AF,
+	
+	/// Akan
+	AK,
+	
+	/// Amharic
+	AM,
+	
+	/// Aragonese
+	AN,
+	
+	/// Arabic
+	AR,
+	
+	/// Assamese
+	AS,
+	
+	/// Avaric
+	AV,
+	
+	/// Aymara
+	AY,
+	
+	/// Azerbaijani
+	AZ,
+	
+	/// Bashkir
+	BA,
+	
+	/// Belarusian
+	BE,
+	
+	/// Bulgarian
+	BG,
+	
+	/// Bislama
+	BI,
+	
+	/// Bambara
+	BM,
+	
+	/// Bengali
+	BN,
+	
+	/// Tibetan
+	BO,
+	
+	/// Breton
+	BR,
+	
+	/// Bosnian
+	BS,
+	
+	/// Catalan, Valencian
+	CA,
+	
+	/// Chechen
+	CE,
+	
+	/// Chamorro
+	CH,
+	
+	/// Corsican
+	CO,
+	
+	/// Cree
+	CR,
+	
+	/// Czech
+	CS,
+	
+	/// Church Slavonic, Old Slavonic, Old Church Slavonic
+	CU,
+	
+	/// Chuvash
+	CV,
+	
+	/// Welsh
+	CY,
+	
+	/// Danish
+	DA,
+	
+	/// German
+	DE,
+	
+	/// Divehi, Dhivehi, Maldivian
+	DV,
+	
+	/// Dzongkha
+	DZ,
+	
+	/// Ewe
+	EE,
+	
+	/// Greek, Modern (1453–)
+	EL,
+	
+	/// English
+	EN,
+	
+	/// Esperanto
+	EO,
+	
+	/// Spanish, Castilian
+	ES,
+	
+	/// Estonian
+	ET,
+	
+	/// Basque
+	EU,
+	
+	/// Persian
+	FA,
+	
+	/// Fulah
+	FF,
+	
+	/// Finnish
+	FI,
+	
+	/// Fijian
+	FJ,
+	
+	/// Faroese
+	FO,
+	
+	/// French
+	FR,
+	
+	/// Western Frisian
+	FY,
+	
+	/// Irish
+	GA,
+	
+	/// Gaelic, Scottish Gaelic
+	GD,
+	
+	/// Galician
+	GL,
+	
+	/// Guarani
+	GN,
+	
+	/// Gujarati
+	GU,
+	
+	/// Manx
+	GV,
+	
+	/// Hausa
+	HA,
+	
+	/// Hebrew
+	HE,
+	
+	/// Hindi
+	HI,
+	
+	/// Hiri Motu
+	HO,
+	
+	/// Croatian
+	HR,
+	
+	/// Haitian, Haitian Creole
+	HT,
+	
+	/// Hungarian
+	HU,
+	
+	/// Armenian
+	HY,
+	
+	/// Herero
+	HZ,
+	
+	/// Interlingua (International Auxiliary Language Association)
+	IA,
+	
+	/// Indonesian
+	ID,
+	
+	/// Interlingue, Occidental
+	IE,
+	
+	/// Igbo
+	IG,
+	
+	/// Sichuan Yi, Nuosu
+	II,
+	
+	/// Inupiaq
+	IK,
+	
+	/// Ido
+	IO,
+	
+	/// Icelandic
+	IS,
+	
+	/// Italian
+	IT,
+	
+	/// Inuktitut
+	IU,
+	
+	/// Japanese
+	JA,
+	
+	/// Javanese
+	JV,
+	
+	/// Georgian
+	KA,
+	
+	/// Kongo
+	KG,
+	
+	/// Kikuyu, Gikuyu
+	KI,
+	
+	/// Kuanyama, Kwanyama
+	KJ,
+	
+	/// Kazakh
+	KK,
+	
+	/// Kalaallisut, Greenlandic
+	KL,
+	
+	/// Central Khmer
+	KM,
+	
+	/// Kannada
+	KN,
+	
+	/// Korean
+	KO,
+	
+	/// Kanuri
+	KR,
+	
+	/// Kashmiri
+	KS,
+	
+	/// Kurdish
+	KU,
+	
+	/// Komi
+	KV,
+	
+	/// Cornish
+	KW,
+	
+	/// Kirghiz, Kyrgyz
+	KY,
+	
+	/// Latin
+	LA,
+	
+	/// Luxembourgish, Letzeburgesch
+	LB,
+	
+	/// Ganda
+	LG,
+	
+	/// Limburgan, Limburger, Limburgish
+	LI,
+	
+	/// Lingala
+	LN,
+	
+	/// Lao
+	LO,
+	
+	/// Lithuanian
+	LT,
+	
+	/// Luba-Katanga
+	LU,
+	
+	/// Latvian
+	LV,
+	
+	/// Malagasy
+	MG,
+	
+	/// Marshallese
+	MH,
+	
+	/// Maori
+	MI,
+	
+	/// Macedonian
+	MK,
+	
+	/// Malayalam
+	ML,
+	
+	/// Mongolian
+	MN,
+	
+	/// Marathi
+	MR,
+	
+	/// Malay
+	MS,
+	
+	/// Maltese
+	MT,
+	
+	/// Burmese
+	MY,
+	
+	/// Nauru
+	NA,
+	
+	/// Norwegian Bokmål
+	NB,
+	
+	/// North Ndebele
+	ND,
+	
+	/// Nepali
+	NE,
+	
+	/// Ndonga
+	NG,
+	
+	/// Dutch, Flemish
+	NL,
+	
+	/// Norwegian Nynorsk
+	NN,
+	
+	/// Norwegian
+	NO,
+	
+	/// South Ndebele
+	NR,
+	
+	/// Navajo, Navaho
+	NV,
+	
+	/// Chichewa, Chewa, Nyanja
+	NY,
+	
+	/// Occitan
+	OC,
+	
+	/// Ojibwa
+	OJ,
+	
+	/// Oromo
+	OM,
+	
+	/// Oriya
+	OR,
+	
+	/// Ossetian, Ossetic
+	OS,
+	
+	/// Punjabi, Panjabi
+	PA,
+	
+	/// Pali
+	PI,
+	
+	/// Polish
+	PL,
+	
+	/// Pashto, Pushto
+	PS,
+	
+	/// Portuguese
+	PT,
+	
+	/// Quechua
+	QU,
+	
+	/// Romansh
+	RM,
+	
+	/// Rundi
+	RN,
+	
+	/// Romanian, Moldavian, Moldovan
+	RO,
+	
+	/// Russian
+	RU,
+	
+	/// Kinyarwanda
+	RW,
+	
+	/// Sanskrit
+	SA,
+	
+	/// Sardinian
+	SC,
+	
+	/// Sindhi
+	SD,
+	
+	/// Northern Sami
+	SE,
+	
+	/// Sango
+	SG,
+	
+	/// Sinhala, Sinhalese
+	SI,
+	
+	/// Slovak
+	SK,
+	
+	/// Slovenian
+	SL,
+	
+	/// Samoan
+	SM,
+	
+	/// Shona
+	SN,
+	
+	/// Somali
+	SO,
+	
+	/// Albanian
+	SQ,
+	
+	/// Serbian
+	SR,
+	
+	/// Swati
+	SS,
+	
+	/// Southern Sotho
+	ST,
+	
+	/// Sundanese
+	SU,
+	
+	/// Swedish
+	SV,
+	
+	/// Swahili
+	SW,
+	
+	/// Tamil
+	TA,
+	
+	/// Telugu
+	TE,
+	
+	/// Tajik
+	TG,
+	
+	/// Thai
+	TH,
+	
+	/// Tigrinya
+	TI,
+	
+	/// Turkmen
+	TK,
+	
+	/// Tagalog
+	TL,
+	
+	/// Tswana
+	TN,
+	
+	/// Tonga (Tonga Islands)
+	TO,
+	
+	/// Turkish
+	TR,
+	
+	/// Tsonga
+	TS,
+	
+	/// Tatar
+	TT,
+	
+	/// Twi
+	TW,
+	
+	/// Tahitian
+	TY,
+	
+	/// Uighur, Uyghur
+	UG,
+	
+	/// Ukrainian
+	UK,
+	
+	/// Urdu
+	UR,
+	
+	/// Uzbek
+	UZ,
+	
+	/// Venda
+	VE,
+	
+	/// Vietnamese
+	VI,
+	
+	/// Volapük
+	VO,
+	
+	/// Walloon
+	WA,
+	
+	/// Wolof
+	WO,
+	
+	/// Xhosa
+	XH,
+	
+	/// Yiddish
+	YI,
+	
+	/// Yoruba
+	YO,
+	
+	/// Zhuang, Chuang
+	ZA,
+	
+	/// Chinese
+	ZH,
+	
+	/// Zulu
+	ZU,
+}
+
+impl Language {
+	//		info																
+	/// Returns the `LanguageInfo` instance corresponding to the `Language`.
+	/// 
+	/// This method provides an easy way to get to the associated `LanguageInfo`
+	/// instance from a `Language` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	#[must_use]
+	fn info(self) -> &'static LanguageInfo {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the languages is missing from the list, which is a bug.
+		LANGUAGES.get(&self).unwrap()
+	}
+}
 
 //		LanguageCode															
 /// The possible languages' codes.
@@ -820,19 +1414,200 @@ pub enum LanguageCode {
 
 impl LanguageCode {
 	//		language															
-	/// Returns the `Language` instance corresponding to the `LanguageCode`.
+	/// Returns the `Language` variant corresponding to the `LanguageCode`.
 	/// 
 	/// This method provides an easy way to get to the associated `Language`
-	/// instance from a `LanguageCode` enum variant.
+	/// variant from a `LanguageCode` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
-	pub fn language(&self) -> &Language {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
-		//	This should be infallible. If it isn't, then the data is wrong, and one
-		//	of the languages is missing from the list, which is a bug.
-		LANGUAGES.get(self).unwrap()
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[must_use]
+	pub const fn language(&self) -> Language {
+		match *self {
+			Self::AA => Language::AA,
+			Self::AB => Language::AB,
+			Self::AE => Language::AE,
+			Self::AF => Language::AF,
+			Self::AK => Language::AK,
+			Self::AM => Language::AM,
+			Self::AN => Language::AN,
+			Self::AR => Language::AR,
+			Self::AS => Language::AS,
+			Self::AV => Language::AV,
+			Self::AY => Language::AY,
+			Self::AZ => Language::AZ,
+			Self::BA => Language::BA,
+			Self::BE => Language::BE,
+			Self::BG => Language::BG,
+			Self::BI => Language::BI,
+			Self::BM => Language::BM,
+			Self::BN => Language::BN,
+			Self::BO => Language::BO,
+			Self::BR => Language::BR,
+			Self::BS => Language::BS,
+			Self::CA => Language::CA,
+			Self::CE => Language::CE,
+			Self::CH => Language::CH,
+			Self::CO => Language::CO,
+			Self::CR => Language::CR,
+			Self::CS => Language::CS,
+			Self::CU => Language::CU,
+			Self::CV => Language::CV,
+			Self::CY => Language::CY,
+			Self::DA => Language::DA,
+			Self::DE => Language::DE,
+			Self::DV => Language::DV,
+			Self::DZ => Language::DZ,
+			Self::EE => Language::EE,
+			Self::EL => Language::EL,
+			Self::EN => Language::EN,
+			Self::EO => Language::EO,
+			Self::ES => Language::ES,
+			Self::ET => Language::ET,
+			Self::EU => Language::EU,
+			Self::FA => Language::FA,
+			Self::FF => Language::FF,
+			Self::FI => Language::FI,
+			Self::FJ => Language::FJ,
+			Self::FO => Language::FO,
+			Self::FR => Language::FR,
+			Self::FY => Language::FY,
+			Self::GA => Language::GA,
+			Self::GD => Language::GD,
+			Self::GL => Language::GL,
+			Self::GN => Language::GN,
+			Self::GU => Language::GU,
+			Self::GV => Language::GV,
+			Self::HA => Language::HA,
+			Self::HE => Language::HE,
+			Self::HI => Language::HI,
+			Self::HO => Language::HO,
+			Self::HR => Language::HR,
+			Self::HT => Language::HT,
+			Self::HU => Language::HU,
+			Self::HY => Language::HY,
+			Self::HZ => Language::HZ,
+			Self::IA => Language::IA,
+			Self::ID => Language::ID,
+			Self::IE => Language::IE,
+			Self::IG => Language::IG,
+			Self::II => Language::II,
+			Self::IK => Language::IK,
+			Self::IO => Language::IO,
+			Self::IS => Language::IS,
+			Self::IT => Language::IT,
+			Self::IU => Language::IU,
+			Self::JA => Language::JA,
+			Self::JV => Language::JV,
+			Self::KA => Language::KA,
+			Self::KG => Language::KG,
+			Self::KI => Language::KI,
+			Self::KJ => Language::KJ,
+			Self::KK => Language::KK,
+			Self::KL => Language::KL,
+			Self::KM => Language::KM,
+			Self::KN => Language::KN,
+			Self::KO => Language::KO,
+			Self::KR => Language::KR,
+			Self::KS => Language::KS,
+			Self::KU => Language::KU,
+			Self::KV => Language::KV,
+			Self::KW => Language::KW,
+			Self::KY => Language::KY,
+			Self::LA => Language::LA,
+			Self::LB => Language::LB,
+			Self::LG => Language::LG,
+			Self::LI => Language::LI,
+			Self::LN => Language::LN,
+			Self::LO => Language::LO,
+			Self::LT => Language::LT,
+			Self::LU => Language::LU,
+			Self::LV => Language::LV,
+			Self::MG => Language::MG,
+			Self::MH => Language::MH,
+			Self::MI => Language::MI,
+			Self::MK => Language::MK,
+			Self::ML => Language::ML,
+			Self::MN => Language::MN,
+			Self::MR => Language::MR,
+			Self::MS => Language::MS,
+			Self::MT => Language::MT,
+			Self::MY => Language::MY,
+			Self::NA => Language::NA,
+			Self::NB => Language::NB,
+			Self::ND => Language::ND,
+			Self::NE => Language::NE,
+			Self::NG => Language::NG,
+			Self::NL => Language::NL,
+			Self::NN => Language::NN,
+			Self::NO => Language::NO,
+			Self::NR => Language::NR,
+			Self::NV => Language::NV,
+			Self::NY => Language::NY,
+			Self::OC => Language::OC,
+			Self::OJ => Language::OJ,
+			Self::OM => Language::OM,
+			Self::OR => Language::OR,
+			Self::OS => Language::OS,
+			Self::PA => Language::PA,
+			Self::PI => Language::PI,
+			Self::PL => Language::PL,
+			Self::PS => Language::PS,
+			Self::PT => Language::PT,
+			Self::QU => Language::QU,
+			Self::RM => Language::RM,
+			Self::RN => Language::RN,
+			Self::RO => Language::RO,
+			Self::RU => Language::RU,
+			Self::RW => Language::RW,
+			Self::SA => Language::SA,
+			Self::SC => Language::SC,
+			Self::SD => Language::SD,
+			Self::SE => Language::SE,
+			Self::SG => Language::SG,
+			Self::SI => Language::SI,
+			Self::SK => Language::SK,
+			Self::SL => Language::SL,
+			Self::SM => Language::SM,
+			Self::SN => Language::SN,
+			Self::SO => Language::SO,
+			Self::SQ => Language::SQ,
+			Self::SR => Language::SR,
+			Self::SS => Language::SS,
+			Self::ST => Language::ST,
+			Self::SU => Language::SU,
+			Self::SV => Language::SV,
+			Self::SW => Language::SW,
+			Self::TA => Language::TA,
+			Self::TE => Language::TE,
+			Self::TG => Language::TG,
+			Self::TH => Language::TH,
+			Self::TI => Language::TI,
+			Self::TK => Language::TK,
+			Self::TL => Language::TL,
+			Self::TN => Language::TN,
+			Self::TO => Language::TO,
+			Self::TR => Language::TR,
+			Self::TS => Language::TS,
+			Self::TT => Language::TT,
+			Self::TW => Language::TW,
+			Self::TY => Language::TY,
+			Self::UG => Language::UG,
+			Self::UK => Language::UK,
+			Self::UR => Language::UR,
+			Self::UZ => Language::UZ,
+			Self::VE => Language::VE,
+			Self::VI => Language::VI,
+			Self::VO => Language::VO,
+			Self::WA => Language::WA,
+			Self::WO => Language::WO,
+			Self::XH => Language::XH,
+			Self::YI => Language::YI,
+			Self::YO => Language::YO,
+			Self::ZA => Language::ZA,
+			Self::ZH => Language::ZH,
+			Self::ZU => Language::ZU,
+		}
 	}
 }
 
@@ -1252,8 +2027,8 @@ impl TryFrom<String> for LanguageCode {
 
 //		Structs
 
-//		Language																
-/// A language.
+//		LanguageInfo															
+/// Language information.
 /// 
 /// A language has a number of properties, including a name, a language code,
 /// and the countries where the language is used.
@@ -1269,12 +2044,11 @@ impl TryFrom<String> for LanguageCode {
 /// 
 /// # See also
 /// 
+/// * [`Language`]
 /// * [`LanguageCode`]
 /// 
-#[derive(Clone, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
-#[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
-pub struct Language {
+struct LanguageInfo {
 	//		Private properties													
 	/// The name of the language.
 	name:      String,
@@ -1291,35 +2065,35 @@ impl Language {
 	/// Returns the name of the language.
 	#[must_use]
 	pub fn name(&self) -> &str {
-		&self.name
+		&self.info().name
 	}
 	
 	//		code																
 	/// Returns the language code.
 	#[must_use]
-	pub const fn code(&self) -> LanguageCode {
-		self.code
+	pub fn code(&self) -> LanguageCode {
+		self.info().code
 	}
 	
 	//		countries															
 	/// Returns the countries where the language is used.
 	#[must_use]
-	pub const fn countries(&self) -> &HashSet<CountryCode> {
-		&self.countries
+	pub fn countries(&self) -> &HashSet<CountryCode> {
+		&self.info().countries
 	}
 }
 
 impl AsStr for Language {
 	//		as_str																
 	fn as_str(&self) -> &str {
-		&self.name
+		&self.info().name
 	}
 }
 
 impl Debug for Language {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}: {}", self.code.as_str(), self.as_str())
+		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
 	}
 }
 
@@ -1344,9 +2118,11 @@ impl FromStr for Language {
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		LANGUAGES
 			.values()
-			.find(|language| language.name == s)
-			.cloned()
-			.ok_or_else(|| format!("Invalid Language: {s}"))
+			.find(|info| info.name == s)
+			.map_or_else(
+				||     Err(format!("Invalid Language: {s}")),
+				|info| Ok(info.code.language())
+			)
 	}
 }
 

@@ -11,21 +11,20 @@ mod currency_code__enum {
 	#[test]
 	fn currency() {
 		let currency = CurrencyCode::USD.currency();
-		assert_eq!(currency.name, "United States dollar");
-		assert_eq!(currency.code, CurrencyCode::USD);
+		assert_eq!(currency.name(), "United States dollar");
+		assert_eq!(currency.code(), CurrencyCode::USD);
 	}
 	#[test]
 	fn currency__all() {
-		for code in CURRENCIES.keys() {
-			assert_eq!(code.currency().code, *code);
+		for currency in CURRENCIES.keys() {
+			assert_eq!(currency.code().currency(), *currency);
 		}
 	}
 	#[test]
 	fn currency__relationships() {
-		for currency_code in CURRENCIES.keys() {
-			let currency = currency_code.currency();
-			for country_code in currency.countries.iter() {
-				assert!(country_code.country().currencies().contains(currency_code));
+		for currency in CURRENCIES.keys() {
+			for country_code in currency.countries().iter() {
+				assert!(country_code.country().currencies().contains(&currency.code()));
 			}
 		}
 	}
@@ -123,33 +122,41 @@ mod currency_code__traits {
 	}
 }
 
-//		Currency																
+//		Currency																
 #[cfg(test)]
-mod currency__struct {
+mod currency__enum {
 	use super::super::*;
+	
+	//		info																
+	#[test]
+	fn info() {
+		let info = Currency::USD.info();
+		assert_eq!(info.name, "United States dollar");
+		assert_eq!(info.code, CurrencyCode::USD);
+	}
 	
 	//		name																
 	#[test]
 	fn name() {
-		assert_eq!(CurrencyCode::GBP.currency().name(), "Pound sterling");
+		assert_eq!(Currency::GBP.name(), "Pound sterling");
 	}
 	
 	//		code																
 	#[test]
 	fn code() {
-		assert_eq!(CurrencyCode::GBP.currency().code(), CurrencyCode::GBP);
+		assert_eq!(Currency::GBP.code(), CurrencyCode::GBP);
 	}
 	
 	//		digits																
 	#[test]
 	fn digits() {
-		assert_eq!(CurrencyCode::GBP.currency().digits(), 2);
+		assert_eq!(Currency::GBP.digits(), 2);
 	}
 	
 	//		countries															
 	#[test]
 	fn countries() {
-		assert_eq!(CurrencyCode::GBP.currency().countries(), &vh![ CountryCode: GB, GG, IM, JE, SH ]);
+		assert_eq!(Currency::GBP.countries(), &vh![ CountryCode: GB, GG, IM, JE, SH ]);
 	}
 }
 
@@ -162,26 +169,26 @@ mod currency__traits {
 	//		as_str																
 	#[test]
 	fn as_str() {
-		assert_eq!(CurrencyCode::USD.currency().as_str(), "United States dollar");
+		assert_eq!(Currency::USD.as_str(), "United States dollar");
 	}
 	
 	//		debug																
 	#[test]
 	fn debug() {
-		assert_eq!(format!("{:?}", CurrencyCode::USD.currency()), "USD: United States dollar");
+		assert_eq!(format!("{:?}", Currency::USD), "USD: United States dollar");
 	}
 	
 	//		deserialize															
 	#[test]
 	fn deserialize() {
 		let currency: Currency = serde_json::from_str(r#""United States dollar""#).unwrap();
-		assert_eq!(currency, *CurrencyCode::USD.currency());
+		assert_eq!(currency, Currency::USD);
 	}
 	
 	//		display																
 	#[test]
 	fn display() {
-		let currency = CurrencyCode::USD.currency();
+		let currency = Currency::USD;
 		assert_eq!(format!("{}", currency), "United States dollar");
 		assert_eq!(currency.to_string(),    "United States dollar");
 	}
@@ -189,17 +196,17 @@ mod currency__traits {
 	//		eq / partial_eq														
 	#[test]
 	fn eq() {
-		assert_eq!(CurrencyCode::USD.currency(), CurrencyCode::USD.currency());
+		assert_eq!(Currency::USD, Currency::USD);
 	}
 	#[test]
 	fn ne() {
-		assert_ne!(CurrencyCode::USD.currency(), CurrencyCode::EUR.currency());
+		assert_ne!(Currency::USD, Currency::EUR);
 	}
 	
 	//		from																
 	#[test]
 	fn from__currency_for_string() {
-		let currency = CurrencyCode::USD.currency();
+		let currency = Currency::USD;
 		assert_eq!(String::from(currency.clone()), "United States dollar");
 		let str: String = currency.clone().into();
 		assert_eq!(str,                            "United States dollar");
@@ -208,7 +215,7 @@ mod currency__traits {
 	//		from_str															
 	#[test]
 	fn from_str() {
-		assert_eq!(Currency::from_str("United States dollar").unwrap(), *CurrencyCode::USD.currency());
+		assert_eq!(Currency::from_str("United States dollar").unwrap(), Currency::USD);
 		let err = Currency::from_str("Foo dollar");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid Currency: Foo dollar");
@@ -217,13 +224,13 @@ mod currency__traits {
 	//		serialize															
 	#[test]
 	fn serialize() {
-		assert_eq!(serde_json::to_string(CurrencyCode::USD.currency()).unwrap(), r#""United States dollar""#);
+		assert_eq!(serde_json::to_string(&Currency::USD).unwrap(), r#""United States dollar""#);
 	}
 	
 	//		try_from															
 	#[test]
 	fn try_from__string() {
-		assert_eq!(Currency::from_str("United States dollar").unwrap(), *CurrencyCode::USD.currency());
+		assert_eq!(Currency::from_str("United States dollar").unwrap(), Currency::USD);
 		let err = Currency::from_str("Foo dollar");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid Currency: Foo dollar");

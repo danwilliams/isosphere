@@ -46,193 +46,776 @@ use velcro::hash_map;
 /// * [`CurrencyCode`]
 /// * [`Currency`]
 /// 
-pub static CURRENCIES: Lazy<HashMap<CurrencyCode, Currency>> = Lazy::new(|| {
+static CURRENCIES: Lazy<HashMap<Currency, CurrencyInfo>> = Lazy::new(|| {
 	hash_map!{
-		CurrencyCode::AED: Currency { code: CurrencyCode::AED, name: s!("United Arab Emirates dirham"),                   digits: 2, countries: vh![ CountryCode: AE ] },
-		CurrencyCode::AFN: Currency { code: CurrencyCode::AFN, name: s!("Afghan afghani"),                                digits: 2, countries: vh![ CountryCode: AF ] },
-		CurrencyCode::ALL: Currency { code: CurrencyCode::ALL, name: s!("Albanian lek"),                                  digits: 2, countries: vh![ CountryCode: AL ] },
-		CurrencyCode::AMD: Currency { code: CurrencyCode::AMD, name: s!("Armenian dram"),                                 digits: 2, countries: vh![ CountryCode: AM ] },
-		CurrencyCode::ANG: Currency { code: CurrencyCode::ANG, name: s!("Netherlands Antillean guilder"),                 digits: 2, countries: vh![ CountryCode: CW, SX ] },
-		CurrencyCode::AOA: Currency { code: CurrencyCode::AOA, name: s!("Angolan kwanza"),                                digits: 2, countries: vh![ CountryCode: AO ] },
-		CurrencyCode::ARS: Currency { code: CurrencyCode::ARS, name: s!("Argentine peso"),                                digits: 2, countries: vh![ CountryCode: AR ] },
-		CurrencyCode::AUD: Currency { code: CurrencyCode::AUD, name: s!("Australian dollar"),                             digits: 2, countries: vh![ CountryCode: AU, CC, CX, HM, KI, NF, NR, TV ] },
-		CurrencyCode::AWG: Currency { code: CurrencyCode::AWG, name: s!("Aruban florin"),                                 digits: 2, countries: vh![ CountryCode: AW ] },
-		CurrencyCode::AZN: Currency { code: CurrencyCode::AZN, name: s!("Azerbaijani manat"),                             digits: 2, countries: vh![ CountryCode: AZ ] },
-		CurrencyCode::BAM: Currency { code: CurrencyCode::BAM, name: s!("Bosnia and Herzegovina convertible mark"),       digits: 2, countries: vh![ CountryCode: BA ] },
-		CurrencyCode::BBD: Currency { code: CurrencyCode::BBD, name: s!("Barbados dollar"),                               digits: 2, countries: vh![ CountryCode: BB ] },
-		CurrencyCode::BDT: Currency { code: CurrencyCode::BDT, name: s!("Bangladeshi taka"),                              digits: 2, countries: vh![ CountryCode: BD ] },
-		CurrencyCode::BGN: Currency { code: CurrencyCode::BGN, name: s!("Bulgarian lev"),                                 digits: 2, countries: vh![ CountryCode: BG ] },
-		CurrencyCode::BHD: Currency { code: CurrencyCode::BHD, name: s!("Bahraini dinar"),                                digits: 3, countries: vh![ CountryCode: BH ] },
-		CurrencyCode::BIF: Currency { code: CurrencyCode::BIF, name: s!("Burundian franc"),                               digits: 0, countries: vh![ CountryCode: BI ] },
-		CurrencyCode::BMD: Currency { code: CurrencyCode::BMD, name: s!("Bermudian dollar"),                              digits: 2, countries: vh![ CountryCode: BM ] },
-		CurrencyCode::BND: Currency { code: CurrencyCode::BND, name: s!("Brunei dollar"),                                 digits: 2, countries: vh![ CountryCode: BN ] },
-		CurrencyCode::BOB: Currency { code: CurrencyCode::BOB, name: s!("Boliviano"),                                     digits: 2, countries: vh![ CountryCode: BO ] },
-		CurrencyCode::BOV: Currency { code: CurrencyCode::BOV, name: s!("Bolivian Mvdol"),                                digits: 2, countries: vh![ CountryCode: BO ] },
-		CurrencyCode::BRL: Currency { code: CurrencyCode::BRL, name: s!("Brazilian real"),                                digits: 2, countries: vh![ CountryCode: BR ] },
-		CurrencyCode::BSD: Currency { code: CurrencyCode::BSD, name: s!("Bahamian dollar"),                               digits: 2, countries: vh![ CountryCode: BS ] },
-		CurrencyCode::BTN: Currency { code: CurrencyCode::BTN, name: s!("Bhutanese ngultrum"),                            digits: 2, countries: vh![ CountryCode: BT ] },
-		CurrencyCode::BWP: Currency { code: CurrencyCode::BWP, name: s!("Botswana pula"),                                 digits: 2, countries: vh![ CountryCode: BW ] },
-		CurrencyCode::BYN: Currency { code: CurrencyCode::BYN, name: s!("Belarusian ruble"),                              digits: 2, countries: vh![ CountryCode: BY ] },
-		CurrencyCode::BZD: Currency { code: CurrencyCode::BZD, name: s!("Belize dollar"),                                 digits: 2, countries: vh![ CountryCode: BZ ] },
-		CurrencyCode::CAD: Currency { code: CurrencyCode::CAD, name: s!("Canadian dollar"),                               digits: 2, countries: vh![ CountryCode: CA ] },
-		CurrencyCode::CDF: Currency { code: CurrencyCode::CDF, name: s!("Congolese franc"),                               digits: 2, countries: vh![ CountryCode: CD ] },
-		CurrencyCode::CHE: Currency { code: CurrencyCode::CHE, name: s!("WIR euro"),                                      digits: 2, countries: vh![ CountryCode: CH ] },
-		CurrencyCode::CHF: Currency { code: CurrencyCode::CHF, name: s!("Swiss franc"),                                   digits: 2, countries: vh![ CountryCode: CH, LI ] },
-		CurrencyCode::CHW: Currency { code: CurrencyCode::CHW, name: s!("WIR franc"),                                     digits: 2, countries: vh![ CountryCode: CH ] },
-		CurrencyCode::CLF: Currency { code: CurrencyCode::CLF, name: s!("Unidad de Fomento"),                             digits: 4, countries: vh![ CountryCode: CL ] },
-		CurrencyCode::CLP: Currency { code: CurrencyCode::CLP, name: s!("Chilean peso"),                                  digits: 0, countries: vh![ CountryCode: CL ] },
-		CurrencyCode::CNY: Currency { code: CurrencyCode::CNY, name: s!("Renminbi"),                                      digits: 2, countries: vh![ CountryCode: CN ] },
-		CurrencyCode::COP: Currency { code: CurrencyCode::COP, name: s!("Colombian peso"),                                digits: 2, countries: vh![ CountryCode: CO ] },
-		CurrencyCode::COU: Currency { code: CurrencyCode::COU, name: s!("Unidad de Valor Real (UVR)"),                    digits: 2, countries: vh![ CountryCode: CO ] },
-		CurrencyCode::CRC: Currency { code: CurrencyCode::CRC, name: s!("Costa Rican colon"),                             digits: 2, countries: vh![ CountryCode: CR ] },
-		CurrencyCode::CUP: Currency { code: CurrencyCode::CUP, name: s!("Cuban peso"),                                    digits: 2, countries: vh![ CountryCode: CU ] },
-		CurrencyCode::CVE: Currency { code: CurrencyCode::CVE, name: s!("Cape Verdean escudo"),                           digits: 2, countries: vh![ CountryCode: CV ] },
-		CurrencyCode::CZK: Currency { code: CurrencyCode::CZK, name: s!("Czech koruna"),                                  digits: 2, countries: vh![ CountryCode: CZ ] },
-		CurrencyCode::DJF: Currency { code: CurrencyCode::DJF, name: s!("Djiboutian franc"),                              digits: 0, countries: vh![ CountryCode: DJ ] },
-		CurrencyCode::DKK: Currency { code: CurrencyCode::DKK, name: s!("Danish krone"),                                  digits: 2, countries: vh![ CountryCode: DK, FO, GL ] },
-		CurrencyCode::DOP: Currency { code: CurrencyCode::DOP, name: s!("Dominican peso"),                                digits: 2, countries: vh![ CountryCode: DO ] },
-		CurrencyCode::DZD: Currency { code: CurrencyCode::DZD, name: s!("Algerian dinar"),                                digits: 2, countries: vh![ CountryCode: DZ ] },
-		CurrencyCode::EGP: Currency { code: CurrencyCode::EGP, name: s!("Egyptian pound"),                                digits: 2, countries: vh![ CountryCode: EG ] },
-		CurrencyCode::ERN: Currency { code: CurrencyCode::ERN, name: s!("Eritrean nakfa"),                                digits: 2, countries: vh![ CountryCode: ER ] },
-		CurrencyCode::ETB: Currency { code: CurrencyCode::ETB, name: s!("Ethiopian birr"),                                digits: 2, countries: vh![ CountryCode: ET ] },
-		CurrencyCode::EUR: Currency { code: CurrencyCode::EUR, name: s!("Euro"),                                          digits: 2, countries: vh![ CountryCode: AD, AT, AX, BE, BL, CY, DE, EE, ES, FI, FR, GF, GP, GR, HR, IE, IT, LT, LU, LV, MC, ME, MF, MQ, MT, NL, PM, PT, RE, SI, SK, SM, TF, VA, YT ] },
-		CurrencyCode::FJD: Currency { code: CurrencyCode::FJD, name: s!("Fiji dollar"),                                   digits: 2, countries: vh![ CountryCode: FJ ] },
-		CurrencyCode::FKP: Currency { code: CurrencyCode::FKP, name: s!("Falkland Islands pound"),                        digits: 2, countries: vh![ CountryCode: FK ] },
-		CurrencyCode::GBP: Currency { code: CurrencyCode::GBP, name: s!("Pound sterling"),                                digits: 2, countries: vh![ CountryCode: GB, GG, IM, JE, SH ] },
-		CurrencyCode::GEL: Currency { code: CurrencyCode::GEL, name: s!("Georgian lari"),                                 digits: 2, countries: vh![ CountryCode: GE ] },
-		CurrencyCode::GHS: Currency { code: CurrencyCode::GHS, name: s!("Ghanaian cedi"),                                 digits: 2, countries: vh![ CountryCode: GH ] },
-		CurrencyCode::GIP: Currency { code: CurrencyCode::GIP, name: s!("Gibraltar pound"),                               digits: 2, countries: vh![ CountryCode: GI ] },
-		CurrencyCode::GMD: Currency { code: CurrencyCode::GMD, name: s!("Gambian dalasi"),                                digits: 2, countries: vh![ CountryCode: GM ] },
-		CurrencyCode::GNF: Currency { code: CurrencyCode::GNF, name: s!("Guinean franc"),                                 digits: 0, countries: vh![ CountryCode: GN ] },
-		CurrencyCode::GTQ: Currency { code: CurrencyCode::GTQ, name: s!("Guatemalan quetzal"),                            digits: 2, countries: vh![ CountryCode: GT ] },
-		CurrencyCode::GYD: Currency { code: CurrencyCode::GYD, name: s!("Guyanese dollar"),                               digits: 2, countries: vh![ CountryCode: GY ] },
-		CurrencyCode::HKD: Currency { code: CurrencyCode::HKD, name: s!("Hong Kong dollar"),                              digits: 2, countries: vh![ CountryCode: HK ] },
-		CurrencyCode::HNL: Currency { code: CurrencyCode::HNL, name: s!("Honduran lempira"),                              digits: 2, countries: vh![ CountryCode: HN ] },
-		CurrencyCode::HTG: Currency { code: CurrencyCode::HTG, name: s!("Haitian gourde"),                                digits: 2, countries: vh![ CountryCode: HT ] },
-		CurrencyCode::HUF: Currency { code: CurrencyCode::HUF, name: s!("Hungarian forint"),                              digits: 2, countries: vh![ CountryCode: HU ] },
-		CurrencyCode::IDR: Currency { code: CurrencyCode::IDR, name: s!("Indonesian rupiah"),                             digits: 2, countries: vh![ CountryCode: ID ] },
-		CurrencyCode::ILS: Currency { code: CurrencyCode::ILS, name: s!("Israeli new shekel"),                            digits: 2, countries: vh![ CountryCode: IL ] },
-		CurrencyCode::INR: Currency { code: CurrencyCode::INR, name: s!("Indian rupee"),                                  digits: 2, countries: vh![ CountryCode: BT, IN ] },
-		CurrencyCode::IQD: Currency { code: CurrencyCode::IQD, name: s!("Iraqi dinar"),                                   digits: 3, countries: vh![ CountryCode: IQ ] },
-		CurrencyCode::IRR: Currency { code: CurrencyCode::IRR, name: s!("Iranian rial"),                                  digits: 2, countries: vh![ CountryCode: IR ] },
-		CurrencyCode::ISK: Currency { code: CurrencyCode::ISK, name: s!("Icelandic króna"),                               digits: 0, countries: vh![ CountryCode: IS ] },
-		CurrencyCode::JMD: Currency { code: CurrencyCode::JMD, name: s!("Jamaican dollar"),                               digits: 2, countries: vh![ CountryCode: JM ] },
-		CurrencyCode::JOD: Currency { code: CurrencyCode::JOD, name: s!("Jordanian dinar"),                               digits: 3, countries: vh![ CountryCode: JO ] },
-		CurrencyCode::JPY: Currency { code: CurrencyCode::JPY, name: s!("Japanese yen"),                                  digits: 0, countries: vh![ CountryCode: JP ] },
-		CurrencyCode::KES: Currency { code: CurrencyCode::KES, name: s!("Kenyan shilling"),                               digits: 2, countries: vh![ CountryCode: KE ] },
-		CurrencyCode::KGS: Currency { code: CurrencyCode::KGS, name: s!("Kyrgyzstani som"),                               digits: 2, countries: vh![ CountryCode: KG ] },
-		CurrencyCode::KHR: Currency { code: CurrencyCode::KHR, name: s!("Cambodian riel"),                                digits: 2, countries: vh![ CountryCode: KH ] },
-		CurrencyCode::KMF: Currency { code: CurrencyCode::KMF, name: s!("Comoro franc"),                                  digits: 0, countries: vh![ CountryCode: KM ] },
-		CurrencyCode::KPW: Currency { code: CurrencyCode::KPW, name: s!("North Korean won"),                              digits: 2, countries: vh![ CountryCode: KP ] },
-		CurrencyCode::KRW: Currency { code: CurrencyCode::KRW, name: s!("South Korean won"),                              digits: 0, countries: vh![ CountryCode: KR ] },
-		CurrencyCode::KWD: Currency { code: CurrencyCode::KWD, name: s!("Kuwaiti dinar"),                                 digits: 3, countries: vh![ CountryCode: KW ] },
-		CurrencyCode::KYD: Currency { code: CurrencyCode::KYD, name: s!("Cayman Islands dollar"),                         digits: 2, countries: vh![ CountryCode: KY ] },
-		CurrencyCode::KZT: Currency { code: CurrencyCode::KZT, name: s!("Kazakhstani tenge"),                             digits: 2, countries: vh![ CountryCode: KZ ] },
-		CurrencyCode::LAK: Currency { code: CurrencyCode::LAK, name: s!("Lao kip"),                                       digits: 2, countries: vh![ CountryCode: LA ] },
-		CurrencyCode::LBP: Currency { code: CurrencyCode::LBP, name: s!("Lebanese pound"),                                digits: 2, countries: vh![ CountryCode: LB ] },
-		CurrencyCode::LKR: Currency { code: CurrencyCode::LKR, name: s!("Sri Lankan rupee"),                              digits: 2, countries: vh![ CountryCode: LK ] },
-		CurrencyCode::LRD: Currency { code: CurrencyCode::LRD, name: s!("Liberian dollar"),                               digits: 2, countries: vh![ CountryCode: LR ] },
-		CurrencyCode::LSL: Currency { code: CurrencyCode::LSL, name: s!("Lesotho loti"),                                  digits: 2, countries: vh![ CountryCode: LS ] },
-		CurrencyCode::LYD: Currency { code: CurrencyCode::LYD, name: s!("Libyan dinar"),                                  digits: 3, countries: vh![ CountryCode: LY ] },
-		CurrencyCode::MAD: Currency { code: CurrencyCode::MAD, name: s!("Moroccan dirham"),                               digits: 2, countries: vh![ CountryCode: EH, MA ] },
-		CurrencyCode::MDL: Currency { code: CurrencyCode::MDL, name: s!("Moldovan leu"),                                  digits: 2, countries: vh![ CountryCode: MD ] },
-		CurrencyCode::MGA: Currency { code: CurrencyCode::MGA, name: s!("Malagasy ariary"),                               digits: 2, countries: vh![ CountryCode: MG ] },
-		CurrencyCode::MKD: Currency { code: CurrencyCode::MKD, name: s!("Macedonian denar"),                              digits: 2, countries: vh![ CountryCode: MK ] },
-		CurrencyCode::MMK: Currency { code: CurrencyCode::MMK, name: s!("Myanmar kyat"),                                  digits: 2, countries: vh![ CountryCode: MM ] },
-		CurrencyCode::MNT: Currency { code: CurrencyCode::MNT, name: s!("Mongolian tögrög"),                              digits: 2, countries: vh![ CountryCode: MN ] },
-		CurrencyCode::MOP: Currency { code: CurrencyCode::MOP, name: s!("Macanese pataca"),                               digits: 2, countries: vh![ CountryCode: MO ] },
-		CurrencyCode::MRU: Currency { code: CurrencyCode::MRU, name: s!("Mauritanian ouguiya"),                           digits: 2, countries: vh![ CountryCode: MR ] },
-		CurrencyCode::MUR: Currency { code: CurrencyCode::MUR, name: s!("Mauritian rupee"),                               digits: 2, countries: vh![ CountryCode: MU ] },
-		CurrencyCode::MVR: Currency { code: CurrencyCode::MVR, name: s!("Maldivian rufiyaa"),                             digits: 2, countries: vh![ CountryCode: MV ] },
-		CurrencyCode::MWK: Currency { code: CurrencyCode::MWK, name: s!("Malawian kwacha"),                               digits: 2, countries: vh![ CountryCode: MW ] },
-		CurrencyCode::MXN: Currency { code: CurrencyCode::MXN, name: s!("Mexican peso"),                                  digits: 2, countries: vh![ CountryCode: MX ] },
-		CurrencyCode::MXV: Currency { code: CurrencyCode::MXV, name: s!("Mexican Unidad de Inversion (UDI)"),             digits: 2, countries: vh![ CountryCode: MX ] },
-		CurrencyCode::MYR: Currency { code: CurrencyCode::MYR, name: s!("Malaysian ringgit"),                             digits: 2, countries: vh![ CountryCode: MY ] },
-		CurrencyCode::MZN: Currency { code: CurrencyCode::MZN, name: s!("Mozambican metical"),                            digits: 2, countries: vh![ CountryCode: MZ ] },
-		CurrencyCode::NAD: Currency { code: CurrencyCode::NAD, name: s!("Namibian dollar"),                               digits: 2, countries: vh![ CountryCode: NA ] },
-		CurrencyCode::NGN: Currency { code: CurrencyCode::NGN, name: s!("Nigerian naira"),                                digits: 2, countries: vh![ CountryCode: NG ] },
-		CurrencyCode::NIO: Currency { code: CurrencyCode::NIO, name: s!("Nicaraguan córdoba"),                            digits: 2, countries: vh![ CountryCode: NI ] },
-		CurrencyCode::NOK: Currency { code: CurrencyCode::NOK, name: s!("Norwegian krone"),                               digits: 2, countries: vh![ CountryCode: BV, NO, SJ ] },
-		CurrencyCode::NPR: Currency { code: CurrencyCode::NPR, name: s!("Nepalese rupee"),                                digits: 2, countries: vh![ CountryCode: NP ] },
-		CurrencyCode::NZD: Currency { code: CurrencyCode::NZD, name: s!("New Zealand dollar"),                            digits: 2, countries: vh![ CountryCode: CK, NU, NZ, PN, TK ] },
-		CurrencyCode::OMR: Currency { code: CurrencyCode::OMR, name: s!("Omani rial"),                                    digits: 3, countries: vh![ CountryCode: OM ] },
-		CurrencyCode::PAB: Currency { code: CurrencyCode::PAB, name: s!("Panamanian balboa"),                             digits: 2, countries: vh![ CountryCode: PA ] },
-		CurrencyCode::PEN: Currency { code: CurrencyCode::PEN, name: s!("Peruvian sol"),                                  digits: 2, countries: vh![ CountryCode: PE ] },
-		CurrencyCode::PGK: Currency { code: CurrencyCode::PGK, name: s!("Papua New Guinean kina"),                        digits: 2, countries: vh![ CountryCode: PG ] },
-		CurrencyCode::PHP: Currency { code: CurrencyCode::PHP, name: s!("Philippine peso"),                               digits: 2, countries: vh![ CountryCode: PH ] },
-		CurrencyCode::PKR: Currency { code: CurrencyCode::PKR, name: s!("Pakistani rupee"),                               digits: 2, countries: vh![ CountryCode: PK ] },
-		CurrencyCode::PLN: Currency { code: CurrencyCode::PLN, name: s!("Polish złoty"),                                  digits: 2, countries: vh![ CountryCode: PL ] },
-		CurrencyCode::PYG: Currency { code: CurrencyCode::PYG, name: s!("Paraguayan guaraní"),                            digits: 0, countries: vh![ CountryCode: PY ] },
-		CurrencyCode::QAR: Currency { code: CurrencyCode::QAR, name: s!("Qatari riyal"),                                  digits: 2, countries: vh![ CountryCode: QA ] },
-		CurrencyCode::RON: Currency { code: CurrencyCode::RON, name: s!("Romanian leu"),                                  digits: 2, countries: vh![ CountryCode: RO ] },
-		CurrencyCode::RSD: Currency { code: CurrencyCode::RSD, name: s!("Serbian dinar"),                                 digits: 2, countries: vh![ CountryCode: RS ] },
-		CurrencyCode::RUB: Currency { code: CurrencyCode::RUB, name: s!("Russian ruble"),                                 digits: 2, countries: vh![ CountryCode: RU ] },
-		CurrencyCode::RWF: Currency { code: CurrencyCode::RWF, name: s!("Rwandan franc"),                                 digits: 0, countries: vh![ CountryCode: RW ] },
-		CurrencyCode::SAR: Currency { code: CurrencyCode::SAR, name: s!("Saudi riyal"),                                   digits: 2, countries: vh![ CountryCode: SA ] },
-		CurrencyCode::SBD: Currency { code: CurrencyCode::SBD, name: s!("Solomon Islands dollar"),                        digits: 2, countries: vh![ CountryCode: SB ] },
-		CurrencyCode::SCR: Currency { code: CurrencyCode::SCR, name: s!("Seychelles rupee"),                              digits: 2, countries: vh![ CountryCode: SC ] },
-		CurrencyCode::SDG: Currency { code: CurrencyCode::SDG, name: s!("Sudanese pound"),                                digits: 2, countries: vh![ CountryCode: SD ] },
-		CurrencyCode::SEK: Currency { code: CurrencyCode::SEK, name: s!("Swedish krona"),                                 digits: 2, countries: vh![ CountryCode: SE ] },
-		CurrencyCode::SGD: Currency { code: CurrencyCode::SGD, name: s!("Singapore dollar"),                              digits: 2, countries: vh![ CountryCode: SG ] },
-		CurrencyCode::SHP: Currency { code: CurrencyCode::SHP, name: s!("Saint Helena pound"),                            digits: 2, countries: vh![ CountryCode: SH ] },
-		CurrencyCode::SLE: Currency { code: CurrencyCode::SLE, name: s!("Sierra Leonean leone (new leone)"),              digits: 2, countries: vh![ CountryCode: SL ] },
-		CurrencyCode::SLL: Currency { code: CurrencyCode::SLL, name: s!("Sierra Leonean leone (old leone)"),              digits: 2, countries: vh![ CountryCode: SL ] },
-		CurrencyCode::SOS: Currency { code: CurrencyCode::SOS, name: s!("Somali shilling"),                               digits: 2, countries: vh![ CountryCode: SO ] },
-		CurrencyCode::SRD: Currency { code: CurrencyCode::SRD, name: s!("Surinamese dollar"),                             digits: 2, countries: vh![ CountryCode: SR ] },
-		CurrencyCode::SSP: Currency { code: CurrencyCode::SSP, name: s!("South Sudanese pound"),                          digits: 2, countries: vh![ CountryCode: SS ] },
-		CurrencyCode::STN: Currency { code: CurrencyCode::STN, name: s!("São Tomé and Príncipe dobra"),                   digits: 2, countries: vh![ CountryCode: ST ] },
-		CurrencyCode::SVC: Currency { code: CurrencyCode::SVC, name: s!("Salvadoran colón"),                              digits: 2, countries: vh![ CountryCode: SV ] },
-		CurrencyCode::SYP: Currency { code: CurrencyCode::SYP, name: s!("Syrian pound"),                                  digits: 2, countries: vh![ CountryCode: SY ] },
-		CurrencyCode::SZL: Currency { code: CurrencyCode::SZL, name: s!("Swazi lilangeni"),                               digits: 2, countries: vh![ CountryCode: SZ ] },
-		CurrencyCode::THB: Currency { code: CurrencyCode::THB, name: s!("Thai baht"),                                     digits: 2, countries: vh![ CountryCode: TH ] },
-		CurrencyCode::TJS: Currency { code: CurrencyCode::TJS, name: s!("Tajikistani somoni"),                            digits: 2, countries: vh![ CountryCode: TJ ] },
-		CurrencyCode::TMT: Currency { code: CurrencyCode::TMT, name: s!("Turkmenistan manat"),                            digits: 2, countries: vh![ CountryCode: TM ] },
-		CurrencyCode::TND: Currency { code: CurrencyCode::TND, name: s!("Tunisian dinar"),                                digits: 3, countries: vh![ CountryCode: TN ] },
-		CurrencyCode::TOP: Currency { code: CurrencyCode::TOP, name: s!("Tongan paʻanga"),                                digits: 2, countries: vh![ CountryCode: TO ] },
-		CurrencyCode::TRY: Currency { code: CurrencyCode::TRY, name: s!("Turkish lira"),                                  digits: 2, countries: vh![ CountryCode: TR ] },
-		CurrencyCode::TTD: Currency { code: CurrencyCode::TTD, name: s!("Trinidad and Tobago dollar"),                    digits: 2, countries: vh![ CountryCode: TT ] },
-		CurrencyCode::TWD: Currency { code: CurrencyCode::TWD, name: s!("New Taiwan dollar"),                             digits: 2, countries: vh![ CountryCode: TW ] },
-		CurrencyCode::TZS: Currency { code: CurrencyCode::TZS, name: s!("Tanzanian shilling"),                            digits: 2, countries: vh![ CountryCode: TZ ] },
-		CurrencyCode::UAH: Currency { code: CurrencyCode::UAH, name: s!("Ukrainian hryvnia"),                             digits: 2, countries: vh![ CountryCode: UA ] },
-		CurrencyCode::UGX: Currency { code: CurrencyCode::UGX, name: s!("Ugandan shilling"),                              digits: 0, countries: vh![ CountryCode: UG ] },
-		CurrencyCode::USD: Currency { code: CurrencyCode::USD, name: s!("United States dollar"),                          digits: 2, countries: vh![ CountryCode: AS, BQ, EC, FM, GU, IO, MH, MP, PA, PR, PW, SV, TC, TL, UM, US, VG, VI ] },
-		CurrencyCode::USN: Currency { code: CurrencyCode::USN, name: s!("United States dollar (next day)"),               digits: 2, countries: vh![ CountryCode: US ] },
-		CurrencyCode::UYI: Currency { code: CurrencyCode::UYI, name: s!("Uruguay Peso en Unidades Indexadas (URUIURUI)"), digits: 0, countries: vh![ CountryCode: UY ] },
-		CurrencyCode::UYU: Currency { code: CurrencyCode::UYU, name: s!("Uruguayan peso"),                                digits: 2, countries: vh![ CountryCode: UY ] },
-		CurrencyCode::UYW: Currency { code: CurrencyCode::UYW, name: s!("Unidad previsional"),                            digits: 4, countries: vh![ CountryCode: UY ] },
-		CurrencyCode::UZS: Currency { code: CurrencyCode::UZS, name: s!("Uzbekistan sum"),                                digits: 2, countries: vh![ CountryCode: UZ ] },
-		CurrencyCode::VED: Currency { code: CurrencyCode::VED, name: s!("Venezuelan digital bolívar"),                    digits: 2, countries: vh![ CountryCode: VE ] },
-		CurrencyCode::VES: Currency { code: CurrencyCode::VES, name: s!("Venezuelan sovereign bolívar"),                  digits: 2, countries: vh![ CountryCode: VE ] },
-		CurrencyCode::VND: Currency { code: CurrencyCode::VND, name: s!("Vietnamese đồng"),                               digits: 0, countries: vh![ CountryCode: VN ] },
-		CurrencyCode::VUV: Currency { code: CurrencyCode::VUV, name: s!("Vanuatu vatu"),                                  digits: 0, countries: vh![ CountryCode: VU ] },
-		CurrencyCode::WST: Currency { code: CurrencyCode::WST, name: s!("Samoan tala"),                                   digits: 2, countries: vh![ CountryCode: WS ] },
-		CurrencyCode::XAF: Currency { code: CurrencyCode::XAF, name: s!("CFA franc BEAC"),                                digits: 0, countries: vh![ CountryCode: CF, CG, CM, GA, GQ, TD ] },
-		CurrencyCode::XAG: Currency { code: CurrencyCode::XAG, name: s!("Silver (one troy ounce)"),                       digits: 0, countries: vh![] },
-		CurrencyCode::XAU: Currency { code: CurrencyCode::XAU, name: s!("Gold (one troy ounce)"),                         digits: 0, countries: vh![] },
-		CurrencyCode::XBA: Currency { code: CurrencyCode::XBA, name: s!("European Composite Unit (EURCO)"),               digits: 0, countries: vh![] },
-		CurrencyCode::XBB: Currency { code: CurrencyCode::XBB, name: s!("European Monetary Unit (E.M.U.-6)"),             digits: 0, countries: vh![] },
-		CurrencyCode::XBC: Currency { code: CurrencyCode::XBC, name: s!("European Unit of Account 9 (E.U.A.-9)"),         digits: 0, countries: vh![] },
-		CurrencyCode::XBD: Currency { code: CurrencyCode::XBD, name: s!("European Unit of Account 17 (E.U.A.-17)"),       digits: 0, countries: vh![] },
-		CurrencyCode::XCD: Currency { code: CurrencyCode::XCD, name: s!("East Caribbean dollar"),                         digits: 2, countries: vh![ CountryCode: AG, AI, DM, GD, KN, LC, MS, VC ] },
-		CurrencyCode::XDR: Currency { code: CurrencyCode::XDR, name: s!("Special drawing rights"),                        digits: 0, countries: vh![] },
-		CurrencyCode::XOF: Currency { code: CurrencyCode::XOF, name: s!("CFA franc BCEAO"),                               digits: 0, countries: vh![ CountryCode: BF, BJ, CI, GW, ML, NE, SN, TG ] },
-		CurrencyCode::XPD: Currency { code: CurrencyCode::XPD, name: s!("Palladium (one troy ounce)"),                    digits: 0, countries: vh![] },
-		CurrencyCode::XPF: Currency { code: CurrencyCode::XPF, name: s!("CFP franc (franc Pacifique)"),                   digits: 0, countries: vh![ CountryCode: NC, PF, WF ] },
-		CurrencyCode::XPT: Currency { code: CurrencyCode::XPT, name: s!("Platinum (one troy ounce)"),                     digits: 0, countries: vh![] },
-		CurrencyCode::XSU: Currency { code: CurrencyCode::XSU, name: s!("SUCRE"),                                         digits: 0, countries: vh![] },
-		CurrencyCode::XTS: Currency { code: CurrencyCode::XTS, name: s!("Code reserved for testing"),                     digits: 0, countries: vh![] },
-		CurrencyCode::XUA: Currency { code: CurrencyCode::XUA, name: s!("ADB Unit of Account"),                           digits: 0, countries: vh![] },
-		CurrencyCode::XXX: Currency { code: CurrencyCode::XXX, name: s!("No currency"),                                   digits: 0, countries: vh![] },
-		CurrencyCode::YER: Currency { code: CurrencyCode::YER, name: s!("Yemeni rial"),                                   digits: 2, countries: vh![ CountryCode: YE ] },
-		CurrencyCode::ZAR: Currency { code: CurrencyCode::ZAR, name: s!("South African rand"),                            digits: 2, countries: vh![ CountryCode: LS, NA, SZ, ZA ] },
-		CurrencyCode::ZMW: Currency { code: CurrencyCode::ZMW, name: s!("Zambian kwacha"),                                digits: 2, countries: vh![ CountryCode: ZM ] },
-		CurrencyCode::ZWL: Currency { code: CurrencyCode::ZWL, name: s!("Zimbabwean dollar (fifth)"),                     digits: 2, countries: vh![ CountryCode: ZW ] },
+		Currency::AED: CurrencyInfo { code: CurrencyCode::AED, name: s!("United Arab Emirates dirham"),                   digits: 2, countries: vh![ CountryCode: AE ] },
+		Currency::AFN: CurrencyInfo { code: CurrencyCode::AFN, name: s!("Afghan afghani"),                                digits: 2, countries: vh![ CountryCode: AF ] },
+		Currency::ALL: CurrencyInfo { code: CurrencyCode::ALL, name: s!("Albanian lek"),                                  digits: 2, countries: vh![ CountryCode: AL ] },
+		Currency::AMD: CurrencyInfo { code: CurrencyCode::AMD, name: s!("Armenian dram"),                                 digits: 2, countries: vh![ CountryCode: AM ] },
+		Currency::ANG: CurrencyInfo { code: CurrencyCode::ANG, name: s!("Netherlands Antillean guilder"),                 digits: 2, countries: vh![ CountryCode: CW, SX ] },
+		Currency::AOA: CurrencyInfo { code: CurrencyCode::AOA, name: s!("Angolan kwanza"),                                digits: 2, countries: vh![ CountryCode: AO ] },
+		Currency::ARS: CurrencyInfo { code: CurrencyCode::ARS, name: s!("Argentine peso"),                                digits: 2, countries: vh![ CountryCode: AR ] },
+		Currency::AUD: CurrencyInfo { code: CurrencyCode::AUD, name: s!("Australian dollar"),                             digits: 2, countries: vh![ CountryCode: AU, CC, CX, HM, KI, NF, NR, TV ] },
+		Currency::AWG: CurrencyInfo { code: CurrencyCode::AWG, name: s!("Aruban florin"),                                 digits: 2, countries: vh![ CountryCode: AW ] },
+		Currency::AZN: CurrencyInfo { code: CurrencyCode::AZN, name: s!("Azerbaijani manat"),                             digits: 2, countries: vh![ CountryCode: AZ ] },
+		Currency::BAM: CurrencyInfo { code: CurrencyCode::BAM, name: s!("Bosnia and Herzegovina convertible mark"),       digits: 2, countries: vh![ CountryCode: BA ] },
+		Currency::BBD: CurrencyInfo { code: CurrencyCode::BBD, name: s!("Barbados dollar"),                               digits: 2, countries: vh![ CountryCode: BB ] },
+		Currency::BDT: CurrencyInfo { code: CurrencyCode::BDT, name: s!("Bangladeshi taka"),                              digits: 2, countries: vh![ CountryCode: BD ] },
+		Currency::BGN: CurrencyInfo { code: CurrencyCode::BGN, name: s!("Bulgarian lev"),                                 digits: 2, countries: vh![ CountryCode: BG ] },
+		Currency::BHD: CurrencyInfo { code: CurrencyCode::BHD, name: s!("Bahraini dinar"),                                digits: 3, countries: vh![ CountryCode: BH ] },
+		Currency::BIF: CurrencyInfo { code: CurrencyCode::BIF, name: s!("Burundian franc"),                               digits: 0, countries: vh![ CountryCode: BI ] },
+		Currency::BMD: CurrencyInfo { code: CurrencyCode::BMD, name: s!("Bermudian dollar"),                              digits: 2, countries: vh![ CountryCode: BM ] },
+		Currency::BND: CurrencyInfo { code: CurrencyCode::BND, name: s!("Brunei dollar"),                                 digits: 2, countries: vh![ CountryCode: BN ] },
+		Currency::BOB: CurrencyInfo { code: CurrencyCode::BOB, name: s!("Boliviano"),                                     digits: 2, countries: vh![ CountryCode: BO ] },
+		Currency::BOV: CurrencyInfo { code: CurrencyCode::BOV, name: s!("Bolivian Mvdol"),                                digits: 2, countries: vh![ CountryCode: BO ] },
+		Currency::BRL: CurrencyInfo { code: CurrencyCode::BRL, name: s!("Brazilian real"),                                digits: 2, countries: vh![ CountryCode: BR ] },
+		Currency::BSD: CurrencyInfo { code: CurrencyCode::BSD, name: s!("Bahamian dollar"),                               digits: 2, countries: vh![ CountryCode: BS ] },
+		Currency::BTN: CurrencyInfo { code: CurrencyCode::BTN, name: s!("Bhutanese ngultrum"),                            digits: 2, countries: vh![ CountryCode: BT ] },
+		Currency::BWP: CurrencyInfo { code: CurrencyCode::BWP, name: s!("Botswana pula"),                                 digits: 2, countries: vh![ CountryCode: BW ] },
+		Currency::BYN: CurrencyInfo { code: CurrencyCode::BYN, name: s!("Belarusian ruble"),                              digits: 2, countries: vh![ CountryCode: BY ] },
+		Currency::BZD: CurrencyInfo { code: CurrencyCode::BZD, name: s!("Belize dollar"),                                 digits: 2, countries: vh![ CountryCode: BZ ] },
+		Currency::CAD: CurrencyInfo { code: CurrencyCode::CAD, name: s!("Canadian dollar"),                               digits: 2, countries: vh![ CountryCode: CA ] },
+		Currency::CDF: CurrencyInfo { code: CurrencyCode::CDF, name: s!("Congolese franc"),                               digits: 2, countries: vh![ CountryCode: CD ] },
+		Currency::CHE: CurrencyInfo { code: CurrencyCode::CHE, name: s!("WIR euro"),                                      digits: 2, countries: vh![ CountryCode: CH ] },
+		Currency::CHF: CurrencyInfo { code: CurrencyCode::CHF, name: s!("Swiss franc"),                                   digits: 2, countries: vh![ CountryCode: CH, LI ] },
+		Currency::CHW: CurrencyInfo { code: CurrencyCode::CHW, name: s!("WIR franc"),                                     digits: 2, countries: vh![ CountryCode: CH ] },
+		Currency::CLF: CurrencyInfo { code: CurrencyCode::CLF, name: s!("Unidad de Fomento"),                             digits: 4, countries: vh![ CountryCode: CL ] },
+		Currency::CLP: CurrencyInfo { code: CurrencyCode::CLP, name: s!("Chilean peso"),                                  digits: 0, countries: vh![ CountryCode: CL ] },
+		Currency::CNY: CurrencyInfo { code: CurrencyCode::CNY, name: s!("Renminbi"),                                      digits: 2, countries: vh![ CountryCode: CN ] },
+		Currency::COP: CurrencyInfo { code: CurrencyCode::COP, name: s!("Colombian peso"),                                digits: 2, countries: vh![ CountryCode: CO ] },
+		Currency::COU: CurrencyInfo { code: CurrencyCode::COU, name: s!("Unidad de Valor Real (UVR)"),                    digits: 2, countries: vh![ CountryCode: CO ] },
+		Currency::CRC: CurrencyInfo { code: CurrencyCode::CRC, name: s!("Costa Rican colon"),                             digits: 2, countries: vh![ CountryCode: CR ] },
+		Currency::CUP: CurrencyInfo { code: CurrencyCode::CUP, name: s!("Cuban peso"),                                    digits: 2, countries: vh![ CountryCode: CU ] },
+		Currency::CVE: CurrencyInfo { code: CurrencyCode::CVE, name: s!("Cape Verdean escudo"),                           digits: 2, countries: vh![ CountryCode: CV ] },
+		Currency::CZK: CurrencyInfo { code: CurrencyCode::CZK, name: s!("Czech koruna"),                                  digits: 2, countries: vh![ CountryCode: CZ ] },
+		Currency::DJF: CurrencyInfo { code: CurrencyCode::DJF, name: s!("Djiboutian franc"),                              digits: 0, countries: vh![ CountryCode: DJ ] },
+		Currency::DKK: CurrencyInfo { code: CurrencyCode::DKK, name: s!("Danish krone"),                                  digits: 2, countries: vh![ CountryCode: DK, FO, GL ] },
+		Currency::DOP: CurrencyInfo { code: CurrencyCode::DOP, name: s!("Dominican peso"),                                digits: 2, countries: vh![ CountryCode: DO ] },
+		Currency::DZD: CurrencyInfo { code: CurrencyCode::DZD, name: s!("Algerian dinar"),                                digits: 2, countries: vh![ CountryCode: DZ ] },
+		Currency::EGP: CurrencyInfo { code: CurrencyCode::EGP, name: s!("Egyptian pound"),                                digits: 2, countries: vh![ CountryCode: EG ] },
+		Currency::ERN: CurrencyInfo { code: CurrencyCode::ERN, name: s!("Eritrean nakfa"),                                digits: 2, countries: vh![ CountryCode: ER ] },
+		Currency::ETB: CurrencyInfo { code: CurrencyCode::ETB, name: s!("Ethiopian birr"),                                digits: 2, countries: vh![ CountryCode: ET ] },
+		Currency::EUR: CurrencyInfo { code: CurrencyCode::EUR, name: s!("Euro"),                                          digits: 2, countries: vh![ CountryCode: AD, AT, AX, BE, BL, CY, DE, EE, ES, FI, FR, GF, GP, GR, HR, IE, IT, LT, LU, LV, MC, ME, MF, MQ, MT, NL, PM, PT, RE, SI, SK, SM, TF, VA, YT ] },
+		Currency::FJD: CurrencyInfo { code: CurrencyCode::FJD, name: s!("Fiji dollar"),                                   digits: 2, countries: vh![ CountryCode: FJ ] },
+		Currency::FKP: CurrencyInfo { code: CurrencyCode::FKP, name: s!("Falkland Islands pound"),                        digits: 2, countries: vh![ CountryCode: FK ] },
+		Currency::GBP: CurrencyInfo { code: CurrencyCode::GBP, name: s!("Pound sterling"),                                digits: 2, countries: vh![ CountryCode: GB, GG, IM, JE, SH ] },
+		Currency::GEL: CurrencyInfo { code: CurrencyCode::GEL, name: s!("Georgian lari"),                                 digits: 2, countries: vh![ CountryCode: GE ] },
+		Currency::GHS: CurrencyInfo { code: CurrencyCode::GHS, name: s!("Ghanaian cedi"),                                 digits: 2, countries: vh![ CountryCode: GH ] },
+		Currency::GIP: CurrencyInfo { code: CurrencyCode::GIP, name: s!("Gibraltar pound"),                               digits: 2, countries: vh![ CountryCode: GI ] },
+		Currency::GMD: CurrencyInfo { code: CurrencyCode::GMD, name: s!("Gambian dalasi"),                                digits: 2, countries: vh![ CountryCode: GM ] },
+		Currency::GNF: CurrencyInfo { code: CurrencyCode::GNF, name: s!("Guinean franc"),                                 digits: 0, countries: vh![ CountryCode: GN ] },
+		Currency::GTQ: CurrencyInfo { code: CurrencyCode::GTQ, name: s!("Guatemalan quetzal"),                            digits: 2, countries: vh![ CountryCode: GT ] },
+		Currency::GYD: CurrencyInfo { code: CurrencyCode::GYD, name: s!("Guyanese dollar"),                               digits: 2, countries: vh![ CountryCode: GY ] },
+		Currency::HKD: CurrencyInfo { code: CurrencyCode::HKD, name: s!("Hong Kong dollar"),                              digits: 2, countries: vh![ CountryCode: HK ] },
+		Currency::HNL: CurrencyInfo { code: CurrencyCode::HNL, name: s!("Honduran lempira"),                              digits: 2, countries: vh![ CountryCode: HN ] },
+		Currency::HTG: CurrencyInfo { code: CurrencyCode::HTG, name: s!("Haitian gourde"),                                digits: 2, countries: vh![ CountryCode: HT ] },
+		Currency::HUF: CurrencyInfo { code: CurrencyCode::HUF, name: s!("Hungarian forint"),                              digits: 2, countries: vh![ CountryCode: HU ] },
+		Currency::IDR: CurrencyInfo { code: CurrencyCode::IDR, name: s!("Indonesian rupiah"),                             digits: 2, countries: vh![ CountryCode: ID ] },
+		Currency::ILS: CurrencyInfo { code: CurrencyCode::ILS, name: s!("Israeli new shekel"),                            digits: 2, countries: vh![ CountryCode: IL ] },
+		Currency::INR: CurrencyInfo { code: CurrencyCode::INR, name: s!("Indian rupee"),                                  digits: 2, countries: vh![ CountryCode: BT, IN ] },
+		Currency::IQD: CurrencyInfo { code: CurrencyCode::IQD, name: s!("Iraqi dinar"),                                   digits: 3, countries: vh![ CountryCode: IQ ] },
+		Currency::IRR: CurrencyInfo { code: CurrencyCode::IRR, name: s!("Iranian rial"),                                  digits: 2, countries: vh![ CountryCode: IR ] },
+		Currency::ISK: CurrencyInfo { code: CurrencyCode::ISK, name: s!("Icelandic króna"),                               digits: 0, countries: vh![ CountryCode: IS ] },
+		Currency::JMD: CurrencyInfo { code: CurrencyCode::JMD, name: s!("Jamaican dollar"),                               digits: 2, countries: vh![ CountryCode: JM ] },
+		Currency::JOD: CurrencyInfo { code: CurrencyCode::JOD, name: s!("Jordanian dinar"),                               digits: 3, countries: vh![ CountryCode: JO ] },
+		Currency::JPY: CurrencyInfo { code: CurrencyCode::JPY, name: s!("Japanese yen"),                                  digits: 0, countries: vh![ CountryCode: JP ] },
+		Currency::KES: CurrencyInfo { code: CurrencyCode::KES, name: s!("Kenyan shilling"),                               digits: 2, countries: vh![ CountryCode: KE ] },
+		Currency::KGS: CurrencyInfo { code: CurrencyCode::KGS, name: s!("Kyrgyzstani som"),                               digits: 2, countries: vh![ CountryCode: KG ] },
+		Currency::KHR: CurrencyInfo { code: CurrencyCode::KHR, name: s!("Cambodian riel"),                                digits: 2, countries: vh![ CountryCode: KH ] },
+		Currency::KMF: CurrencyInfo { code: CurrencyCode::KMF, name: s!("Comoro franc"),                                  digits: 0, countries: vh![ CountryCode: KM ] },
+		Currency::KPW: CurrencyInfo { code: CurrencyCode::KPW, name: s!("North Korean won"),                              digits: 2, countries: vh![ CountryCode: KP ] },
+		Currency::KRW: CurrencyInfo { code: CurrencyCode::KRW, name: s!("South Korean won"),                              digits: 0, countries: vh![ CountryCode: KR ] },
+		Currency::KWD: CurrencyInfo { code: CurrencyCode::KWD, name: s!("Kuwaiti dinar"),                                 digits: 3, countries: vh![ CountryCode: KW ] },
+		Currency::KYD: CurrencyInfo { code: CurrencyCode::KYD, name: s!("Cayman Islands dollar"),                         digits: 2, countries: vh![ CountryCode: KY ] },
+		Currency::KZT: CurrencyInfo { code: CurrencyCode::KZT, name: s!("Kazakhstani tenge"),                             digits: 2, countries: vh![ CountryCode: KZ ] },
+		Currency::LAK: CurrencyInfo { code: CurrencyCode::LAK, name: s!("Lao kip"),                                       digits: 2, countries: vh![ CountryCode: LA ] },
+		Currency::LBP: CurrencyInfo { code: CurrencyCode::LBP, name: s!("Lebanese pound"),                                digits: 2, countries: vh![ CountryCode: LB ] },
+		Currency::LKR: CurrencyInfo { code: CurrencyCode::LKR, name: s!("Sri Lankan rupee"),                              digits: 2, countries: vh![ CountryCode: LK ] },
+		Currency::LRD: CurrencyInfo { code: CurrencyCode::LRD, name: s!("Liberian dollar"),                               digits: 2, countries: vh![ CountryCode: LR ] },
+		Currency::LSL: CurrencyInfo { code: CurrencyCode::LSL, name: s!("Lesotho loti"),                                  digits: 2, countries: vh![ CountryCode: LS ] },
+		Currency::LYD: CurrencyInfo { code: CurrencyCode::LYD, name: s!("Libyan dinar"),                                  digits: 3, countries: vh![ CountryCode: LY ] },
+		Currency::MAD: CurrencyInfo { code: CurrencyCode::MAD, name: s!("Moroccan dirham"),                               digits: 2, countries: vh![ CountryCode: EH, MA ] },
+		Currency::MDL: CurrencyInfo { code: CurrencyCode::MDL, name: s!("Moldovan leu"),                                  digits: 2, countries: vh![ CountryCode: MD ] },
+		Currency::MGA: CurrencyInfo { code: CurrencyCode::MGA, name: s!("Malagasy ariary"),                               digits: 2, countries: vh![ CountryCode: MG ] },
+		Currency::MKD: CurrencyInfo { code: CurrencyCode::MKD, name: s!("Macedonian denar"),                              digits: 2, countries: vh![ CountryCode: MK ] },
+		Currency::MMK: CurrencyInfo { code: CurrencyCode::MMK, name: s!("Myanmar kyat"),                                  digits: 2, countries: vh![ CountryCode: MM ] },
+		Currency::MNT: CurrencyInfo { code: CurrencyCode::MNT, name: s!("Mongolian tögrög"),                              digits: 2, countries: vh![ CountryCode: MN ] },
+		Currency::MOP: CurrencyInfo { code: CurrencyCode::MOP, name: s!("Macanese pataca"),                               digits: 2, countries: vh![ CountryCode: MO ] },
+		Currency::MRU: CurrencyInfo { code: CurrencyCode::MRU, name: s!("Mauritanian ouguiya"),                           digits: 2, countries: vh![ CountryCode: MR ] },
+		Currency::MUR: CurrencyInfo { code: CurrencyCode::MUR, name: s!("Mauritian rupee"),                               digits: 2, countries: vh![ CountryCode: MU ] },
+		Currency::MVR: CurrencyInfo { code: CurrencyCode::MVR, name: s!("Maldivian rufiyaa"),                             digits: 2, countries: vh![ CountryCode: MV ] },
+		Currency::MWK: CurrencyInfo { code: CurrencyCode::MWK, name: s!("Malawian kwacha"),                               digits: 2, countries: vh![ CountryCode: MW ] },
+		Currency::MXN: CurrencyInfo { code: CurrencyCode::MXN, name: s!("Mexican peso"),                                  digits: 2, countries: vh![ CountryCode: MX ] },
+		Currency::MXV: CurrencyInfo { code: CurrencyCode::MXV, name: s!("Mexican Unidad de Inversion (UDI)"),             digits: 2, countries: vh![ CountryCode: MX ] },
+		Currency::MYR: CurrencyInfo { code: CurrencyCode::MYR, name: s!("Malaysian ringgit"),                             digits: 2, countries: vh![ CountryCode: MY ] },
+		Currency::MZN: CurrencyInfo { code: CurrencyCode::MZN, name: s!("Mozambican metical"),                            digits: 2, countries: vh![ CountryCode: MZ ] },
+		Currency::NAD: CurrencyInfo { code: CurrencyCode::NAD, name: s!("Namibian dollar"),                               digits: 2, countries: vh![ CountryCode: NA ] },
+		Currency::NGN: CurrencyInfo { code: CurrencyCode::NGN, name: s!("Nigerian naira"),                                digits: 2, countries: vh![ CountryCode: NG ] },
+		Currency::NIO: CurrencyInfo { code: CurrencyCode::NIO, name: s!("Nicaraguan córdoba"),                            digits: 2, countries: vh![ CountryCode: NI ] },
+		Currency::NOK: CurrencyInfo { code: CurrencyCode::NOK, name: s!("Norwegian krone"),                               digits: 2, countries: vh![ CountryCode: BV, NO, SJ ] },
+		Currency::NPR: CurrencyInfo { code: CurrencyCode::NPR, name: s!("Nepalese rupee"),                                digits: 2, countries: vh![ CountryCode: NP ] },
+		Currency::NZD: CurrencyInfo { code: CurrencyCode::NZD, name: s!("New Zealand dollar"),                            digits: 2, countries: vh![ CountryCode: CK, NU, NZ, PN, TK ] },
+		Currency::OMR: CurrencyInfo { code: CurrencyCode::OMR, name: s!("Omani rial"),                                    digits: 3, countries: vh![ CountryCode: OM ] },
+		Currency::PAB: CurrencyInfo { code: CurrencyCode::PAB, name: s!("Panamanian balboa"),                             digits: 2, countries: vh![ CountryCode: PA ] },
+		Currency::PEN: CurrencyInfo { code: CurrencyCode::PEN, name: s!("Peruvian sol"),                                  digits: 2, countries: vh![ CountryCode: PE ] },
+		Currency::PGK: CurrencyInfo { code: CurrencyCode::PGK, name: s!("Papua New Guinean kina"),                        digits: 2, countries: vh![ CountryCode: PG ] },
+		Currency::PHP: CurrencyInfo { code: CurrencyCode::PHP, name: s!("Philippine peso"),                               digits: 2, countries: vh![ CountryCode: PH ] },
+		Currency::PKR: CurrencyInfo { code: CurrencyCode::PKR, name: s!("Pakistani rupee"),                               digits: 2, countries: vh![ CountryCode: PK ] },
+		Currency::PLN: CurrencyInfo { code: CurrencyCode::PLN, name: s!("Polish złoty"),                                  digits: 2, countries: vh![ CountryCode: PL ] },
+		Currency::PYG: CurrencyInfo { code: CurrencyCode::PYG, name: s!("Paraguayan guaraní"),                            digits: 0, countries: vh![ CountryCode: PY ] },
+		Currency::QAR: CurrencyInfo { code: CurrencyCode::QAR, name: s!("Qatari riyal"),                                  digits: 2, countries: vh![ CountryCode: QA ] },
+		Currency::RON: CurrencyInfo { code: CurrencyCode::RON, name: s!("Romanian leu"),                                  digits: 2, countries: vh![ CountryCode: RO ] },
+		Currency::RSD: CurrencyInfo { code: CurrencyCode::RSD, name: s!("Serbian dinar"),                                 digits: 2, countries: vh![ CountryCode: RS ] },
+		Currency::RUB: CurrencyInfo { code: CurrencyCode::RUB, name: s!("Russian ruble"),                                 digits: 2, countries: vh![ CountryCode: RU ] },
+		Currency::RWF: CurrencyInfo { code: CurrencyCode::RWF, name: s!("Rwandan franc"),                                 digits: 0, countries: vh![ CountryCode: RW ] },
+		Currency::SAR: CurrencyInfo { code: CurrencyCode::SAR, name: s!("Saudi riyal"),                                   digits: 2, countries: vh![ CountryCode: SA ] },
+		Currency::SBD: CurrencyInfo { code: CurrencyCode::SBD, name: s!("Solomon Islands dollar"),                        digits: 2, countries: vh![ CountryCode: SB ] },
+		Currency::SCR: CurrencyInfo { code: CurrencyCode::SCR, name: s!("Seychelles rupee"),                              digits: 2, countries: vh![ CountryCode: SC ] },
+		Currency::SDG: CurrencyInfo { code: CurrencyCode::SDG, name: s!("Sudanese pound"),                                digits: 2, countries: vh![ CountryCode: SD ] },
+		Currency::SEK: CurrencyInfo { code: CurrencyCode::SEK, name: s!("Swedish krona"),                                 digits: 2, countries: vh![ CountryCode: SE ] },
+		Currency::SGD: CurrencyInfo { code: CurrencyCode::SGD, name: s!("Singapore dollar"),                              digits: 2, countries: vh![ CountryCode: SG ] },
+		Currency::SHP: CurrencyInfo { code: CurrencyCode::SHP, name: s!("Saint Helena pound"),                            digits: 2, countries: vh![ CountryCode: SH ] },
+		Currency::SLE: CurrencyInfo { code: CurrencyCode::SLE, name: s!("Sierra Leonean leone (new leone)"),              digits: 2, countries: vh![ CountryCode: SL ] },
+		Currency::SLL: CurrencyInfo { code: CurrencyCode::SLL, name: s!("Sierra Leonean leone (old leone)"),              digits: 2, countries: vh![ CountryCode: SL ] },
+		Currency::SOS: CurrencyInfo { code: CurrencyCode::SOS, name: s!("Somali shilling"),                               digits: 2, countries: vh![ CountryCode: SO ] },
+		Currency::SRD: CurrencyInfo { code: CurrencyCode::SRD, name: s!("Surinamese dollar"),                             digits: 2, countries: vh![ CountryCode: SR ] },
+		Currency::SSP: CurrencyInfo { code: CurrencyCode::SSP, name: s!("South Sudanese pound"),                          digits: 2, countries: vh![ CountryCode: SS ] },
+		Currency::STN: CurrencyInfo { code: CurrencyCode::STN, name: s!("São Tomé and Príncipe dobra"),                   digits: 2, countries: vh![ CountryCode: ST ] },
+		Currency::SVC: CurrencyInfo { code: CurrencyCode::SVC, name: s!("Salvadoran colón"),                              digits: 2, countries: vh![ CountryCode: SV ] },
+		Currency::SYP: CurrencyInfo { code: CurrencyCode::SYP, name: s!("Syrian pound"),                                  digits: 2, countries: vh![ CountryCode: SY ] },
+		Currency::SZL: CurrencyInfo { code: CurrencyCode::SZL, name: s!("Swazi lilangeni"),                               digits: 2, countries: vh![ CountryCode: SZ ] },
+		Currency::THB: CurrencyInfo { code: CurrencyCode::THB, name: s!("Thai baht"),                                     digits: 2, countries: vh![ CountryCode: TH ] },
+		Currency::TJS: CurrencyInfo { code: CurrencyCode::TJS, name: s!("Tajikistani somoni"),                            digits: 2, countries: vh![ CountryCode: TJ ] },
+		Currency::TMT: CurrencyInfo { code: CurrencyCode::TMT, name: s!("Turkmenistan manat"),                            digits: 2, countries: vh![ CountryCode: TM ] },
+		Currency::TND: CurrencyInfo { code: CurrencyCode::TND, name: s!("Tunisian dinar"),                                digits: 3, countries: vh![ CountryCode: TN ] },
+		Currency::TOP: CurrencyInfo { code: CurrencyCode::TOP, name: s!("Tongan paʻanga"),                                digits: 2, countries: vh![ CountryCode: TO ] },
+		Currency::TRY: CurrencyInfo { code: CurrencyCode::TRY, name: s!("Turkish lira"),                                  digits: 2, countries: vh![ CountryCode: TR ] },
+		Currency::TTD: CurrencyInfo { code: CurrencyCode::TTD, name: s!("Trinidad and Tobago dollar"),                    digits: 2, countries: vh![ CountryCode: TT ] },
+		Currency::TWD: CurrencyInfo { code: CurrencyCode::TWD, name: s!("New Taiwan dollar"),                             digits: 2, countries: vh![ CountryCode: TW ] },
+		Currency::TZS: CurrencyInfo { code: CurrencyCode::TZS, name: s!("Tanzanian shilling"),                            digits: 2, countries: vh![ CountryCode: TZ ] },
+		Currency::UAH: CurrencyInfo { code: CurrencyCode::UAH, name: s!("Ukrainian hryvnia"),                             digits: 2, countries: vh![ CountryCode: UA ] },
+		Currency::UGX: CurrencyInfo { code: CurrencyCode::UGX, name: s!("Ugandan shilling"),                              digits: 0, countries: vh![ CountryCode: UG ] },
+		Currency::USD: CurrencyInfo { code: CurrencyCode::USD, name: s!("United States dollar"),                          digits: 2, countries: vh![ CountryCode: AS, BQ, EC, FM, GU, IO, MH, MP, PA, PR, PW, SV, TC, TL, UM, US, VG, VI ] },
+		Currency::USN: CurrencyInfo { code: CurrencyCode::USN, name: s!("United States dollar (next day)"),               digits: 2, countries: vh![ CountryCode: US ] },
+		Currency::UYI: CurrencyInfo { code: CurrencyCode::UYI, name: s!("Uruguay Peso en Unidades Indexadas (URUIURUI)"), digits: 0, countries: vh![ CountryCode: UY ] },
+		Currency::UYU: CurrencyInfo { code: CurrencyCode::UYU, name: s!("Uruguayan peso"),                                digits: 2, countries: vh![ CountryCode: UY ] },
+		Currency::UYW: CurrencyInfo { code: CurrencyCode::UYW, name: s!("Unidad previsional"),                            digits: 4, countries: vh![ CountryCode: UY ] },
+		Currency::UZS: CurrencyInfo { code: CurrencyCode::UZS, name: s!("Uzbekistan sum"),                                digits: 2, countries: vh![ CountryCode: UZ ] },
+		Currency::VED: CurrencyInfo { code: CurrencyCode::VED, name: s!("Venezuelan digital bolívar"),                    digits: 2, countries: vh![ CountryCode: VE ] },
+		Currency::VES: CurrencyInfo { code: CurrencyCode::VES, name: s!("Venezuelan sovereign bolívar"),                  digits: 2, countries: vh![ CountryCode: VE ] },
+		Currency::VND: CurrencyInfo { code: CurrencyCode::VND, name: s!("Vietnamese đồng"),                               digits: 0, countries: vh![ CountryCode: VN ] },
+		Currency::VUV: CurrencyInfo { code: CurrencyCode::VUV, name: s!("Vanuatu vatu"),                                  digits: 0, countries: vh![ CountryCode: VU ] },
+		Currency::WST: CurrencyInfo { code: CurrencyCode::WST, name: s!("Samoan tala"),                                   digits: 2, countries: vh![ CountryCode: WS ] },
+		Currency::XAF: CurrencyInfo { code: CurrencyCode::XAF, name: s!("CFA franc BEAC"),                                digits: 0, countries: vh![ CountryCode: CF, CG, CM, GA, GQ, TD ] },
+		Currency::XAG: CurrencyInfo { code: CurrencyCode::XAG, name: s!("Silver (one troy ounce)"),                       digits: 0, countries: vh![] },
+		Currency::XAU: CurrencyInfo { code: CurrencyCode::XAU, name: s!("Gold (one troy ounce)"),                         digits: 0, countries: vh![] },
+		Currency::XBA: CurrencyInfo { code: CurrencyCode::XBA, name: s!("European Composite Unit (EURCO)"),               digits: 0, countries: vh![] },
+		Currency::XBB: CurrencyInfo { code: CurrencyCode::XBB, name: s!("European Monetary Unit (E.M.U.-6)"),             digits: 0, countries: vh![] },
+		Currency::XBC: CurrencyInfo { code: CurrencyCode::XBC, name: s!("European Unit of Account 9 (E.U.A.-9)"),         digits: 0, countries: vh![] },
+		Currency::XBD: CurrencyInfo { code: CurrencyCode::XBD, name: s!("European Unit of Account 17 (E.U.A.-17)"),       digits: 0, countries: vh![] },
+		Currency::XCD: CurrencyInfo { code: CurrencyCode::XCD, name: s!("East Caribbean dollar"),                         digits: 2, countries: vh![ CountryCode: AG, AI, DM, GD, KN, LC, MS, VC ] },
+		Currency::XDR: CurrencyInfo { code: CurrencyCode::XDR, name: s!("Special drawing rights"),                        digits: 0, countries: vh![] },
+		Currency::XOF: CurrencyInfo { code: CurrencyCode::XOF, name: s!("CFA franc BCEAO"),                               digits: 0, countries: vh![ CountryCode: BF, BJ, CI, GW, ML, NE, SN, TG ] },
+		Currency::XPD: CurrencyInfo { code: CurrencyCode::XPD, name: s!("Palladium (one troy ounce)"),                    digits: 0, countries: vh![] },
+		Currency::XPF: CurrencyInfo { code: CurrencyCode::XPF, name: s!("CFP franc (franc Pacifique)"),                   digits: 0, countries: vh![ CountryCode: NC, PF, WF ] },
+		Currency::XPT: CurrencyInfo { code: CurrencyCode::XPT, name: s!("Platinum (one troy ounce)"),                     digits: 0, countries: vh![] },
+		Currency::XSU: CurrencyInfo { code: CurrencyCode::XSU, name: s!("SUCRE"),                                         digits: 0, countries: vh![] },
+		Currency::XTS: CurrencyInfo { code: CurrencyCode::XTS, name: s!("Code reserved for testing"),                     digits: 0, countries: vh![] },
+		Currency::XUA: CurrencyInfo { code: CurrencyCode::XUA, name: s!("ADB Unit of Account"),                           digits: 0, countries: vh![] },
+		Currency::XXX: CurrencyInfo { code: CurrencyCode::XXX, name: s!("No currency"),                                   digits: 0, countries: vh![] },
+		Currency::YER: CurrencyInfo { code: CurrencyCode::YER, name: s!("Yemeni rial"),                                   digits: 2, countries: vh![ CountryCode: YE ] },
+		Currency::ZAR: CurrencyInfo { code: CurrencyCode::ZAR, name: s!("South African rand"),                            digits: 2, countries: vh![ CountryCode: LS, NA, SZ, ZA ] },
+		Currency::ZMW: CurrencyInfo { code: CurrencyCode::ZMW, name: s!("Zambian kwacha"),                                digits: 2, countries: vh![ CountryCode: ZM ] },
+		Currency::ZWL: CurrencyInfo { code: CurrencyCode::ZWL, name: s!("Zimbabwean dollar (fifth)"),                     digits: 2, countries: vh![ CountryCode: ZW ] },
 	}
 });
 
 
 
 //		Enums
+
+//		Currency																
+/// A currency.
+/// 
+/// A currency has a number of properties, including a name, a currency code,
+/// the number of digits after the decimal point, and the countries where the
+/// currency is used.
+/// 
+/// Each currency is identified by a currency code, which can be expressed as
+/// three letters or three numbers, as defined by the ISO 4217 standard.
+/// 
+/// # Data sources
+/// 
+/// The list of codes and other currency information is available from
+/// [the ISO site](https://www.iso.org/iso-4217-currency-codes.html), and from
+/// [Wikipedia](https://en.wikipedia.org/wiki/ISO_4217).
+/// 
+/// # See also
+/// 
+/// * [`CurrencyCode`]
+/// 
+#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
+#[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
+#[serde(into = "String", try_from = "String")]
+#[non_exhaustive]
+pub enum Currency {
+	/// United Arab Emirates dirham.
+	AED,
+	
+	/// Afghan afghani.
+	AFN,
+	
+	/// Albanian lek.
+	ALL,
+	
+	/// Armenian dram.
+	AMD,
+	
+	/// Netherlands Antillean guilder.
+	ANG,
+	
+	/// Angolan kwanza.
+	AOA,
+	
+	/// Argentine peso.
+	ARS,
+	
+	/// Australian dollar.
+	AUD,
+	
+	/// Aruban florin.
+	AWG,
+	
+	/// Azerbaijani manat.
+	AZN,
+	
+	/// Bosnia and Herzegovina convertible mark.
+	BAM,
+	
+	/// Barbados dollar.
+	BBD,
+	
+	/// Bangladeshi taka.
+	BDT,
+	
+	/// Bulgarian lev.
+	BGN,
+	
+	/// Bahraini dinar.
+	BHD,
+	
+	/// Burundian franc.
+	BIF,
+	
+	/// Bermudian dollar.
+	BMD,
+	
+	/// Brunei dollar.
+	BND,
+	
+	/// Boliviano.
+	BOB,
+	
+	/// Bolivian Mvdol.
+	BOV,
+	
+	/// Brazilian real.
+	BRL,
+	
+	/// Bahamian dollar.
+	BSD,
+	
+	/// Bhutanese ngultrum.
+	BTN,
+	
+	/// Botswana pula.
+	BWP,
+	
+	/// Belarusian ruble.
+	BYN,
+	
+	/// Belize dollar.
+	BZD,
+	
+	/// Canadian dollar.
+	CAD,
+	
+	/// Congolese franc.
+	CDF,
+	
+	/// WIR euro.
+	CHE,
+	
+	/// Swiss franc.
+	CHF,
+	
+	/// WIR franc.
+	CHW,
+	
+	/// Unidad de Fomento.
+	CLF,
+	
+	/// Chilean peso.
+	CLP,
+	
+	/// Renminbi.
+	CNY,
+	
+	/// Colombian peso.
+	COP,
+	
+	/// Unidad de Valor Real (UVR).
+	COU,
+	
+	/// Costa Rican colon.
+	CRC,
+	
+	/// Cuban peso.
+	CUP,
+	
+	/// Cape Verdean escudo.
+	CVE,
+	
+	/// Czech koruna.
+	CZK,
+	
+	/// Djiboutian franc.
+	DJF,
+	
+	/// Danish krone.
+	DKK,
+	
+	/// Dominican peso.
+	DOP,
+	
+	/// Algerian dinar.
+	DZD,
+	
+	/// Egyptian pound.
+	EGP,
+	
+	/// Eritrean nakfa.
+	ERN,
+	
+	/// Ethiopian birr.
+	ETB,
+	
+	/// Euro.
+	EUR,
+	
+	/// Fiji dollar.
+	FJD,
+	
+	/// Falkland Islands pound.
+	FKP,
+	
+	/// Pound sterling.
+	GBP,
+	
+	/// Georgian lari.
+	GEL,
+	
+	/// Ghanaian cedi.
+	GHS,
+	
+	/// Gibraltar pound.
+	GIP,
+	
+	/// Gambian dalasi.
+	GMD,
+	
+	/// Guinean franc.
+	GNF,
+	
+	/// Guatemalan quetzal.
+	GTQ,
+	
+	/// Guyanese dollar.
+	GYD,
+	
+	/// Hong Kong dollar.
+	HKD,
+	
+	/// Honduran lempira.
+	HNL,
+	
+	/// Haitian gourde.
+	HTG,
+	
+	/// Hungarian forint.
+	HUF,
+	
+	/// Indonesian rupiah.
+	IDR,
+	
+	/// Israeli new shekel.
+	ILS,
+	
+	/// Indian rupee.
+	INR,
+	
+	/// Iraqi dinar.
+	IQD,
+	
+	/// Iranian rial.
+	IRR,
+	
+	/// Icelandic króna.
+	ISK,
+	
+	/// Jamaican dollar.
+	JMD,
+	
+	/// Jordanian dinar.
+	JOD,
+	
+	/// Japanese yen.
+	JPY,
+	
+	/// Kenyan shilling.
+	KES,
+	
+	/// Kyrgyzstani som.
+	KGS,
+	
+	/// Cambodian riel.
+	KHR,
+	
+	/// Comoro franc.
+	KMF,
+	
+	/// North Korean won.
+	KPW,
+	
+	/// South Korean won.
+	KRW,
+	
+	/// Kuwaiti dinar.
+	KWD,
+	
+	/// Cayman Islands dollar.
+	KYD,
+	
+	/// Kazakhstani tenge.
+	KZT,
+	
+	/// Lao kip.
+	LAK,
+	
+	/// Lebanese pound.
+	LBP,
+	
+	/// Sri Lankan rupee.
+	LKR,
+	
+	/// Liberian dollar.
+	LRD,
+	
+	/// Lesotho loti.
+	LSL,
+	
+	/// Libyan dinar.
+	LYD,
+	
+	/// Moroccan dirham.
+	MAD,
+	
+	/// Moldovan leu.
+	MDL,
+	
+	/// Malagasy ariary.
+	MGA,
+	
+	/// Macedonian denar.
+	MKD,
+	
+	/// Myanmar kyat.
+	MMK,
+	
+	/// Mongolian tögrög.
+	MNT,
+	
+	/// Macanese pataca.
+	MOP,
+	
+	/// Mauritanian ouguiya.
+	MRU,
+	
+	/// Mauritian rupee.
+	MUR,
+	
+	/// Maldivian rufiyaa.
+	MVR,
+	
+	/// Malawian kwacha.
+	MWK,
+	
+	/// Mexican peso.
+	MXN,
+	
+	/// Mexican Unidad de Inversion (UDI).
+	MXV,
+	
+	/// Malaysian ringgit.
+	MYR,
+	
+	/// Mozambican metical.
+	MZN,
+	
+	/// Namibian dollar.
+	NAD,
+	
+	/// Nigerian naira.
+	NGN,
+	
+	/// Nicaraguan córdoba.
+	NIO,
+	
+	/// Norwegian krone.
+	NOK,
+	
+	/// Nepalese rupee.
+	NPR,
+	
+	/// New Zealand dollar.
+	NZD,
+	
+	/// Omani rial.
+	OMR,
+	
+	/// Panamanian balboa.
+	PAB,
+	
+	/// Peruvian sol.
+	PEN,
+	
+	/// Papua New Guinean kina.
+	PGK,
+	
+	/// Philippine peso.
+	PHP,
+	
+	/// Pakistani rupee.
+	PKR,
+	
+	/// Polish złoty.
+	PLN,
+	
+	/// Paraguayan guaraní.
+	PYG,
+	
+	/// Qatari riyal.
+	QAR,
+	
+	/// Romanian leu.
+	RON,
+	
+	/// Serbian dinar.
+	RSD,
+	
+	/// Russian ruble.
+	RUB,
+	
+	/// Rwandan franc.
+	RWF,
+	
+	/// Saudi riyal.
+	SAR,
+	
+	/// Solomon Islands dollar.
+	SBD,
+	
+	/// Seychelles rupee.
+	SCR,
+	
+	/// Sudanese pound.
+	SDG,
+	
+	/// Swedish krona.
+	SEK,
+	
+	/// Singapore dollar.
+	SGD,
+	
+	/// Saint Helena pound.
+	SHP,
+	
+	/// Sierra Leonean leone (new leone).
+	SLE,
+	
+	/// Sierra Leonean leone (old leone).
+	SLL,
+	
+	/// Somali shilling.
+	SOS,
+	
+	/// Surinamese dollar.
+	SRD,
+	
+	/// South Sudanese pound.
+	SSP,
+	
+	/// São Tomé and Príncipe dobra.
+	STN,
+	
+	/// Salvadoran colón.
+	SVC,
+	
+	/// Syrian pound.
+	SYP,
+	
+	/// Swazi lilangeni.
+	SZL,
+	
+	/// Thai baht.
+	THB,
+	
+	/// Tajikistani somoni.
+	TJS,
+	
+	/// Turkmenistan manat.
+	TMT,
+	
+	/// Tunisian dinar.
+	TND,
+	
+	/// Tongan paʻanga.
+	TOP,
+	
+	/// Turkish lira.
+	TRY,
+	
+	/// Trinidad and Tobago dollar.
+	TTD,
+	
+	/// New Taiwan dollar.
+	TWD,
+	
+	/// Tanzanian shilling.
+	TZS,
+	
+	/// Ukrainian hryvnia.
+	UAH,
+	
+	/// Ugandan shilling.
+	UGX,
+	
+	/// United States dollar.
+	USD,
+	
+	/// United States dollar (next day).
+	USN,
+	
+	/// Uruguay Peso en Unidades Indexadas (URUIURUI).
+	UYI,
+	
+	/// Uruguayan peso.
+	UYU,
+	
+	/// Unidad previsional.
+	UYW,
+	
+	/// Uzbekistan sum.
+	UZS,
+	
+	/// Venezuelan digital bolívar.
+	VED,
+	
+	/// Venezuelan sovereign bolívar.
+	VES,
+	
+	/// Vietnamese đồng.
+	VND,
+	
+	/// Vanuatu vatu.
+	VUV,
+	
+	/// Samoan tala.
+	WST,
+	
+	/// CFA franc BEAC.
+	XAF,
+	
+	/// Silver (one troy ounce).
+	XAG,
+	
+	/// Gold (one troy ounce).
+	XAU,
+	
+	/// European Composite Unit (EURCO).
+	XBA,
+	
+	/// European Monetary Unit (E.M.U.-6).
+	XBB,
+	
+	/// European Unit of Account 9 (E.U.A.-9).
+	XBC,
+	
+	/// European Unit of Account 17 (E.U.A.-17).
+	XBD,
+	
+	/// East Caribbean dollar.
+	XCD,
+	
+	/// Special drawing rights.
+	XDR,
+	
+	/// CFA franc BCEAO.
+	XOF,
+	
+	/// Palladium (one troy ounce).
+	XPD,
+	
+	/// CFP franc (franc Pacifique).
+	XPF,
+	
+	/// Platinum (one troy ounce).
+	XPT,
+	
+	/// SUCRE.
+	XSU,
+	
+	/// Code reserved for testing.
+	XTS,
+	
+	/// ADB Unit of Account.
+	XUA,
+	
+	/// No currency.
+	XXX,
+	
+	/// Yemeni rial.
+	YER,
+	
+	/// South African rand.
+	ZAR,
+	
+	/// Zambian kwacha.
+	ZMW,
+	
+	/// Zimbabwean dollar (fifth).
+	ZWL,
+}
+
+impl Currency {
+	//		info																
+	/// Returns the `CurrencyInfo` instance corresponding to the `Currency`.
+	/// 
+	/// This method provides an easy way to get to the associated `CurrencyInfo`
+	/// instance from a `Currency` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	#[must_use]
+	fn info(self) -> &'static CurrencyInfo {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the currencies is missing from the list, which is a bug.
+		CURRENCIES.get(&self).unwrap()
+	}
+}
 
 //		CurrencyCode															
 /// The possible currencies' codes.
@@ -812,19 +1395,196 @@ pub enum CurrencyCode {
 
 impl CurrencyCode {
 	//		currency															
-	/// Returns the `Currency` instance corresponding to the `CurrencyCode`.
+	/// Returns the `Currency` variant corresponding to the `CurrencyCode`.
 	/// 
 	/// This method provides an easy way to get to the associated `Currency`
-	/// instance from a `CurrencyCode` enum variant.
+	/// variant from a `CurrencyCode` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
-	pub fn currency(&self) -> &Currency {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
-		//	This should be infallible. If it isn't, then the data is wrong, and one
-		//	of the currencies is missing from the list, which is a bug.
-		CURRENCIES.get(self).unwrap()
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[must_use]
+	pub const fn currency(&self) -> Currency {
+		match *self {
+			Self::AED => Currency::AED,
+			Self::AFN => Currency::AFN,
+			Self::ALL => Currency::ALL,
+			Self::AMD => Currency::AMD,
+			Self::ANG => Currency::ANG,
+			Self::AOA => Currency::AOA,
+			Self::ARS => Currency::ARS,
+			Self::AUD => Currency::AUD,
+			Self::AWG => Currency::AWG,
+			Self::AZN => Currency::AZN,
+			Self::BAM => Currency::BAM,
+			Self::BBD => Currency::BBD,
+			Self::BDT => Currency::BDT,
+			Self::BGN => Currency::BGN,
+			Self::BHD => Currency::BHD,
+			Self::BIF => Currency::BIF,
+			Self::BMD => Currency::BMD,
+			Self::BND => Currency::BND,
+			Self::BOB => Currency::BOB,
+			Self::BOV => Currency::BOV,
+			Self::BRL => Currency::BRL,
+			Self::BSD => Currency::BSD,
+			Self::BTN => Currency::BTN,
+			Self::BWP => Currency::BWP,
+			Self::BYN => Currency::BYN,
+			Self::BZD => Currency::BZD,
+			Self::CAD => Currency::CAD,
+			Self::CDF => Currency::CDF,
+			Self::CHE => Currency::CHE,
+			Self::CHF => Currency::CHF,
+			Self::CHW => Currency::CHW,
+			Self::CLF => Currency::CLF,
+			Self::CLP => Currency::CLP,
+			Self::CNY => Currency::CNY,
+			Self::COP => Currency::COP,
+			Self::COU => Currency::COU,
+			Self::CRC => Currency::CRC,
+			Self::CUP => Currency::CUP,
+			Self::CVE => Currency::CVE,
+			Self::CZK => Currency::CZK,
+			Self::DJF => Currency::DJF,
+			Self::DKK => Currency::DKK,
+			Self::DOP => Currency::DOP,
+			Self::DZD => Currency::DZD,
+			Self::EGP => Currency::EGP,
+			Self::ERN => Currency::ERN,
+			Self::ETB => Currency::ETB,
+			Self::EUR => Currency::EUR,
+			Self::FJD => Currency::FJD,
+			Self::FKP => Currency::FKP,
+			Self::GBP => Currency::GBP,
+			Self::GEL => Currency::GEL,
+			Self::GHS => Currency::GHS,
+			Self::GIP => Currency::GIP,
+			Self::GMD => Currency::GMD,
+			Self::GNF => Currency::GNF,
+			Self::GTQ => Currency::GTQ,
+			Self::GYD => Currency::GYD,
+			Self::HKD => Currency::HKD,
+			Self::HNL => Currency::HNL,
+			Self::HTG => Currency::HTG,
+			Self::HUF => Currency::HUF,
+			Self::IDR => Currency::IDR,
+			Self::ILS => Currency::ILS,
+			Self::INR => Currency::INR,
+			Self::IQD => Currency::IQD,
+			Self::IRR => Currency::IRR,
+			Self::ISK => Currency::ISK,
+			Self::JMD => Currency::JMD,
+			Self::JOD => Currency::JOD,
+			Self::JPY => Currency::JPY,
+			Self::KES => Currency::KES,
+			Self::KGS => Currency::KGS,
+			Self::KHR => Currency::KHR,
+			Self::KMF => Currency::KMF,
+			Self::KPW => Currency::KPW,
+			Self::KRW => Currency::KRW,
+			Self::KWD => Currency::KWD,
+			Self::KYD => Currency::KYD,
+			Self::KZT => Currency::KZT,
+			Self::LAK => Currency::LAK,
+			Self::LBP => Currency::LBP,
+			Self::LKR => Currency::LKR,
+			Self::LRD => Currency::LRD,
+			Self::LSL => Currency::LSL,
+			Self::LYD => Currency::LYD,
+			Self::MAD => Currency::MAD,
+			Self::MDL => Currency::MDL,
+			Self::MGA => Currency::MGA,
+			Self::MKD => Currency::MKD,
+			Self::MMK => Currency::MMK,
+			Self::MNT => Currency::MNT,
+			Self::MOP => Currency::MOP,
+			Self::MRU => Currency::MRU,
+			Self::MUR => Currency::MUR,
+			Self::MVR => Currency::MVR,
+			Self::MWK => Currency::MWK,
+			Self::MXN => Currency::MXN,
+			Self::MXV => Currency::MXV,
+			Self::MYR => Currency::MYR,
+			Self::MZN => Currency::MZN,
+			Self::NAD => Currency::NAD,
+			Self::NGN => Currency::NGN,
+			Self::NIO => Currency::NIO,
+			Self::NOK => Currency::NOK,
+			Self::NPR => Currency::NPR,
+			Self::NZD => Currency::NZD,
+			Self::OMR => Currency::OMR,
+			Self::PAB => Currency::PAB,
+			Self::PEN => Currency::PEN,
+			Self::PGK => Currency::PGK,
+			Self::PHP => Currency::PHP,
+			Self::PKR => Currency::PKR,
+			Self::PLN => Currency::PLN,
+			Self::PYG => Currency::PYG,
+			Self::QAR => Currency::QAR,
+			Self::RON => Currency::RON,
+			Self::RSD => Currency::RSD,
+			Self::RUB => Currency::RUB,
+			Self::RWF => Currency::RWF,
+			Self::SAR => Currency::SAR,
+			Self::SBD => Currency::SBD,
+			Self::SCR => Currency::SCR,
+			Self::SDG => Currency::SDG,
+			Self::SEK => Currency::SEK,
+			Self::SGD => Currency::SGD,
+			Self::SHP => Currency::SHP,
+			Self::SLE => Currency::SLE,
+			Self::SLL => Currency::SLL,
+			Self::SOS => Currency::SOS,
+			Self::SRD => Currency::SRD,
+			Self::SSP => Currency::SSP,
+			Self::STN => Currency::STN,
+			Self::SVC => Currency::SVC,
+			Self::SYP => Currency::SYP,
+			Self::SZL => Currency::SZL,
+			Self::THB => Currency::THB,
+			Self::TJS => Currency::TJS,
+			Self::TMT => Currency::TMT,
+			Self::TND => Currency::TND,
+			Self::TOP => Currency::TOP,
+			Self::TRY => Currency::TRY,
+			Self::TTD => Currency::TTD,
+			Self::TWD => Currency::TWD,
+			Self::TZS => Currency::TZS,
+			Self::UAH => Currency::UAH,
+			Self::UGX => Currency::UGX,
+			Self::USD => Currency::USD,
+			Self::USN => Currency::USN,
+			Self::UYI => Currency::UYI,
+			Self::UYU => Currency::UYU,
+			Self::UYW => Currency::UYW,
+			Self::UZS => Currency::UZS,
+			Self::VED => Currency::VED,
+			Self::VES => Currency::VES,
+			Self::VND => Currency::VND,
+			Self::VUV => Currency::VUV,
+			Self::WST => Currency::WST,
+			Self::XAF => Currency::XAF,
+			Self::XAG => Currency::XAG,
+			Self::XAU => Currency::XAU,
+			Self::XBA => Currency::XBA,
+			Self::XBB => Currency::XBB,
+			Self::XBC => Currency::XBC,
+			Self::XBD => Currency::XBD,
+			Self::XCD => Currency::XCD,
+			Self::XDR => Currency::XDR,
+			Self::XOF => Currency::XOF,
+			Self::XPD => Currency::XPD,
+			Self::XPF => Currency::XPF,
+			Self::XPT => Currency::XPT,
+			Self::XSU => Currency::XSU,
+			Self::XTS => Currency::XTS,
+			Self::XUA => Currency::XUA,
+			Self::XXX => Currency::XXX,
+			Self::YER => Currency::YER,
+			Self::ZAR => Currency::ZAR,
+			Self::ZMW => Currency::ZMW,
+			Self::ZWL => Currency::ZWL,
+		}
 	}
 }
 
@@ -1437,8 +2197,8 @@ impl TryFrom<String> for CurrencyCode {
 
 //		Structs
 
-//		Currency																
-/// A currency.
+//		CurrencyInfo															
+/// Currency information.
 /// 
 /// A currency has a number of properties, including a name, a currency code,
 /// the number of digits after the decimal point, and the countries where the
@@ -1455,12 +2215,11 @@ impl TryFrom<String> for CurrencyCode {
 /// 
 /// # See also
 /// 
+/// * [`Currency`]
 /// * [`CurrencyCode`]
 /// 
-#[derive(Clone, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
-#[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
-pub struct Currency {
+struct CurrencyInfo {
 	//		Private properties													
 	/// The name of the currency.
 	name:      String,
@@ -1480,42 +2239,42 @@ impl Currency {
 	/// Returns the name of the currency.
 	#[must_use]
 	pub fn name(&self) -> &str {
-		&self.name
+		&self.info().name
 	}
 	
 	//		code																
 	/// Returns the currency code.
 	#[must_use]
-	pub const fn code(&self) -> CurrencyCode {
-		self.code
+	pub fn code(&self) -> CurrencyCode {
+		self.info().code
 	}
 	
 	//		digits																
 	/// Returns the number of digits after the decimal point.
 	#[must_use]
-	pub const fn digits(&self) -> u8 {
-		self.digits
+	pub fn digits(&self) -> u8 {
+		self.info().digits
 	}
 	
 	//		countries															
 	/// Returns the countries where the currency is used.
 	#[must_use]
-	pub const fn countries(&self) -> &HashSet<CountryCode> {
-		&self.countries
+	pub fn countries(&self) -> &HashSet<CountryCode> {
+		&self.info().countries
 	}
 }
 
 impl AsStr for Currency {
 	//		as_str																
 	fn as_str(&self) -> &str {
-		&self.name
+		&self.info().name
 	}
 }
 
 impl Debug for Currency {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}: {}", self.code.as_str(), self.as_str())
+		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
 	}
 }
 
@@ -1540,9 +2299,11 @@ impl FromStr for Currency {
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		CURRENCIES
 			.values()
-			.find(|currency| currency.name == s)
-			.cloned()
-			.ok_or_else(|| format!("Invalid Currency: {s}"))
+			.find(|info| info.name == s)
+			.map_or_else(
+				||     Err(format!("Invalid Currency: {s}")),
+				|info| Ok(info.code.currency())
+			)
 	}
 }
 

@@ -49,263 +49,1056 @@ use velcro::hash_map;
 /// * [`CountryCode`]
 /// * [`Country`]
 /// 
-pub static COUNTRIES: Lazy<HashMap<CountryCode, Country>> = Lazy::new(|| {
+static COUNTRIES: Lazy<HashMap<Country, CountryInfo>> = Lazy::new(|| {
 	hash_map!{
-		CountryCode::AD: Country { code: CountryCode::AD, name: s!("Andorra"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: CA ] },
-		CountryCode::AE: Country { code: CountryCode::AE, name: s!("United Arab Emirates"),                                 currencies: vh![ CurrencyCode: AED ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::AF: Country { code: CountryCode::AF, name: s!("Afghanistan"),                                          currencies: vh![ CurrencyCode: AFN ],           languages: vh![ LanguageCode: FA, PS ] },
-		CountryCode::AG: Country { code: CountryCode::AG, name: s!("Antigua and Barbuda"),                                  currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::AI: Country { code: CountryCode::AI, name: s!("Anguilla"),                                             currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::AL: Country { code: CountryCode::AL, name: s!("Albania"),                                              currencies: vh![ CurrencyCode: ALL ],           languages: vh![ LanguageCode: SQ ] },
-		CountryCode::AM: Country { code: CountryCode::AM, name: s!("Armenia"),                                              currencies: vh![ CurrencyCode: AMD ],           languages: vh![ LanguageCode: HY ] },
-		CountryCode::AO: Country { code: CountryCode::AO, name: s!("Angola"),                                               currencies: vh![ CurrencyCode: AOA ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::AQ: Country { code: CountryCode::AQ, name: s!("Antarctica"),                                           currencies: vh![],                              languages: vh![] },
-		CountryCode::AR: Country { code: CountryCode::AR, name: s!("Argentina"),                                            currencies: vh![ CurrencyCode: ARS ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::AS: Country { code: CountryCode::AS, name: s!("American Samoa"),                                       currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN, SM ] },
-		CountryCode::AT: Country { code: CountryCode::AT, name: s!("Austria"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE ] },
-		CountryCode::AU: Country { code: CountryCode::AU, name: s!("Australia"),                                            currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::AW: Country { code: CountryCode::AW, name: s!("Aruba"),                                                currencies: vh![ CurrencyCode: AWG ],           languages: vh![ LanguageCode: NL ] },
-		CountryCode::AX: Country { code: CountryCode::AX, name: s!("Åland Islands"),                                        currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: SV ] },
-		CountryCode::AZ: Country { code: CountryCode::AZ, name: s!("Azerbaijan"),                                           currencies: vh![ CurrencyCode: AZN ],           languages: vh![ LanguageCode: AZ ] },
-		CountryCode::BA: Country { code: CountryCode::BA, name: s!("Bosnia and Herzegovina"),                               currencies: vh![ CurrencyCode: BAM ],           languages: vh![ LanguageCode: BS, HR, SR ] },
-		CountryCode::BB: Country { code: CountryCode::BB, name: s!("Barbados"),                                             currencies: vh![ CurrencyCode: BBD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::BD: Country { code: CountryCode::BD, name: s!("Bangladesh"),                                           currencies: vh![ CurrencyCode: BDT ],           languages: vh![ LanguageCode: BN ] },
-		CountryCode::BE: Country { code: CountryCode::BE, name: s!("Belgium"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE, FR, NL ] },
-		CountryCode::BF: Country { code: CountryCode::BF, name: s!("Burkina Faso"),                                         currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::BG: Country { code: CountryCode::BG, name: s!("Bulgaria"),                                             currencies: vh![ CurrencyCode: BGN ],           languages: vh![ LanguageCode: BG ] },
-		CountryCode::BH: Country { code: CountryCode::BH, name: s!("Bahrain"),                                              currencies: vh![ CurrencyCode: BHD ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::BI: Country { code: CountryCode::BI, name: s!("Burundi"),                                              currencies: vh![ CurrencyCode: BIF ],           languages: vh![ LanguageCode: EN, FR, RN ] },
-		CountryCode::BJ: Country { code: CountryCode::BJ, name: s!("Benin"),                                                currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::BL: Country { code: CountryCode::BL, name: s!("Saint Barthélemy"),                                     currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::BM: Country { code: CountryCode::BM, name: s!("Bermuda"),                                              currencies: vh![ CurrencyCode: BMD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::BN: Country { code: CountryCode::BN, name: s!("Brunei Darussalam"),                                    currencies: vh![ CurrencyCode: BND ],           languages: vh![ LanguageCode: MS ] },
-		CountryCode::BO: Country { code: CountryCode::BO, name: s!("Bolivia (Plurinational State of)"),                     currencies: vh![ CurrencyCode: BOB, BOV ],      languages: vh![ LanguageCode: AY, ES, GN, QU ] },
-		CountryCode::BQ: Country { code: CountryCode::BQ, name: s!("Bonaire, Sint Eustatius and Saba"),                     currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: NL ] },
-		CountryCode::BR: Country { code: CountryCode::BR, name: s!("Brazil"),                                               currencies: vh![ CurrencyCode: BRL ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::BS: Country { code: CountryCode::BS, name: s!("Bahamas"),                                              currencies: vh![ CurrencyCode: BSD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::BT: Country { code: CountryCode::BT, name: s!("Bhutan"),                                               currencies: vh![ CurrencyCode: BTN, INR ],      languages: vh![ LanguageCode: DZ ] },
-		CountryCode::BV: Country { code: CountryCode::BV, name: s!("Bouvet Island"),                                        currencies: vh![ CurrencyCode: NOK ],           languages: vh![ LanguageCode: NO ] },
-		CountryCode::BW: Country { code: CountryCode::BW, name: s!("Botswana"),                                             currencies: vh![ CurrencyCode: BWP ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::BY: Country { code: CountryCode::BY, name: s!("Belarus"),                                              currencies: vh![ CurrencyCode: BYN ],           languages: vh![ LanguageCode: BE, RU ] },
-		CountryCode::BZ: Country { code: CountryCode::BZ, name: s!("Belize"),                                               currencies: vh![ CurrencyCode: BZD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::CA: Country { code: CountryCode::CA, name: s!("Canada"),                                               currencies: vh![ CurrencyCode: CAD ],           languages: vh![ LanguageCode: EN, FR ] },
-		CountryCode::CC: Country { code: CountryCode::CC, name: s!("Cocos (Keeling) Islands"),                              currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN, MS ] },
-		CountryCode::CD: Country { code: CountryCode::CD, name: s!("Congo, Democratic Republic of the"),                    currencies: vh![ CurrencyCode: CDF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::CF: Country { code: CountryCode::CF, name: s!("Central African Republic"),                             currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: FR, SG ] },
-		CountryCode::CG: Country { code: CountryCode::CG, name: s!("Congo"),                                                currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::CH: Country { code: CountryCode::CH, name: s!("Switzerland"),                                          currencies: vh![ CurrencyCode: CHE, CHF, CHW ], languages: vh![ LanguageCode: DE, FR, IT, RM ] },
-		CountryCode::CI: Country { code: CountryCode::CI, name: s!("Côte d'Ivoire"),                                        currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::CK: Country { code: CountryCode::CK, name: s!("Cook Islands"),                                         currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::CL: Country { code: CountryCode::CL, name: s!("Chile"),                                                currencies: vh![ CurrencyCode: CLF, CLP ],      languages: vh![ LanguageCode: ES ] },
-		CountryCode::CM: Country { code: CountryCode::CM, name: s!("Cameroon"),                                             currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: EN, FR ] },
-		CountryCode::CN: Country { code: CountryCode::CN, name: s!("China"),                                                currencies: vh![ CurrencyCode: CNY ],           languages: vh![ LanguageCode: ZH ] },
-		CountryCode::CO: Country { code: CountryCode::CO, name: s!("Colombia"),                                             currencies: vh![ CurrencyCode: COP, COU ],      languages: vh![ LanguageCode: ES ] },
-		CountryCode::CR: Country { code: CountryCode::CR, name: s!("Costa Rica"),                                           currencies: vh![ CurrencyCode: CRC ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::CU: Country { code: CountryCode::CU, name: s!("Cuba"),                                                 currencies: vh![ CurrencyCode: CUP ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::CV: Country { code: CountryCode::CV, name: s!("Cabo Verde"),                                           currencies: vh![ CurrencyCode: CVE ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::CW: Country { code: CountryCode::CW, name: s!("Curaçao"),                                              currencies: vh![ CurrencyCode: ANG ],           languages: vh![ LanguageCode: EN, NL ] },
-		CountryCode::CX: Country { code: CountryCode::CX, name: s!("Christmas Island"),                                     currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN, MS, ZH ] },
-		CountryCode::CY: Country { code: CountryCode::CY, name: s!("Cyprus"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EL, TR ] },
-		CountryCode::CZ: Country { code: CountryCode::CZ, name: s!("Czechia"),                                              currencies: vh![ CurrencyCode: CZK ],           languages: vh![ LanguageCode: CS, SK ] },
-		CountryCode::DE: Country { code: CountryCode::DE, name: s!("Germany"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE ] },
-		CountryCode::DJ: Country { code: CountryCode::DJ, name: s!("Djibouti"),                                             currencies: vh![ CurrencyCode: DJF ],           languages: vh![ LanguageCode: AR, FR ] },
-		CountryCode::DK: Country { code: CountryCode::DK, name: s!("Denmark"),                                              currencies: vh![ CurrencyCode: DKK ],           languages: vh![ LanguageCode: DA ] },
-		CountryCode::DM: Country { code: CountryCode::DM, name: s!("Dominica"),                                             currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::DO: Country { code: CountryCode::DO, name: s!("Dominican Republic"),                                   currencies: vh![ CurrencyCode: DOP ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::DZ: Country { code: CountryCode::DZ, name: s!("Algeria"),                                              currencies: vh![ CurrencyCode: DZD ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::EC: Country { code: CountryCode::EC, name: s!("Ecuador"),                                              currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: ES, QU ] },
-		CountryCode::EE: Country { code: CountryCode::EE, name: s!("Estonia"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: ET ] },
-		CountryCode::EG: Country { code: CountryCode::EG, name: s!("Egypt"),                                                currencies: vh![ CurrencyCode: EGP ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::EH: Country { code: CountryCode::EH, name: s!("Western Sahara"),                                       currencies: vh![ CurrencyCode: MAD ],           languages: vh![ LanguageCode: AR, ES ] },
-		CountryCode::ER: Country { code: CountryCode::ER, name: s!("Eritrea"),                                              currencies: vh![ CurrencyCode: ERN ],           languages: vh![ LanguageCode: TI ] },
-		CountryCode::ES: Country { code: CountryCode::ES, name: s!("Spain"),                                                currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::ET: Country { code: CountryCode::ET, name: s!("Ethiopia"),                                             currencies: vh![ CurrencyCode: ETB ],           languages: vh![ LanguageCode: AA, AM, OM, SO, TI ] },
-		CountryCode::FI: Country { code: CountryCode::FI, name: s!("Finland"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FI, SV ] },
-		CountryCode::FJ: Country { code: CountryCode::FJ, name: s!("Fiji"),                                                 currencies: vh![ CurrencyCode: FJD ],           languages: vh![ LanguageCode: EN, FJ ] },
-		CountryCode::FK: Country { code: CountryCode::FK, name: s!("Falkland Islands (Malvinas)"),                          currencies: vh![ CurrencyCode: FKP ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::FM: Country { code: CountryCode::FM, name: s!("Micronesia (Federated States of)"),                     currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::FO: Country { code: CountryCode::FO, name: s!("Faroe Islands"),                                        currencies: vh![ CurrencyCode: DKK ],           languages: vh![ LanguageCode: DA, FO ] },
-		CountryCode::FR: Country { code: CountryCode::FR, name: s!("France"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::GA: Country { code: CountryCode::GA, name: s!("Gabon"),                                                currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::GB: Country { code: CountryCode::GB, name: s!("United Kingdom of Great Britain and Northern Ireland"), currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::GD: Country { code: CountryCode::GD, name: s!("Grenada"),                                              currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::GE: Country { code: CountryCode::GE, name: s!("Georgia"),                                              currencies: vh![ CurrencyCode: GEL ],           languages: vh![ LanguageCode: KA ] },
-		CountryCode::GF: Country { code: CountryCode::GF, name: s!("French Guiana"),                                        currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::GG: Country { code: CountryCode::GG, name: s!("Guernsey"),                                             currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::GH: Country { code: CountryCode::GH, name: s!("Ghana"),                                                currencies: vh![ CurrencyCode: GHS ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::GI: Country { code: CountryCode::GI, name: s!("Gibraltar"),                                            currencies: vh![ CurrencyCode: GIP ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::GL: Country { code: CountryCode::GL, name: s!("Greenland"),                                            currencies: vh![ CurrencyCode: DKK ],           languages: vh![ LanguageCode: DA, EN ] },
-		CountryCode::GM: Country { code: CountryCode::GM, name: s!("Gambia"),                                               currencies: vh![ CurrencyCode: GMD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::GN: Country { code: CountryCode::GN, name: s!("Guinea"),                                               currencies: vh![ CurrencyCode: GNF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::GP: Country { code: CountryCode::GP, name: s!("Guadeloupe"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::GQ: Country { code: CountryCode::GQ, name: s!("Equatorial Guinea"),                                    currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: ES, FR, PT ] },
-		CountryCode::GR: Country { code: CountryCode::GR, name: s!("Greece"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EL ] },
-		CountryCode::GS: Country { code: CountryCode::GS, name: s!("South Georgia and the South Sandwich Islands"),         currencies: vh![],                              languages: vh![ LanguageCode: EN ] },
-		CountryCode::GT: Country { code: CountryCode::GT, name: s!("Guatemala"),                                            currencies: vh![ CurrencyCode: GTQ ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::GU: Country { code: CountryCode::GU, name: s!("Guam"),                                                 currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: CH, EN ] },
-		CountryCode::GW: Country { code: CountryCode::GW, name: s!("Guinea-Bissau"),                                        currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::GY: Country { code: CountryCode::GY, name: s!("Guyana"),                                               currencies: vh![ CurrencyCode: GYD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::HK: Country { code: CountryCode::HK, name: s!("Hong Kong"),                                            currencies: vh![ CurrencyCode: HKD ],           languages: vh![ LanguageCode: EN, ZH ] },
-		CountryCode::HM: Country { code: CountryCode::HM, name: s!("Heard Island and McDonald Islands"),                    currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::HN: Country { code: CountryCode::HN, name: s!("Honduras"),                                             currencies: vh![ CurrencyCode: HNL ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::HR: Country { code: CountryCode::HR, name: s!("Croatia"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: HR ] },
-		CountryCode::HT: Country { code: CountryCode::HT, name: s!("Haiti"),                                                currencies: vh![ CurrencyCode: HTG ],           languages: vh![ LanguageCode: FR, HT ] },
-		CountryCode::HU: Country { code: CountryCode::HU, name: s!("Hungary"),                                              currencies: vh![ CurrencyCode: HUF ],           languages: vh![ LanguageCode: HU ] },
-		CountryCode::ID: Country { code: CountryCode::ID, name: s!("Indonesia"),                                            currencies: vh![ CurrencyCode: IDR ],           languages: vh![ LanguageCode: ID ] },
-		CountryCode::IE: Country { code: CountryCode::IE, name: s!("Ireland"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EN, GA ] },
-		CountryCode::IL: Country { code: CountryCode::IL, name: s!("Israel"),                                               currencies: vh![ CurrencyCode: ILS ],           languages: vh![ LanguageCode: HE ] },
-		CountryCode::IM: Country { code: CountryCode::IM, name: s!("Isle of Man"),                                          currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN, GV ] },
-		CountryCode::IN: Country { code: CountryCode::IN, name: s!("India"),                                                currencies: vh![ CurrencyCode: INR ],           languages: vh![ LanguageCode: EN, HI ] },
-		CountryCode::IO: Country { code: CountryCode::IO, name: s!("British Indian Ocean Territory"),                       currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::IQ: Country { code: CountryCode::IQ, name: s!("Iraq"),                                                 currencies: vh![ CurrencyCode: IQD ],           languages: vh![ LanguageCode: AR, KU ] },
-		CountryCode::IR: Country { code: CountryCode::IR, name: s!("Iran (Islamic Republic of)"),                           currencies: vh![ CurrencyCode: IRR ],           languages: vh![ LanguageCode: FA ] },
-		CountryCode::IS: Country { code: CountryCode::IS, name: s!("Iceland"),                                              currencies: vh![ CurrencyCode: ISK ],           languages: vh![ LanguageCode: IS ] },
-		CountryCode::IT: Country { code: CountryCode::IT, name: s!("Italy"),                                                currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: IT ] },
-		CountryCode::JE: Country { code: CountryCode::JE, name: s!("Jersey"),                                               currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN, FR ] },
-		CountryCode::JM: Country { code: CountryCode::JM, name: s!("Jamaica"),                                              currencies: vh![ CurrencyCode: JMD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::JO: Country { code: CountryCode::JO, name: s!("Jordan"),                                               currencies: vh![ CurrencyCode: JOD ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::JP: Country { code: CountryCode::JP, name: s!("Japan"),                                                currencies: vh![ CurrencyCode: JPY ],           languages: vh![ LanguageCode: JA ] },
-		CountryCode::KE: Country { code: CountryCode::KE, name: s!("Kenya"),                                                currencies: vh![ CurrencyCode: KES ],           languages: vh![ LanguageCode: EN, SW ] },
-		CountryCode::KG: Country { code: CountryCode::KG, name: s!("Kyrgyzstan"),                                           currencies: vh![ CurrencyCode: KGS ],           languages: vh![ LanguageCode: KY, RU ] },
-		CountryCode::KH: Country { code: CountryCode::KH, name: s!("Cambodia"),                                             currencies: vh![ CurrencyCode: KHR ],           languages: vh![ LanguageCode: KM ] },
-		CountryCode::KI: Country { code: CountryCode::KI, name: s!("Kiribati"),                                             currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::KM: Country { code: CountryCode::KM, name: s!("Comoros"),                                              currencies: vh![ CurrencyCode: KMF ],           languages: vh![ LanguageCode: AR, FR ] },
-		CountryCode::KN: Country { code: CountryCode::KN, name: s!("Saint Kitts and Nevis"),                                currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::KP: Country { code: CountryCode::KP, name: s!("Korea (Democratic People's Republic of)"),              currencies: vh![ CurrencyCode: KPW ],           languages: vh![ LanguageCode: KO ] },
-		CountryCode::KR: Country { code: CountryCode::KR, name: s!("Korea, Republic of"),                                   currencies: vh![ CurrencyCode: KRW ],           languages: vh![ LanguageCode: KO ] },
-		CountryCode::KW: Country { code: CountryCode::KW, name: s!("Kuwait"),                                               currencies: vh![ CurrencyCode: KWD ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::KY: Country { code: CountryCode::KY, name: s!("Cayman Islands"),                                       currencies: vh![ CurrencyCode: KYD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::KZ: Country { code: CountryCode::KZ, name: s!("Kazakhstan"),                                           currencies: vh![ CurrencyCode: KZT ],           languages: vh![ LanguageCode: KK, RU ] },
-		CountryCode::LA: Country { code: CountryCode::LA, name: s!("Lao People's Democratic Republic"),                     currencies: vh![ CurrencyCode: LAK ],           languages: vh![ LanguageCode: LO ] },
-		CountryCode::LB: Country { code: CountryCode::LB, name: s!("Lebanon"),                                              currencies: vh![ CurrencyCode: LBP ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::LC: Country { code: CountryCode::LC, name: s!("Saint Lucia"),                                          currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::LI: Country { code: CountryCode::LI, name: s!("Liechtenstein"),                                        currencies: vh![ CurrencyCode: CHF ],           languages: vh![ LanguageCode: DE ] },
-		CountryCode::LK: Country { code: CountryCode::LK, name: s!("Sri Lanka"),                                            currencies: vh![ CurrencyCode: LKR ],           languages: vh![ LanguageCode: SI, TA ] },
-		CountryCode::LR: Country { code: CountryCode::LR, name: s!("Liberia"),                                              currencies: vh![ CurrencyCode: LRD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::LS: Country { code: CountryCode::LS, name: s!("Lesotho"),                                              currencies: vh![ CurrencyCode: LSL, ZAR ],      languages: vh![ LanguageCode: EN, ST ] },
-		CountryCode::LT: Country { code: CountryCode::LT, name: s!("Lithuania"),                                            currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: LT ] },
-		CountryCode::LU: Country { code: CountryCode::LU, name: s!("Luxembourg"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE, FR, LB ] },
-		CountryCode::LV: Country { code: CountryCode::LV, name: s!("Latvia"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: LV ] },
-		CountryCode::LY: Country { code: CountryCode::LY, name: s!("Libya"),                                                currencies: vh![ CurrencyCode: LYD ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::MA: Country { code: CountryCode::MA, name: s!("Morocco"),                                              currencies: vh![ CurrencyCode: MAD ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::MC: Country { code: CountryCode::MC, name: s!("Monaco"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::MD: Country { code: CountryCode::MD, name: s!("Moldova, Republic of"),                                 currencies: vh![ CurrencyCode: MDL ],           languages: vh![ LanguageCode: RO ] },
-		CountryCode::ME: Country { code: CountryCode::ME, name: s!("Montenegro"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: HR, SR ] },
-		CountryCode::MF: Country { code: CountryCode::MF, name: s!("Saint Martin (French part)"),                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::MG: Country { code: CountryCode::MG, name: s!("Madagascar"),                                           currencies: vh![ CurrencyCode: MGA ],           languages: vh![ LanguageCode: FR, MG ] },
-		CountryCode::MH: Country { code: CountryCode::MH, name: s!("Marshall Islands"),                                     currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN, MH ] },
-		CountryCode::MK: Country { code: CountryCode::MK, name: s!("North Macedonia"),                                      currencies: vh![ CurrencyCode: MKD ],           languages: vh![ LanguageCode: MK, SQ ] },
-		CountryCode::ML: Country { code: CountryCode::ML, name: s!("Mali"),                                                 currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: BM, FF ] },
-		CountryCode::MM: Country { code: CountryCode::MM, name: s!("Myanmar"),                                              currencies: vh![ CurrencyCode: MMK ],           languages: vh![ LanguageCode: MY ] },
-		CountryCode::MN: Country { code: CountryCode::MN, name: s!("Mongolia"),                                             currencies: vh![ CurrencyCode: MNT ],           languages: vh![ LanguageCode: MN ] },
-		CountryCode::MO: Country { code: CountryCode::MO, name: s!("Macao"),                                                currencies: vh![ CurrencyCode: MOP ],           languages: vh![ LanguageCode: PT, ZH ] },
-		CountryCode::MP: Country { code: CountryCode::MP, name: s!("Northern Mariana Islands"),                             currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: CH, EN ] },
-		CountryCode::MQ: Country { code: CountryCode::MQ, name: s!("Martinique"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::MR: Country { code: CountryCode::MR, name: s!("Mauritania"),                                           currencies: vh![ CurrencyCode: MRU ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::MS: Country { code: CountryCode::MS, name: s!("Montserrat"),                                           currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::MT: Country { code: CountryCode::MT, name: s!("Malta"),                                                currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EN, MT ] },
-		CountryCode::MU: Country { code: CountryCode::MU, name: s!("Mauritius"),                                            currencies: vh![ CurrencyCode: MUR ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::MV: Country { code: CountryCode::MV, name: s!("Maldives"),                                             currencies: vh![ CurrencyCode: MVR ],           languages: vh![ LanguageCode: DV ] },
-		CountryCode::MW: Country { code: CountryCode::MW, name: s!("Malawi"),                                               currencies: vh![ CurrencyCode: MWK ],           languages: vh![ LanguageCode: EN, NY ] },
-		CountryCode::MX: Country { code: CountryCode::MX, name: s!("Mexico"),                                               currencies: vh![ CurrencyCode: MXN, MXV ],      languages: vh![ LanguageCode: ES ] },
-		CountryCode::MY: Country { code: CountryCode::MY, name: s!("Malaysia"),                                             currencies: vh![ CurrencyCode: MYR ],           languages: vh![ LanguageCode: MS ] },
-		CountryCode::MZ: Country { code: CountryCode::MZ, name: s!("Mozambique"),                                           currencies: vh![ CurrencyCode: MZN ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::NA: Country { code: CountryCode::NA, name: s!("Namibia"),                                              currencies: vh![ CurrencyCode: NAD, ZAR ],      languages: vh![ LanguageCode: EN ] },
-		CountryCode::NC: Country { code: CountryCode::NC, name: s!("New Caledonia"),                                        currencies: vh![ CurrencyCode: XPF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::NE: Country { code: CountryCode::NE, name: s!("Niger"),                                                currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::NF: Country { code: CountryCode::NF, name: s!("Norfolk Island"),                                       currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::NG: Country { code: CountryCode::NG, name: s!("Nigeria"),                                              currencies: vh![ CurrencyCode: NGN ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::NI: Country { code: CountryCode::NI, name: s!("Nicaragua"),                                            currencies: vh![ CurrencyCode: NIO ],           languages: vh![ LanguageCode: ES ] },
-		CountryCode::NL: Country { code: CountryCode::NL, name: s!("Netherlands, Kingdom of the"),                          currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: NL ] },
-		CountryCode::NO: Country { code: CountryCode::NO, name: s!("Norway"),                                               currencies: vh![ CurrencyCode: NOK ],           languages: vh![ LanguageCode: NO ] },
-		CountryCode::NP: Country { code: CountryCode::NP, name: s!("Nepal"),                                                currencies: vh![ CurrencyCode: NPR ],           languages: vh![ LanguageCode: NE ] },
-		CountryCode::NR: Country { code: CountryCode::NR, name: s!("Nauru"),                                                currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN, NA ] },
-		CountryCode::NU: Country { code: CountryCode::NU, name: s!("Niue"),                                                 currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::NZ: Country { code: CountryCode::NZ, name: s!("New Zealand"),                                          currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN, MI ] },
-		CountryCode::OM: Country { code: CountryCode::OM, name: s!("Oman"),                                                 currencies: vh![ CurrencyCode: OMR ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::PA: Country { code: CountryCode::PA, name: s!("Panama"),                                               currencies: vh![ CurrencyCode: PAB, USD ],      languages: vh![ LanguageCode: ES ] },
-		CountryCode::PE: Country { code: CountryCode::PE, name: s!("Peru"),                                                 currencies: vh![ CurrencyCode: PEN ],           languages: vh![ LanguageCode: AY, ES, QU ] },
-		CountryCode::PF: Country { code: CountryCode::PF, name: s!("French Polynesia"),                                     currencies: vh![ CurrencyCode: XPF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::PG: Country { code: CountryCode::PG, name: s!("Papua New Guinea"),                                     currencies: vh![ CurrencyCode: PGK ],           languages: vh![ LanguageCode: EN, HO ] },
-		CountryCode::PH: Country { code: CountryCode::PH, name: s!("Philippines"),                                          currencies: vh![ CurrencyCode: PHP ],           languages: vh![ LanguageCode: EN, TL ] },
-		CountryCode::PK: Country { code: CountryCode::PK, name: s!("Pakistan"),                                             currencies: vh![ CurrencyCode: PKR ],           languages: vh![ LanguageCode: EN, UR ] },
-		CountryCode::PL: Country { code: CountryCode::PL, name: s!("Poland"),                                               currencies: vh![ CurrencyCode: PLN ],           languages: vh![ LanguageCode: PL ] },
-		CountryCode::PM: Country { code: CountryCode::PM, name: s!("Saint Pierre and Miquelon"),                            currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::PN: Country { code: CountryCode::PN, name: s!("Pitcairn"),                                             currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::PR: Country { code: CountryCode::PR, name: s!("Puerto Rico"),                                          currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN, ES ] },
-		CountryCode::PS: Country { code: CountryCode::PS, name: s!("Palestine, State of"),                                  currencies: vh![],                              languages: vh![ LanguageCode: AR ] },
-		CountryCode::PT: Country { code: CountryCode::PT, name: s!("Portugal"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::PW: Country { code: CountryCode::PW, name: s!("Palau"),                                                currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::PY: Country { code: CountryCode::PY, name: s!("Paraguay"),                                             currencies: vh![ CurrencyCode: PYG ],           languages: vh![ LanguageCode: ES, GN ] },
-		CountryCode::QA: Country { code: CountryCode::QA, name: s!("Qatar"),                                                currencies: vh![ CurrencyCode: QAR ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::RE: Country { code: CountryCode::RE, name: s!("Réunion"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::RO: Country { code: CountryCode::RO, name: s!("Romania"),                                              currencies: vh![ CurrencyCode: RON ],           languages: vh![ LanguageCode: RO ] },
-		CountryCode::RS: Country { code: CountryCode::RS, name: s!("Serbia"),                                               currencies: vh![ CurrencyCode: RSD ],           languages: vh![ LanguageCode: SR ] },
-		CountryCode::RU: Country { code: CountryCode::RU, name: s!("Russian Federation"),                                   currencies: vh![ CurrencyCode: RUB ],           languages: vh![ LanguageCode: RU ] },
-		CountryCode::RW: Country { code: CountryCode::RW, name: s!("Rwanda"),                                               currencies: vh![ CurrencyCode: RWF ],           languages: vh![ LanguageCode: EN, FR, RW, SW ] },
-		CountryCode::SA: Country { code: CountryCode::SA, name: s!("Saudi Arabia"),                                         currencies: vh![ CurrencyCode: SAR ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::SB: Country { code: CountryCode::SB, name: s!("Solomon Islands"),                                      currencies: vh![ CurrencyCode: SBD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::SC: Country { code: CountryCode::SC, name: s!("Seychelles"),                                           currencies: vh![ CurrencyCode: SCR ],           languages: vh![ LanguageCode: EN, FR ] },
-		CountryCode::SD: Country { code: CountryCode::SD, name: s!("Sudan"),                                                currencies: vh![ CurrencyCode: SDG ],           languages: vh![ LanguageCode: AR, EN ] },
-		CountryCode::SE: Country { code: CountryCode::SE, name: s!("Sweden"),                                               currencies: vh![ CurrencyCode: SEK ],           languages: vh![ LanguageCode: SV ] },
-		CountryCode::SG: Country { code: CountryCode::SG, name: s!("Singapore"),                                            currencies: vh![ CurrencyCode: SGD ],           languages: vh![ LanguageCode: EN, MS, TA, ZH ] },
-		CountryCode::SH: Country { code: CountryCode::SH, name: s!("Saint Helena, Ascension and Tristan da Cunha"),         currencies: vh![ CurrencyCode: GBP, SHP ],      languages: vh![ LanguageCode: EN ] },
-		CountryCode::SI: Country { code: CountryCode::SI, name: s!("Slovenia"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: SL ] },
-		CountryCode::SJ: Country { code: CountryCode::SJ, name: s!("Svalbard and Jan Mayen"),                               currencies: vh![ CurrencyCode: NOK ],           languages: vh![ LanguageCode: NO ] },
-		CountryCode::SK: Country { code: CountryCode::SK, name: s!("Slovakia"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: SK ] },
-		CountryCode::SL: Country { code: CountryCode::SL, name: s!("Sierra Leone"),                                         currencies: vh![ CurrencyCode: SLE, SLL ],      languages: vh![ LanguageCode: EN ] },
-		CountryCode::SM: Country { code: CountryCode::SM, name: s!("San Marino"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: IT ] },
-		CountryCode::SN: Country { code: CountryCode::SN, name: s!("Senegal"),                                              currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::SO: Country { code: CountryCode::SO, name: s!("Somalia"),                                              currencies: vh![ CurrencyCode: SOS ],           languages: vh![ LanguageCode: AR, SO ] },
-		CountryCode::SR: Country { code: CountryCode::SR, name: s!("Suriname"),                                             currencies: vh![ CurrencyCode: SRD ],           languages: vh![ LanguageCode: NL ] },
-		CountryCode::SS: Country { code: CountryCode::SS, name: s!("South Sudan"),                                          currencies: vh![ CurrencyCode: SSP ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::ST: Country { code: CountryCode::ST, name: s!("Sao Tome and Principe"),                                currencies: vh![ CurrencyCode: STN ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::SV: Country { code: CountryCode::SV, name: s!("El Salvador"),                                          currencies: vh![ CurrencyCode: SVC, USD ],      languages: vh![ LanguageCode: ES ] },
-		CountryCode::SX: Country { code: CountryCode::SX, name: s!("Sint Maarten (Dutch part)"),                            currencies: vh![ CurrencyCode: ANG ],           languages: vh![ LanguageCode: EN, NL ] },
-		CountryCode::SY: Country { code: CountryCode::SY, name: s!("Syrian Arab Republic"),                                 currencies: vh![ CurrencyCode: SYP ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::SZ: Country { code: CountryCode::SZ, name: s!("Eswatini"),                                             currencies: vh![ CurrencyCode: SZL, ZAR ],      languages: vh![ LanguageCode: EN, SS ] },
-		CountryCode::TC: Country { code: CountryCode::TC, name: s!("Turks and Caicos Islands"),                             currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::TD: Country { code: CountryCode::TD, name: s!("Chad"),                                                 currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: AR, FR ] },
-		CountryCode::TF: Country { code: CountryCode::TF, name: s!("French Southern Territories"),                          currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::TG: Country { code: CountryCode::TG, name: s!("Togo"),                                                 currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::TH: Country { code: CountryCode::TH, name: s!("Thailand"),                                             currencies: vh![ CurrencyCode: THB ],           languages: vh![ LanguageCode: TH ] },
-		CountryCode::TJ: Country { code: CountryCode::TJ, name: s!("Tajikistan"),                                           currencies: vh![ CurrencyCode: TJS ],           languages: vh![ LanguageCode: TG ] },
-		CountryCode::TK: Country { code: CountryCode::TK, name: s!("Tokelau"),                                              currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::TL: Country { code: CountryCode::TL, name: s!("Timor-Leste"),                                          currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: PT ] },
-		CountryCode::TM: Country { code: CountryCode::TM, name: s!("Turkmenistan"),                                         currencies: vh![ CurrencyCode: TMT ],           languages: vh![ LanguageCode: TK ] },
-		CountryCode::TN: Country { code: CountryCode::TN, name: s!("Tunisia"),                                              currencies: vh![ CurrencyCode: TND ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::TO: Country { code: CountryCode::TO, name: s!("Tonga"),                                                currencies: vh![ CurrencyCode: TOP ],           languages: vh![ LanguageCode: EN, TO ] },
-		CountryCode::TR: Country { code: CountryCode::TR, name: s!("Türkiye"),                                              currencies: vh![ CurrencyCode: TRY ],           languages: vh![ LanguageCode: TR ] },
-		CountryCode::TT: Country { code: CountryCode::TT, name: s!("Trinidad and Tobago"),                                  currencies: vh![ CurrencyCode: TTD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::TV: Country { code: CountryCode::TV, name: s!("Tuvalu"),                                               currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::TW: Country { code: CountryCode::TW, name: s!("Taiwan, Province of China"),                            currencies: vh![ CurrencyCode: TWD ],           languages: vh![ LanguageCode: ZH ] },
-		CountryCode::TZ: Country { code: CountryCode::TZ, name: s!("Tanzania, United Republic of"),                         currencies: vh![ CurrencyCode: TZS ],           languages: vh![ LanguageCode: EN, SW ] },
-		CountryCode::UA: Country { code: CountryCode::UA, name: s!("Ukraine"),                                              currencies: vh![ CurrencyCode: UAH ],           languages: vh![ LanguageCode: UK ] },
-		CountryCode::UG: Country { code: CountryCode::UG, name: s!("Uganda"),                                               currencies: vh![ CurrencyCode: UGX ],           languages: vh![ LanguageCode: EN, SW ] },
-		CountryCode::UM: Country { code: CountryCode::UM, name: s!("United States Minor Outlying Islands"),                 currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::US: Country { code: CountryCode::US, name: s!("United States of America"),                             currencies: vh![ CurrencyCode: USD, USN ],      languages: vh![ LanguageCode: EN ] },
-		CountryCode::UY: Country { code: CountryCode::UY, name: s!("Uruguay"),                                              currencies: vh![ CurrencyCode: UYI, UYU, UYW ], languages: vh![ LanguageCode: ES ] },
-		CountryCode::UZ: Country { code: CountryCode::UZ, name: s!("Uzbekistan"),                                           currencies: vh![ CurrencyCode: UZS ],           languages: vh![ LanguageCode: UZ ] },
-		CountryCode::VA: Country { code: CountryCode::VA, name: s!("Holy See"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: IT, LA ] },
-		CountryCode::VC: Country { code: CountryCode::VC, name: s!("Saint Vincent and the Grenadines"),                     currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::VE: Country { code: CountryCode::VE, name: s!("Venezuela (Bolivarian Republic of)"),                   currencies: vh![ CurrencyCode: VED, VES ],      languages: vh![ LanguageCode: ES ] },
-		CountryCode::VG: Country { code: CountryCode::VG, name: s!("Virgin Islands (British)"),                             currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::VI: Country { code: CountryCode::VI, name: s!("Virgin Islands (U.S.)"),                                currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::VN: Country { code: CountryCode::VN, name: s!("Viet Nam"),                                             currencies: vh![ CurrencyCode: VND ],           languages: vh![ LanguageCode: VI ] },
-		CountryCode::VU: Country { code: CountryCode::VU, name: s!("Vanuatu"),                                              currencies: vh![ CurrencyCode: VUV ],           languages: vh![ LanguageCode: BI, EN, FR ] },
-		CountryCode::WF: Country { code: CountryCode::WF, name: s!("Wallis and Futuna"),                                    currencies: vh![ CurrencyCode: XPF ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::WS: Country { code: CountryCode::WS, name: s!("Samoa"),                                                currencies: vh![ CurrencyCode: WST ],           languages: vh![ LanguageCode: EN, SM ] },
-		CountryCode::YE: Country { code: CountryCode::YE, name: s!("Yemen"),                                                currencies: vh![ CurrencyCode: YER ],           languages: vh![ LanguageCode: AR ] },
-		CountryCode::YT: Country { code: CountryCode::YT, name: s!("Mayotte"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
-		CountryCode::ZA: Country { code: CountryCode::ZA, name: s!("South Africa"),                                         currencies: vh![ CurrencyCode: ZAR ],           languages: vh![ LanguageCode: AF, EN, NR, SS, ST, TN, TS, VE, XH, ZU ] },
-		CountryCode::ZM: Country { code: CountryCode::ZM, name: s!("Zambia"),                                               currencies: vh![ CurrencyCode: ZMW ],           languages: vh![ LanguageCode: EN ] },
-		CountryCode::ZW: Country { code: CountryCode::ZW, name: s!("Zimbabwe"),                                             currencies: vh![ CurrencyCode: ZWL ],           languages: vh![ LanguageCode: EN, NR, NY, SN, ST, TN, VE, XH ] },
+		Country::AD: CountryInfo { code: CountryCode::AD, name: s!("Andorra"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: CA ] },
+		Country::AE: CountryInfo { code: CountryCode::AE, name: s!("United Arab Emirates"),                                 currencies: vh![ CurrencyCode: AED ],           languages: vh![ LanguageCode: AR ] },
+		Country::AF: CountryInfo { code: CountryCode::AF, name: s!("Afghanistan"),                                          currencies: vh![ CurrencyCode: AFN ],           languages: vh![ LanguageCode: FA, PS ] },
+		Country::AG: CountryInfo { code: CountryCode::AG, name: s!("Antigua and Barbuda"),                                  currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::AI: CountryInfo { code: CountryCode::AI, name: s!("Anguilla"),                                             currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::AL: CountryInfo { code: CountryCode::AL, name: s!("Albania"),                                              currencies: vh![ CurrencyCode: ALL ],           languages: vh![ LanguageCode: SQ ] },
+		Country::AM: CountryInfo { code: CountryCode::AM, name: s!("Armenia"),                                              currencies: vh![ CurrencyCode: AMD ],           languages: vh![ LanguageCode: HY ] },
+		Country::AO: CountryInfo { code: CountryCode::AO, name: s!("Angola"),                                               currencies: vh![ CurrencyCode: AOA ],           languages: vh![ LanguageCode: PT ] },
+		Country::AQ: CountryInfo { code: CountryCode::AQ, name: s!("Antarctica"),                                           currencies: vh![],                              languages: vh![] },
+		Country::AR: CountryInfo { code: CountryCode::AR, name: s!("Argentina"),                                            currencies: vh![ CurrencyCode: ARS ],           languages: vh![ LanguageCode: ES ] },
+		Country::AS: CountryInfo { code: CountryCode::AS, name: s!("American Samoa"),                                       currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN, SM ] },
+		Country::AT: CountryInfo { code: CountryCode::AT, name: s!("Austria"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE ] },
+		Country::AU: CountryInfo { code: CountryCode::AU, name: s!("Australia"),                                            currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
+		Country::AW: CountryInfo { code: CountryCode::AW, name: s!("Aruba"),                                                currencies: vh![ CurrencyCode: AWG ],           languages: vh![ LanguageCode: NL ] },
+		Country::AX: CountryInfo { code: CountryCode::AX, name: s!("Åland Islands"),                                        currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: SV ] },
+		Country::AZ: CountryInfo { code: CountryCode::AZ, name: s!("Azerbaijan"),                                           currencies: vh![ CurrencyCode: AZN ],           languages: vh![ LanguageCode: AZ ] },
+		Country::BA: CountryInfo { code: CountryCode::BA, name: s!("Bosnia and Herzegovina"),                               currencies: vh![ CurrencyCode: BAM ],           languages: vh![ LanguageCode: BS, HR, SR ] },
+		Country::BB: CountryInfo { code: CountryCode::BB, name: s!("Barbados"),                                             currencies: vh![ CurrencyCode: BBD ],           languages: vh![ LanguageCode: EN ] },
+		Country::BD: CountryInfo { code: CountryCode::BD, name: s!("Bangladesh"),                                           currencies: vh![ CurrencyCode: BDT ],           languages: vh![ LanguageCode: BN ] },
+		Country::BE: CountryInfo { code: CountryCode::BE, name: s!("Belgium"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE, FR, NL ] },
+		Country::BF: CountryInfo { code: CountryCode::BF, name: s!("Burkina Faso"),                                         currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
+		Country::BG: CountryInfo { code: CountryCode::BG, name: s!("Bulgaria"),                                             currencies: vh![ CurrencyCode: BGN ],           languages: vh![ LanguageCode: BG ] },
+		Country::BH: CountryInfo { code: CountryCode::BH, name: s!("Bahrain"),                                              currencies: vh![ CurrencyCode: BHD ],           languages: vh![ LanguageCode: AR ] },
+		Country::BI: CountryInfo { code: CountryCode::BI, name: s!("Burundi"),                                              currencies: vh![ CurrencyCode: BIF ],           languages: vh![ LanguageCode: EN, FR, RN ] },
+		Country::BJ: CountryInfo { code: CountryCode::BJ, name: s!("Benin"),                                                currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
+		Country::BL: CountryInfo { code: CountryCode::BL, name: s!("Saint Barthélemy"),                                     currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::BM: CountryInfo { code: CountryCode::BM, name: s!("Bermuda"),                                              currencies: vh![ CurrencyCode: BMD ],           languages: vh![ LanguageCode: EN ] },
+		Country::BN: CountryInfo { code: CountryCode::BN, name: s!("Brunei Darussalam"),                                    currencies: vh![ CurrencyCode: BND ],           languages: vh![ LanguageCode: MS ] },
+		Country::BO: CountryInfo { code: CountryCode::BO, name: s!("Bolivia (Plurinational State of)"),                     currencies: vh![ CurrencyCode: BOB, BOV ],      languages: vh![ LanguageCode: AY, ES, GN, QU ] },
+		Country::BQ: CountryInfo { code: CountryCode::BQ, name: s!("Bonaire, Sint Eustatius and Saba"),                     currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: NL ] },
+		Country::BR: CountryInfo { code: CountryCode::BR, name: s!("Brazil"),                                               currencies: vh![ CurrencyCode: BRL ],           languages: vh![ LanguageCode: PT ] },
+		Country::BS: CountryInfo { code: CountryCode::BS, name: s!("Bahamas"),                                              currencies: vh![ CurrencyCode: BSD ],           languages: vh![ LanguageCode: EN ] },
+		Country::BT: CountryInfo { code: CountryCode::BT, name: s!("Bhutan"),                                               currencies: vh![ CurrencyCode: BTN, INR ],      languages: vh![ LanguageCode: DZ ] },
+		Country::BV: CountryInfo { code: CountryCode::BV, name: s!("Bouvet Island"),                                        currencies: vh![ CurrencyCode: NOK ],           languages: vh![ LanguageCode: NO ] },
+		Country::BW: CountryInfo { code: CountryCode::BW, name: s!("Botswana"),                                             currencies: vh![ CurrencyCode: BWP ],           languages: vh![ LanguageCode: EN ] },
+		Country::BY: CountryInfo { code: CountryCode::BY, name: s!("Belarus"),                                              currencies: vh![ CurrencyCode: BYN ],           languages: vh![ LanguageCode: BE, RU ] },
+		Country::BZ: CountryInfo { code: CountryCode::BZ, name: s!("Belize"),                                               currencies: vh![ CurrencyCode: BZD ],           languages: vh![ LanguageCode: EN ] },
+		Country::CA: CountryInfo { code: CountryCode::CA, name: s!("Canada"),                                               currencies: vh![ CurrencyCode: CAD ],           languages: vh![ LanguageCode: EN, FR ] },
+		Country::CC: CountryInfo { code: CountryCode::CC, name: s!("Cocos (Keeling) Islands"),                              currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN, MS ] },
+		Country::CD: CountryInfo { code: CountryCode::CD, name: s!("Congo, Democratic Republic of the"),                    currencies: vh![ CurrencyCode: CDF ],           languages: vh![ LanguageCode: FR ] },
+		Country::CF: CountryInfo { code: CountryCode::CF, name: s!("Central African Republic"),                             currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: FR, SG ] },
+		Country::CG: CountryInfo { code: CountryCode::CG, name: s!("Congo"),                                                currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: FR ] },
+		Country::CH: CountryInfo { code: CountryCode::CH, name: s!("Switzerland"),                                          currencies: vh![ CurrencyCode: CHE, CHF, CHW ], languages: vh![ LanguageCode: DE, FR, IT, RM ] },
+		Country::CI: CountryInfo { code: CountryCode::CI, name: s!("Côte d'Ivoire"),                                        currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
+		Country::CK: CountryInfo { code: CountryCode::CK, name: s!("Cook Islands"),                                         currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
+		Country::CL: CountryInfo { code: CountryCode::CL, name: s!("Chile"),                                                currencies: vh![ CurrencyCode: CLF, CLP ],      languages: vh![ LanguageCode: ES ] },
+		Country::CM: CountryInfo { code: CountryCode::CM, name: s!("Cameroon"),                                             currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: EN, FR ] },
+		Country::CN: CountryInfo { code: CountryCode::CN, name: s!("China"),                                                currencies: vh![ CurrencyCode: CNY ],           languages: vh![ LanguageCode: ZH ] },
+		Country::CO: CountryInfo { code: CountryCode::CO, name: s!("Colombia"),                                             currencies: vh![ CurrencyCode: COP, COU ],      languages: vh![ LanguageCode: ES ] },
+		Country::CR: CountryInfo { code: CountryCode::CR, name: s!("Costa Rica"),                                           currencies: vh![ CurrencyCode: CRC ],           languages: vh![ LanguageCode: ES ] },
+		Country::CU: CountryInfo { code: CountryCode::CU, name: s!("Cuba"),                                                 currencies: vh![ CurrencyCode: CUP ],           languages: vh![ LanguageCode: ES ] },
+		Country::CV: CountryInfo { code: CountryCode::CV, name: s!("Cabo Verde"),                                           currencies: vh![ CurrencyCode: CVE ],           languages: vh![ LanguageCode: PT ] },
+		Country::CW: CountryInfo { code: CountryCode::CW, name: s!("Curaçao"),                                              currencies: vh![ CurrencyCode: ANG ],           languages: vh![ LanguageCode: EN, NL ] },
+		Country::CX: CountryInfo { code: CountryCode::CX, name: s!("Christmas Island"),                                     currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN, MS, ZH ] },
+		Country::CY: CountryInfo { code: CountryCode::CY, name: s!("Cyprus"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EL, TR ] },
+		Country::CZ: CountryInfo { code: CountryCode::CZ, name: s!("Czechia"),                                              currencies: vh![ CurrencyCode: CZK ],           languages: vh![ LanguageCode: CS, SK ] },
+		Country::DE: CountryInfo { code: CountryCode::DE, name: s!("Germany"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE ] },
+		Country::DJ: CountryInfo { code: CountryCode::DJ, name: s!("Djibouti"),                                             currencies: vh![ CurrencyCode: DJF ],           languages: vh![ LanguageCode: AR, FR ] },
+		Country::DK: CountryInfo { code: CountryCode::DK, name: s!("Denmark"),                                              currencies: vh![ CurrencyCode: DKK ],           languages: vh![ LanguageCode: DA ] },
+		Country::DM: CountryInfo { code: CountryCode::DM, name: s!("Dominica"),                                             currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::DO: CountryInfo { code: CountryCode::DO, name: s!("Dominican Republic"),                                   currencies: vh![ CurrencyCode: DOP ],           languages: vh![ LanguageCode: ES ] },
+		Country::DZ: CountryInfo { code: CountryCode::DZ, name: s!("Algeria"),                                              currencies: vh![ CurrencyCode: DZD ],           languages: vh![ LanguageCode: AR ] },
+		Country::EC: CountryInfo { code: CountryCode::EC, name: s!("Ecuador"),                                              currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: ES, QU ] },
+		Country::EE: CountryInfo { code: CountryCode::EE, name: s!("Estonia"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: ET ] },
+		Country::EG: CountryInfo { code: CountryCode::EG, name: s!("Egypt"),                                                currencies: vh![ CurrencyCode: EGP ],           languages: vh![ LanguageCode: AR ] },
+		Country::EH: CountryInfo { code: CountryCode::EH, name: s!("Western Sahara"),                                       currencies: vh![ CurrencyCode: MAD ],           languages: vh![ LanguageCode: AR, ES ] },
+		Country::ER: CountryInfo { code: CountryCode::ER, name: s!("Eritrea"),                                              currencies: vh![ CurrencyCode: ERN ],           languages: vh![ LanguageCode: TI ] },
+		Country::ES: CountryInfo { code: CountryCode::ES, name: s!("Spain"),                                                currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: ES ] },
+		Country::ET: CountryInfo { code: CountryCode::ET, name: s!("Ethiopia"),                                             currencies: vh![ CurrencyCode: ETB ],           languages: vh![ LanguageCode: AA, AM, OM, SO, TI ] },
+		Country::FI: CountryInfo { code: CountryCode::FI, name: s!("Finland"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FI, SV ] },
+		Country::FJ: CountryInfo { code: CountryCode::FJ, name: s!("Fiji"),                                                 currencies: vh![ CurrencyCode: FJD ],           languages: vh![ LanguageCode: EN, FJ ] },
+		Country::FK: CountryInfo { code: CountryCode::FK, name: s!("Falkland Islands (Malvinas)"),                          currencies: vh![ CurrencyCode: FKP ],           languages: vh![ LanguageCode: EN ] },
+		Country::FM: CountryInfo { code: CountryCode::FM, name: s!("Micronesia (Federated States of)"),                     currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::FO: CountryInfo { code: CountryCode::FO, name: s!("Faroe Islands"),                                        currencies: vh![ CurrencyCode: DKK ],           languages: vh![ LanguageCode: DA, FO ] },
+		Country::FR: CountryInfo { code: CountryCode::FR, name: s!("France"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::GA: CountryInfo { code: CountryCode::GA, name: s!("Gabon"),                                                currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: FR ] },
+		Country::GB: CountryInfo { code: CountryCode::GB, name: s!("United Kingdom of Great Britain and Northern Ireland"), currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN ] },
+		Country::GD: CountryInfo { code: CountryCode::GD, name: s!("Grenada"),                                              currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::GE: CountryInfo { code: CountryCode::GE, name: s!("Georgia"),                                              currencies: vh![ CurrencyCode: GEL ],           languages: vh![ LanguageCode: KA ] },
+		Country::GF: CountryInfo { code: CountryCode::GF, name: s!("French Guiana"),                                        currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::GG: CountryInfo { code: CountryCode::GG, name: s!("Guernsey"),                                             currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN ] },
+		Country::GH: CountryInfo { code: CountryCode::GH, name: s!("Ghana"),                                                currencies: vh![ CurrencyCode: GHS ],           languages: vh![ LanguageCode: EN ] },
+		Country::GI: CountryInfo { code: CountryCode::GI, name: s!("Gibraltar"),                                            currencies: vh![ CurrencyCode: GIP ],           languages: vh![ LanguageCode: EN ] },
+		Country::GL: CountryInfo { code: CountryCode::GL, name: s!("Greenland"),                                            currencies: vh![ CurrencyCode: DKK ],           languages: vh![ LanguageCode: DA, EN ] },
+		Country::GM: CountryInfo { code: CountryCode::GM, name: s!("Gambia"),                                               currencies: vh![ CurrencyCode: GMD ],           languages: vh![ LanguageCode: EN ] },
+		Country::GN: CountryInfo { code: CountryCode::GN, name: s!("Guinea"),                                               currencies: vh![ CurrencyCode: GNF ],           languages: vh![ LanguageCode: FR ] },
+		Country::GP: CountryInfo { code: CountryCode::GP, name: s!("Guadeloupe"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::GQ: CountryInfo { code: CountryCode::GQ, name: s!("Equatorial Guinea"),                                    currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: ES, FR, PT ] },
+		Country::GR: CountryInfo { code: CountryCode::GR, name: s!("Greece"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EL ] },
+		Country::GS: CountryInfo { code: CountryCode::GS, name: s!("South Georgia and the South Sandwich Islands"),         currencies: vh![],                              languages: vh![ LanguageCode: EN ] },
+		Country::GT: CountryInfo { code: CountryCode::GT, name: s!("Guatemala"),                                            currencies: vh![ CurrencyCode: GTQ ],           languages: vh![ LanguageCode: ES ] },
+		Country::GU: CountryInfo { code: CountryCode::GU, name: s!("Guam"),                                                 currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: CH, EN ] },
+		Country::GW: CountryInfo { code: CountryCode::GW, name: s!("Guinea-Bissau"),                                        currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: PT ] },
+		Country::GY: CountryInfo { code: CountryCode::GY, name: s!("Guyana"),                                               currencies: vh![ CurrencyCode: GYD ],           languages: vh![ LanguageCode: EN ] },
+		Country::HK: CountryInfo { code: CountryCode::HK, name: s!("Hong Kong"),                                            currencies: vh![ CurrencyCode: HKD ],           languages: vh![ LanguageCode: EN, ZH ] },
+		Country::HM: CountryInfo { code: CountryCode::HM, name: s!("Heard Island and McDonald Islands"),                    currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
+		Country::HN: CountryInfo { code: CountryCode::HN, name: s!("Honduras"),                                             currencies: vh![ CurrencyCode: HNL ],           languages: vh![ LanguageCode: ES ] },
+		Country::HR: CountryInfo { code: CountryCode::HR, name: s!("Croatia"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: HR ] },
+		Country::HT: CountryInfo { code: CountryCode::HT, name: s!("Haiti"),                                                currencies: vh![ CurrencyCode: HTG ],           languages: vh![ LanguageCode: FR, HT ] },
+		Country::HU: CountryInfo { code: CountryCode::HU, name: s!("Hungary"),                                              currencies: vh![ CurrencyCode: HUF ],           languages: vh![ LanguageCode: HU ] },
+		Country::ID: CountryInfo { code: CountryCode::ID, name: s!("Indonesia"),                                            currencies: vh![ CurrencyCode: IDR ],           languages: vh![ LanguageCode: ID ] },
+		Country::IE: CountryInfo { code: CountryCode::IE, name: s!("Ireland"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EN, GA ] },
+		Country::IL: CountryInfo { code: CountryCode::IL, name: s!("Israel"),                                               currencies: vh![ CurrencyCode: ILS ],           languages: vh![ LanguageCode: HE ] },
+		Country::IM: CountryInfo { code: CountryCode::IM, name: s!("Isle of Man"),                                          currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN, GV ] },
+		Country::IN: CountryInfo { code: CountryCode::IN, name: s!("India"),                                                currencies: vh![ CurrencyCode: INR ],           languages: vh![ LanguageCode: EN, HI ] },
+		Country::IO: CountryInfo { code: CountryCode::IO, name: s!("British Indian Ocean Territory"),                       currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::IQ: CountryInfo { code: CountryCode::IQ, name: s!("Iraq"),                                                 currencies: vh![ CurrencyCode: IQD ],           languages: vh![ LanguageCode: AR, KU ] },
+		Country::IR: CountryInfo { code: CountryCode::IR, name: s!("Iran (Islamic Republic of)"),                           currencies: vh![ CurrencyCode: IRR ],           languages: vh![ LanguageCode: FA ] },
+		Country::IS: CountryInfo { code: CountryCode::IS, name: s!("Iceland"),                                              currencies: vh![ CurrencyCode: ISK ],           languages: vh![ LanguageCode: IS ] },
+		Country::IT: CountryInfo { code: CountryCode::IT, name: s!("Italy"),                                                currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: IT ] },
+		Country::JE: CountryInfo { code: CountryCode::JE, name: s!("Jersey"),                                               currencies: vh![ CurrencyCode: GBP ],           languages: vh![ LanguageCode: EN, FR ] },
+		Country::JM: CountryInfo { code: CountryCode::JM, name: s!("Jamaica"),                                              currencies: vh![ CurrencyCode: JMD ],           languages: vh![ LanguageCode: EN ] },
+		Country::JO: CountryInfo { code: CountryCode::JO, name: s!("Jordan"),                                               currencies: vh![ CurrencyCode: JOD ],           languages: vh![ LanguageCode: AR ] },
+		Country::JP: CountryInfo { code: CountryCode::JP, name: s!("Japan"),                                                currencies: vh![ CurrencyCode: JPY ],           languages: vh![ LanguageCode: JA ] },
+		Country::KE: CountryInfo { code: CountryCode::KE, name: s!("Kenya"),                                                currencies: vh![ CurrencyCode: KES ],           languages: vh![ LanguageCode: EN, SW ] },
+		Country::KG: CountryInfo { code: CountryCode::KG, name: s!("Kyrgyzstan"),                                           currencies: vh![ CurrencyCode: KGS ],           languages: vh![ LanguageCode: KY, RU ] },
+		Country::KH: CountryInfo { code: CountryCode::KH, name: s!("Cambodia"),                                             currencies: vh![ CurrencyCode: KHR ],           languages: vh![ LanguageCode: KM ] },
+		Country::KI: CountryInfo { code: CountryCode::KI, name: s!("Kiribati"),                                             currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
+		Country::KM: CountryInfo { code: CountryCode::KM, name: s!("Comoros"),                                              currencies: vh![ CurrencyCode: KMF ],           languages: vh![ LanguageCode: AR, FR ] },
+		Country::KN: CountryInfo { code: CountryCode::KN, name: s!("Saint Kitts and Nevis"),                                currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::KP: CountryInfo { code: CountryCode::KP, name: s!("Korea (Democratic People's Republic of)"),              currencies: vh![ CurrencyCode: KPW ],           languages: vh![ LanguageCode: KO ] },
+		Country::KR: CountryInfo { code: CountryCode::KR, name: s!("Korea, Republic of"),                                   currencies: vh![ CurrencyCode: KRW ],           languages: vh![ LanguageCode: KO ] },
+		Country::KW: CountryInfo { code: CountryCode::KW, name: s!("Kuwait"),                                               currencies: vh![ CurrencyCode: KWD ],           languages: vh![ LanguageCode: AR ] },
+		Country::KY: CountryInfo { code: CountryCode::KY, name: s!("Cayman Islands"),                                       currencies: vh![ CurrencyCode: KYD ],           languages: vh![ LanguageCode: EN ] },
+		Country::KZ: CountryInfo { code: CountryCode::KZ, name: s!("Kazakhstan"),                                           currencies: vh![ CurrencyCode: KZT ],           languages: vh![ LanguageCode: KK, RU ] },
+		Country::LA: CountryInfo { code: CountryCode::LA, name: s!("Lao People's Democratic Republic"),                     currencies: vh![ CurrencyCode: LAK ],           languages: vh![ LanguageCode: LO ] },
+		Country::LB: CountryInfo { code: CountryCode::LB, name: s!("Lebanon"),                                              currencies: vh![ CurrencyCode: LBP ],           languages: vh![ LanguageCode: AR ] },
+		Country::LC: CountryInfo { code: CountryCode::LC, name: s!("Saint Lucia"),                                          currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::LI: CountryInfo { code: CountryCode::LI, name: s!("Liechtenstein"),                                        currencies: vh![ CurrencyCode: CHF ],           languages: vh![ LanguageCode: DE ] },
+		Country::LK: CountryInfo { code: CountryCode::LK, name: s!("Sri Lanka"),                                            currencies: vh![ CurrencyCode: LKR ],           languages: vh![ LanguageCode: SI, TA ] },
+		Country::LR: CountryInfo { code: CountryCode::LR, name: s!("Liberia"),                                              currencies: vh![ CurrencyCode: LRD ],           languages: vh![ LanguageCode: EN ] },
+		Country::LS: CountryInfo { code: CountryCode::LS, name: s!("Lesotho"),                                              currencies: vh![ CurrencyCode: LSL, ZAR ],      languages: vh![ LanguageCode: EN, ST ] },
+		Country::LT: CountryInfo { code: CountryCode::LT, name: s!("Lithuania"),                                            currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: LT ] },
+		Country::LU: CountryInfo { code: CountryCode::LU, name: s!("Luxembourg"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: DE, FR, LB ] },
+		Country::LV: CountryInfo { code: CountryCode::LV, name: s!("Latvia"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: LV ] },
+		Country::LY: CountryInfo { code: CountryCode::LY, name: s!("Libya"),                                                currencies: vh![ CurrencyCode: LYD ],           languages: vh![ LanguageCode: AR ] },
+		Country::MA: CountryInfo { code: CountryCode::MA, name: s!("Morocco"),                                              currencies: vh![ CurrencyCode: MAD ],           languages: vh![ LanguageCode: AR ] },
+		Country::MC: CountryInfo { code: CountryCode::MC, name: s!("Monaco"),                                               currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::MD: CountryInfo { code: CountryCode::MD, name: s!("Moldova, Republic of"),                                 currencies: vh![ CurrencyCode: MDL ],           languages: vh![ LanguageCode: RO ] },
+		Country::ME: CountryInfo { code: CountryCode::ME, name: s!("Montenegro"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: HR, SR ] },
+		Country::MF: CountryInfo { code: CountryCode::MF, name: s!("Saint Martin (French part)"),                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::MG: CountryInfo { code: CountryCode::MG, name: s!("Madagascar"),                                           currencies: vh![ CurrencyCode: MGA ],           languages: vh![ LanguageCode: FR, MG ] },
+		Country::MH: CountryInfo { code: CountryCode::MH, name: s!("Marshall Islands"),                                     currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN, MH ] },
+		Country::MK: CountryInfo { code: CountryCode::MK, name: s!("North Macedonia"),                                      currencies: vh![ CurrencyCode: MKD ],           languages: vh![ LanguageCode: MK, SQ ] },
+		Country::ML: CountryInfo { code: CountryCode::ML, name: s!("Mali"),                                                 currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: BM, FF ] },
+		Country::MM: CountryInfo { code: CountryCode::MM, name: s!("Myanmar"),                                              currencies: vh![ CurrencyCode: MMK ],           languages: vh![ LanguageCode: MY ] },
+		Country::MN: CountryInfo { code: CountryCode::MN, name: s!("Mongolia"),                                             currencies: vh![ CurrencyCode: MNT ],           languages: vh![ LanguageCode: MN ] },
+		Country::MO: CountryInfo { code: CountryCode::MO, name: s!("Macao"),                                                currencies: vh![ CurrencyCode: MOP ],           languages: vh![ LanguageCode: PT, ZH ] },
+		Country::MP: CountryInfo { code: CountryCode::MP, name: s!("Northern Mariana Islands"),                             currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: CH, EN ] },
+		Country::MQ: CountryInfo { code: CountryCode::MQ, name: s!("Martinique"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::MR: CountryInfo { code: CountryCode::MR, name: s!("Mauritania"),                                           currencies: vh![ CurrencyCode: MRU ],           languages: vh![ LanguageCode: AR ] },
+		Country::MS: CountryInfo { code: CountryCode::MS, name: s!("Montserrat"),                                           currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::MT: CountryInfo { code: CountryCode::MT, name: s!("Malta"),                                                currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: EN, MT ] },
+		Country::MU: CountryInfo { code: CountryCode::MU, name: s!("Mauritius"),                                            currencies: vh![ CurrencyCode: MUR ],           languages: vh![ LanguageCode: EN ] },
+		Country::MV: CountryInfo { code: CountryCode::MV, name: s!("Maldives"),                                             currencies: vh![ CurrencyCode: MVR ],           languages: vh![ LanguageCode: DV ] },
+		Country::MW: CountryInfo { code: CountryCode::MW, name: s!("Malawi"),                                               currencies: vh![ CurrencyCode: MWK ],           languages: vh![ LanguageCode: EN, NY ] },
+		Country::MX: CountryInfo { code: CountryCode::MX, name: s!("Mexico"),                                               currencies: vh![ CurrencyCode: MXN, MXV ],      languages: vh![ LanguageCode: ES ] },
+		Country::MY: CountryInfo { code: CountryCode::MY, name: s!("Malaysia"),                                             currencies: vh![ CurrencyCode: MYR ],           languages: vh![ LanguageCode: MS ] },
+		Country::MZ: CountryInfo { code: CountryCode::MZ, name: s!("Mozambique"),                                           currencies: vh![ CurrencyCode: MZN ],           languages: vh![ LanguageCode: PT ] },
+		Country::NA: CountryInfo { code: CountryCode::NA, name: s!("Namibia"),                                              currencies: vh![ CurrencyCode: NAD, ZAR ],      languages: vh![ LanguageCode: EN ] },
+		Country::NC: CountryInfo { code: CountryCode::NC, name: s!("New Caledonia"),                                        currencies: vh![ CurrencyCode: XPF ],           languages: vh![ LanguageCode: FR ] },
+		Country::NE: CountryInfo { code: CountryCode::NE, name: s!("Niger"),                                                currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
+		Country::NF: CountryInfo { code: CountryCode::NF, name: s!("Norfolk Island"),                                       currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
+		Country::NG: CountryInfo { code: CountryCode::NG, name: s!("Nigeria"),                                              currencies: vh![ CurrencyCode: NGN ],           languages: vh![ LanguageCode: EN ] },
+		Country::NI: CountryInfo { code: CountryCode::NI, name: s!("Nicaragua"),                                            currencies: vh![ CurrencyCode: NIO ],           languages: vh![ LanguageCode: ES ] },
+		Country::NL: CountryInfo { code: CountryCode::NL, name: s!("Netherlands, Kingdom of the"),                          currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: NL ] },
+		Country::NO: CountryInfo { code: CountryCode::NO, name: s!("Norway"),                                               currencies: vh![ CurrencyCode: NOK ],           languages: vh![ LanguageCode: NO ] },
+		Country::NP: CountryInfo { code: CountryCode::NP, name: s!("Nepal"),                                                currencies: vh![ CurrencyCode: NPR ],           languages: vh![ LanguageCode: NE ] },
+		Country::NR: CountryInfo { code: CountryCode::NR, name: s!("Nauru"),                                                currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN, NA ] },
+		Country::NU: CountryInfo { code: CountryCode::NU, name: s!("Niue"),                                                 currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
+		Country::NZ: CountryInfo { code: CountryCode::NZ, name: s!("New Zealand"),                                          currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN, MI ] },
+		Country::OM: CountryInfo { code: CountryCode::OM, name: s!("Oman"),                                                 currencies: vh![ CurrencyCode: OMR ],           languages: vh![ LanguageCode: AR ] },
+		Country::PA: CountryInfo { code: CountryCode::PA, name: s!("Panama"),                                               currencies: vh![ CurrencyCode: PAB, USD ],      languages: vh![ LanguageCode: ES ] },
+		Country::PE: CountryInfo { code: CountryCode::PE, name: s!("Peru"),                                                 currencies: vh![ CurrencyCode: PEN ],           languages: vh![ LanguageCode: AY, ES, QU ] },
+		Country::PF: CountryInfo { code: CountryCode::PF, name: s!("French Polynesia"),                                     currencies: vh![ CurrencyCode: XPF ],           languages: vh![ LanguageCode: FR ] },
+		Country::PG: CountryInfo { code: CountryCode::PG, name: s!("Papua New Guinea"),                                     currencies: vh![ CurrencyCode: PGK ],           languages: vh![ LanguageCode: EN, HO ] },
+		Country::PH: CountryInfo { code: CountryCode::PH, name: s!("Philippines"),                                          currencies: vh![ CurrencyCode: PHP ],           languages: vh![ LanguageCode: EN, TL ] },
+		Country::PK: CountryInfo { code: CountryCode::PK, name: s!("Pakistan"),                                             currencies: vh![ CurrencyCode: PKR ],           languages: vh![ LanguageCode: EN, UR ] },
+		Country::PL: CountryInfo { code: CountryCode::PL, name: s!("Poland"),                                               currencies: vh![ CurrencyCode: PLN ],           languages: vh![ LanguageCode: PL ] },
+		Country::PM: CountryInfo { code: CountryCode::PM, name: s!("Saint Pierre and Miquelon"),                            currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::PN: CountryInfo { code: CountryCode::PN, name: s!("Pitcairn"),                                             currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
+		Country::PR: CountryInfo { code: CountryCode::PR, name: s!("Puerto Rico"),                                          currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN, ES ] },
+		Country::PS: CountryInfo { code: CountryCode::PS, name: s!("Palestine, State of"),                                  currencies: vh![],                              languages: vh![ LanguageCode: AR ] },
+		Country::PT: CountryInfo { code: CountryCode::PT, name: s!("Portugal"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: PT ] },
+		Country::PW: CountryInfo { code: CountryCode::PW, name: s!("Palau"),                                                currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::PY: CountryInfo { code: CountryCode::PY, name: s!("Paraguay"),                                             currencies: vh![ CurrencyCode: PYG ],           languages: vh![ LanguageCode: ES, GN ] },
+		Country::QA: CountryInfo { code: CountryCode::QA, name: s!("Qatar"),                                                currencies: vh![ CurrencyCode: QAR ],           languages: vh![ LanguageCode: AR ] },
+		Country::RE: CountryInfo { code: CountryCode::RE, name: s!("Réunion"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::RO: CountryInfo { code: CountryCode::RO, name: s!("Romania"),                                              currencies: vh![ CurrencyCode: RON ],           languages: vh![ LanguageCode: RO ] },
+		Country::RS: CountryInfo { code: CountryCode::RS, name: s!("Serbia"),                                               currencies: vh![ CurrencyCode: RSD ],           languages: vh![ LanguageCode: SR ] },
+		Country::RU: CountryInfo { code: CountryCode::RU, name: s!("Russian Federation"),                                   currencies: vh![ CurrencyCode: RUB ],           languages: vh![ LanguageCode: RU ] },
+		Country::RW: CountryInfo { code: CountryCode::RW, name: s!("Rwanda"),                                               currencies: vh![ CurrencyCode: RWF ],           languages: vh![ LanguageCode: EN, FR, RW, SW ] },
+		Country::SA: CountryInfo { code: CountryCode::SA, name: s!("Saudi Arabia"),                                         currencies: vh![ CurrencyCode: SAR ],           languages: vh![ LanguageCode: AR ] },
+		Country::SB: CountryInfo { code: CountryCode::SB, name: s!("Solomon Islands"),                                      currencies: vh![ CurrencyCode: SBD ],           languages: vh![ LanguageCode: EN ] },
+		Country::SC: CountryInfo { code: CountryCode::SC, name: s!("Seychelles"),                                           currencies: vh![ CurrencyCode: SCR ],           languages: vh![ LanguageCode: EN, FR ] },
+		Country::SD: CountryInfo { code: CountryCode::SD, name: s!("Sudan"),                                                currencies: vh![ CurrencyCode: SDG ],           languages: vh![ LanguageCode: AR, EN ] },
+		Country::SE: CountryInfo { code: CountryCode::SE, name: s!("Sweden"),                                               currencies: vh![ CurrencyCode: SEK ],           languages: vh![ LanguageCode: SV ] },
+		Country::SG: CountryInfo { code: CountryCode::SG, name: s!("Singapore"),                                            currencies: vh![ CurrencyCode: SGD ],           languages: vh![ LanguageCode: EN, MS, TA, ZH ] },
+		Country::SH: CountryInfo { code: CountryCode::SH, name: s!("Saint Helena, Ascension and Tristan da Cunha"),         currencies: vh![ CurrencyCode: GBP, SHP ],      languages: vh![ LanguageCode: EN ] },
+		Country::SI: CountryInfo { code: CountryCode::SI, name: s!("Slovenia"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: SL ] },
+		Country::SJ: CountryInfo { code: CountryCode::SJ, name: s!("Svalbard and Jan Mayen"),                               currencies: vh![ CurrencyCode: NOK ],           languages: vh![ LanguageCode: NO ] },
+		Country::SK: CountryInfo { code: CountryCode::SK, name: s!("Slovakia"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: SK ] },
+		Country::SL: CountryInfo { code: CountryCode::SL, name: s!("Sierra Leone"),                                         currencies: vh![ CurrencyCode: SLE, SLL ],      languages: vh![ LanguageCode: EN ] },
+		Country::SM: CountryInfo { code: CountryCode::SM, name: s!("San Marino"),                                           currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: IT ] },
+		Country::SN: CountryInfo { code: CountryCode::SN, name: s!("Senegal"),                                              currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
+		Country::SO: CountryInfo { code: CountryCode::SO, name: s!("Somalia"),                                              currencies: vh![ CurrencyCode: SOS ],           languages: vh![ LanguageCode: AR, SO ] },
+		Country::SR: CountryInfo { code: CountryCode::SR, name: s!("Suriname"),                                             currencies: vh![ CurrencyCode: SRD ],           languages: vh![ LanguageCode: NL ] },
+		Country::SS: CountryInfo { code: CountryCode::SS, name: s!("South Sudan"),                                          currencies: vh![ CurrencyCode: SSP ],           languages: vh![ LanguageCode: EN ] },
+		Country::ST: CountryInfo { code: CountryCode::ST, name: s!("Sao Tome and Principe"),                                currencies: vh![ CurrencyCode: STN ],           languages: vh![ LanguageCode: PT ] },
+		Country::SV: CountryInfo { code: CountryCode::SV, name: s!("El Salvador"),                                          currencies: vh![ CurrencyCode: SVC, USD ],      languages: vh![ LanguageCode: ES ] },
+		Country::SX: CountryInfo { code: CountryCode::SX, name: s!("Sint Maarten (Dutch part)"),                            currencies: vh![ CurrencyCode: ANG ],           languages: vh![ LanguageCode: EN, NL ] },
+		Country::SY: CountryInfo { code: CountryCode::SY, name: s!("Syrian Arab Republic"),                                 currencies: vh![ CurrencyCode: SYP ],           languages: vh![ LanguageCode: AR ] },
+		Country::SZ: CountryInfo { code: CountryCode::SZ, name: s!("Eswatini"),                                             currencies: vh![ CurrencyCode: SZL, ZAR ],      languages: vh![ LanguageCode: EN, SS ] },
+		Country::TC: CountryInfo { code: CountryCode::TC, name: s!("Turks and Caicos Islands"),                             currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::TD: CountryInfo { code: CountryCode::TD, name: s!("Chad"),                                                 currencies: vh![ CurrencyCode: XAF ],           languages: vh![ LanguageCode: AR, FR ] },
+		Country::TF: CountryInfo { code: CountryCode::TF, name: s!("French Southern Territories"),                          currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::TG: CountryInfo { code: CountryCode::TG, name: s!("Togo"),                                                 currencies: vh![ CurrencyCode: XOF ],           languages: vh![ LanguageCode: FR ] },
+		Country::TH: CountryInfo { code: CountryCode::TH, name: s!("Thailand"),                                             currencies: vh![ CurrencyCode: THB ],           languages: vh![ LanguageCode: TH ] },
+		Country::TJ: CountryInfo { code: CountryCode::TJ, name: s!("Tajikistan"),                                           currencies: vh![ CurrencyCode: TJS ],           languages: vh![ LanguageCode: TG ] },
+		Country::TK: CountryInfo { code: CountryCode::TK, name: s!("Tokelau"),                                              currencies: vh![ CurrencyCode: NZD ],           languages: vh![ LanguageCode: EN ] },
+		Country::TL: CountryInfo { code: CountryCode::TL, name: s!("Timor-Leste"),                                          currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: PT ] },
+		Country::TM: CountryInfo { code: CountryCode::TM, name: s!("Turkmenistan"),                                         currencies: vh![ CurrencyCode: TMT ],           languages: vh![ LanguageCode: TK ] },
+		Country::TN: CountryInfo { code: CountryCode::TN, name: s!("Tunisia"),                                              currencies: vh![ CurrencyCode: TND ],           languages: vh![ LanguageCode: AR ] },
+		Country::TO: CountryInfo { code: CountryCode::TO, name: s!("Tonga"),                                                currencies: vh![ CurrencyCode: TOP ],           languages: vh![ LanguageCode: EN, TO ] },
+		Country::TR: CountryInfo { code: CountryCode::TR, name: s!("Türkiye"),                                              currencies: vh![ CurrencyCode: TRY ],           languages: vh![ LanguageCode: TR ] },
+		Country::TT: CountryInfo { code: CountryCode::TT, name: s!("Trinidad and Tobago"),                                  currencies: vh![ CurrencyCode: TTD ],           languages: vh![ LanguageCode: EN ] },
+		Country::TV: CountryInfo { code: CountryCode::TV, name: s!("Tuvalu"),                                               currencies: vh![ CurrencyCode: AUD ],           languages: vh![ LanguageCode: EN ] },
+		Country::TW: CountryInfo { code: CountryCode::TW, name: s!("Taiwan, Province of China"),                            currencies: vh![ CurrencyCode: TWD ],           languages: vh![ LanguageCode: ZH ] },
+		Country::TZ: CountryInfo { code: CountryCode::TZ, name: s!("Tanzania, United Republic of"),                         currencies: vh![ CurrencyCode: TZS ],           languages: vh![ LanguageCode: EN, SW ] },
+		Country::UA: CountryInfo { code: CountryCode::UA, name: s!("Ukraine"),                                              currencies: vh![ CurrencyCode: UAH ],           languages: vh![ LanguageCode: UK ] },
+		Country::UG: CountryInfo { code: CountryCode::UG, name: s!("Uganda"),                                               currencies: vh![ CurrencyCode: UGX ],           languages: vh![ LanguageCode: EN, SW ] },
+		Country::UM: CountryInfo { code: CountryCode::UM, name: s!("United States Minor Outlying Islands"),                 currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::US: CountryInfo { code: CountryCode::US, name: s!("United States of America"),                             currencies: vh![ CurrencyCode: USD, USN ],      languages: vh![ LanguageCode: EN ] },
+		Country::UY: CountryInfo { code: CountryCode::UY, name: s!("Uruguay"),                                              currencies: vh![ CurrencyCode: UYI, UYU, UYW ], languages: vh![ LanguageCode: ES ] },
+		Country::UZ: CountryInfo { code: CountryCode::UZ, name: s!("Uzbekistan"),                                           currencies: vh![ CurrencyCode: UZS ],           languages: vh![ LanguageCode: UZ ] },
+		Country::VA: CountryInfo { code: CountryCode::VA, name: s!("Holy See"),                                             currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: IT, LA ] },
+		Country::VC: CountryInfo { code: CountryCode::VC, name: s!("Saint Vincent and the Grenadines"),                     currencies: vh![ CurrencyCode: XCD ],           languages: vh![ LanguageCode: EN ] },
+		Country::VE: CountryInfo { code: CountryCode::VE, name: s!("Venezuela (Bolivarian Republic of)"),                   currencies: vh![ CurrencyCode: VED, VES ],      languages: vh![ LanguageCode: ES ] },
+		Country::VG: CountryInfo { code: CountryCode::VG, name: s!("Virgin Islands (British)"),                             currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::VI: CountryInfo { code: CountryCode::VI, name: s!("Virgin Islands (U.S.)"),                                currencies: vh![ CurrencyCode: USD ],           languages: vh![ LanguageCode: EN ] },
+		Country::VN: CountryInfo { code: CountryCode::VN, name: s!("Viet Nam"),                                             currencies: vh![ CurrencyCode: VND ],           languages: vh![ LanguageCode: VI ] },
+		Country::VU: CountryInfo { code: CountryCode::VU, name: s!("Vanuatu"),                                              currencies: vh![ CurrencyCode: VUV ],           languages: vh![ LanguageCode: BI, EN, FR ] },
+		Country::WF: CountryInfo { code: CountryCode::WF, name: s!("Wallis and Futuna"),                                    currencies: vh![ CurrencyCode: XPF ],           languages: vh![ LanguageCode: FR ] },
+		Country::WS: CountryInfo { code: CountryCode::WS, name: s!("Samoa"),                                                currencies: vh![ CurrencyCode: WST ],           languages: vh![ LanguageCode: EN, SM ] },
+		Country::YE: CountryInfo { code: CountryCode::YE, name: s!("Yemen"),                                                currencies: vh![ CurrencyCode: YER ],           languages: vh![ LanguageCode: AR ] },
+		Country::YT: CountryInfo { code: CountryCode::YT, name: s!("Mayotte"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: FR ] },
+		Country::ZA: CountryInfo { code: CountryCode::ZA, name: s!("South Africa"),                                         currencies: vh![ CurrencyCode: ZAR ],           languages: vh![ LanguageCode: AF, EN, NR, SS, ST, TN, TS, VE, XH, ZU ] },
+		Country::ZM: CountryInfo { code: CountryCode::ZM, name: s!("Zambia"),                                               currencies: vh![ CurrencyCode: ZMW ],           languages: vh![ LanguageCode: EN ] },
+		Country::ZW: CountryInfo { code: CountryCode::ZW, name: s!("Zimbabwe"),                                             currencies: vh![ CurrencyCode: ZWL ],           languages: vh![ LanguageCode: EN, NR, NY, SN, ST, TN, VE, XH ] },
 	}
 });
 
 
 
 //		Enums
+
+//		Country																	
+/// A country.
+/// 
+/// A country has a number of properties, including a name, a country code, the
+/// currencies it uses, and the languages used in it.
+/// 
+/// Each country is identified by a country code, which can be expressed as two
+/// or three letters or three numbers, as defined by the ISO 3166-1 standard.
+/// 
+/// # Data sources
+/// 
+/// The list of codes and other country information is available from
+/// [the ISO site](https://www.iso.org/iso-3166-country-codes.html), and from
+/// [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1).
+/// 
+/// # See also
+/// 
+/// * [`CountryCode`]
+/// 
+#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
+#[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
+#[serde(into = "String", try_from = "String")]
+#[non_exhaustive]
+pub enum Country {
+	//		Two-letter codes (ISO 3166-1 alpha-2)								
+	/// Andorra
+	AD,
+	
+	/// United Arab Emirates
+	AE,
+	
+	/// Afghanistan
+	AF,
+	
+	/// Antigua and Barbuda
+	AG,
+	
+	/// Anguilla
+	AI,
+	
+	/// Albania
+	AL,
+	
+	/// Armenia
+	AM,
+	
+	/// Angola
+	AO,
+	
+	/// Antarctica
+	AQ,
+	
+	/// Argentina
+	AR,
+	
+	/// American Samoa
+	AS,
+	
+	/// Austria
+	AT,
+	
+	/// Australia
+	AU,
+	
+	/// Aruba
+	AW,
+	
+	/// Åland Islands
+	AX,
+	
+	/// Azerbaijan
+	AZ,
+	
+	/// Bosnia and Herzegovina
+	BA,
+	
+	/// Barbados
+	BB,
+	
+	/// Bangladesh
+	BD,
+	
+	/// Belgium
+	BE,
+	
+	/// Burkina Faso
+	BF,
+	
+	/// Bulgaria
+	BG,
+	
+	/// Bahrain
+	BH,
+	
+	/// Burundi
+	BI,
+	
+	/// Benin
+	BJ,
+	
+	/// Saint Barthélemy
+	BL,
+	
+	/// Bermuda
+	BM,
+	
+	/// Brunei Darussalam
+	BN,
+	
+	/// Bolivia (Plurinational State of)
+	BO,
+	
+	/// Bonaire, Sint Eustatius and Saba
+	BQ,
+	
+	/// Brazil
+	BR,
+	
+	/// Bahamas
+	BS,
+	
+	/// Bhutan
+	BT,
+	
+	/// Bouvet Island
+	BV,
+	
+	/// Botswana
+	BW,
+	
+	/// Belarus
+	BY,
+	
+	/// Belize
+	BZ,
+	
+	/// Canada
+	CA,
+	
+	/// Cocos (Keeling) Islands
+	CC,
+	
+	/// Congo, Democratic Republic of the
+	CD,
+	
+	/// Central African Republic
+	CF,
+	
+	/// Congo
+	CG,
+	
+	/// Switzerland
+	CH,
+	
+	/// Côte d'Ivoire
+	CI,
+	
+	/// Cook Islands
+	CK,
+	
+	/// Chile
+	CL,
+	
+	/// Cameroon
+	CM,
+	
+	/// China
+	CN,
+	
+	/// Colombia
+	CO,
+	
+	/// Costa Rica
+	CR,
+	
+	/// Cuba
+	CU,
+	
+	/// Cabo Verde
+	CV,
+	
+	/// Curaçao
+	CW,
+	
+	/// Christmas Island
+	CX,
+	
+	/// Cyprus
+	CY,
+	
+	/// Czechia
+	CZ,
+	
+	/// Germany
+	DE,
+	
+	/// Djibouti
+	DJ,
+	
+	/// Denmark
+	DK,
+	
+	/// Dominica
+	DM,
+	
+	/// Dominican Republic
+	DO,
+	
+	/// Algeria
+	DZ,
+	
+	/// Ecuador
+	EC,
+	
+	/// Estonia
+	EE,
+	
+	/// Egypt
+	EG,
+	
+	/// Western Sahara
+	EH,
+	
+	/// Eritrea
+	ER,
+	
+	/// Spain
+	ES,
+	
+	/// Ethiopia
+	ET,
+	
+	/// Finland
+	FI,
+	
+	/// Fiji
+	FJ,
+	
+	/// Falkland Islands (Malvinas)
+	FK,
+	
+	/// Micronesia (Federated States of)
+	FM,
+	
+	/// Faroe Islands
+	FO,
+	
+	/// France
+	FR,
+	
+	/// Gabon
+	GA,
+	
+	/// United Kingdom of Great Britain and Northern Ireland
+	GB,
+	
+	/// Grenada
+	GD,
+	
+	/// Georgia
+	GE,
+	
+	/// French Guiana
+	GF,
+	
+	/// Guernsey
+	GG,
+	
+	/// Ghana
+	GH,
+	
+	/// Gibraltar
+	GI,
+	
+	/// Greenland
+	GL,
+	
+	/// Gambia
+	GM,
+	
+	/// Guinea
+	GN,
+	
+	/// Guadeloupe
+	GP,
+	
+	/// Equatorial Guinea
+	GQ,
+	
+	/// Greece
+	GR,
+	
+	/// South Georgia and the South Sandwich Islands
+	GS,
+	
+	/// Guatemala
+	GT,
+	
+	/// Guam
+	GU,
+	
+	/// Guinea-Bissau
+	GW,
+	
+	/// Guyana
+	GY,
+	
+	/// Hong Kong
+	HK,
+	
+	/// Heard Island and McDonald Islands
+	HM,
+	
+	/// Honduras
+	HN,
+	
+	/// Croatia
+	HR,
+	
+	/// Haiti
+	HT,
+	
+	/// Hungary
+	HU,
+	
+	/// Indonesia
+	ID,
+	
+	/// Ireland
+	IE,
+	
+	/// Israel
+	IL,
+	
+	/// Isle of Man
+	IM,
+	
+	/// India
+	IN,
+	
+	/// British Indian Ocean Territory
+	IO,
+	
+	/// Iraq
+	IQ,
+	
+	/// Iran (Islamic Republic of)
+	IR,
+	
+	/// Iceland
+	IS,
+	
+	/// Italy
+	IT,
+	
+	/// Jersey
+	JE,
+	
+	/// Jamaica
+	JM,
+	
+	/// Jordan
+	JO,
+	
+	/// Japan
+	JP,
+	
+	/// Kenya
+	KE,
+	
+	/// Kyrgyzstan
+	KG,
+	
+	/// Cambodia
+	KH,
+	
+	/// Kiribati
+	KI,
+	
+	/// Comoros
+	KM,
+	
+	/// Saint Kitts and Nevis
+	KN,
+	
+	/// Korea (Democratic People's Republic of)
+	KP,
+	
+	/// Korea, Republic of
+	KR,
+	
+	/// Kuwait
+	KW,
+	
+	/// Cayman Islands
+	KY,
+	
+	/// Kazakhstan
+	KZ,
+	
+	/// Lao People's Democratic Republic
+	LA,
+	
+	/// Lebanon
+	LB,
+	
+	/// Saint Lucia
+	LC,
+	
+	/// Liechtenstein
+	LI,
+	
+	/// Sri Lanka
+	LK,
+	
+	/// Liberia
+	LR,
+	
+	/// Lesotho
+	LS,
+	
+	/// Lithuania
+	LT,
+	
+	/// Luxembourg
+	LU,
+	
+	/// Latvia
+	LV,
+	
+	/// Libya
+	LY,
+	
+	/// Morocco
+	MA,
+	
+	/// Monaco
+	MC,
+	
+	/// Moldova, Republic of
+	MD,
+	
+	/// Montenegro
+	ME,
+	
+	/// Saint Martin (French part)
+	MF,
+	
+	/// Madagascar
+	MG,
+	
+	/// Marshall Islands
+	MH,
+	
+	/// North Macedonia
+	MK,
+	
+	/// Mali
+	ML,
+	
+	/// Myanmar
+	MM,
+	
+	/// Mongolia
+	MN,
+	
+	/// Macao
+	MO,
+	
+	/// Northern Mariana Islands
+	MP,
+	
+	/// Martinique
+	MQ,
+	
+	/// Mauritania
+	MR,
+	
+	/// Montserrat
+	MS,
+	
+	/// Malta
+	MT,
+	
+	/// Mauritius
+	MU,
+	
+	/// Maldives
+	MV,
+	
+	/// Malawi
+	MW,
+	
+	/// Mexico
+	MX,
+	
+	/// Malaysia
+	MY,
+	
+	/// Mozambique
+	MZ,
+	
+	/// Namibia
+	NA,
+	
+	/// New Caledonia
+	NC,
+	
+	/// Niger
+	NE,
+	
+	/// Norfolk Island
+	NF,
+	
+	/// Nigeria
+	NG,
+	
+	/// Nicaragua
+	NI,
+	
+	/// Netherlands, Kingdom of the
+	NL,
+	
+	/// Norway
+	NO,
+	
+	/// Nepal
+	NP,
+	
+	/// Nauru
+	NR,
+	
+	/// Niue
+	NU,
+	
+	/// New Zealand
+	NZ,
+	
+	/// Oman
+	OM,
+	
+	/// Panama
+	PA,
+	
+	/// Peru
+	PE,
+	
+	/// French Polynesia
+	PF,
+	
+	/// Papua New Guinea
+	PG,
+	
+	/// Philippines
+	PH,
+	
+	/// Pakistan
+	PK,
+	
+	/// Poland
+	PL,
+	
+	/// Saint Pierre and Miquelon
+	PM,
+	
+	/// Pitcairn
+	PN,
+	
+	/// Puerto Rico
+	PR,
+	
+	/// Palestine, State of
+	PS,
+	
+	/// Portugal
+	PT,
+	
+	/// Palau
+	PW,
+	
+	/// Paraguay
+	PY,
+	
+	/// Qatar
+	QA,
+	
+	/// Réunion
+	RE,
+	
+	/// Romania
+	RO,
+	
+	/// Serbia
+	RS,
+	
+	/// Russian Federation
+	RU,
+	
+	/// Rwanda
+	RW,
+	
+	/// Saudi Arabia
+	SA,
+	
+	/// Solomon Islands
+	SB,
+	
+	/// Seychelles
+	SC,
+	
+	/// Sudan
+	SD,
+	
+	/// Sweden
+	SE,
+	
+	/// Singapore
+	SG,
+	
+	/// Saint Helena, Ascension and Tristan da Cunha
+	SH,
+	
+	/// Slovenia
+	SI,
+	
+	/// Svalbard and Jan Mayen
+	SJ,
+	
+	/// Slovakia
+	SK,
+	
+	/// Sierra Leone
+	SL,
+	
+	/// San Marino
+	SM,
+	
+	/// Senegal
+	SN,
+	
+	/// Somalia
+	SO,
+	
+	/// Suriname
+	SR,
+	
+	/// South Sudan
+	SS,
+	
+	/// Sao Tome and Principe
+	ST,
+	
+	/// El Salvador
+	SV,
+	
+	/// Sint Maarten (Dutch part)
+	SX,
+	
+	/// Syrian Arab Republic
+	SY,
+	
+	/// Eswatini
+	SZ,
+	
+	/// Turks and Caicos Islands
+	TC,
+	
+	/// Chad
+	TD,
+	
+	/// French Southern Territories
+	TF,
+	
+	/// Togo
+	TG,
+	
+	/// Thailand
+	TH,
+	
+	/// Tajikistan
+	TJ,
+	
+	/// Tokelau
+	TK,
+	
+	/// Timor-Leste
+	TL,
+	
+	/// Turkmenistan
+	TM,
+	
+	/// Tunisia
+	TN,
+	
+	/// Tonga
+	TO,
+	
+	/// Türkiye
+	TR,
+	
+	/// Trinidad and Tobago
+	TT,
+	
+	/// Tuvalu
+	TV,
+	
+	/// Taiwan, Province of China
+	TW,
+	
+	/// Tanzania, United Republic of
+	TZ,
+	
+	/// Ukraine
+	UA,
+	
+	/// Uganda
+	UG,
+	
+	/// United States Minor Outlying Islands
+	UM,
+	
+	/// United States of America
+	US,
+	
+	/// Uruguay
+	UY,
+	
+	/// Uzbekistan
+	UZ,
+	
+	/// Holy See
+	VA,
+	
+	/// Saint Vincent and the Grenadines
+	VC,
+	
+	/// Venezuela (Bolivarian Republic of)
+	VE,
+	
+	/// Virgin Islands (British)
+	VG,
+	
+	/// Virgin Islands (U.S.)
+	VI,
+	
+	/// Viet Nam
+	VN,
+	
+	/// Vanuatu
+	VU,
+	
+	/// Wallis and Futuna
+	WF,
+	
+	/// Samoa
+	WS,
+	
+	/// Yemen
+	YE,
+	
+	/// Mayotte
+	YT,
+	
+	/// South Africa
+	ZA,
+	
+	/// Zambia
+	ZM,
+	
+	/// Zimbabwe
+	ZW,
+}
+
+impl Country {
+	//		info																
+	/// Returns the `CountryInfo` instance corresponding to the `Country`.
+	/// 
+	/// This method provides an easy way to get to the associated `CountryInfo`
+	/// instance from a `Country` enum variant.
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	#[must_use]
+	fn info(self) -> &'static CountryInfo {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		//	This should be infallible. If it isn't, then the data is wrong, and one
+		//	of the countries is missing from the list, which is a bug.
+		COUNTRIES.get(&self).unwrap()
+	}
+}
 
 //		CountryCode																
 /// The possible countries' codes.
@@ -1851,19 +2644,519 @@ pub enum CountryCode {
 
 impl CountryCode {
 	//		country																
-	/// Returns the `Country` instance corresponding to the `CountryCode`.
+	/// Returns the `Country` variant corresponding to the `CountryCode`.
 	/// 
 	/// This method provides an easy way to get to the associated `Country`
-	/// instance from a `CountryCode` enum variant.
+	/// variant from a `CountryCode` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
-	pub fn country(&self) -> &Country {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
-		//	This should be infallible. If it isn't, then the data is wrong, and one
-		//	of the countries is missing from the list, which is a bug.
-		COUNTRIES.get(self).unwrap()
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[cfg_attr(    feature = "reasons",  allow(clippy::match_same_arms, reason = "Clearer to maintain two lists"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::match_same_arms))]
+	#[must_use]
+	pub const fn country(&self) -> Country {
+		match *self {
+			//		Two-letter codes (ISO 3166-1 alpha-2)						
+			Self::AD  => Country::AD,
+			Self::AE  => Country::AE,
+			Self::AF  => Country::AF,
+			Self::AG  => Country::AG,
+			Self::AI  => Country::AI,
+			Self::AL  => Country::AL,
+			Self::AM  => Country::AM,
+			Self::AO  => Country::AO,
+			Self::AQ  => Country::AQ,
+			Self::AR  => Country::AR,
+			Self::AS  => Country::AS,
+			Self::AT  => Country::AT,
+			Self::AU  => Country::AU,
+			Self::AW  => Country::AW,
+			Self::AX  => Country::AX,
+			Self::AZ  => Country::AZ,
+			Self::BA  => Country::BA,
+			Self::BB  => Country::BB,
+			Self::BD  => Country::BD,
+			Self::BE  => Country::BE,
+			Self::BF  => Country::BF,
+			Self::BG  => Country::BG,
+			Self::BH  => Country::BH,
+			Self::BI  => Country::BI,
+			Self::BJ  => Country::BJ,
+			Self::BL  => Country::BL,
+			Self::BM  => Country::BM,
+			Self::BN  => Country::BN,
+			Self::BO  => Country::BO,
+			Self::BQ  => Country::BQ,
+			Self::BR  => Country::BR,
+			Self::BS  => Country::BS,
+			Self::BT  => Country::BT,
+			Self::BV  => Country::BV,
+			Self::BW  => Country::BW,
+			Self::BY  => Country::BY,
+			Self::BZ  => Country::BZ,
+			Self::CA  => Country::CA,
+			Self::CC  => Country::CC,
+			Self::CD  => Country::CD,
+			Self::CF  => Country::CF,
+			Self::CG  => Country::CG,
+			Self::CH  => Country::CH,
+			Self::CI  => Country::CI,
+			Self::CK  => Country::CK,
+			Self::CL  => Country::CL,
+			Self::CM  => Country::CM,
+			Self::CN  => Country::CN,
+			Self::CO  => Country::CO,
+			Self::CR  => Country::CR,
+			Self::CU  => Country::CU,
+			Self::CV  => Country::CV,
+			Self::CW  => Country::CW,
+			Self::CX  => Country::CX,
+			Self::CY  => Country::CY,
+			Self::CZ  => Country::CZ,
+			Self::DE  => Country::DE,
+			Self::DJ  => Country::DJ,
+			Self::DK  => Country::DK,
+			Self::DM  => Country::DM,
+			Self::DO  => Country::DO,
+			Self::DZ  => Country::DZ,
+			Self::EC  => Country::EC,
+			Self::EE  => Country::EE,
+			Self::EG  => Country::EG,
+			Self::EH  => Country::EH,
+			Self::ER  => Country::ER,
+			Self::ES  => Country::ES,
+			Self::ET  => Country::ET,
+			Self::FI  => Country::FI,
+			Self::FJ  => Country::FJ,
+			Self::FK  => Country::FK,
+			Self::FM  => Country::FM,
+			Self::FO  => Country::FO,
+			Self::FR  => Country::FR,
+			Self::GA  => Country::GA,
+			Self::GB  => Country::GB,
+			Self::GD  => Country::GD,
+			Self::GE  => Country::GE,
+			Self::GF  => Country::GF,
+			Self::GG  => Country::GG,
+			Self::GH  => Country::GH,
+			Self::GI  => Country::GI,
+			Self::GL  => Country::GL,
+			Self::GM  => Country::GM,
+			Self::GN  => Country::GN,
+			Self::GP  => Country::GP,
+			Self::GQ  => Country::GQ,
+			Self::GR  => Country::GR,
+			Self::GS  => Country::GS,
+			Self::GT  => Country::GT,
+			Self::GU  => Country::GU,
+			Self::GW  => Country::GW,
+			Self::GY  => Country::GY,
+			Self::HK  => Country::HK,
+			Self::HM  => Country::HM,
+			Self::HN  => Country::HN,
+			Self::HR  => Country::HR,
+			Self::HT  => Country::HT,
+			Self::HU  => Country::HU,
+			Self::ID  => Country::ID,
+			Self::IE  => Country::IE,
+			Self::IL  => Country::IL,
+			Self::IM  => Country::IM,
+			Self::IN  => Country::IN,
+			Self::IO  => Country::IO,
+			Self::IQ  => Country::IQ,
+			Self::IR  => Country::IR,
+			Self::IS  => Country::IS,
+			Self::IT  => Country::IT,
+			Self::JE  => Country::JE,
+			Self::JM  => Country::JM,
+			Self::JO  => Country::JO,
+			Self::JP  => Country::JP,
+			Self::KE  => Country::KE,
+			Self::KG  => Country::KG,
+			Self::KH  => Country::KH,
+			Self::KI  => Country::KI,
+			Self::KM  => Country::KM,
+			Self::KN  => Country::KN,
+			Self::KP  => Country::KP,
+			Self::KR  => Country::KR,
+			Self::KW  => Country::KW,
+			Self::KY  => Country::KY,
+			Self::KZ  => Country::KZ,
+			Self::LA  => Country::LA,
+			Self::LB  => Country::LB,
+			Self::LC  => Country::LC,
+			Self::LI  => Country::LI,
+			Self::LK  => Country::LK,
+			Self::LR  => Country::LR,
+			Self::LS  => Country::LS,
+			Self::LT  => Country::LT,
+			Self::LU  => Country::LU,
+			Self::LV  => Country::LV,
+			Self::LY  => Country::LY,
+			Self::MA  => Country::MA,
+			Self::MC  => Country::MC,
+			Self::MD  => Country::MD,
+			Self::ME  => Country::ME,
+			Self::MF  => Country::MF,
+			Self::MG  => Country::MG,
+			Self::MH  => Country::MH,
+			Self::MK  => Country::MK,
+			Self::ML  => Country::ML,
+			Self::MM  => Country::MM,
+			Self::MN  => Country::MN,
+			Self::MO  => Country::MO,
+			Self::MP  => Country::MP,
+			Self::MQ  => Country::MQ,
+			Self::MR  => Country::MR,
+			Self::MS  => Country::MS,
+			Self::MT  => Country::MT,
+			Self::MU  => Country::MU,
+			Self::MV  => Country::MV,
+			Self::MW  => Country::MW,
+			Self::MX  => Country::MX,
+			Self::MY  => Country::MY,
+			Self::MZ  => Country::MZ,
+			Self::NA  => Country::NA,
+			Self::NC  => Country::NC,
+			Self::NE  => Country::NE,
+			Self::NF  => Country::NF,
+			Self::NG  => Country::NG,
+			Self::NI  => Country::NI,
+			Self::NL  => Country::NL,
+			Self::NO  => Country::NO,
+			Self::NP  => Country::NP,
+			Self::NR  => Country::NR,
+			Self::NU  => Country::NU,
+			Self::NZ  => Country::NZ,
+			Self::OM  => Country::OM,
+			Self::PA  => Country::PA,
+			Self::PE  => Country::PE,
+			Self::PF  => Country::PF,
+			Self::PG  => Country::PG,
+			Self::PH  => Country::PH,
+			Self::PK  => Country::PK,
+			Self::PL  => Country::PL,
+			Self::PM  => Country::PM,
+			Self::PN  => Country::PN,
+			Self::PR  => Country::PR,
+			Self::PS  => Country::PS,
+			Self::PT  => Country::PT,
+			Self::PW  => Country::PW,
+			Self::PY  => Country::PY,
+			Self::QA  => Country::QA,
+			Self::RE  => Country::RE,
+			Self::RO  => Country::RO,
+			Self::RS  => Country::RS,
+			Self::RU  => Country::RU,
+			Self::RW  => Country::RW,
+			Self::SA  => Country::SA,
+			Self::SB  => Country::SB,
+			Self::SC  => Country::SC,
+			Self::SD  => Country::SD,
+			Self::SE  => Country::SE,
+			Self::SG  => Country::SG,
+			Self::SH  => Country::SH,
+			Self::SI  => Country::SI,
+			Self::SJ  => Country::SJ,
+			Self::SK  => Country::SK,
+			Self::SL  => Country::SL,
+			Self::SM  => Country::SM,
+			Self::SN  => Country::SN,
+			Self::SO  => Country::SO,
+			Self::SR  => Country::SR,
+			Self::SS  => Country::SS,
+			Self::ST  => Country::ST,
+			Self::SV  => Country::SV,
+			Self::SX  => Country::SX,
+			Self::SY  => Country::SY,
+			Self::SZ  => Country::SZ,
+			Self::TC  => Country::TC,
+			Self::TD  => Country::TD,
+			Self::TF  => Country::TF,
+			Self::TG  => Country::TG,
+			Self::TH  => Country::TH,
+			Self::TJ  => Country::TJ,
+			Self::TK  => Country::TK,
+			Self::TL  => Country::TL,
+			Self::TM  => Country::TM,
+			Self::TN  => Country::TN,
+			Self::TO  => Country::TO,
+			Self::TR  => Country::TR,
+			Self::TT  => Country::TT,
+			Self::TV  => Country::TV,
+			Self::TW  => Country::TW,
+			Self::TZ  => Country::TZ,
+			Self::UA  => Country::UA,
+			Self::UG  => Country::UG,
+			Self::UM  => Country::UM,
+			Self::US  => Country::US,
+			Self::UY  => Country::UY,
+			Self::UZ  => Country::UZ,
+			Self::VA  => Country::VA,
+			Self::VC  => Country::VC,
+			Self::VE  => Country::VE,
+			Self::VG  => Country::VG,
+			Self::VI  => Country::VI,
+			Self::VN  => Country::VN,
+			Self::VU  => Country::VU,
+			Self::WF  => Country::WF,
+			Self::WS  => Country::WS,
+			Self::YE  => Country::YE,
+			Self::YT  => Country::YT,
+			Self::ZA  => Country::ZA,
+			Self::ZM  => Country::ZM,
+			Self::ZW  => Country::ZW,
+			//		Three-letter codes (ISO 3166-1 alpha-3)						
+			Self::ABW => Country::AW,
+			Self::AFG => Country::AF,
+			Self::AGO => Country::AO,
+			Self::AIA => Country::AI,
+			Self::ALA => Country::AX,
+			Self::ALB => Country::AL,
+			Self::AND => Country::AD,
+			Self::ARE => Country::AE,
+			Self::ARG => Country::AR,
+			Self::ARM => Country::AM,
+			Self::ASM => Country::AS,
+			Self::ATA => Country::AQ,
+			Self::ATF => Country::TF,
+			Self::ATG => Country::AG,
+			Self::AUS => Country::AU,
+			Self::AUT => Country::AT,
+			Self::AZE => Country::AZ,
+			Self::BDI => Country::BI,
+			Self::BEL => Country::BE,
+			Self::BEN => Country::BJ,
+			Self::BES => Country::BQ,
+			Self::BFA => Country::BF,
+			Self::BGD => Country::BD,
+			Self::BGR => Country::BG,
+			Self::BHR => Country::BH,
+			Self::BHS => Country::BS,
+			Self::BIH => Country::BA,
+			Self::BLM => Country::BL,
+			Self::BLR => Country::BY,
+			Self::BLZ => Country::BZ,
+			Self::BMU => Country::BM,
+			Self::BOL => Country::BO,
+			Self::BRA => Country::BR,
+			Self::BRB => Country::BB,
+			Self::BRN => Country::BN,
+			Self::BTN => Country::BT,
+			Self::BVT => Country::BV,
+			Self::BWA => Country::BW,
+			Self::CAF => Country::CF,
+			Self::CAN => Country::CA,
+			Self::CCK => Country::CC,
+			Self::CHE => Country::CH,
+			Self::CHL => Country::CL,
+			Self::CHN => Country::CN,
+			Self::CIV => Country::CI,
+			Self::CMR => Country::CM,
+			Self::COD => Country::CD,
+			Self::COG => Country::CG,
+			Self::COK => Country::CK,
+			Self::COL => Country::CO,
+			Self::COM => Country::KM,
+			Self::CPV => Country::CV,
+			Self::CRI => Country::CR,
+			Self::CUB => Country::CU,
+			Self::CUW => Country::CW,
+			Self::CXR => Country::CX,
+			Self::CYM => Country::KY,
+			Self::CYP => Country::CY,
+			Self::CZE => Country::CZ,
+			Self::DEU => Country::DE,
+			Self::DJI => Country::DJ,
+			Self::DMA => Country::DM,
+			Self::DNK => Country::DK,
+			Self::DOM => Country::DO,
+			Self::DZA => Country::DZ,
+			Self::ECU => Country::EC,
+			Self::EGY => Country::EG,
+			Self::ERI => Country::ER,
+			Self::ESH => Country::EH,
+			Self::ESP => Country::ES,
+			Self::EST => Country::EE,
+			Self::ETH => Country::ET,
+			Self::FIN => Country::FI,
+			Self::FJI => Country::FJ,
+			Self::FLK => Country::FK,
+			Self::FRA => Country::FR,
+			Self::FRO => Country::FO,
+			Self::FSM => Country::FM,
+			Self::GAB => Country::GA,
+			Self::GBR => Country::GB,
+			Self::GEO => Country::GE,
+			Self::GGY => Country::GG,
+			Self::GHA => Country::GH,
+			Self::GIB => Country::GI,
+			Self::GIN => Country::GN,
+			Self::GLP => Country::GP,
+			Self::GMB => Country::GM,
+			Self::GNB => Country::GW,
+			Self::GNQ => Country::GQ,
+			Self::GRC => Country::GR,
+			Self::GRD => Country::GD,
+			Self::GRL => Country::GL,
+			Self::GTM => Country::GT,
+			Self::GUF => Country::GF,
+			Self::GUM => Country::GU,
+			Self::GUY => Country::GY,
+			Self::HKG => Country::HK,
+			Self::HMD => Country::HM,
+			Self::HND => Country::HN,
+			Self::HRV => Country::HR,
+			Self::HTI => Country::HT,
+			Self::HUN => Country::HU,
+			Self::IDN => Country::ID,
+			Self::IMN => Country::IM,
+			Self::IND => Country::IN,
+			Self::IOT => Country::IO,
+			Self::IRL => Country::IE,
+			Self::IRN => Country::IR,
+			Self::IRQ => Country::IQ,
+			Self::ISL => Country::IS,
+			Self::ISR => Country::IL,
+			Self::ITA => Country::IT,
+			Self::JAM => Country::JM,
+			Self::JEY => Country::JE,
+			Self::JOR => Country::JO,
+			Self::JPN => Country::JP,
+			Self::KAZ => Country::KZ,
+			Self::KEN => Country::KE,
+			Self::KGZ => Country::KG,
+			Self::KHM => Country::KH,
+			Self::KIR => Country::KI,
+			Self::KNA => Country::KN,
+			Self::KOR => Country::KR,
+			Self::KWT => Country::KW,
+			Self::LAO => Country::LA,
+			Self::LBN => Country::LB,
+			Self::LBR => Country::LR,
+			Self::LBY => Country::LY,
+			Self::LCA => Country::LC,
+			Self::LIE => Country::LI,
+			Self::LKA => Country::LK,
+			Self::LSO => Country::LS,
+			Self::LTU => Country::LT,
+			Self::LUX => Country::LU,
+			Self::LVA => Country::LV,
+			Self::MAC => Country::MO,
+			Self::MAF => Country::MF,
+			Self::MAR => Country::MA,
+			Self::MCO => Country::MC,
+			Self::MDA => Country::MD,
+			Self::MDG => Country::MG,
+			Self::MDV => Country::MV,
+			Self::MEX => Country::MX,
+			Self::MHL => Country::MH,
+			Self::MKD => Country::MK,
+			Self::MLI => Country::ML,
+			Self::MLT => Country::MT,
+			Self::MMR => Country::MM,
+			Self::MNE => Country::ME,
+			Self::MNG => Country::MN,
+			Self::MNP => Country::MP,
+			Self::MOZ => Country::MZ,
+			Self::MRT => Country::MR,
+			Self::MSR => Country::MS,
+			Self::MTQ => Country::MQ,
+			Self::MUS => Country::MU,
+			Self::MWI => Country::MW,
+			Self::MYS => Country::MY,
+			Self::MYT => Country::YT,
+			Self::NAM => Country::NA,
+			Self::NCL => Country::NC,
+			Self::NER => Country::NE,
+			Self::NFK => Country::NF,
+			Self::NGA => Country::NG,
+			Self::NIC => Country::NI,
+			Self::NIU => Country::NU,
+			Self::NLD => Country::NL,
+			Self::NOR => Country::NO,
+			Self::NPL => Country::NP,
+			Self::NRU => Country::NR,
+			Self::NZL => Country::NZ,
+			Self::OMN => Country::OM,
+			Self::PAK => Country::PK,
+			Self::PAN => Country::PA,
+			Self::PCN => Country::PN,
+			Self::PER => Country::PE,
+			Self::PHL => Country::PH,
+			Self::PLW => Country::PW,
+			Self::PNG => Country::PG,
+			Self::POL => Country::PL,
+			Self::PRI => Country::PR,
+			Self::PRK => Country::KP,
+			Self::PRT => Country::PT,
+			Self::PRY => Country::PY,
+			Self::PSE => Country::PS,
+			Self::PYF => Country::PF,
+			Self::QAT => Country::QA,
+			Self::REU => Country::RE,
+			Self::ROU => Country::RO,
+			Self::RUS => Country::RU,
+			Self::RWA => Country::RW,
+			Self::SAU => Country::SA,
+			Self::SDN => Country::SD,
+			Self::SEN => Country::SN,
+			Self::SGP => Country::SG,
+			Self::SGS => Country::GS,
+			Self::SHN => Country::SH,
+			Self::SJM => Country::SJ,
+			Self::SLB => Country::SB,
+			Self::SLE => Country::SL,
+			Self::SLV => Country::SV,
+			Self::SMR => Country::SM,
+			Self::SOM => Country::SO,
+			Self::SPM => Country::PM,
+			Self::SRB => Country::RS,
+			Self::SSD => Country::SS,
+			Self::STP => Country::ST,
+			Self::SUR => Country::SR,
+			Self::SVK => Country::SK,
+			Self::SVN => Country::SI,
+			Self::SWE => Country::SE,
+			Self::SWZ => Country::SZ,
+			Self::SXM => Country::SX,
+			Self::SYC => Country::SC,
+			Self::SYR => Country::SY,
+			Self::TCA => Country::TC,
+			Self::TCD => Country::TD,
+			Self::TGO => Country::TG,
+			Self::THA => Country::TH,
+			Self::TJK => Country::TJ,
+			Self::TKL => Country::TK,
+			Self::TKM => Country::TM,
+			Self::TLS => Country::TL,
+			Self::TON => Country::TO,
+			Self::TTO => Country::TT,
+			Self::TUN => Country::TN,
+			Self::TUR => Country::TR,
+			Self::TUV => Country::TV,
+			Self::TWN => Country::TW,
+			Self::TZA => Country::TZ,
+			Self::UGA => Country::UG,
+			Self::UKR => Country::UA,
+			Self::UMI => Country::UM,
+			Self::URY => Country::UY,
+			Self::USA => Country::US,
+			Self::UZB => Country::UZ,
+			Self::VAT => Country::VA,
+			Self::VCT => Country::VC,
+			Self::VEN => Country::VE,
+			Self::VGB => Country::VG,
+			Self::VIR => Country::VI,
+			Self::VNM => Country::VN,
+			Self::VUT => Country::VU,
+			Self::WLF => Country::WF,
+			Self::WSM => Country::WS,
+			Self::YEM => Country::YE,
+			Self::ZAF => Country::ZA,
+			Self::ZMB => Country::ZM,
+			Self::ZWE => Country::ZW,
+		}
 	}
 }
 
@@ -3208,11 +4501,10 @@ impl TryFrom<String> for CountryCode {
 
 
 
-
 //		Structs
 
-//		Country																	
-/// A country.
+//		CountryInfo																
+/// Country information.
 /// 
 /// A country has a number of properties, including a name, a country code, the
 /// currencies it uses, and the languages used in it.
@@ -3228,12 +4520,11 @@ impl TryFrom<String> for CountryCode {
 /// 
 /// # See also
 /// 
+/// * [`Country`]
 /// * [`CountryCode`]
 /// 
-#[derive(Clone, Deserialize, Eq, PartialEq, Serialize, ToSchema)]
-#[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
-pub struct Country {
+struct CountryInfo {
 	//		Public properties													
 	/// The name of the country.
 	name:       String,
@@ -3253,42 +4544,42 @@ impl Country {
 	/// Returns the name of the country.
 	#[must_use]
 	pub fn name(&self) -> &str {
-		&self.name
+		&self.info().name
 	}
 	
 	//		code																
 	/// Returns the country code.
 	#[must_use]
-	pub const fn code(&self) -> CountryCode {
-		self.code
+	pub fn code(&self) -> CountryCode {
+		self.info().code
 	}
 	
 	//		currencies															
 	/// Returns the currencies used in the country.
 	#[must_use]
-	pub const fn currencies(&self) -> &HashSet<CurrencyCode> {
-		&self.currencies
+	pub fn currencies(&self) -> &HashSet<CurrencyCode> {
+		&self.info().currencies
 	}
 	
 	//		languages															
 	/// Returns the languages used in the country.
 	#[must_use]
-	pub const fn languages(&self) -> &HashSet<LanguageCode> {
-		&self.languages
+	pub fn languages(&self) -> &HashSet<LanguageCode> {
+		&self.info().languages
 	}
 }
 
 impl AsStr for Country {
 	//		as_str																
 	fn as_str(&self) -> &str {
-		&self.name
+		&self.info().name
 	}
 }
 
 impl Debug for Country {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "{}: {}", self.code.as_str(), self.as_str())
+		write!(f, "{}: {}", self.info().code.as_str(), self.as_str())
 	}
 }
 
@@ -3313,9 +4604,11 @@ impl FromStr for Country {
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		COUNTRIES
 			.values()
-			.find(|country| country.name == s)
-			.cloned()
-			.ok_or_else(|| format!("Invalid Country: {s}"))
+			.find(|info| info.name == s)
+			.map_or_else(
+				||     Err(format!("Invalid Country: {s}")),
+				|info| Ok(info.code.country())
+			)
 	}
 }
 

@@ -11,21 +11,20 @@ mod language_code__enum {
 	#[test]
 	fn language() {
 		let language = LanguageCode::EN.language();
-		assert_eq!(language.name, "English");
-		assert_eq!(language.code, LanguageCode::EN);
+		assert_eq!(language.name(), "English");
+		assert_eq!(language.code(), LanguageCode::EN);
 	}
 	#[test]
 	fn language__all() {
-		for code in LANGUAGES.keys() {
-			assert_eq!(code.language().code, *code);
+		for language in LANGUAGES.keys() {
+			assert_eq!(language.code().language(), *language);
 		}
 	}
 	#[test]
 	fn language__relationships() {
-		for language_code in LANGUAGES.keys() {
-			let language = language_code.language();
-			for country_code in language.countries.iter() {
-				assert!(country_code.country().languages().contains(language_code));
+		for language in LANGUAGES.keys() {
+			for country_code in language.countries().iter() {
+				assert!(country_code.country().languages().contains(&language.code()));
 			}
 		}
 	}
@@ -108,27 +107,35 @@ mod language_code__traits {
 	}
 }
 
-//		Language																
+//		Language																
 #[cfg(test)]
-mod language__struct {
+mod language__enum {
 	use super::super::*;
+	
+	//		info																
+	#[test]
+	fn info() {
+		let info = Language::EN.info();
+		assert_eq!(info.name, "English");
+		assert_eq!(info.code, LanguageCode::EN);
+	}
 	
 	//		name																
 	#[test]
 	fn name() {
-		assert_eq!(LanguageCode::NO.language().name(), "Norwegian");
+		assert_eq!(Language::NO.name(), "Norwegian");
 	}
 	
 	//		code																
 	#[test]
 	fn code() {
-		assert_eq!(LanguageCode::NO.language().code(), LanguageCode::NO);
+		assert_eq!(Language::NO.code(), LanguageCode::NO);
 	}
 	
 	//		countries															
 	#[test]
 	fn countries() {
-		assert_eq!(LanguageCode::NO.language().countries(), &vh![ CountryCode: BV, NO, SJ ]);
+		assert_eq!(Language::NO.countries(), &vh![ CountryCode: BV, NO, SJ ]);
 	}
 }
 
@@ -141,26 +148,26 @@ mod language__traits {
 	//		as_str																
 	#[test]
 	fn as_str() {
-		assert_eq!(LanguageCode::EN.language().as_str(), "English");
+		assert_eq!(Language::EN.as_str(), "English");
 	}
 	
 	//		debug																
 	#[test]
 	fn debug() {
-		assert_eq!(format!("{:?}", LanguageCode::EN.language()), "en: English");
+		assert_eq!(format!("{:?}", Language::EN), "en: English");
 	}
 	
 	//		deserialize															
 	#[test]
 	fn deserialize() {
 		let language: Language = serde_json::from_str(r#""English""#).unwrap();
-		assert_eq!(language, *LanguageCode::EN.language());
+		assert_eq!(language, Language::EN);
 	}
 	
 	//		display																
 	#[test]
 	fn display() {
-		let language = LanguageCode::EN.language();
+		let language = Language::EN;
 		assert_eq!(format!("{}", language), "English");
 		assert_eq!(language.to_string(),    "English");
 	}
@@ -168,17 +175,17 @@ mod language__traits {
 	//		eq / partial_eq														
 	#[test]
 	fn eq() {
-		assert_eq!(LanguageCode::EN.language(), LanguageCode::EN.language());
+		assert_eq!(Language::EN, Language::EN);
 	}
 	#[test]
 	fn ne() {
-		assert_ne!(LanguageCode::EN.language(), LanguageCode::FR.language());
+		assert_ne!(Language::EN, Language::FR);
 	}
 	
 	//		from																
 	#[test]
 	fn from__language_for_string() {
-		let language = LanguageCode::EN.language();
+		let language = Language::EN;
 		assert_eq!(String::from(language.clone()), "English");
 		let str: String = language.clone().into();
 		assert_eq!(str,                            "English");
@@ -187,7 +194,7 @@ mod language__traits {
 	//		from_str															
 	#[test]
 	fn from_str() {
-		assert_eq!(Language::from_str("English").unwrap(), *LanguageCode::EN.language());
+		assert_eq!(Language::from_str("English").unwrap(), Language::EN);
 		let err = Language::from_str("Fooish");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid Language: Fooish");
@@ -196,13 +203,13 @@ mod language__traits {
 	//		serialize															
 	#[test]
 	fn serialize() {
-		assert_eq!(serde_json::to_string(LanguageCode::EN.language()).unwrap(), r#""English""#);
+		assert_eq!(serde_json::to_string(&Language::EN).unwrap(), r#""English""#);
 	}
 	
 	//		try_from															
 	#[test]
 	fn try_from__string() {
-		assert_eq!(Language::from_str("English").unwrap(), *LanguageCode::EN.language());
+		assert_eq!(Language::from_str("English").unwrap(), Language::EN);
 		let err = Language::from_str("Fooish");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid Language: Fooish");
