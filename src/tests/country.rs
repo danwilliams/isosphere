@@ -7,6 +7,16 @@
 mod country_code__enum {
 	use super::super::*;
 	
+	//		all																	
+	#[test]
+	fn all() {
+		let codes = CountryCode::all();
+		assert_eq!(codes.len(), 249);
+		assert!(codes.contains(&CountryCode::US));
+		assert!(codes.contains(&CountryCode::FR));
+		assert!(codes.contains(&CountryCode::GB));
+	}
+	
 	//		country																
 	#[test]
 	fn country() {
@@ -186,6 +196,16 @@ mod country_code__traits {
 #[cfg(test)]
 mod country__enum {
 	use super::super::*;
+	
+	//		all																	
+	#[test]
+	fn all() {
+		let countries = Country::all();
+		assert_eq!(countries.len(), 249);
+		assert!(countries.contains(&Country::US));
+		assert!(countries.contains(&Country::FR));
+		assert!(countries.contains(&Country::GB));
+	}
 	
 	//		info																
 	#[test]

@@ -7,6 +7,16 @@
 mod currency_code__enum {
 	use super::super::*;
 	
+	//		all																	
+	#[test]
+	fn all() {
+		let codes = CurrencyCode::all();
+		assert_eq!(codes.len(), 179);
+		assert!(codes.contains(&CurrencyCode::USD));
+		assert!(codes.contains(&CurrencyCode::EUR));
+		assert!(codes.contains(&CurrencyCode::GBP));
+	}
+	
 	//		currency															
 	#[test]
 	fn currency() {
@@ -122,6 +132,16 @@ mod currency_code__traits {
 #[cfg(test)]
 mod currency__enum {
 	use super::super::*;
+	
+	//		all																	
+	#[test]
+	fn all() {
+		let currencies = Currency::all();
+		assert_eq!(currencies.len(), 179);
+		assert!(currencies.contains(&Currency::USD));
+		assert!(currencies.contains(&Currency::EUR));
+		assert!(currencies.contains(&Currency::GBP));
+	}
 	
 	//		info																
 	#[test]

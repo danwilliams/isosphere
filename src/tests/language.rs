@@ -7,6 +7,16 @@
 mod language_code__enum {
 	use super::super::*;
 	
+	//		all																	
+	#[test]
+	fn all() {
+		let codes = LanguageCode::all();
+		assert_eq!(codes.len(), 183);
+		assert!(codes.contains(&LanguageCode::EN));
+		assert!(codes.contains(&LanguageCode::FR));
+		assert!(codes.contains(&LanguageCode::ES));
+	}
+	
 	//		language															
 	#[test]
 	fn language() {
@@ -107,6 +117,16 @@ mod language_code__traits {
 #[cfg(test)]
 mod language__enum {
 	use super::super::*;
+	
+	//		all																	
+	#[test]
+	fn all() {
+		let languages = Language::all();
+		assert_eq!(languages.len(), 183);
+		assert!(languages.contains(&Language::EN));
+		assert!(languages.contains(&Language::FR));
+		assert!(languages.contains(&Language::ES));
+	}
 	
 	//		info																
 	#[test]

@@ -1082,6 +1082,12 @@ pub enum Country {
 }
 
 impl Country {
+	//		all																	
+	/// Returns all the countries.
+	pub fn all() -> Vec<Self> {
+		COUNTRIES.keys().copied().collect()
+	}
+	
 	//		info																
 	/// Returns the `CountryInfo` instance corresponding to the `Country`.
 	/// 
@@ -2723,6 +2729,12 @@ pub enum CountryCode {
 }
 
 impl CountryCode {
+	//		all																	
+	/// Returns all the country codes.
+	pub fn all() -> Vec<Self> {
+		COUNTRIES.values().map(|info| info.code).collect()
+	}
+	
 	//		country																
 	/// Returns the `Country` variant corresponding to the `CountryCode`.
 	/// 

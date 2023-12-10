@@ -799,6 +799,12 @@ pub enum Currency {
 }
 
 impl Currency {
+	//		all																	
+	/// Returns all the currencies.
+	pub fn all() -> Vec<Self> {
+		CURRENCIES.keys().copied().collect()
+	}
+	
 	//		info																
 	/// Returns the `CurrencyInfo` instance corresponding to the `Currency`.
 	/// 
@@ -1474,6 +1480,12 @@ pub enum CurrencyCode {
 }
 
 impl CurrencyCode {
+	//		all																	
+	/// Returns all the currency codes.
+	pub fn all() -> Vec<Self> {
+		CURRENCIES.values().map(|info| info.code).collect()
+	}
+	
 	//		currency															
 	/// Returns the `Currency` variant corresponding to the `CurrencyCode`.
 	/// 

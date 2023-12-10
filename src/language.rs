@@ -814,6 +814,12 @@ pub enum Language {
 }
 
 impl Language {
+	//		all																	
+	/// Returns all the languages.
+	pub fn all() -> Vec<Self> {
+		LANGUAGES.keys().copied().collect()
+	}
+	
 	//		info																
 	/// Returns the `LanguageInfo` instance corresponding to the `Language`.
 	/// 
@@ -1486,6 +1492,12 @@ pub enum LanguageCode {
 }
 
 impl LanguageCode {
+	//		all																	
+	/// Returns all the language codes.
+	pub fn all() -> Vec<Self> {
+		LANGUAGES.values().map(|info| info.code).collect()
+	}
+	
 	//		language															
 	/// Returns the `Language` variant corresponding to the `LanguageCode`.
 	/// 
