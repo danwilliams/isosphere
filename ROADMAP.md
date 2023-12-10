@@ -36,7 +36,7 @@
       - [x] `CountryCode.is_alpha2()` and `.is_alpha3()`
       - [x] `CountryCode.to_alpha2()` and `.to_alpha3()`
   - [x] Tests
-  - [ ] Documentation
+  - [x] Documentation
 
 
 ## Version 0.2.0

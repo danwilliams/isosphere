@@ -1,4 +1,16 @@
 //! Currency-related types.
+//! 
+//! This module provides ISO 4217 currencies with alpha3/numeric codes and basic
+//! names. The currencies and codes are provided as enums, for ease of use and
+//! performance.
+//! 
+//! The currencies are related to countries, and vice versa, making lookups
+//! easy. The information comes from the ISO and Wikipedia.
+//! 
+//! The currency codes are two in one, with the alpha3 code being the variant
+//! name and the numeric code being the variant value. Either can be chosen for
+//! serialised form, but the default is the string representation.
+//! 
 
 
 

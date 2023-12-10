@@ -1,4 +1,22 @@
 //! Country-related types.
+//! 
+//! This module provides ISO 3166-1 countries with alpha2/alpha3/numeric codes
+//! and basic names. The countries and codes are provided as enums, for ease of
+//! use and performance.
+//! 
+//! The countries are related to currencies and languages, and vice versa,
+//! making lookups easy. The information comes from the ISO and Wikipedia, but
+//! notably there is no ISO list of languages used in each country, so this
+//! information is sourced from Wikipedia alone.
+//! 
+//! The country codes are three in one, with both alpha2 and alpha3 codes being
+//! variant names, and the numeric code being the variant value. Any of these
+//! can be chosen for serialised form, but the default is alpha2 string
+//! representation. It is possible to convert back and forth between the alpha2
+//! and alpha3 variants. This setup means it is extremely easy to use the
+//! country codes in a variety of situations, with just one enum representing
+//! all code forms, whilst still providing flexibility and validity.
+//! 
 
 
 

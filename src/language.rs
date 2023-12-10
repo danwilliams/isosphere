@@ -1,4 +1,17 @@
 //! Language-related types.
+//! 
+//! This module provides ISO 639-1 languages with alpha2 codes and basic names.
+//! The languages and codes are provided as enums, for ease of use and
+//! performance.
+//! 
+//! The languages are related to countries, and vice versa, making lookups easy.
+//! The information comes from the ISO and Wikipedia, but notably there is no
+//! ISO list of languages used in each country, so this information is sourced
+//! from Wikipedia alone.
+//! 
+//! The language codes only exist in alpha2 form, as ISO 639-1 does not provide
+//! any numeric equivalent.
+//! 
 
 
 

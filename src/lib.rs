@@ -1,6 +1,19 @@
 //! The Isosphere crate is a library of ISO standard data types, helpers, and
 //! related utilities for Rust projects.
 //! 
+//! As a general approach, each module in this crate provides a primary type, to
+//! be the main focus of interaction with the module and its data, and an
+//! associated code enum, which has the purpose of being used for
+//! (de)serialisation and other similar purposes.
+//! 
+//! Conversion, especially as regards (de)serialisation, is a key concern and
+//! priority, and so the design of the various types is intended to make this as
+//! easy, intuitive, and flexible as possible, with full support for [Serde](https://crates.io/crates/serde).
+//! 
+//! Notably, all types implement traits from [Utoipa](https://crates.io/crates/utoipa),
+//! which provides `OpenAPI` functionality, meaning they will be compatible for
+//! listing in Swagger and other `OpenAPI` documentation in your applications.
+//! 
 
 
 
