@@ -9,3 +9,51 @@ The format is based on [Keep a Changelog][], and this project adheres to
 [Semantic Versioning][].
 
 
+## 0.1.0 (10 December 2023)
+
+### Added
+
+  - Added `country` module
+      - Added `Country` enum
+      - Added `CountryCode` enum
+  - Added `currency` module
+      - Added `Currency` enum
+      - Added `CurrencyCode` enum
+  - Added `language` module
+      - Added `Language` enum
+      - Added `LanguageCode` enum
+  - Added basic trait implementations for all enums
+      - `AsStr`
+      - `Clone`
+      - `Copy`
+      - `Debug`
+      - `Deserialize`
+      - `Display`
+      - `Eq`
+      - `From`
+      - `FromStr`
+      - `Hash`
+      - `PartialEq`
+      - `Serialize`
+      - `ToSchema`
+      - `TryFrom`
+  - Added property getters for `Country`, `Currency`, and `Language` enums
+  - Added entity lookup methods for code enums
+      - Added `CountryCode.country()`
+      - Added `CurrencyCode.currency()`
+      - Added `LanguageCode.language()`
+  - Added `::all()` function for all enums
+  - Added `CountryCode` alpha code checking and conversion functions
+      - Added `CountryCode.is_alpha2()` and `.is_alpha3()`
+      - Added `CountryCode.to_alpha2()` and `.to_alpha3()`
+  - Added basic country, currency, and language data
+      - Added ISO 3166-1 countries with alpha2/alpha3/num codes and basic names
+      - Added ISO 4217 currencies with alpha3/num codes, names, and decimal
+        places
+      - Added ISO 639-1 languages with alpha2/num codes and names
+      - Added relationships between countries, currencies, and languages
+  - Added unit tests
+  - Added README documentation
+  - Added project roadmap
+
+
