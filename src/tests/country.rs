@@ -13,6 +13,10 @@ mod country_code__enum {
 		let country = CountryCode::US.country();
 		assert_eq!(country.name(), "United States of America");
 		assert_eq!(country.code(), CountryCode::US);
+		
+		let country = CountryCode::USA.country();
+		assert_eq!(country.name(), "United States of America");
+		assert_eq!(country.code(), CountryCode::US);
 	}
 	#[test]
 	fn country__all() {
@@ -31,13 +35,15 @@ mod country_code__traits {
 	//		as_str																
 	#[test]
 	fn as_str() {
-		assert_eq!(CountryCode::US.as_str(), "US");
+		assert_eq!(CountryCode::US .as_str(), "US");
+		assert_eq!(CountryCode::USA.as_str(), "USA");
 	}
 	
 	//		debug																
 	#[test]
 	fn debug() {
-		assert_eq!(format!("{:?}", CountryCode::US), "US");
+		assert_eq!(format!("{:?}", CountryCode::US),  "US");
+		assert_eq!(format!("{:?}", CountryCode::USA), "USA");
 	}
 	
 	//		deserialize															
@@ -45,6 +51,9 @@ mod country_code__traits {
 	fn deserialize() {
 		let code: CountryCode = serde_json::from_str(r#""US""#).unwrap();
 		assert_eq!(code, CountryCode::US);
+		
+		let code: CountryCode = serde_json::from_str(r#""USA""#).unwrap();
+		assert_eq!(code, CountryCode::USA);
 	}
 	
 	//		display																
@@ -53,6 +62,10 @@ mod country_code__traits {
 		let code = CountryCode::US;
 		assert_eq!(format!("{}", code), "US");
 		assert_eq!(code.to_string(),    "US");
+		
+		let code = CountryCode::USA;
+		assert_eq!(format!("{}", code), "USA");
+		assert_eq!(code.to_string(),    "USA");
 	}
 	
 	//		eq / partial_eq														
@@ -63,6 +76,7 @@ mod country_code__traits {
 	#[test]
 	fn ne() {
 		assert_ne!(CountryCode::US, CountryCode::GB);
+		assert_ne!(CountryCode::US, CountryCode::USA);
 	}
 	
 	//		from																
@@ -73,6 +87,12 @@ mod country_code__traits {
 		assert_eq!(code as u16,     840);
 		let int: u16 = code.into();
 		assert_eq!(int,             840);
+		
+		let code = CountryCode::USA;
+		assert_eq!(u16::from(code),   840);
+		assert_eq!(code as u16,     1_840);
+		let int: u16 = code.into();
+		assert_eq!(int,               840);
 	}
 	#[test]
 	fn from__country_code_for_string() {
@@ -80,12 +100,18 @@ mod country_code__traits {
 		assert_eq!(String::from(code), "US");
 		let str: String = code.into();
 		assert_eq!(str,                "US");
+		
+		let code = CountryCode::USA;
+		assert_eq!(String::from(code), "USA");
+		let str: String = code.into();
+		assert_eq!(str,                "USA");
 	}
 	
 	//		from_str															
 	#[test]
 	fn from_str() {
-		assert_eq!(CountryCode::from_str("US").unwrap(), CountryCode::US);
+		assert_eq!(CountryCode::from_str("US") .unwrap(), CountryCode::US);
+		assert_eq!(CountryCode::from_str("USA").unwrap(), CountryCode::USA);
 		let err = CountryCode::from_str("FOO");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: FOO");
@@ -94,7 +120,8 @@ mod country_code__traits {
 	//		serialize															
 	#[test]
 	fn serialize() {
-		assert_eq!(serde_json::to_string(&CountryCode::US).unwrap(), r#""US""#);
+		assert_eq!(serde_json::to_string(&CountryCode::US) .unwrap(), r#""US""#);
+		assert_eq!(serde_json::to_string(&CountryCode::USA).unwrap(), r#""USA""#);
 	}
 	
 	//		try_from															
@@ -104,10 +131,15 @@ mod country_code__traits {
 		let err = CountryCode::try_from(000);
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: 0");
+		
+		let err = CountryCode::try_from(1840);
+		assert_err!(&err);
+		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: 1840");
 	}
 	#[test]
 	fn try_from__string() {
-		assert_eq!(CountryCode::try_from(s!("US")).unwrap(), CountryCode::US);
+		assert_eq!(CountryCode::try_from(s!("US")) .unwrap(), CountryCode::US);
+		assert_eq!(CountryCode::try_from(s!("USA")).unwrap(), CountryCode::USA);
 		let err = CountryCode::try_from(s!("FOO"));
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: FOO");
