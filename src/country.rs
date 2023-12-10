@@ -3238,6 +3238,322 @@ impl CountryCode {
 			Self::ZWE => Country::ZW,
 		}
 	}
+	
+	//		is_alpha2															
+	/// Returns `true` if the [`CountryCode`] is a two-letter code.
+	/// 
+	/// This method provides an easy way to check if a [`CountryCode`] is a
+	/// two-letter code (ISO 3166-1 alpha-2).
+	/// 
+	#[must_use]
+	pub const fn is_alpha2(&self) -> bool {
+		(*self as u16) < 1_000
+	}
+	
+	//		is_alpha3															
+	/// Returns `true` if the [`CountryCode`] is a three-letter code.
+	/// 
+	/// This method provides an easy way to check if a [`CountryCode`] is a
+	/// three-letter code (ISO 3166-1 alpha-3).
+	/// 
+	#[must_use]
+	pub const fn is_alpha3(&self) -> bool {
+		(*self as u16) >= 1_000
+	}
+	
+	//		to_alpha2															
+	/// Converts a three-letter [`CountryCode`] to a two-letter [`CountryCode`].
+	/// 
+	/// This method provides an easy way to convert a [`CountryCode`] from a
+	/// three-letter code (ISO 3166-1 alpha-3) to a two-letter code (ISO 3166-1
+	/// alpha-2).
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	#[must_use]
+	pub fn to_alpha2(&self) -> Self {
+		let code = *self as u16;
+		if code >= 1_000 {
+			#[cfg_attr(    feature = "reasons",  allow(clippy::arithmetic_side_effects, reason = "Range is controlled"))]
+			#[cfg_attr(not(feature = "reasons"), allow(clippy::arithmetic_side_effects))]
+			#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
+			#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+			//	This should be infallible. If it isn't, then the data is wrong, and one
+			//	of the countries is missing from the list, which is a bug.
+			Self::try_from(code - 1_000).unwrap()
+		} else {
+			*self
+		}
+	}
+	
+	//		to_alpha3															
+	/// Converts a two-letter [`CountryCode`] to a three-letter [`CountryCode`].
+	/// 
+	/// This method provides an easy way to convert a [`CountryCode`] from a
+	/// two-letter code (ISO 3166-1 alpha-2) to a three-letter code (ISO 3166-1
+	/// alpha-3).
+	/// 
+	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
+	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[must_use]
+	pub const fn to_alpha3(&self) -> Self {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::wildcard_enum_match_arm,
+			reason = "Need to match partial set, everything unmatched is the other type of code (to improve in future)"
+		))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::wildcard_enum_match_arm,))]
+		match *self {
+			Self::AW => Self::ABW,
+			Self::AF => Self::AFG,
+			Self::AO => Self::AGO,
+			Self::AI => Self::AIA,
+			Self::AX => Self::ALA,
+			Self::AL => Self::ALB,
+			Self::AD => Self::AND,
+			Self::AE => Self::ARE,
+			Self::AR => Self::ARG,
+			Self::AM => Self::ARM,
+			Self::AS => Self::ASM,
+			Self::AQ => Self::ATA,
+			Self::TF => Self::ATF,
+			Self::AG => Self::ATG,
+			Self::AU => Self::AUS,
+			Self::AT => Self::AUT,
+			Self::AZ => Self::AZE,
+			Self::BI => Self::BDI,
+			Self::BE => Self::BEL,
+			Self::BJ => Self::BEN,
+			Self::BQ => Self::BES,
+			Self::BF => Self::BFA,
+			Self::BD => Self::BGD,
+			Self::BG => Self::BGR,
+			Self::BH => Self::BHR,
+			Self::BS => Self::BHS,
+			Self::BA => Self::BIH,
+			Self::BL => Self::BLM,
+			Self::BY => Self::BLR,
+			Self::BZ => Self::BLZ,
+			Self::BM => Self::BMU,
+			Self::BO => Self::BOL,
+			Self::BR => Self::BRA,
+			Self::BB => Self::BRB,
+			Self::BN => Self::BRN,
+			Self::BT => Self::BTN,
+			Self::BV => Self::BVT,
+			Self::BW => Self::BWA,
+			Self::CF => Self::CAF,
+			Self::CA => Self::CAN,
+			Self::CC => Self::CCK,
+			Self::CH => Self::CHE,
+			Self::CL => Self::CHL,
+			Self::CN => Self::CHN,
+			Self::CI => Self::CIV,
+			Self::CM => Self::CMR,
+			Self::CD => Self::COD,
+			Self::CG => Self::COG,
+			Self::CK => Self::COK,
+			Self::CO => Self::COL,
+			Self::KM => Self::COM,
+			Self::CV => Self::CPV,
+			Self::CR => Self::CRI,
+			Self::CU => Self::CUB,
+			Self::CW => Self::CUW,
+			Self::CX => Self::CXR,
+			Self::KY => Self::CYM,
+			Self::CY => Self::CYP,
+			Self::CZ => Self::CZE,
+			Self::DE => Self::DEU,
+			Self::DJ => Self::DJI,
+			Self::DM => Self::DMA,
+			Self::DK => Self::DNK,
+			Self::DO => Self::DOM,
+			Self::DZ => Self::DZA,
+			Self::EC => Self::ECU,
+			Self::EG => Self::EGY,
+			Self::ER => Self::ERI,
+			Self::EH => Self::ESH,
+			Self::ES => Self::ESP,
+			Self::EE => Self::EST,
+			Self::ET => Self::ETH,
+			Self::FI => Self::FIN,
+			Self::FJ => Self::FJI,
+			Self::FK => Self::FLK,
+			Self::FR => Self::FRA,
+			Self::FO => Self::FRO,
+			Self::FM => Self::FSM,
+			Self::GA => Self::GAB,
+			Self::GB => Self::GBR,
+			Self::GE => Self::GEO,
+			Self::GG => Self::GGY,
+			Self::GH => Self::GHA,
+			Self::GI => Self::GIB,
+			Self::GN => Self::GIN,
+			Self::GP => Self::GLP,
+			Self::GM => Self::GMB,
+			Self::GW => Self::GNB,
+			Self::GQ => Self::GNQ,
+			Self::GR => Self::GRC,
+			Self::GD => Self::GRD,
+			Self::GL => Self::GRL,
+			Self::GT => Self::GTM,
+			Self::GF => Self::GUF,
+			Self::GU => Self::GUM,
+			Self::GY => Self::GUY,
+			Self::HK => Self::HKG,
+			Self::HM => Self::HMD,
+			Self::HN => Self::HND,
+			Self::HR => Self::HRV,
+			Self::HT => Self::HTI,
+			Self::HU => Self::HUN,
+			Self::ID => Self::IDN,
+			Self::IM => Self::IMN,
+			Self::IN => Self::IND,
+			Self::IO => Self::IOT,
+			Self::IE => Self::IRL,
+			Self::IR => Self::IRN,
+			Self::IQ => Self::IRQ,
+			Self::IS => Self::ISL,
+			Self::IL => Self::ISR,
+			Self::IT => Self::ITA,
+			Self::JM => Self::JAM,
+			Self::JE => Self::JEY,
+			Self::JO => Self::JOR,
+			Self::JP => Self::JPN,
+			Self::KZ => Self::KAZ,
+			Self::KE => Self::KEN,
+			Self::KG => Self::KGZ,
+			Self::KH => Self::KHM,
+			Self::KI => Self::KIR,
+			Self::KN => Self::KNA,
+			Self::KR => Self::KOR,
+			Self::KW => Self::KWT,
+			Self::LA => Self::LAO,
+			Self::LB => Self::LBN,
+			Self::LR => Self::LBR,
+			Self::LY => Self::LBY,
+			Self::LC => Self::LCA,
+			Self::LI => Self::LIE,
+			Self::LK => Self::LKA,
+			Self::LS => Self::LSO,
+			Self::LT => Self::LTU,
+			Self::LU => Self::LUX,
+			Self::LV => Self::LVA,
+			Self::MO => Self::MAC,
+			Self::MF => Self::MAF,
+			Self::MA => Self::MAR,
+			Self::MC => Self::MCO,
+			Self::MD => Self::MDA,
+			Self::MG => Self::MDG,
+			Self::MV => Self::MDV,
+			Self::MX => Self::MEX,
+			Self::MH => Self::MHL,
+			Self::MK => Self::MKD,
+			Self::ML => Self::MLI,
+			Self::MT => Self::MLT,
+			Self::MM => Self::MMR,
+			Self::ME => Self::MNE,
+			Self::MN => Self::MNG,
+			Self::MP => Self::MNP,
+			Self::MZ => Self::MOZ,
+			Self::MR => Self::MRT,
+			Self::MS => Self::MSR,
+			Self::MQ => Self::MTQ,
+			Self::MU => Self::MUS,
+			Self::MW => Self::MWI,
+			Self::MY => Self::MYS,
+			Self::YT => Self::MYT,
+			Self::NA => Self::NAM,
+			Self::NC => Self::NCL,
+			Self::NE => Self::NER,
+			Self::NF => Self::NFK,
+			Self::NG => Self::NGA,
+			Self::NI => Self::NIC,
+			Self::NU => Self::NIU,
+			Self::NL => Self::NLD,
+			Self::NO => Self::NOR,
+			Self::NP => Self::NPL,
+			Self::NR => Self::NRU,
+			Self::NZ => Self::NZL,
+			Self::OM => Self::OMN,
+			Self::PK => Self::PAK,
+			Self::PA => Self::PAN,
+			Self::PN => Self::PCN,
+			Self::PE => Self::PER,
+			Self::PH => Self::PHL,
+			Self::PW => Self::PLW,
+			Self::PG => Self::PNG,
+			Self::PL => Self::POL,
+			Self::PR => Self::PRI,
+			Self::KP => Self::PRK,
+			Self::PT => Self::PRT,
+			Self::PY => Self::PRY,
+			Self::PS => Self::PSE,
+			Self::PF => Self::PYF,
+			Self::QA => Self::QAT,
+			Self::RE => Self::REU,
+			Self::RO => Self::ROU,
+			Self::RU => Self::RUS,
+			Self::RW => Self::RWA,
+			Self::SA => Self::SAU,
+			Self::SD => Self::SDN,
+			Self::SN => Self::SEN,
+			Self::SG => Self::SGP,
+			Self::GS => Self::SGS,
+			Self::SH => Self::SHN,
+			Self::SJ => Self::SJM,
+			Self::SB => Self::SLB,
+			Self::SL => Self::SLE,
+			Self::SV => Self::SLV,
+			Self::SM => Self::SMR,
+			Self::SO => Self::SOM,
+			Self::PM => Self::SPM,
+			Self::RS => Self::SRB,
+			Self::SS => Self::SSD,
+			Self::ST => Self::STP,
+			Self::SR => Self::SUR,
+			Self::SK => Self::SVK,
+			Self::SI => Self::SVN,
+			Self::SE => Self::SWE,
+			Self::SZ => Self::SWZ,
+			Self::SX => Self::SXM,
+			Self::SC => Self::SYC,
+			Self::SY => Self::SYR,
+			Self::TC => Self::TCA,
+			Self::TD => Self::TCD,
+			Self::TG => Self::TGO,
+			Self::TH => Self::THA,
+			Self::TJ => Self::TJK,
+			Self::TK => Self::TKL,
+			Self::TM => Self::TKM,
+			Self::TL => Self::TLS,
+			Self::TO => Self::TON,
+			Self::TT => Self::TTO,
+			Self::TN => Self::TUN,
+			Self::TR => Self::TUR,
+			Self::TV => Self::TUV,
+			Self::TW => Self::TWN,
+			Self::TZ => Self::TZA,
+			Self::UG => Self::UGA,
+			Self::UA => Self::UKR,
+			Self::UM => Self::UMI,
+			Self::UY => Self::URY,
+			Self::US => Self::USA,
+			Self::UZ => Self::UZB,
+			Self::VA => Self::VAT,
+			Self::VC => Self::VCT,
+			Self::VE => Self::VEN,
+			Self::VG => Self::VGB,
+			Self::VI => Self::VIR,
+			Self::VN => Self::VNM,
+			Self::VU => Self::VUT,
+			Self::WF => Self::WLF,
+			Self::WS => Self::WSM,
+			Self::YE => Self::YEM,
+			Self::ZA => Self::ZAF,
+			Self::ZM => Self::ZMB,
+			Self::ZW => Self::ZWE,
+			_        => *self,
+		}
+	}
 }
 
 impl AsStr for CountryCode {

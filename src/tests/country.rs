@@ -24,6 +24,34 @@ mod country_code__enum {
 			assert_eq!(country.code().country(), *country);
 		}
 	}
+	
+	//		is_alpha2															
+	#[test]
+	fn is_alpha2() {
+		assert!( CountryCode::US .is_alpha2());
+		assert!(!CountryCode::USA.is_alpha2());
+	}
+	
+	//		is_alpha3															
+	#[test]
+	fn is_alpha3() {
+		assert!(!CountryCode::US .is_alpha3());
+		assert!( CountryCode::USA.is_alpha3());
+	}
+	
+	//		to_alpha2															
+	#[test]
+	fn to_alpha2() {
+		assert_eq!(CountryCode::US .to_alpha2(), CountryCode::US);
+		assert_eq!(CountryCode::USA.to_alpha2(), CountryCode::US);
+	}
+	
+	//		to_alpha3															
+	#[test]
+	fn to_alpha3() {
+		assert_eq!(CountryCode::US .to_alpha3(), CountryCode::USA);
+		assert_eq!(CountryCode::USA.to_alpha3(), CountryCode::USA);
+	}
 }
 
 #[cfg(test)]
