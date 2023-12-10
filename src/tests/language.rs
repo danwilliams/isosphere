@@ -45,6 +45,8 @@ mod language_code__traits {
 	fn deserialize() {
 		let code: LanguageCode = serde_json::from_str(r#""en""#).unwrap();
 		assert_eq!(code, LanguageCode::EN);
+		let code: LanguageCode = serde_json::from_str(r#""EN""#).unwrap();
+		assert_eq!(code, LanguageCode::EN);
 	}
 	
 	//		display																
@@ -78,6 +80,7 @@ mod language_code__traits {
 	#[test]
 	fn from_str() {
 		assert_eq!(LanguageCode::from_str("en").unwrap(), LanguageCode::EN);
+		assert_eq!(LanguageCode::from_str("EN").unwrap(), LanguageCode::EN);
 		let err = LanguageCode::from_str("foo");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid LanguageCode: foo");
@@ -93,6 +96,7 @@ mod language_code__traits {
 	#[test]
 	fn try_from__string() {
 		assert_eq!(LanguageCode::try_from(s!("en")).unwrap(), LanguageCode::EN);
+		assert_eq!(LanguageCode::try_from(s!("EN")).unwrap(), LanguageCode::EN);
 		let err = LanguageCode::try_from(s!("foo"));
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid LanguageCode: foo");

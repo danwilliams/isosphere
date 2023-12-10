@@ -45,6 +45,8 @@ mod currency_code__traits {
 	fn deserialize() {
 		let code: CurrencyCode = serde_json::from_str(r#""USD""#).unwrap();
 		assert_eq!(code, CurrencyCode::USD);
+		let code: CurrencyCode = serde_json::from_str(r#""usd""#).unwrap();
+		assert_eq!(code, CurrencyCode::USD);
 	}
 	
 	//		display																
@@ -86,6 +88,7 @@ mod currency_code__traits {
 	#[test]
 	fn from_str() {
 		assert_eq!(CurrencyCode::from_str("USD").unwrap(), CurrencyCode::USD);
+		assert_eq!(CurrencyCode::from_str("usd").unwrap(), CurrencyCode::USD);
 		let err = CurrencyCode::from_str("FOO");
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid CurrencyCode: FOO");
@@ -108,6 +111,7 @@ mod currency_code__traits {
 	#[test]
 	fn try_from__string() {
 		assert_eq!(CurrencyCode::try_from(s!("USD")).unwrap(), CurrencyCode::USD);
+		assert_eq!(CurrencyCode::try_from(s!("usd")).unwrap(), CurrencyCode::USD);
 		let err = CurrencyCode::try_from(s!("FOO"));
 		assert_err!(&err);
 		assert_eq!(err.unwrap_err().to_string(), "Invalid CurrencyCode: FOO");
