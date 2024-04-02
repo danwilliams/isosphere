@@ -62,7 +62,6 @@
 	unused_lifetimes,
 	unused_qualifications,
 	unused_results,
-	unused_tuple_struct_fields,
 	variant_size_differences,
 )]
 //		Clippy lints															
@@ -78,6 +77,9 @@
 	clippy::wildcard_dependencies,
 )]
 //	Clippy pedantic lints
+#![deny(
+	clippy::pub_underscore_fields,
+)]
 #![cfg_attr(    feature = "reasons",  allow(clippy::module_name_repetitions, reason = "This is not required"))]
 #![cfg_attr(not(feature = "reasons"), allow(clippy::module_name_repetitions))]
 //	Clippy restriction lints
@@ -98,6 +100,7 @@
 )]
 #![deny(
 	clippy::clone_on_ref_ptr,
+	clippy::empty_enum_variants_with_brackets,
 	clippy::empty_structs_with_brackets,
 	clippy::error_impl_error,
 	clippy::exhaustive_enums,
@@ -160,6 +163,10 @@
 	clippy::unseparated_literal_suffix,
 	clippy::use_debug,
 	clippy::verbose_file_reads,
+)]
+//	Clippy suspicious lints
+#![deny(
+	clippy::unconditional_recursion,
 )]
 
 
