@@ -12,7 +12,7 @@
       - [x] Which currencies and languages are officially used by which
             countries
       - [x] Which countries officially use which languages
-  - [x] Basic implementations
+  - [x] Basic trait implementations
       - [x] `AsStr`
       - [x] `Clone`
       - [x] `Copy`
@@ -65,7 +65,7 @@
   - [ ] Extended country information
       - [ ] ISO 3166-2 subdivisions
       - [ ] Regions
-      - [ ] Additional names - full name vs short name
+      - [ ] Additional names — full name vs short name
 
 
 ## Version 0.4.0
@@ -111,8 +111,8 @@
 ## Version 0.7.0
 
   - [ ] Historic information
-      - [ ] Countries - ISO 3166-3 historic list
-      - [ ] Currencies - historic list from ISO 4217
+      - [ ] Countries — ISO 3166-3 historic list
+      - [ ] Currencies — historic list from ISO 4217
   - [ ] Methods
       - [ ] `Currency.is_active()`/`.is_historic()`
 

@@ -11,8 +11,9 @@
 //! easy, intuitive, and flexible as possible, with full support for [Serde](https://crates.io/crates/serde).
 //! 
 //! Notably, all types implement traits from [Utoipa](https://crates.io/crates/utoipa),
-//! which provides `OpenAPI` functionality, meaning they will be compatible for
-//! listing in Swagger and other `OpenAPI` documentation in your applications.
+//! which provides Open&#8203;API functionality, meaning they will be compatible
+//! for listing in Swagger and other Open&#8203;API documentation in your
+//! applications.
 //! 
 
 
