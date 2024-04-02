@@ -826,6 +826,7 @@ pub enum Language {
 	ZU,
 }
 
+//󰭅		Language																
 impl Language {
 	//		all																	
 	/// Returns all the languages.
@@ -872,6 +873,7 @@ impl Language {
 	}
 }
 
+//󰭅		AsStr																	
 impl AsStr for Language {
 	//		as_str																
 	fn as_str(&self) -> &str {
@@ -879,6 +881,7 @@ impl AsStr for Language {
 	}
 }
 
+//󰭅		Debug																	
 impl Debug for Language {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -886,6 +889,7 @@ impl Debug for Language {
 	}
 }
 
+//󰭅		Display																	
 impl Display for Language {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -893,6 +897,7 @@ impl Display for Language {
 	}
 }
 
+//󰭅		From<Language> for String												
 impl From<Language> for String {
 	//		from																
 	fn from(language: Language) -> Self {
@@ -900,6 +905,7 @@ impl From<Language> for String {
 	}
 }
 
+//󰭅		FromStr																	
 impl FromStr for Language {
 	type Err = String;
 	
@@ -915,6 +921,7 @@ impl FromStr for Language {
 	}
 }
 
+//󰭅		TryFrom<String>															
 impl TryFrom<String> for Language {
 	type Error = String;
 	
@@ -1504,6 +1511,7 @@ pub enum LanguageCode {
 	ZU,
 }
 
+//󰭅		LanguageCode															
 impl LanguageCode {
 	//		all																	
 	/// Returns all the language codes.
@@ -1709,6 +1717,7 @@ impl LanguageCode {
 	}
 }
 
+//󰭅		AsStr																	
 impl AsStr for LanguageCode {
 	//		as_str																
 	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
@@ -1902,6 +1911,7 @@ impl AsStr for LanguageCode {
 	}
 }
 
+//󰭅		Display																	
 impl Display for LanguageCode {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -1909,6 +1919,7 @@ impl Display for LanguageCode {
 	}
 }
 
+//󰭅		From<LanguageCode> for String											
 impl From<LanguageCode> for String {
 	//		from																
 	fn from(code: LanguageCode) -> Self {
@@ -1916,6 +1927,7 @@ impl From<LanguageCode> for String {
 	}
 }
 
+//󰭅		FromStr																	
 impl FromStr for LanguageCode {
 	type Err = String;
 	
@@ -2112,6 +2124,7 @@ impl FromStr for LanguageCode {
 	}
 }
 
+//󰭅		TryFrom<String>															
 impl TryFrom<String> for LanguageCode {
 	type Error = String;
 	

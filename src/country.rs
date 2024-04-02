@@ -1099,6 +1099,7 @@ pub enum Country {
 	ZW,
 }
 
+//󰭅		Country																	
 impl Country {
 	//		all																	
 	/// Returns all the countries.
@@ -1152,6 +1153,7 @@ impl Country {
 	}
 }
 
+//󰭅		AsStr																	
 impl AsStr for Country {
 	//		as_str																
 	fn as_str(&self) -> &str {
@@ -1159,6 +1161,7 @@ impl AsStr for Country {
 	}
 }
 
+//󰭅		Debug																	
 impl Debug for Country {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -1166,6 +1169,7 @@ impl Debug for Country {
 	}
 }
 
+//󰭅		Display																	
 impl Display for Country {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -1173,6 +1177,7 @@ impl Display for Country {
 	}
 }
 
+//󰭅		From<Country> for String												
 impl From<Country> for String {
 	//		from																
 	fn from(country: Country) -> Self {
@@ -1180,6 +1185,7 @@ impl From<Country> for String {
 	}
 }
 
+//󰭅		FromStr																	
 impl FromStr for Country {
 	type Err = String;
 	
@@ -1195,6 +1201,7 @@ impl FromStr for Country {
 	}
 }
 
+//󰭅		TryFrom<String>															
 impl TryFrom<String> for Country {
 	type Error = String;
 	
@@ -2746,6 +2753,7 @@ pub enum CountryCode {
 	ZWE = 1_716,
 }
 
+//󰭅		CountryCode																
 impl CountryCode {
 	//		all																	
 	/// Returns all the country codes.
@@ -3586,6 +3594,7 @@ impl CountryCode {
 	}
 }
 
+//󰭅		AsStr																	
 impl AsStr for CountryCode {
 	//		as_str																
 	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
@@ -4096,6 +4105,7 @@ impl AsStr for CountryCode {
 	}
 }
 
+//󰭅		Display																	
 impl Display for CountryCode {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -4103,6 +4113,7 @@ impl Display for CountryCode {
 	}
 }
 
+//󰭅		From<CountryCode> for u16												
 impl From<CountryCode> for u16 {
 	//		from																
 	fn from(code: CountryCode) -> Self {
@@ -4122,6 +4133,7 @@ impl From<CountryCode> for u16 {
 	}
 }
 
+//󰭅		From<CountryCode> for String											
 impl From<CountryCode> for String {
 	//		from																
 	fn from(code: CountryCode) -> Self {
@@ -4129,6 +4141,7 @@ impl From<CountryCode> for String {
 	}
 }
 
+//󰭅		FromStr																	
 impl FromStr for CountryCode {
 	type Err = String;
 	
@@ -4643,6 +4656,7 @@ impl FromStr for CountryCode {
 	}
 }
 
+//󰭅		TryFrom<u16>															
 #[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
 #[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
 impl TryFrom<u16> for CountryCode {
@@ -4916,6 +4930,7 @@ impl TryFrom<u16> for CountryCode {
 	}
 }
 
+//󰭅		TryFrom<String>															
 impl TryFrom<String> for CountryCode {
 	type Error = String;
 	

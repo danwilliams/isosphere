@@ -810,6 +810,7 @@ pub enum Currency {
 	ZWL,
 }
 
+//󰭅		Currency																
 impl Currency {
 	//		all																	
 	/// Returns all the currencies.
@@ -863,6 +864,7 @@ impl Currency {
 	}
 }
 
+//󰭅		AsStr																	
 impl AsStr for Currency {
 	//		as_str																
 	fn as_str(&self) -> &str {
@@ -870,6 +872,7 @@ impl AsStr for Currency {
 	}
 }
 
+//󰭅		Debug																	
 impl Debug for Currency {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -877,6 +880,7 @@ impl Debug for Currency {
 	}
 }
 
+//󰭅		Display																	
 impl Display for Currency {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -884,6 +888,7 @@ impl Display for Currency {
 	}
 }
 
+//󰭅		From<Currency> for String												
 impl From<Currency> for String {
 	//		from																
 	fn from(currency: Currency) -> Self {
@@ -891,6 +896,7 @@ impl From<Currency> for String {
 	}
 }
 
+//󰭅		FromStr																	
 impl FromStr for Currency {
 	type Err = String;
 	
@@ -906,6 +912,7 @@ impl FromStr for Currency {
 	}
 }
 
+//󰭅		TryFrom<String>															
 impl TryFrom<String> for Currency {
 	type Error = String;
 	
@@ -1491,6 +1498,7 @@ pub enum CurrencyCode {
 	ZWL = 932,
 }
 
+//󰭅		CurrencyCode															
 impl CurrencyCode {
 	//		all																	
 	/// Returns all the currency codes.
@@ -1692,6 +1700,7 @@ impl CurrencyCode {
 	}
 }
 
+//󰭅		AsStr																	
 impl AsStr for CurrencyCode {
 	//		as_str																
 	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
@@ -1881,6 +1890,7 @@ impl AsStr for CurrencyCode {
 	}
 }
 
+//󰭅		Display																	
 impl Display for CurrencyCode {
 	//		fmt																	
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -1888,6 +1898,7 @@ impl Display for CurrencyCode {
 	}
 }
 
+//󰭅		From<CurrencyCode> for u16												
 impl From<CurrencyCode> for u16 {
 	//		from																
 	fn from(code: CurrencyCode) -> Self {
@@ -1895,6 +1906,7 @@ impl From<CurrencyCode> for u16 {
 	}
 }
 
+//󰭅		From<CurrencyCode> for String											
 impl From<CurrencyCode> for String {
 	//		from																
 	fn from(code: CurrencyCode) -> Self {
@@ -1902,6 +1914,7 @@ impl From<CurrencyCode> for String {
 	}
 }
 
+//󰭅		FromStr																	
 impl FromStr for CurrencyCode {
 	type Err = String;
 	
@@ -2094,6 +2107,7 @@ impl FromStr for CurrencyCode {
 	}
 }
 
+//󰭅		TryFrom<u16>															
 #[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
 #[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
 impl TryFrom<u16> for CurrencyCode {
@@ -2288,6 +2302,7 @@ impl TryFrom<u16> for CurrencyCode {
 	}
 }
 
+//󰭅		TryFrom<String>															
 impl TryFrom<String> for CurrencyCode {
 	type Error = String;
 	
