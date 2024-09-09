@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog][], and this project adheres to
 [Semantic Versioning][].
 
 
+## 0.2.1 (09 September 2024)
+
+### Added
+
+  - Added feature flag for `utoipa`
+
+
 ## 0.2.0 (09 September 2024)
 
 ### Added
