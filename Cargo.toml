@@ -5,6 +5,7 @@ description  = "Library of ISO standard data types, helpers, and related utiliti
 categories   = ["data-structures", "encoding", "finance", "internationalization", "localization"]
 keywords     = ["codes", "country", "currency", "iso", "language"]
 edition      = "2021"
+rust-version = "1.81.0"
 license      = "MIT"
 authors      = ["Dan Williams <dan@dotfive.co.uk>"]
 repository   = "https://github.com/danwilliams/isosphere"
