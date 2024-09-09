@@ -38,13 +38,15 @@ use core::{
 	fmt::{Debug, Display, self},
 	str::FromStr,
 };
-use once_cell::sync::Lazy;
 use rubedo::{
 	std::AsStr,
 	sugar::{s, vh},
 };
 use serde::{Deserialize, Serialize};
-use std::collections::{HashMap, HashSet};
+use std::{
+	collections::{HashMap, HashSet},
+	sync::LazyLock,
+};
 use utoipa::ToSchema;
 use velcro::hash_map;
 
@@ -65,7 +67,7 @@ use velcro::hash_map;
 /// * [`CountryCode`]
 /// * [`Country`]
 /// 
-static COUNTRIES: Lazy<HashMap<Country, CountryInfo>> = Lazy::new(|| {
+static COUNTRIES: LazyLock<HashMap<Country, CountryInfo>> = LazyLock::new(|| {
 	hash_map!{
 		Country::AD: CountryInfo { code: CountryCode::AD, name: s!("Andorra"),                                              currencies: vh![ CurrencyCode: EUR ],           languages: vh![ LanguageCode: CA ] },
 		Country::AE: CountryInfo { code: CountryCode::AE, name: s!("United Arab Emirates"),                                 currencies: vh![ CurrencyCode: AED ],           languages: vh![ LanguageCode: AR ] },

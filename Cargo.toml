@@ -21,7 +21,6 @@ lto       = "thin" # Enable link-time optimisation (fast)
 #==============================[  DEPENDENCIES  ]===============================
 
 [dependencies]
-once_cell          = "1.19.0"
 rubedo             = "0.6.0"
 serde              = { version = "1.0.210", features = ["derive"] }
 utoipa             = "4.2.3"

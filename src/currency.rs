@@ -29,13 +29,15 @@ use core::{
 	fmt::{Debug, Display, self},
 	str::FromStr,
 };
-use once_cell::sync::Lazy;
 use rubedo::{
 	std::AsStr,
 	sugar::{s, vh},
 };
 use serde::{Deserialize, Serialize};
-use std::collections::{HashMap, HashSet};
+use std::{
+	collections::{HashMap, HashSet},
+	sync::LazyLock,
+};
 use utoipa::ToSchema;
 use velcro::hash_map;
 
@@ -56,7 +58,7 @@ use velcro::hash_map;
 /// * [`CurrencyCode`]
 /// * [`Currency`]
 /// 
-static CURRENCIES: Lazy<HashMap<Currency, CurrencyInfo>> = Lazy::new(|| {
+static CURRENCIES: LazyLock<HashMap<Currency, CurrencyInfo>> = LazyLock::new(|| {
 	hash_map!{
 		Currency::AED: CurrencyInfo { code: CurrencyCode::AED, name: s!("United Arab Emirates dirham"),                   digits: 2, countries: vh![ CountryCode: AE ] },
 		Currency::AFN: CurrencyInfo { code: CurrencyCode::AFN, name: s!("Afghan afghani"),                                digits: 2, countries: vh![ CountryCode: AF ] },

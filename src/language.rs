@@ -30,13 +30,15 @@ use core::{
 	fmt::{Debug, Display, self},
 	str::FromStr,
 };
-use once_cell::sync::Lazy;
 use rubedo::{
 	std::AsStr,
 	sugar::{s, vh},
 };
 use serde::{Deserialize, Serialize};
-use std::collections::{HashMap, HashSet};
+use std::{
+	collections::{HashMap, HashSet},
+	sync::LazyLock,
+};
 use utoipa::ToSchema;
 use velcro::hash_map;
 
@@ -57,7 +59,7 @@ use velcro::hash_map;
 /// * [`LanguageCode`]
 /// * [`Language`]
 /// 
-static LANGUAGES: Lazy<HashMap<Language, LanguageInfo>> = Lazy::new(|| {
+static LANGUAGES: LazyLock<HashMap<Language, LanguageInfo>> = LazyLock::new(|| {
 	hash_map!{
 		Language::AA: LanguageInfo { code: LanguageCode::AA, name: s!("Afar"),              countries: vh![ CountryCode: ET ] },
 		Language::AB: LanguageInfo { code: LanguageCode::AB, name: s!("Abkhazian"),         countries: vh![] },
