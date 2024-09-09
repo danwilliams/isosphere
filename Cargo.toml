@@ -18,12 +18,18 @@ strip     = true   # Automatically strip symbols from the binary
 opt-level = 3      # Maximum optimisation (this is the cargo default)
 lto       = "thin" # Enable link-time optimisation (fast)
 
+#================================[  FEATURES  ]=================================
+
+[features]
+full    = ["utoipa"]
+utoipa  = ["dep:utoipa"]
+
 #==============================[  DEPENDENCIES  ]===============================
 
 [dependencies]
 rubedo             = { version = "0.6.1", features = ["std"], default-features = false }
 serde              = { version = "1.0.210", features = ["derive"] }
-utoipa             = "4.2.3"
+utoipa             = { version = "4.2.3", optional = true }
 velcro             = "0.5.4"
 
 [dev-dependencies]

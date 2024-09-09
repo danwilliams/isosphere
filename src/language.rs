@@ -39,8 +39,10 @@ use std::{
 	collections::{HashMap, HashSet},
 	sync::LazyLock,
 };
-use utoipa::ToSchema;
 use velcro::hash_map;
+
+#[cfg(feature = "utoipa")]
+use utoipa::ToSchema;
 
 
 
@@ -270,7 +272,8 @@ static LANGUAGES: LazyLock<HashMap<Language, LanguageInfo>> = LazyLock::new(|| {
 /// 
 /// * [`LanguageCode`]
 /// 
-#[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
+#[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize)]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub enum Language {
@@ -949,7 +952,8 @@ impl TryFrom<String> for Language {
 /// 
 /// * [`Language`]
 /// 
-#[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
+#[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize)]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
 pub enum LanguageCode {
