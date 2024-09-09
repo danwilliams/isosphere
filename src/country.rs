@@ -344,6 +344,8 @@ static COUNTRIES: Lazy<HashMap<Country, CountryInfo>> = Lazy::new(|| {
 /// 
 /// * [`CountryCode`]
 /// 
+#[cfg_attr(    feature = "reasons",  allow(clippy::doc_markdown, reason = "False positives"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::doc_markdown))]
 #[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
 #[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
@@ -1240,6 +1242,8 @@ impl TryFrom<String> for Country {
 /// 
 /// * [`Country`]
 /// 
+#[cfg_attr(    feature = "reasons",  allow(clippy::doc_markdown, reason = "False positives"))]
+#[cfg_attr(not(feature = "reasons"), allow(clippy::doc_markdown))]
 #[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
 #[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]

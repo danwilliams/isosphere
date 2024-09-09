@@ -89,7 +89,6 @@
 	clippy::dbg_macro,
 	clippy::exit,
 	clippy::infinite_loop,
-	clippy::missing_assert_message,
 	clippy::missing_docs_in_private_items,
 	clippy::mod_module_files,
 	clippy::multiple_inherent_impl,
@@ -114,6 +113,7 @@
 	clippy::impl_trait_in_params,
 	clippy::integer_division,
 	clippy::lossy_float_literal,
+	clippy::missing_assert_message,
 	clippy::mem_forget,
 	clippy::panic,
 	clippy::print_stderr,
@@ -167,7 +167,12 @@
 )]
 //	Clippy suspicious lints
 #![deny(
+	clippy::const_is_empty,
+	clippy::deprecated_clippy_cfg_attr,
+	clippy::incompatible_msrv,
+	clippy::multiple_bound_locations,
 	clippy::unconditional_recursion,
+	clippy::unnecessary_clippy_cfg,
 )]
 
 //		Lint customisations														
@@ -191,3 +196,5 @@ pub use {
 	language::Language,
 	language::LanguageCode,
 };
+
+
