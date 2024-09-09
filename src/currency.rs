@@ -24,8 +24,6 @@ mod tests;
 
 //		Packages
 
-#[cfg_attr(    feature = "reasons",  allow(clippy::enum_glob_use, reason = "Brevity wins here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::enum_glob_use))]
 use crate::country::CountryCode;
 use core::{
 	fmt::{Debug, Display, self},
@@ -266,8 +264,6 @@ static CURRENCIES: Lazy<HashMap<Currency, CurrencyInfo>> = Lazy::new(|| {
 /// 
 /// * [`CurrencyCode`]
 /// 
-#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
@@ -824,12 +820,9 @@ impl Currency {
 	/// This method provides an easy way to get to the associated `CurrencyInfo`
 	/// instance from a `Currency` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
 	#[must_use]
 	fn info(self) -> &'static CurrencyInfo {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		#[expect(clippy::unwrap_used, reason = "Infallible")]
 		//	This should be infallible. If it isn't, then the data is wrong, and one
 		//	of the currencies is missing from the list, which is a bug.
 		CURRENCIES.get(&self).unwrap()
@@ -951,10 +944,7 @@ impl TryFrom<String> for Currency {
 /// 
 /// * [`Currency`]
 /// 
-#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
-#[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
+#[expect(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here")]
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[repr(u16)]
 #[serde(into = "String", try_from = "String")]
@@ -1512,8 +1502,7 @@ impl CurrencyCode {
 	/// This method provides an easy way to get to the associated `Currency`
 	/// variant from a `CurrencyCode` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	#[must_use]
 	pub const fn currency(&self) -> Currency {
 		match *self {
@@ -1703,8 +1692,7 @@ impl CurrencyCode {
 //󰭅		AsStr																	
 impl AsStr for CurrencyCode {
 	//		as_str																
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn as_str(&self) -> &'static str {
 		match *self {
 			Self::AED => "AED",
@@ -1919,8 +1907,7 @@ impl FromStr for CurrencyCode {
 	type Err = String;
 	
 	//		from_str															
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		match s.to_uppercase().as_str() {
 			"AED" => Ok(Self::AED),
@@ -2108,14 +2095,12 @@ impl FromStr for CurrencyCode {
 }
 
 //󰭅		TryFrom<u16>															
-#[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
+#[expect(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here")]
 impl TryFrom<u16> for CurrencyCode {
 	type Error = String;
 	
 	//		try_from															
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn try_from(value: u16) -> Result<Self, Self::Error> {
 		match value {
 			008 => Ok(Self::ALL),

@@ -24,8 +24,7 @@ mod currency_code__enum {
 	}
 	#[test]
 	fn currency__all() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for currency in CURRENCIES.keys() {
 			assert_eq!(currency.code().currency(), *currency);
 		}
@@ -176,8 +175,7 @@ mod currency__enum {
 	}
 	#[test]
 	fn countries__relationships() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for currency in CURRENCIES.keys() {
 			for country_code in currency.countries() {
 				assert!(country_code.country().currencies().contains(&currency.code()));

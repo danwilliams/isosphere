@@ -28,8 +28,7 @@ mod country_code__enum {
 	}
 	#[test]
 	fn country__all() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for country in COUNTRIES.keys() {
 			assert_eq!(country.code().country(), *country);
 		}
@@ -234,8 +233,7 @@ mod country__enum {
 	}
 	#[test]
 	fn currencies__relationships() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for country in COUNTRIES.keys() {
 			for currency_code in country.currencies() {
 				assert!(currency_code.currency().countries().contains(&country.code()));
@@ -250,8 +248,7 @@ mod country__enum {
 	}
 	#[test]
 	fn languages__relationships() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for country in COUNTRIES.keys() {
 			for language_code in country.languages() {
 				assert!(language_code.language().countries().contains(&country.code()));

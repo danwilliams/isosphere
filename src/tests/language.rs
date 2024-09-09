@@ -24,8 +24,7 @@ mod language_code__enum {
 	}
 	#[test]
 	fn language__all() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for language in LANGUAGES.keys() {
 			assert_eq!(language.code().language(), *language);
 		}
@@ -155,8 +154,7 @@ mod language__enum {
 	}
 	#[test]
 	fn countries__relationships() {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
+		#[expect(clippy::iter_over_hash_type, reason = "Order is not important here")]
 		for language in LANGUAGES.keys() {
 			for country_code in language.countries() {
 				assert!(country_code.country().languages().contains(&language.code()));

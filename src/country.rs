@@ -30,8 +30,6 @@ mod tests;
 
 //		Packages
 
-#[cfg_attr(    feature = "reasons",  allow(clippy::enum_glob_use, reason = "Brevity wins here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::enum_glob_use))]
 use crate::{
 	currency::CurrencyCode,
 	language::LanguageCode,
@@ -344,10 +342,7 @@ static COUNTRIES: Lazy<HashMap<Country, CountryInfo>> = Lazy::new(|| {
 /// 
 /// * [`CountryCode`]
 /// 
-#[cfg_attr(    feature = "reasons",  allow(clippy::doc_markdown, reason = "False positives"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::doc_markdown))]
-#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
+#[expect(clippy::doc_markdown, reason = "False positives")]
 #[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
@@ -1115,12 +1110,9 @@ impl Country {
 	/// This method provides an easy way to get to the associated `CountryInfo`
 	/// instance from a `Country` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
 	#[must_use]
 	fn info(self) -> &'static CountryInfo {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		#[expect(clippy::unwrap_used, reason = "Infallible")]
 		//	This should be infallible. If it isn't, then the data is wrong, and one
 		//	of the countries is missing from the list, which is a bug.
 		COUNTRIES.get(&self).unwrap()
@@ -1242,12 +1234,8 @@ impl TryFrom<String> for Country {
 /// 
 /// * [`Country`]
 /// 
-#[cfg_attr(    feature = "reasons",  allow(clippy::doc_markdown, reason = "False positives"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::doc_markdown))]
-#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
-#[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
+#[expect(clippy::doc_markdown,          reason = "False positives")]
+#[expect(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here")]
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[repr(u16)]
 #[serde(into = "String", try_from = "String")]
@@ -2771,10 +2759,8 @@ impl CountryCode {
 	/// This method provides an easy way to get to the associated `Country`
 	/// variant from a `CountryCode` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
-	#[cfg_attr(    feature = "reasons",  allow(clippy::match_same_arms, reason = "Clearer to maintain two lists"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::match_same_arms))]
+	#[expect(clippy::too_many_lines,  reason = "Data not logic")]
+	#[expect(clippy::match_same_arms, reason = "Clearer to maintain two lists")]
 	#[must_use]
 	pub const fn country(&self) -> Country {
 		match *self {
@@ -3310,16 +3296,13 @@ impl CountryCode {
 	/// three-letter code (ISO 3166-1 alpha-3) to a two-letter code (ISO 3166-1
 	/// alpha-2).
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
+	#[expect(clippy::missing_panics_doc, reason = "Infallible")]
 	#[must_use]
 	pub fn to_alpha2(&self) -> Self {
 		let code = *self as u16;
 		if code >= 1_000 {
-			#[cfg_attr(    feature = "reasons",  allow(clippy::arithmetic_side_effects, reason = "Range is controlled"))]
-			#[cfg_attr(not(feature = "reasons"), allow(clippy::arithmetic_side_effects))]
-			#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-			#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+			#[expect(clippy::arithmetic_side_effects, reason = "Range is controlled")]
+			#[expect(clippy::unwrap_used,             reason = "Infallible")]
 			//	This should be infallible. If it isn't, then the data is wrong, and one
 			//	of the countries is missing from the list, which is a bug.
 			Self::try_from(code - 1_000).unwrap()
@@ -3335,14 +3318,12 @@ impl CountryCode {
 	/// two-letter code (ISO 3166-1 alpha-2) to a three-letter code (ISO 3166-1
 	/// alpha-3).
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	#[must_use]
 	pub const fn to_alpha3(&self) -> Self {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::wildcard_enum_match_arm,
+		#[expect(clippy::wildcard_enum_match_arm,
 			reason = "Need to match partial set, everything unmatched is the other type of code (to improve in future)"
-		))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::wildcard_enum_match_arm,))]
+		)]
 		match *self {
 			Self::AW => Self::ABW,
 			Self::AF => Self::AFG,
@@ -3601,8 +3582,7 @@ impl CountryCode {
 //󰭅		AsStr																	
 impl AsStr for CountryCode {
 	//		as_str																
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn as_str(&self) -> &'static str {
 		match *self {
 			//		Two-letter codes (ISO 3166-1 alpha-2)						
@@ -4127,8 +4107,7 @@ impl From<CountryCode> for u16 {
 		//	1,000 added to them, for the sole purpose of internal storage. This
 		//	needs to be adjusted when the enum variants are serialized or otherwise
 		//	represented as an integer.
-		#[cfg_attr(    feature = "reasons",  allow(clippy::arithmetic_side_effects, reason = "Range is controlled"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::arithmetic_side_effects))]
+		#[expect(clippy::arithmetic_side_effects, reason = "Range is controlled")]
 		if code as Self > 1_000 {
 			code as Self - 1_000
 		} else {
@@ -4150,8 +4129,7 @@ impl FromStr for CountryCode {
 	type Err = String;
 	
 	//		from_str															
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		match s.to_uppercase().as_str() {
 			//		Two-letter codes (ISO 3166-1 alpha-2)						
@@ -4661,14 +4639,12 @@ impl FromStr for CountryCode {
 }
 
 //󰭅		TryFrom<u16>															
-#[cfg_attr(    feature = "reasons",  allow(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::zero_prefixed_literal))]
+#[expect(clippy::zero_prefixed_literal, reason = "Zeroes aid readability here")]
 impl TryFrom<u16> for CountryCode {
 	type Error = String;
 	
 	//		try_from															
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn try_from(value: u16) -> Result<Self, Self::Error> {
 		match value {
 			//		Two-letter codes (ISO 3166-1 alpha-2)								

@@ -25,8 +25,6 @@ mod tests;
 
 //		Packages
 
-#[cfg_attr(    feature = "reasons",  allow(clippy::enum_glob_use, reason = "Brevity wins here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::enum_glob_use))]
 use crate::country::CountryCode;
 use core::{
 	fmt::{Debug, Display, self},
@@ -270,8 +268,6 @@ static LANGUAGES: Lazy<HashMap<Language, LanguageInfo>> = Lazy::new(|| {
 /// 
 /// * [`LanguageCode`]
 /// 
-#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[derive(Clone, Copy, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
@@ -840,12 +836,9 @@ impl Language {
 	/// This method provides an easy way to get to the associated `LanguageInfo`
 	/// instance from a `Language` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::missing_panics_doc, reason = "Infallible"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::missing_panics_doc))]
 	#[must_use]
 	fn info(self) -> &'static LanguageInfo {
-		#[cfg_attr(    feature = "reasons",  allow(clippy::unwrap_used, reason = "Infallible"))]
-		#[cfg_attr(not(feature = "reasons"), allow(clippy::unwrap_used))]
+		#[expect(clippy::unwrap_used, reason = "Infallible")]
 		//	This should be infallible. If it isn't, then the data is wrong, and one
 		//	of the languages is missing from the list, which is a bug.
 		LANGUAGES.get(&self).unwrap()
@@ -954,8 +947,6 @@ impl TryFrom<String> for Language {
 /// 
 /// * [`Language`]
 /// 
-#[cfg_attr(    feature = "reasons",  allow(clippy::upper_case_acronyms, reason = "Uppercase is suitable here"))]
-#[cfg_attr(not(feature = "reasons"), allow(clippy::upper_case_acronyms))]
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, PartialEq, Serialize, ToSchema)]
 #[serde(into = "String", try_from = "String")]
 #[non_exhaustive]
@@ -1524,8 +1515,7 @@ impl LanguageCode {
 	/// This method provides an easy way to get to the associated `Language`
 	/// variant from a `LanguageCode` enum variant.
 	/// 
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	#[must_use]
 	pub const fn language(&self) -> Language {
 		match *self {
@@ -1719,8 +1709,7 @@ impl LanguageCode {
 //󰭅		AsStr																	
 impl AsStr for LanguageCode {
 	//		as_str																
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn as_str(&self) -> &'static str {
 		match *self {
 			Self::AA => "aa",
@@ -1931,8 +1920,7 @@ impl FromStr for LanguageCode {
 	type Err = String;
 	
 	//		from_str															
-	#[cfg_attr(    feature = "reasons",  allow(clippy::too_many_lines, reason = "Data not logic"))]
-	#[cfg_attr(not(feature = "reasons"), allow(clippy::too_many_lines))]
+	#[expect(clippy::too_many_lines, reason = "Data not logic")]
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		match s.to_lowercase().as_str() {
 			"aa" => Ok(Self::AA),
