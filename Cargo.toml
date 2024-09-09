@@ -21,7 +21,7 @@ lto       = "thin" # Enable link-time optimisation (fast)
 #==============================[  DEPENDENCIES  ]===============================
 
 [dependencies]
-rubedo             = "0.6.0"
+rubedo             = { version = "0.6.1", features = ["std"], default-features = false }
 serde              = { version = "1.0.210", features = ["derive"] }
 utoipa             = "4.2.3"
 velcro             = "0.5.4"
