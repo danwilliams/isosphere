@@ -9,6 +9,23 @@ The format is based on [Keep a Changelog][], and this project adheres to
 [Semantic Versioning][].
 
 
+## 0.2.0 (09 September 2024)
+
+### Added
+
+  - Added MSRV (Minimum Supported Rust Version) in `Cargo.toml`, set to 1.81.0
+
+### Changed
+
+  - Changed use of `once_cell::Lazy` to `LazyLock` and removed `once_cell`
+    dependency
+  - Updated lint configuration for Rust 1.80
+  - Updated lint configuration for Rust 1.81
+  - Updated crate dependencies
+  - Linted tests
+  - Moved linting configuration to Cargo.toml
+
+
 ## 0.1.1 (02 April 2024)
 
 ### Changed

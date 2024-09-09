@@ -41,6 +41,11 @@
 
 ## Version 0.2.0
 
+  - Maintenance release
+
+
+## Version 0.3.0
+
   - [ ] Additional basic properties
       - [ ] Country
           - [ ] Independent
@@ -60,7 +65,7 @@
   - [ ] Reduce lines of boilerplate code
 
 
-## Version 0.3.0
+## Version 0.4.0
 
   - [ ] Extended country information
       - [ ] ISO 3166-2 subdivisions
@@ -68,7 +73,7 @@
       - [ ] Additional names — full name vs short name
 
 
-## Version 0.4.0
+## Version 0.5.0
 
   - [ ] Extended language information
       - [ ] ISO 639-2/T and 639-2/B codes
@@ -78,7 +83,7 @@
       - [ ] Minority languages for countries
 
 
-## Version 0.5.0
+## Version 0.6.0
 
   - [ ] Extended currency information
       - [ ] Non-fiat, e.g. blockchain
@@ -90,7 +95,7 @@
       - [ ] `Currency.is_fiat()`
 
 
-## Version 0.6.0
+## Version 0.7.0
 
   - [ ] Timezones
       - [ ] Timezone list
@@ -108,7 +113,7 @@
       - [ ] `Country.tld`
 
 
-## Version 0.7.0
+## Version 0.8.0
 
   - [ ] Historic information
       - [ ] Countries — ISO 3166-3 historic list
@@ -117,13 +122,13 @@
       - [ ] `Currency.is_active()`/`.is_historic()`
 
 
-## Version 0.8.0
+## Version 0.9.0
 
   - [ ] Translations
       - [ ] Translations of names into other languages
 
 
-## Version 0.9.0
+## Version 0.10.0
 
   - [ ] Feature flags
       - [ ] `country`: Basic country information
