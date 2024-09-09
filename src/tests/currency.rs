@@ -1,5 +1,3 @@
-#![allow(non_snake_case)]
-
 //		Tests
 
 //		CurrencyCode															
@@ -26,6 +24,8 @@ mod currency_code__enum {
 	}
 	#[test]
 	fn currency__all() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for currency in CURRENCIES.keys() {
 			assert_eq!(currency.code().currency(), *currency);
 		}
@@ -53,18 +53,18 @@ mod currency_code__traits {
 	//		deserialize															
 	#[test]
 	fn deserialize() {
-		let code: CurrencyCode = serde_json::from_str(r#""USD""#).unwrap();
-		assert_eq!(code, CurrencyCode::USD);
-		let code: CurrencyCode = serde_json::from_str(r#""usd""#).unwrap();
-		assert_eq!(code, CurrencyCode::USD);
+		let code1: CurrencyCode = serde_json::from_str(r#""USD""#).unwrap();
+		assert_eq!(code1, CurrencyCode::USD);
+		let code2: CurrencyCode = serde_json::from_str(r#""usd""#).unwrap();
+		assert_eq!(code2, CurrencyCode::USD);
 	}
 	
 	//		display																
 	#[test]
 	fn display() {
 		let code = CurrencyCode::USD;
-		assert_eq!(format!("{}", code), "USD");
-		assert_eq!(code.to_string(),    "USD");
+		assert_eq!(format!("{code}"), "USD");
+		assert_eq!(code.to_string(),  "USD");
 	}
 	
 	//		eq / partial_eq														
@@ -101,7 +101,7 @@ mod currency_code__traits {
 		assert_eq!(CurrencyCode::from_str("usd").unwrap(), CurrencyCode::USD);
 		let err = CurrencyCode::from_str("FOO");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CurrencyCode: FOO");
+		assert_eq!(err.unwrap_err(), "Invalid CurrencyCode: FOO");
 	}
 	
 	//		serialize															
@@ -116,7 +116,7 @@ mod currency_code__traits {
 		assert_eq!(CurrencyCode::try_from(840).unwrap(), CurrencyCode::USD);
 		let err = CurrencyCode::try_from(000);
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CurrencyCode: 0");
+		assert_eq!(err.unwrap_err(), "Invalid CurrencyCode: 0");
 	}
 	#[test]
 	fn try_from__string() {
@@ -124,7 +124,7 @@ mod currency_code__traits {
 		assert_eq!(CurrencyCode::try_from(s!("usd")).unwrap(), CurrencyCode::USD);
 		let err = CurrencyCode::try_from(s!("FOO"));
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CurrencyCode: FOO");
+		assert_eq!(err.unwrap_err(), "Invalid CurrencyCode: FOO");
 	}
 }
 
@@ -176,8 +176,10 @@ mod currency__enum {
 	}
 	#[test]
 	fn countries__relationships() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for currency in CURRENCIES.keys() {
-			for country_code in currency.countries().iter() {
+			for country_code in currency.countries() {
 				assert!(country_code.country().currencies().contains(&currency.code()));
 			}
 		}
@@ -213,8 +215,8 @@ mod currency__traits {
 	#[test]
 	fn display() {
 		let currency = Currency::USD;
-		assert_eq!(format!("{}", currency), "United States dollar");
-		assert_eq!(currency.to_string(),    "United States dollar");
+		assert_eq!(format!("{currency}"), "United States dollar");
+		assert_eq!(currency.to_string(),  "United States dollar");
 	}
 	
 	//		eq / partial_eq														
@@ -231,9 +233,9 @@ mod currency__traits {
 	#[test]
 	fn from__currency_for_string() {
 		let currency = Currency::USD;
-		assert_eq!(String::from(currency.clone()), "United States dollar");
-		let str: String = currency.clone().into();
-		assert_eq!(str,                            "United States dollar");
+		assert_eq!(String::from(currency), "United States dollar");
+		let str: String = currency.into();
+		assert_eq!(str,                    "United States dollar");
 	}
 	
 	//		from_str															
@@ -242,7 +244,7 @@ mod currency__traits {
 		assert_eq!(Currency::from_str("United States dollar").unwrap(), Currency::USD);
 		let err = Currency::from_str("Foo dollar");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid Currency: Foo dollar");
+		assert_eq!(err.unwrap_err(), "Invalid Currency: Foo dollar");
 	}
 	
 	//		serialize															
@@ -257,7 +259,7 @@ mod currency__traits {
 		assert_eq!(Currency::from_str("United States dollar").unwrap(), Currency::USD);
 		let err = Currency::from_str("Foo dollar");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid Currency: Foo dollar");
+		assert_eq!(err.unwrap_err(), "Invalid Currency: Foo dollar");
 	}
 }
 

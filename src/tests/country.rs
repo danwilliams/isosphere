@@ -1,5 +1,3 @@
-#![allow(non_snake_case)]
-
 //		Tests
 
 //		CountryCode																
@@ -20,16 +18,18 @@ mod country_code__enum {
 	//		country																
 	#[test]
 	fn country() {
-		let country = CountryCode::US.country();
-		assert_eq!(country.name(), "United States of America");
-		assert_eq!(country.code(), CountryCode::US);
+		let country1 = CountryCode::US.country();
+		assert_eq!(country1.name(), "United States of America");
+		assert_eq!(country1.code(), CountryCode::US);
 		
-		let country = CountryCode::USA.country();
-		assert_eq!(country.name(), "United States of America");
-		assert_eq!(country.code(), CountryCode::US);
+		let country2 = CountryCode::USA.country();
+		assert_eq!(country2.name(), "United States of America");
+		assert_eq!(country2.code(), CountryCode::US);
 	}
 	#[test]
 	fn country__all() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for country in COUNTRIES.keys() {
 			assert_eq!(country.code().country(), *country);
 		}
@@ -87,27 +87,27 @@ mod country_code__traits {
 	//		deserialize															
 	#[test]
 	fn deserialize() {
-		let code: CountryCode = serde_json::from_str(r#""US""#).unwrap();
-		assert_eq!(code, CountryCode::US);
-		let code: CountryCode = serde_json::from_str(r#""us""#).unwrap();
-		assert_eq!(code, CountryCode::US);
+		let code1: CountryCode = serde_json::from_str(r#""US""#).unwrap();
+		assert_eq!(code1, CountryCode::US);
+		let code2: CountryCode = serde_json::from_str(r#""us""#).unwrap();
+		assert_eq!(code2, CountryCode::US);
 		
-		let code: CountryCode = serde_json::from_str(r#""USA""#).unwrap();
-		assert_eq!(code, CountryCode::USA);
-		let code: CountryCode = serde_json::from_str(r#""usa""#).unwrap();
-		assert_eq!(code, CountryCode::USA);
+		let code3: CountryCode = serde_json::from_str(r#""USA""#).unwrap();
+		assert_eq!(code3, CountryCode::USA);
+		let code4: CountryCode = serde_json::from_str(r#""usa""#).unwrap();
+		assert_eq!(code4, CountryCode::USA);
 	}
 	
 	//		display																
 	#[test]
 	fn display() {
-		let code = CountryCode::US;
-		assert_eq!(format!("{}", code), "US");
-		assert_eq!(code.to_string(),    "US");
+		let code1 = CountryCode::US;
+		assert_eq!(format!("{code1}"), "US");
+		assert_eq!(code1.to_string(),  "US");
 		
-		let code = CountryCode::USA;
-		assert_eq!(format!("{}", code), "USA");
-		assert_eq!(code.to_string(),    "USA");
+		let code2 = CountryCode::USA;
+		assert_eq!(format!("{code2}"), "USA");
+		assert_eq!(code2.to_string(),  "USA");
 	}
 	
 	//		eq / partial_eq														
@@ -124,29 +124,29 @@ mod country_code__traits {
 	//		from																
 	#[test]
 	fn from__country_code_for_u16() {
-		let code = CountryCode::US;
-		assert_eq!(u16::from(code), 840);
-		assert_eq!(code as u16,     840);
-		let int: u16 = code.into();
-		assert_eq!(int,             840);
+		let code1 = CountryCode::US;
+		assert_eq!(u16::from(code1), 840);
+		assert_eq!(code1 as u16,     840);
+		let int1: u16 = code1.into();
+		assert_eq!(int1,             840);
 		
-		let code = CountryCode::USA;
-		assert_eq!(u16::from(code),   840);
-		assert_eq!(code as u16,     1_840);
-		let int: u16 = code.into();
-		assert_eq!(int,               840);
+		let code2 = CountryCode::USA;
+		assert_eq!(u16::from(code2),   840);
+		assert_eq!(code2 as u16,     1_840);
+		let int2: u16 = code2.into();
+		assert_eq!(int2,               840);
 	}
 	#[test]
 	fn from__country_code_for_string() {
-		let code = CountryCode::US;
-		assert_eq!(String::from(code), "US");
-		let str: String = code.into();
-		assert_eq!(str,                "US");
+		let code1 = CountryCode::US;
+		assert_eq!(String::from(code1), "US");
+		let str1: String = code1.into();
+		assert_eq!(str1,                "US");
 		
-		let code = CountryCode::USA;
-		assert_eq!(String::from(code), "USA");
-		let str: String = code.into();
-		assert_eq!(str,                "USA");
+		let code2 = CountryCode::USA;
+		assert_eq!(String::from(code2), "USA");
+		let str2: String = code2.into();
+		assert_eq!(str2,                "USA");
 	}
 	
 	//		from_str															
@@ -158,7 +158,7 @@ mod country_code__traits {
 		assert_eq!(CountryCode::from_str("usa").unwrap(), CountryCode::USA);
 		let err = CountryCode::from_str("FOO");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: FOO");
+		assert_eq!(err.unwrap_err(), "Invalid CountryCode: FOO");
 	}
 	
 	//		serialize															
@@ -172,13 +172,13 @@ mod country_code__traits {
 	#[test]
 	fn try_from__u16() {
 		assert_eq!(CountryCode::try_from(840).unwrap(), CountryCode::US);
-		let err = CountryCode::try_from(000);
-		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: 0");
+		let err1 = CountryCode::try_from(000);
+		assert_err!(&err1);
+		assert_eq!(err1.unwrap_err(), "Invalid CountryCode: 0");
 		
-		let err = CountryCode::try_from(1840);
-		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: 1840");
+		let err2 = CountryCode::try_from(1840);
+		assert_err!(&err2);
+		assert_eq!(err2.unwrap_err(), "Invalid CountryCode: 1840");
 	}
 	#[test]
 	fn try_from__string() {
@@ -188,7 +188,7 @@ mod country_code__traits {
 		assert_eq!(CountryCode::try_from(s!("usa")).unwrap(), CountryCode::USA);
 		let err = CountryCode::try_from(s!("FOO"));
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid CountryCode: FOO");
+		assert_eq!(err.unwrap_err(), "Invalid CountryCode: FOO");
 	}
 }
 
@@ -234,8 +234,10 @@ mod country__enum {
 	}
 	#[test]
 	fn currencies__relationships() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for country in COUNTRIES.keys() {
-			for currency_code in country.currencies().iter() {
+			for currency_code in country.currencies() {
 				assert!(currency_code.currency().countries().contains(&country.code()));
 			}
 		}
@@ -248,8 +250,10 @@ mod country__enum {
 	}
 	#[test]
 	fn languages__relationships() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for country in COUNTRIES.keys() {
-			for language_code in country.languages().iter() {
+			for language_code in country.languages() {
 				assert!(language_code.language().countries().contains(&country.code()));
 			}
 		}
@@ -285,8 +289,8 @@ mod country__traits {
 	#[test]
 	fn display() {
 		let country = Country::US;
-		assert_eq!(format!("{}", country), "United States of America");
-		assert_eq!(country.to_string(),    "United States of America");
+		assert_eq!(format!("{country}"), "United States of America");
+		assert_eq!(country.to_string(),  "United States of America");
 	}
 	
 	//		eq / partial_eq														
@@ -303,9 +307,9 @@ mod country__traits {
 	#[test]
 	fn from__country_for_string() {
 		let country = Country::US;
-		assert_eq!(String::from(country.clone()), "United States of America");
-		let str: String = country.clone().into();
-		assert_eq!(str,                           "United States of America");
+		assert_eq!(String::from(country), "United States of America");
+		let str: String = country.into();
+		assert_eq!(str,                   "United States of America");
 	}
 	
 	//		from_str															
@@ -314,7 +318,7 @@ mod country__traits {
 		assert_eq!(Country::from_str("United States of America").unwrap(), Country::US);
 		let err = Country::from_str("Fooland");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid Country: Fooland");
+		assert_eq!(err.unwrap_err(), "Invalid Country: Fooland");
 	}
 	
 	//		serialize															
@@ -329,7 +333,7 @@ mod country__traits {
 		assert_eq!(Country::from_str("United States of America").unwrap(), Country::US);
 		let err = Country::from_str("Fooland");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid Country: Fooland");
+		assert_eq!(err.unwrap_err(), "Invalid Country: Fooland");
 	}
 }
 

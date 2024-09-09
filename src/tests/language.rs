@@ -1,5 +1,3 @@
-#![allow(non_snake_case)]
-
 //		Tests
 
 //		LanguageCode															
@@ -26,6 +24,8 @@ mod language_code__enum {
 	}
 	#[test]
 	fn language__all() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for language in LANGUAGES.keys() {
 			assert_eq!(language.code().language(), *language);
 		}
@@ -53,18 +53,18 @@ mod language_code__traits {
 	//		deserialize															
 	#[test]
 	fn deserialize() {
-		let code: LanguageCode = serde_json::from_str(r#""en""#).unwrap();
-		assert_eq!(code, LanguageCode::EN);
-		let code: LanguageCode = serde_json::from_str(r#""EN""#).unwrap();
-		assert_eq!(code, LanguageCode::EN);
+		let code1: LanguageCode = serde_json::from_str(r#""en""#).unwrap();
+		assert_eq!(code1, LanguageCode::EN);
+		let code2: LanguageCode = serde_json::from_str(r#""EN""#).unwrap();
+		assert_eq!(code2, LanguageCode::EN);
 	}
 	
 	//		display																
 	#[test]
 	fn display() {
 		let code = LanguageCode::EN;
-		assert_eq!(format!("{}", code), "en");
-		assert_eq!(code.to_string(),    "en");
+		assert_eq!(format!("{code}"), "en");
+		assert_eq!(code.to_string(),  "en");
 	}
 	
 	//		eq / partial_eq														
@@ -93,7 +93,7 @@ mod language_code__traits {
 		assert_eq!(LanguageCode::from_str("EN").unwrap(), LanguageCode::EN);
 		let err = LanguageCode::from_str("foo");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid LanguageCode: foo");
+		assert_eq!(err.unwrap_err(), "Invalid LanguageCode: foo");
 	}
 	
 	//		serialize															
@@ -109,7 +109,7 @@ mod language_code__traits {
 		assert_eq!(LanguageCode::try_from(s!("EN")).unwrap(), LanguageCode::EN);
 		let err = LanguageCode::try_from(s!("foo"));
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid LanguageCode: foo");
+		assert_eq!(err.unwrap_err(), "Invalid LanguageCode: foo");
 	}
 }
 
@@ -155,8 +155,10 @@ mod language__enum {
 	}
 	#[test]
 	fn countries__relationships() {
+		#[cfg_attr(    feature = "reasons",  allow(clippy::iter_over_hash_type, reason = "Order is not important here"))]
+		#[cfg_attr(not(feature = "reasons"), allow(clippy::iter_over_hash_type))]
 		for language in LANGUAGES.keys() {
-			for country_code in language.countries().iter() {
+			for country_code in language.countries() {
 				assert!(country_code.country().languages().contains(&language.code()));
 			}
 		}
@@ -192,8 +194,8 @@ mod language__traits {
 	#[test]
 	fn display() {
 		let language = Language::EN;
-		assert_eq!(format!("{}", language), "English");
-		assert_eq!(language.to_string(),    "English");
+		assert_eq!(format!("{language}"), "English");
+		assert_eq!(language.to_string(),  "English");
 	}
 	
 	//		eq / partial_eq														
@@ -210,9 +212,9 @@ mod language__traits {
 	#[test]
 	fn from__language_for_string() {
 		let language = Language::EN;
-		assert_eq!(String::from(language.clone()), "English");
-		let str: String = language.clone().into();
-		assert_eq!(str,                            "English");
+		assert_eq!(String::from(language), "English");
+		let str: String = language.into();
+		assert_eq!(str,                    "English");
 	}
 	
 	//		from_str															
@@ -221,7 +223,7 @@ mod language__traits {
 		assert_eq!(Language::from_str("English").unwrap(), Language::EN);
 		let err = Language::from_str("Fooish");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid Language: Fooish");
+		assert_eq!(err.unwrap_err(), "Invalid Language: Fooish");
 	}
 	
 	//		serialize															
@@ -236,7 +238,7 @@ mod language__traits {
 		assert_eq!(Language::from_str("English").unwrap(), Language::EN);
 		let err = Language::from_str("Fooish");
 		assert_err!(&err);
-		assert_eq!(err.unwrap_err().to_string(), "Invalid Language: Fooish");
+		assert_eq!(err.unwrap_err(), "Invalid Language: Fooish");
 	}
 }
 
