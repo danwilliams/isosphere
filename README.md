@@ -1,5 +1,11 @@
 # Isosphere
 
+![Rust](https://img.shields.io/badge/Rust-1.81%2B-b7410e?style=flat&logo=rust&logoColor=white&labelColor=b7410e)
+[![Crate version](https://img.shields.io/crates/v/isosphere?style=flat)](https://crates.io/crates/isosphere)
+[![CI](https://img.shields.io/github/actions/workflow/status/danwilliams/isosphere/ci.yml?style=flat&logo=github&logoColor=white&label=build%2Ftest)](https://github.com/danwilliams/isosphere/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/docsrs/isosphere?style=flat&logo=docs.rs&logoColor=white)](https://docs.rs/crate/isosphere/latest)
+![License](https://img.shields.io/github/license/danwilliams/isosphere?style=flat)
+
 The Isosphere crate is a library of ISO standard data types, helpers, and
 related utilities for Rust projects.
 
