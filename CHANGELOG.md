@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog][], and this project adheres to
 [Semantic Versioning][].
 
 
+## 0.2.2 (12 November 2024)
+
+### Changed
+
+  - Updated lint configuration for Rust 1.82
+  - Updated crate dependencies
+
+
 ## 0.2.1 (09 September 2024)
 
 ### Added
@@ -30,7 +38,7 @@ The format is based on [Keep a Changelog][], and this project adheres to
   - Updated lint configuration for Rust 1.81
   - Updated crate dependencies
   - Linted tests
-  - Moved linting configuration to Cargo.toml
+  - Moved linting configuration to `Cargo.toml`
 
 
 ## 0.1.1 (02 April 2024)
