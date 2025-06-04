@@ -1,6 +1,6 @@
 [package]
 name          = "isosphere"
-version       = "0.2.2"
+version       = "0.2.3"
 description   = "Library of ISO standard data types, helpers, and related utilities"
 categories    = ["data-structures", "encoding", "finance", "internationalization", "localization"]
 keywords      = ["codes", "country", "currency", "iso", "language"]
