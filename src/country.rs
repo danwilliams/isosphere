@@ -20,7 +20,7 @@
 
 
 
-//		Modules
+//		Modules																											
 
 #[cfg(test)]
 #[path = "tests/country.rs"]
@@ -28,7 +28,7 @@ mod tests;
 
 
 
-//		Packages
+//		Packages																										
 
 use crate::{
 	currency::CurrencyCode,
@@ -54,7 +54,7 @@ use utoipa::ToSchema;
 
 
 
-//		Constants
+//		Constants																										
 
 /// The possible countries.
 /// 
@@ -325,7 +325,7 @@ static COUNTRIES: LazyLock<HashMap<Country, CountryInfo>> = LazyLock::new(|| {
 
 
 
-//		Enums
+//		Enums																											
 
 //		Country																	
 /// A country.
@@ -4929,7 +4929,7 @@ impl TryFrom<String> for CountryCode {
 
 
 
-//		Structs
+//		Structs																											
 
 //		CountryInfo																
 /// Country information.

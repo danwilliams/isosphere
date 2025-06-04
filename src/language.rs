@@ -15,7 +15,7 @@
 
 
 
-//		Modules
+//		Modules																											
 
 #[cfg(test)]
 #[path = "tests/language.rs"]
@@ -23,7 +23,7 @@ mod tests;
 
 
 
-//		Packages
+//		Packages																										
 
 use crate::country::CountryCode;
 use core::{
@@ -46,7 +46,7 @@ use utoipa::ToSchema;
 
 
 
-//		Constants
+//		Constants																										
 
 /// The possible languages.
 /// 
@@ -251,7 +251,7 @@ static LANGUAGES: LazyLock<HashMap<Language, LanguageInfo>> = LazyLock::new(|| {
 
 
 
-//		Enums
+//		Enums																											
 
 //		Language																
 /// A language.
@@ -2130,7 +2130,7 @@ impl TryFrom<String> for LanguageCode {
 
 
 
-//		Structs
+//		Structs																											
 
 //		LanguageInfo															
 /// Language information.

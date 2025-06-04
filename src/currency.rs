@@ -14,7 +14,7 @@
 
 
 
-//		Modules
+//		Modules																											
 
 #[cfg(test)]
 #[path = "tests/currency.rs"]
@@ -22,7 +22,7 @@ mod tests;
 
 
 
-//		Packages
+//		Packages																										
 
 use crate::country::CountryCode;
 use core::{
@@ -45,7 +45,7 @@ use utoipa::ToSchema;
 
 
 
-//		Constants
+//		Constants																										
 
 /// The possible currencies.
 /// 
@@ -246,7 +246,7 @@ static CURRENCIES: LazyLock<HashMap<Currency, CurrencyInfo>> = LazyLock::new(|| 
 
 
 
-//		Enums
+//		Enums																											
 
 //		Currency																
 /// A currency.
@@ -2306,7 +2306,7 @@ impl TryFrom<String> for CurrencyCode {
 
 
 
-//		Structs
+//		Structs																											
 
 //		CurrencyInfo															
 /// Currency information.
