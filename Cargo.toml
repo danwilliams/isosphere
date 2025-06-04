@@ -28,14 +28,14 @@ utoipa  = ["dep:utoipa"]
 #==============================[  DEPENDENCIES  ]===============================
 
 [dependencies]
-rubedo             = { version = "0.6.3", features = ["sugar", "std"], default-features = false }
-serde              = { version = "1.0.215", features = ["derive"] }
-utoipa             = { version = "4.2.3", optional = true } # Utoipa 5.2.0 is not compatible
+rubedo             = { version = "0.6.4", features = ["sugar", "std"], default-features = false }
+serde              = { version = "1.0.219", features = ["derive"] }
+utoipa             = { version = "5.3.1", optional = true } # Utoipa 5.2.0 is not compatible
 velcro             = "0.5.4"
 
 [dev-dependencies]
-claims             = "0.7.1"
-serde_json         = { version = "1.0.132", features = ["preserve_order"] }
+claims             = "0.8.0"
+serde_json         = { version = "1.0.140", features = ["preserve_order"] }
 
 #=================================[  LINTS  ]===================================
 

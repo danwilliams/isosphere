@@ -851,6 +851,7 @@ impl Language {
 	
 	//		name																
 	/// Returns the name of the language.
+	#[cfg_attr(feature = "utoipa", expect(clippy::same_name_method, reason = "Doesn't matter"))]
 	#[must_use]
 	pub fn name(&self) -> &str {
 		&self.info().name
